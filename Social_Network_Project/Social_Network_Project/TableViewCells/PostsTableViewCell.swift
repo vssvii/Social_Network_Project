@@ -37,6 +37,13 @@ class PostsTableViewCell: UITableViewCell {
         return jobLabel
     }()
     
+    lazy var parametersButton: UIButton = {
+        let parametersButton = UIButton()
+        parametersButton.setImage(UIImage(systemName: "increase.indent"), for: .normal)
+        parametersButton.tintColor = UIColor(hex: "#FF9E45")
+        return parametersButton
+    }()
+    
     lazy var settingsImageView: UIImageView = {
         let settingsImageView = UIImageView()
         return settingsImageView
@@ -123,6 +130,7 @@ class PostsTableViewCell: UITableViewCell {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(authorLabel)
         contentView.addSubview(jobLabel)
+        contentView.addSubview(parametersButton)
         contentView.addSubview(postView)
         postView.addSubview(verticalLineView)
         postView.addSubview(postTextLabel)
@@ -148,6 +156,11 @@ class PostsTableViewCell: UITableViewCell {
         jobLabel.snp.makeConstraints { (make) in
             make.top.equalTo(authorLabel.snp.bottom).offset(6)
             make.left.equalTo(avatarImageView.snp.right).offset(16)
+        }
+        
+        parametersButton.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(36)
+            make.right.equalToSuperview().offset(-16)
         }
         
         postView.snp.makeConstraints { (make) in
