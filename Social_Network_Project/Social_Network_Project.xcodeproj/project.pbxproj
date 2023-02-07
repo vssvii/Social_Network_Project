@@ -10,6 +10,12 @@
 		60C1F94D2E5A91083665DD13 /* Pods_Social_Network_Project_Social_Network_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987E4B49317DA70088FF311 /* Pods_Social_Network_Project_Social_Network_ProjectUITests.framework */; };
 		7AA59DD7C7811BF4CA97008F /* Pods_Social_Network_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E17E4E8C3FAE6B7B5A6941 /* Pods_Social_Network_ProjectTests.framework */; };
 		8C07353C8A8C5052883DC112 /* Pods_Social_Network_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4C889B22E91625AAE63C85 /* Pods_Social_Network_Project.framework */; };
+		B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD16C29913DFC0014BC4F /* FeedViewController.swift */; };
+		B06AD16F29913ED80014BC4F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD16E29913ED80014BC4F /* PersonalViewController.swift */; };
+		B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */; };
+		B06AD17429916B1D0014BC4F /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */; };
+		B06AD17629916C720014BC4F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17529916C720014BC4F /* Photo.swift */; };
+		B06AD17829921CDF0014BC4F /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17729921CDF0014BC4F /* PhotosViewController.swift */; };
 		B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */; };
 		B0FD0C7E298CDC91000AF6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FD0C7C298CDC91000AF6D4 /* Main.storyboard */; };
 		B0FD0C81298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0C7F298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld */; };
@@ -52,6 +58,12 @@
 		90E17E4E8C3FAE6B7B5A6941 /* Pods_Social_Network_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Network_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A128A8D643AEBB0FA8F99CD /* Pods-Social_Network_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social_Network_Project.debug.xcconfig"; path = "Target Support Files/Pods-Social_Network_Project/Pods-Social_Network_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4C889B22E91625AAE63C85 /* Pods_Social_Network_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Network_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B06AD16C29913DFC0014BC4F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		B06AD16E29913ED80014BC4F /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		B06AD17529916C720014BC4F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B06AD17729921CDF0014BC4F /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		B0FD0C73298CDC91000AF6D4 /* Social_Network_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social_Network_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FD0C7D298CDC91000AF6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +130,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B06AD16B29913DBD0014BC4F /* MainViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B06AD16C29913DFC0014BC4F /* FeedViewController.swift */,
+				B06AD16E29913ED80014BC4F /* PersonalViewController.swift */,
+			);
+			path = MainViewControllers;
+			sourceTree = "<group>";
+		};
+		B06AD17029916A2A0014BC4F /* ProfileViewParts */ = {
+			isa = PBXGroup;
+			children = (
+				B06AD17729921CDF0014BC4F /* PhotosViewController.swift */,
+				B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */,
+				B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */,
+			);
+			path = ProfileViewParts;
+			sourceTree = "<group>";
+		};
 		B0FD0C6A298CDC91000AF6D4 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +209,8 @@
 		B0FD0CAB298D1FE9000AF6D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B06AD17029916A2A0014BC4F /* ProfileViewParts */,
+				B06AD16B29913DBD0014BC4F /* MainViewControllers */,
 				B0FD0CA9298D1623000AF6D4 /* ProfileViewController.swift */,
 				B0FD0CAC298D200C000AF6D4 /* MainViewController.swift */,
 				B0FD0CAE298D20B9000AF6D4 /* SavedPostsViewController.swift */,
@@ -206,6 +239,7 @@
 			children = (
 				B0FD0CB7298E2A57000AF6D4 /* Post.swift */,
 				B0FD0CBC298FFF15000AF6D4 /* Profile.swift */,
+				B06AD17529916C720014BC4F /* Photo.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -468,14 +502,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0FD0CB5298D2C93000AF6D4 /* PostsTableViewCell.swift in Sources */,
+				B06AD17829921CDF0014BC4F /* PhotosViewController.swift in Sources */,
+				B06AD17429916B1D0014BC4F /* PhotosCollectionViewCell.swift in Sources */,
 				B0FD0CBD298FFF15000AF6D4 /* Profile.swift in Sources */,
 				B0FD0CBB298FA23E000AF6D4 /* Extensions.swift in Sources */,
 				B0FD0C81298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld in Sources */,
 				B0FD0CB2298D2C52000AF6D4 /* ProfileHeaderView.swift in Sources */,
 				B0FD0CB8298E2A57000AF6D4 /* Post.swift in Sources */,
 				B0FD0CAA298D1623000AF6D4 /* ProfileViewController.swift in Sources */,
+				B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */,
+				B06AD17629916C720014BC4F /* Photo.swift in Sources */,
 				B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */,
+				B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */,
 				B0FD0CAD298D200C000AF6D4 /* MainViewController.swift in Sources */,
+				B06AD16F29913ED80014BC4F /* PersonalViewController.swift in Sources */,
 				B0FD0CAF298D20B9000AF6D4 /* SavedPostsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

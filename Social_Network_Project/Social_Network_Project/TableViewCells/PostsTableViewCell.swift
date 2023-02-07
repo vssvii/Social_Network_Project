@@ -117,6 +117,7 @@ class PostsTableViewCell: UITableViewCell {
         setupView()
     }
     
+    
     private func setupView() {
         
         contentView.addSubview(avatarImageView)
