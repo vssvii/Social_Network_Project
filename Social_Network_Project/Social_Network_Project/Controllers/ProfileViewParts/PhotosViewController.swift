@@ -13,14 +13,11 @@ import SnapKit
 
 class PhotosViewController: UIViewController, UINavigationBarDelegate {
     
-    
-    private var dataSource: [UIImage]?
-    
-    var photos: [Photo] = []
+    let viewModel = PhotosViewModel()
     
     private enum CellReuseIdentifiers: String {
-        case photos
-        case collection
+        case allPhotos
+        case albums
     }
     
     private enum LayoutCostant {
@@ -31,23 +28,18 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
     lazy var navBar: UINavigationBar = {
         let navBar = UINavigationBar()
         navBar.backgroundColor = .white
-        navBar.translatesAutoresizingMaskIntoConstraints = false
         return navBar
     }()
     
-    lazy var photoCollectionView: UICollectionView = {
-        let viewLayout = UICollectionViewFlowLayout()
-        let photoCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: viewLayout)
-        photoCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
-        photoCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        photoCollectionView.backgroundColor = .white
-        photoCollectionView.delegate = self
-        photoCollectionView.dataSource = self
-        photoCollectionView.reloadData()
-        return photoCollectionView
-    }()
     
-//    let leftBarButtonItem = UIBarButtonItem(title: "back".localized, style: UIBarButtonItem.Style.plain, target: PhotosViewController.self, action: #selector(actionCancelButton))
+    lazy var albumAndPhotosTableView: UITableView = {
+        let albumAndPhotosTableView = UITableView(frame: .zero, style: .grouped)
+        albumAndPhotosTableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.albums.rawValue)
+        albumAndPhotosTableView.register(AllPhotosTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.allPhotos.rawValue)
+        albumAndPhotosTableView.delegate = self
+        albumAndPhotosTableView.dataSource = self
+        return albumAndPhotosTableView
+    }()
     
     let navItem = UINavigationItem()
 
@@ -56,31 +48,9 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
         
         view.backgroundColor = .white
         
-        photos = [
-            Photo(image: UIImage(named: "1")),
-            Photo(image: UIImage(named: "2")),
-            Photo(image: UIImage(named: "3")),
-            Photo(image: UIImage(named: "4")),
-            Photo(image: UIImage(named: "5")),
-            Photo(image: UIImage(named: "6")),
-            Photo(image: UIImage(named: "7")),
-            Photo(image: UIImage(named: "8")),
-            Photo(image: UIImage(named: "9")),
-            Photo(image: UIImage(named: "10")),
-            Photo(image: UIImage(named: "11")),
-            Photo(image: UIImage(named: "12")),
-            Photo(image: UIImage(named: "13")),
-            Photo(image: UIImage(named: "14")),
-            Photo(image: UIImage(named: "15")),
-            Photo(image: UIImage(named: "16")),
-            Photo(image: UIImage(named: "17")),
-            Photo(image: UIImage(named: "18")),
-            Photo(image: UIImage(named: "19")),
-            Photo(image: UIImage(named: "20"))
-        ]
+        setupView()
+        setNavigationBar()
         
-        setupViews()
-        setupLayouts()
         
         let navItem = UINavigationItem()
         navItem.title = "Фотографии"
@@ -95,78 +65,99 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
         super.viewWillDisappear(animated)
     }
     
-    private func setupViews() {
+    private func setNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(addPhoto))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+    }
+    
+    @objc func addPhoto() {
+        
+        let imagePC = UIImagePickerController()
+        imagePC.sourceType = .photoLibrary
+        imagePC.delegate = self
+        imagePC.allowsEditing = true
+        present(imagePC, animated: true)
+    }
+    
+    private func setupView() {
         
         view.addSubview(navBar)
-        view.addSubview(photoCollectionView)
-    }
-    
-    
-    @objc func actionCancelButton() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func setupLayouts() {
+        view.addSubview(albumAndPhotosTableView)
         
-        NSLayoutConstraint.activate([
-            
-            navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            navBar.heightAnchor.constraint(equalToConstant: 44),
-            navBar.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            photoCollectionView.topAnchor.constraint(equalTo: navBar.safeAreaLayoutGuide.bottomAnchor),
-            photoCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            photoCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            photoCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-}
-
-extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return photos.count
-        if let rows = dataSource?.count {
-            return rows
-        } else {
-            return 0
+        navBar.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.height.equalTo(44)
+            make.width.equalTo(view.snp.width)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.photos.rawValue, for: indexPath) as! PhotosCollectionViewCell
-//        cell.photoImageView.image = photos[indexPath.item].image
-//        return cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.photos.rawValue, for: indexPath) as! PhotosCollectionViewCell
-        if let dataSource = dataSource {
-            cell.photoImageView.image = dataSource[indexPath.row]
-            return cell
-        } else {
-            print("Что-то пошло не так...")
-            return cell
+        
+        albumAndPhotosTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(navBar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
 
-
-extension PhotosViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(
-            width: (view.frame.size.width/3)-3,
-            height: (view.frame.size.width/3)-3)
+extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0.8, left: 1, bottom: -8.0, right: -1)
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            return 1
+        }
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+          let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellReuseIdentifiers.albums.rawValue) as! AlbumTableViewCell
+            cell.showAllButton.addTarget(self, action: #selector(openAlbumsAction), for: .touchUpInside)
+          return cell
+        } else {
+          let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellReuseIdentifiers.allPhotos.rawValue) as! AllPhotosTableViewCell
+              return cell
+        }
     }
+    
+    @objc func openAlbumsAction() {
+        let albumsVC = AlbumsViewController()
+        navigationController?.pushViewController(albumsVC, animated: true)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 150
+        } else {
+            return 600
+        }
+    }
+}
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+
+extension PhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        var photos = viewModel.photos
+        let photo = Photo(image: image)
+        
+        photos.append(Photo(image: image))
+        
+        dismiss(animated: true)
+        
+        
     }
 }

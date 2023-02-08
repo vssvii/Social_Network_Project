@@ -1,26 +1,24 @@
 //
-//  PhotosTableViewCell.swift
-//  Navigation_2
+//  AllPhotosTableViewCell.swift
+//  Social_Network_Project
 //
-//  Created by Ibragim Assaibuldayev on 04.06.2022.
+//  Created by Developer on 08.02.2023.
 //
 
 import UIKit
-import SnapKit
 
-public class PhotosTableViewCell: UITableViewCell  {
-    
+class AllPhotosTableViewCell: UITableViewCell {
+
     let viewModel = PhotosViewModel()
     
     
     private enum CellReuseIdentifiers: String {
         case photos
-        case collection
     }
     
     lazy var photosLabel: UILabel = {
         let photosLabel = UILabel()
-        photosLabel.text = "Фотографии"
+        photosLabel.text = "Все фотографии"
         photosLabel.font = UIFont.boldSystemFont(ofSize: 16)
         photosLabel.textColor = .black
         photosLabel.numberOfLines = 1
@@ -35,16 +33,10 @@ public class PhotosTableViewCell: UITableViewCell  {
         return photosCountLabel
     }()
     
-    lazy var rightPointerButton: UIButton = {
-        let rightPointerButton = UIButton()
-        rightPointerButton.setImage(UIImage(systemName: "arrow.right"), for: .normal)
-        rightPointerButton.tintColor = .black
-        return rightPointerButton
-    }()
-    
     lazy var photosCollectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
-        viewLayout.scrollDirection = .horizontal
+        viewLayout.minimumLineSpacing = 5
+        viewLayout.scrollDirection = .vertical
         let photosCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: viewLayout)
         photosCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
         photosCollectionView.showsHorizontalScrollIndicator = false
@@ -69,10 +61,7 @@ public class PhotosTableViewCell: UITableViewCell  {
         
         contentView.addSubview(photosLabel)
         contentView.addSubview(photosCountLabel)
-        contentView.addSubview(rightPointerButton)
         contentView.addSubview(photosCollectionView)
-        
-        
         
         photosLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.top).offset(12)
@@ -84,21 +73,17 @@ public class PhotosTableViewCell: UITableViewCell  {
             make.left.equalTo(photosLabel.snp.right).offset(6)
         }
         
-        rightPointerButton.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(12)
-            make.right.equalTo(contentView.snp.right).offset(-12)
-        }
-        
         photosCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(photosLabel.snp.bottom).offset(16)
-            make.left.equalTo(contentView.snp.left)
-            make.right.equalTo(contentView.snp.right)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
             make.bottom.equalTo(contentView.snp.bottom)
         }
     }
 }
 
-extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension AllPhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.photos.count
         }
@@ -112,15 +97,16 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         
         
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 72, height: 67)
+        return CGSize(width: 90, height: 90)
     }
+    
         
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-                        return 50
+                        return 5
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 50
+        return 5
     }
         
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -128,10 +114,3 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
  
 }
-
-//extension UITableViewCell {
-//    open override func addSubview(_ view: UIView) {
-//        super.addSubview(view)
-//        sendSubviewToBack(contentView)
-//    }
-//}

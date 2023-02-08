@@ -16,6 +16,13 @@
 		B06AD17429916B1D0014BC4F /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */; };
 		B06AD17629916C720014BC4F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17529916C720014BC4F /* Photo.swift */; };
 		B06AD17829921CDF0014BC4F /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17729921CDF0014BC4F /* PhotosViewController.swift */; };
+		B06AD197299261910014BC4F /* AlbumsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD196299261910014BC4F /* AlbumsCollectionViewCell.swift */; };
+		B06AD199299263C90014BC4F /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD198299263C90014BC4F /* Album.swift */; };
+		B06AD19C299267270014BC4F /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD19B299267270014BC4F /* PhotosViewModel.swift */; };
+		B06AD19E29926B440014BC4F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD19D29926B440014BC4F /* ProfileViewModel.swift */; };
+		B06AD1A0299369E30014BC4F /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD19F299369E30014BC4F /* AlbumTableViewCell.swift */; };
+		B06AD1A229936F7D0014BC4F /* AllPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1A129936F7D0014BC4F /* AllPhotosTableViewCell.swift */; };
+		B06AD1A4299396430014BC4F /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1A3299396430014BC4F /* AlbumsViewController.swift */; };
 		B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */; };
 		B0FD0C7E298CDC91000AF6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FD0C7C298CDC91000AF6D4 /* Main.storyboard */; };
 		B0FD0C81298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0C7F298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld */; };
@@ -64,6 +71,13 @@
 		B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		B06AD17529916C720014BC4F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B06AD17729921CDF0014BC4F /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		B06AD196299261910014BC4F /* AlbumsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B06AD198299263C90014BC4F /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		B06AD19B299267270014BC4F /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
+		B06AD19D29926B440014BC4F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		B06AD19F299369E30014BC4F /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		B06AD1A129936F7D0014BC4F /* AllPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhotosTableViewCell.swift; sourceTree = "<group>"; };
+		B06AD1A3299396430014BC4F /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B0FD0C73298CDC91000AF6D4 /* Social_Network_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social_Network_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FD0C7D298CDC91000AF6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,8 +159,21 @@
 				B06AD17729921CDF0014BC4F /* PhotosViewController.swift */,
 				B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */,
 				B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */,
+				B06AD196299261910014BC4F /* AlbumsCollectionViewCell.swift */,
+				B06AD19F299369E30014BC4F /* AlbumTableViewCell.swift */,
+				B06AD1A129936F7D0014BC4F /* AllPhotosTableViewCell.swift */,
+				B06AD1A3299396430014BC4F /* AlbumsViewController.swift */,
 			);
 			path = ProfileViewParts;
+			sourceTree = "<group>";
+		};
+		B06AD19A2992670E0014BC4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B06AD19B299267270014BC4F /* PhotosViewModel.swift */,
+				B06AD19D29926B440014BC4F /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B0FD0C6A298CDC91000AF6D4 = {
@@ -174,6 +201,7 @@
 		B0FD0C75298CDC91000AF6D4 /* Social_Network_Project */ = {
 			isa = PBXGroup;
 			children = (
+				B06AD19A2992670E0014BC4F /* ViewModel */,
 				B0FD0CB9298FA207000AF6D4 /* Extensions */,
 				B0FD0CB6298E2A3F000AF6D4 /* Structures */,
 				B0FD0CB3298D2C76000AF6D4 /* TableViewCells */,
@@ -240,6 +268,7 @@
 				B0FD0CB7298E2A57000AF6D4 /* Post.swift */,
 				B0FD0CBC298FFF15000AF6D4 /* Profile.swift */,
 				B06AD17529916C720014BC4F /* Photo.swift */,
+				B06AD198299263C90014BC4F /* Album.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -505,16 +534,23 @@
 				B06AD17829921CDF0014BC4F /* PhotosViewController.swift in Sources */,
 				B06AD17429916B1D0014BC4F /* PhotosCollectionViewCell.swift in Sources */,
 				B0FD0CBD298FFF15000AF6D4 /* Profile.swift in Sources */,
+				B06AD1A4299396430014BC4F /* AlbumsViewController.swift in Sources */,
 				B0FD0CBB298FA23E000AF6D4 /* Extensions.swift in Sources */,
+				B06AD199299263C90014BC4F /* Album.swift in Sources */,
 				B0FD0C81298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld in Sources */,
 				B0FD0CB2298D2C52000AF6D4 /* ProfileHeaderView.swift in Sources */,
 				B0FD0CB8298E2A57000AF6D4 /* Post.swift in Sources */,
 				B0FD0CAA298D1623000AF6D4 /* ProfileViewController.swift in Sources */,
 				B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */,
+				B06AD1A0299369E30014BC4F /* AlbumTableViewCell.swift in Sources */,
 				B06AD17629916C720014BC4F /* Photo.swift in Sources */,
 				B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */,
+				B06AD1A229936F7D0014BC4F /* AllPhotosTableViewCell.swift in Sources */,
 				B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */,
+				B06AD19E29926B440014BC4F /* ProfileViewModel.swift in Sources */,
 				B0FD0CAD298D200C000AF6D4 /* MainViewController.swift in Sources */,
+				B06AD197299261910014BC4F /* AlbumsCollectionViewCell.swift in Sources */,
+				B06AD19C299267270014BC4F /* PhotosViewModel.swift in Sources */,
 				B06AD16F29913ED80014BC4F /* PersonalViewController.swift in Sources */,
 				B0FD0CAF298D20B9000AF6D4 /* SavedPostsViewController.swift in Sources */,
 			);
@@ -697,6 +733,8 @@
 				DEVELOPMENT_TEAM = W3VF76BU83;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Social_Network_Project/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Приложение запрашивает доступ к камере";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение запрашивает доступ к фотографиям";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -726,6 +764,8 @@
 				DEVELOPMENT_TEAM = W3VF76BU83;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Social_Network_Project/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Приложение запрашивает доступ к камере";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение запрашивает доступ к фотографиям";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -13,7 +13,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     
     lazy var photoImageView : UIImageView = {
         let photoImageView = UIImageView()
-        photoImageView.translatesAutoresizingMaskIntoConstraints = false
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.backgroundColor = .black
         photoImageView.layer.cornerRadius = 6

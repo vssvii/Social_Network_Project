@@ -10,15 +10,13 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
     
+    
+    let viewModel = ProfileViewModel()
+    
     private enum CellReuseIdentifiers: String {
         case posts
         case photos
     }
-    
-    var posts: [Post] = [Post(description: "В итоге исследователи выделили три главные черты, характеризующие личность слона: внимательность (насколько хорошо животное взаимодействует с окружающей средой), социальность (как животное взаимодействует с сородичами и людьми) и агрессивность (как часто особь проявляет агрессивное поведение в отношении сородичей и людей).", image: UIImage(named: "elephant"), likes: 180),
-    Post(description: "Apple выпустила первый SwiftUI в 2019 году, предлагая тем самым новый подход создания приложений в декларативном стиле. SwiftUI 4.0, представленный этим летом на WWDC 2022 вместе с iOS 16 и macOS 13 включает в себя много нововведений для более качественных и универсальных приложений под разные платформы Apple с меньшим количеством кода.", image: UIImage(named: "swiftUI"), likes: 300)]
-    
-    
     
     lazy var postsTableView: UITableView = {
         let postsTableView = UITableView(frame: .zero, style: .grouped)
@@ -72,12 +70,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-            return posts.count
+            return viewModel.posts.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = posts[indexPath.row]
+        let post = viewModel.posts[indexPath.row]
         if indexPath.section == 0 {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.photos.rawValue) as! PhotosTableViewCell
