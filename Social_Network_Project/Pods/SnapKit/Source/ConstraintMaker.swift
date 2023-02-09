@@ -69,7 +69,7 @@ public class ConstraintMaker {
         return self.makeExtendableWithAttributes(.centerY)
     }
     
-    @available(*, deprecated, renamed:"lastBaseline")
+    @available(*, deprecated:3.0, message:"Use lastBaseline instead")
     public var baseline: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.lastBaseline)
     }
@@ -126,21 +126,6 @@ public class ConstraintMaker {
     public var edges: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.edges)
     }
-    public var horizontalEdges: ConstraintMakerExtendable {
-        return self.makeExtendableWithAttributes(.horizontalEdges)
-    }
-    public var verticalEdges: ConstraintMakerExtendable {
-        return self.makeExtendableWithAttributes(.verticalEdges)
-    }
-    public var directionalEdges: ConstraintMakerExtendable {
-        return self.makeExtendableWithAttributes(.directionalEdges)
-    }
-    public var directionalHorizontalEdges: ConstraintMakerExtendable {
-        return self.makeExtendableWithAttributes(.directionalHorizontalEdges)
-    }
-    public var directionalVerticalEdges: ConstraintMakerExtendable {
-        return self.makeExtendableWithAttributes(.directionalVerticalEdges)
-    }
     public var size: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.size)
     }
@@ -154,16 +139,11 @@ public class ConstraintMaker {
     }
     
     @available(iOS 8.0, *)
-    public var directionalMargins: ConstraintMakerExtendable {
-        return self.makeExtendableWithAttributes(.directionalMargins)
-    }
-
-    @available(iOS 8.0, *)
     public var centerWithinMargins: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.centerWithinMargins)
     }
     
-    public let item: LayoutConstraintItem
+    private let item: LayoutConstraintItem
     private var descriptions = [ConstraintDescription]()
     
     internal init(item: LayoutConstraintItem) {

@@ -7,9 +7,10 @@ target 'Social_Network_Project' do
 
   # Pods for Social_Network_Project
 
-pod 'SnapKit'
+pod 'SnapKit', '~> 4.0.0'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'LZViewPager'
 
   target 'Social_Network_ProjectTests' do
     inherit! :search_paths

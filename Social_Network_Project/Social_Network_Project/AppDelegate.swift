@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             mainViewItem.title = "Главная"
             mainViewItem.image = UIImage(systemName: "house.fill")
             let mainVC = MainViewController()
-            mainVC.title = "Главная"
             mainVC.tabBarItem = mainViewItem
             let mainNVC = UINavigationController(rootViewController: mainVC)
             
