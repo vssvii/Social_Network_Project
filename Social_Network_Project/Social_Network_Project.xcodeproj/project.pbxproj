@@ -43,6 +43,7 @@
 		B0FD0CBB298FA23E000AF6D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0CBA298FA23E000AF6D4 /* Extensions.swift */; };
 		B0FD0CBD298FFF15000AF6D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0CBC298FFF15000AF6D4 /* Profile.swift */; };
 		B0FD1BC9299916D900380BF1 /* ProfileSideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */; };
+		B0FD1BCB299A07BD00380BF1 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD1BCA299A07BD00380BF1 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		B0FD0CBA298FA23E000AF6D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B0FD0CBC298FFF15000AF6D4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSideTableViewCell.swift; sourceTree = "<group>"; };
+		B0FD1BCA299A07BD00380BF1 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		C4F77FB91AB6DB2520F14989 /* Pods-Social_Network_ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social_Network_ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-Social_Network_ProjectTests/Pods-Social_Network_ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E30E49D190C39899E20FF23D /* Pods-Social_Network_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social_Network_Project.release.xcconfig"; path = "Target Support Files/Pods-Social_Network_Project/Pods-Social_Network_Project.release.xcconfig"; sourceTree = "<group>"; };
 		EE6324863246230AF83C39E6 /* Pods-Social_Network_ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social_Network_ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-Social_Network_ProjectTests/Pods-Social_Network_ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				B06AD17029916A2A0014BC4F /* ProfileViewParts */,
 				B06AD16B29913DBD0014BC4F /* MainViewControllers */,
 				B0FD0CA9298D1623000AF6D4 /* ProfileViewController.swift */,
+				B0FD1BCA299A07BD00380BF1 /* EditViewController.swift */,
 				B01937EB2997A609007AEB93 /* ProfileSideMenuViewController.swift */,
 				B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */,
 				B0FD0CAC298D200C000AF6D4 /* MainViewController.swift */,
@@ -562,6 +565,7 @@
 				B06AD17629916C720014BC4F /* Photo.swift in Sources */,
 				B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */,
 				B06AD1A229936F7D0014BC4F /* AllPhotosTableViewCell.swift in Sources */,
+				B0FD1BCB299A07BD00380BF1 /* EditViewController.swift in Sources */,
 				B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */,
 				B06AD19E29926B440014BC4F /* ProfileViewModel.swift in Sources */,
 				B0FD0CAD298D200C000AF6D4 /* MainViewController.swift in Sources */,

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Firebase
 import FirebaseAuth
+import SideMenu
 
 
 class ProfileHeaderView: UIView {
@@ -59,7 +60,7 @@ class ProfileHeaderView: UIView {
         return infoLabel
     }()
     
-    private var editButton: UIButton = {
+    lazy var editButton: UIButton = {
         let editButton = UIButton()
         editButton.backgroundColor = UIColor(hex: "#FF9E45")
         editButton.layer.cornerRadius = 10

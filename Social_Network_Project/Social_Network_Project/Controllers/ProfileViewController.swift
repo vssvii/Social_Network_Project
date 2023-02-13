@@ -11,7 +11,9 @@ import SideMenu
 
 class ProfileViewController: UIViewController {
     
-    private var sideMenu = SideMenuNavigationController(rootViewController: ProfileSideMenuViewController())
+    private var profileSideMenu = SideMenuNavigationController(rootViewController: ProfileSideMenuViewController())
+    
+    private var editSideMenu = SideMenuNavigationController(rootViewController: EditViewController())
     
     let viewModel = ProfileViewModel()
     
@@ -34,6 +36,7 @@ class ProfileViewController: UIViewController {
         
         setupView()
         setNavigationBar()
+//        setupSideMenu()
     }
     
     private func setNavigationBar() {
@@ -42,14 +45,14 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupSideMenu() {
-        sideMenu.leftSide = false
-        SideMenuManager.default.rightMenuNavigationController = sideMenu
+        editSideMenu.leftSide = false
+        profileSideMenu.leftSide = false
+        SideMenuManager.default.rightMenuNavigationController = profileSideMenu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
-        
     }
     
     @objc func openList() {
-        present(sideMenu, animated: true)
+        present(profileSideMenu, animated: true)
     }
     
     private func setupView() {
@@ -111,10 +114,15 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let view = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
+            view.editButton.addTarget(self, action: #selector(openEditPage), for: .touchUpInside)
             return view
         } else {
             return UIView()
         }
+    }
+    
+    @objc func openEditPage() {
+        present(editSideMenu, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
