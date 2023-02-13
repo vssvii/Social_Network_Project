@@ -185,7 +185,7 @@ class PostsTableViewCell: UITableViewCell {
         }
         
         postImageVIew.snp.makeConstraints { (make) in
-            make.top.equalTo(postTextLabel.snp.bottom).offset(25)
+            make.top.equalTo(postTextLabel.snp.bottom).inset(-30)
             make.left.equalTo(verticalLineView.snp.right).offset(16)
             make.right.equalTo(-16)
             make.height.width.equalTo(150)

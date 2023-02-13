@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import SideMenu
 
 class ProfileViewController: UIViewController {
     
+    private var sideMenu = SideMenuNavigationController(rootViewController: ProfileSideMenuViewController())
     
     let viewModel = ProfileViewModel()
     
@@ -39,8 +41,15 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
     }
     
+    private func setupSideMenu() {
+        sideMenu.leftSide = false
+        SideMenuManager.default.rightMenuNavigationController = sideMenu
+        SideMenuManager.default.addPanGestureToPresent(toView: view)
+        
+    }
+    
     @objc func openList() {
-        print("opened")
+        present(sideMenu, animated: true)
     }
     
     private func setupView() {

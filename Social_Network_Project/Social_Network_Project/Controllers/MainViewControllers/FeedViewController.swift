@@ -72,37 +72,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    @objc func openPhotosAction() {
-        let photosVC = PhotosViewController()
-        navigationController?.pushViewController(photosVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let view = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
-            return view
-        } else {
-            return UIView()
-        }
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 120
-        } else {
-            return 620
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 420
-        } else {
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Мои записи"
+        return 600
     }
 }

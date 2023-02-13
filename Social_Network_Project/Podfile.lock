@@ -89,12 +89,14 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
+  - SideMenu (6.5.0)
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - LZViewPager
+  - SideMenu
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
@@ -111,6 +113,7 @@ SPEC REPOS:
     - LZViewPager
     - nanopb
     - PromisesObjC
+    - SideMenu
     - SnapKit
 
 SPEC CHECKSUMS:
@@ -126,8 +129,9 @@ SPEC CHECKSUMS:
   LZViewPager: e85fb10a5cd02d1412cc944f2e7025dbd32865f4
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 874fb754dfeb3d6ed620a9c49e6f2e97e1468596
+PODFILE CHECKSUM: c928c6552e014d90e5bcaff6ca6426911934e429
 
 COCOAPODS: 1.11.3
