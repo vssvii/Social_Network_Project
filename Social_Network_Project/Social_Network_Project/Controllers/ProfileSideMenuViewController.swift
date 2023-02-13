@@ -12,6 +12,8 @@ import SideMenu
 class ProfileSideMenuViewController: UIViewController {
     
     
+    public var menuDelegate: MenuControllerDelegate?
+    
     private enum CellReuseIdentifiers: String {
         case options
     }
@@ -113,6 +115,12 @@ extension ProfileSideMenuViewController: UITableViewDataSource, UITableViewDeleg
     @objc func openPhotosAction() {
         let photosVC = PhotosViewController()
         navigationController?.pushViewController(photosVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedItem = menuSideOptions[indexPath.row]
+        menuDelegate?.didSelectMenuItem(named: selectedItem)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

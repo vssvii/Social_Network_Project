@@ -11,6 +11,8 @@ import SideMenu
 
 class ProfileViewController: UIViewController {
     
+    public var menuDelegate: MenuControllerDelegate?
+    
     private var profileSideMenu = SideMenuNavigationController(rootViewController: ProfileSideMenuViewController())
     
     private var editSideMenu = SideMenuNavigationController(rootViewController: EditViewController())
@@ -145,3 +147,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         "Мои записи"
     }
 }
+
+protocol MenuControllerDelegate {
+    func didSelectMenuItem(named: String)
+}
+
+
