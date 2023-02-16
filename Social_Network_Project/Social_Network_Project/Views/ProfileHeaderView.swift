@@ -15,7 +15,7 @@ import SideMenu
 class ProfileHeaderView: UIView {
     
     
-    let myProfile = Profile(fullName: "Асайбулдаев Ибрагим", image: UIImage(named: "avatar"), job: "iOS разработчик", publicationCount: 5, subscriptionCount: 150, subscriberCount: 150)
+    let myProfile = Profile(surname: "Асайбулдаев", name: "Ибрагим",image: UIImage(named: "avatar"), job: "iOS разработчик", publicationCount: 5, subscriptionCount: 150, subscriberCount: 150)
     
     
     lazy var nickName: UILabel = {
@@ -34,17 +34,30 @@ class ProfileHeaderView: UIView {
         return avatarImageView
     }()
     
-    lazy var fullNameLabel: UILabel = {
-        let fullNameLabel = UILabel()
-        fullNameLabel.font = .boldSystemFont(ofSize: 18)
-        return fullNameLabel
+    lazy var surnameLabel: UILabel = {
+        let surnameLabel = UILabel()
+        surnameLabel.font = .boldSystemFont(ofSize: 18)
+        return surnameLabel
+    }()
+    
+    lazy var nameLabel: UILabel = {
+        let surnameLabel = UILabel()
+        surnameLabel.font = .boldSystemFont(ofSize: 18)
+        return surnameLabel
     }()
     
     lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
-        jobLabel.font = UIFont.systemFont(ofSize: 12)
+        jobLabel.font = UIFont.systemFont(ofSize: 14)
         jobLabel.textColor = UIColor(hex: "#7E8183")
         return jobLabel
+    }()
+    
+    lazy var genderLabel: UILabel = {
+        let genderLabel = UILabel()
+        genderLabel.font = .systemFont(ofSize: 14)
+        genderLabel.text = "Мужской"
+        return genderLabel
     }()
     
     lazy var infoImageView: UIImageView = {
@@ -59,6 +72,10 @@ class ProfileHeaderView: UIView {
         infoLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return infoLabel
     }()
+    
+    @objc func openEditPageAction() {
+        let editPageVC = EditViewController()
+    }
     
     lazy var editButton: UIButton = {
         let editButton = UIButton()
@@ -143,12 +160,17 @@ class ProfileHeaderView: UIView {
     
     }
     
+    func editDataProfile() {
+        
+    }
+    
     private func setupView() {
         
         
         self.addSubview(nickName)
         self.addSubview(avatarImageView)
-        self.addSubview(fullNameLabel)
+        self.addSubview(surnameLabel)
+        self.addSubview(nameLabel)
         self.addSubview(jobLabel)
         self.addSubview(infoImageView)
         self.addSubview(infoLabel)
@@ -177,13 +199,18 @@ class ProfileHeaderView: UIView {
             make.width.height.equalTo(80)
         }
         
-        fullNameLabel.snp.makeConstraints { (make) in
+        surnameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(nickName.snp.bottom).offset(21)
             make.left.equalTo(avatarImageView.snp.right).offset(16)
         }
         
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nickName.snp.bottom).offset(21)
+            make.left.equalTo(surnameLabel.snp.right).offset(6)
+        }
+        
         jobLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(fullNameLabel.snp.bottom).offset(6)
+            make.top.equalTo(surnameLabel.snp.bottom).offset(6)
             make.left.equalTo(avatarImageView.snp.right).offset(16)
         }
         
@@ -268,7 +295,8 @@ class ProfileHeaderView: UIView {
     private func setupProfile() {
         
         avatarImageView.image = myProfile.image
-        fullNameLabel.text = myProfile.fullName
+        surnameLabel.text = myProfile.surname
+        nameLabel.text = myProfile.name
         jobLabel.text = myProfile.job
         publicationResultLabel.text = "\(myProfile.publicationCount) публикаций"
         subscriptionResultLabel.text = "\(myProfile.subscriptionCount) подписок"

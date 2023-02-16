@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     
     private var profileSideMenu = SideMenuNavigationController(rootViewController: ProfileSideMenuViewController())
     
-    private var editSideMenu = SideMenuNavigationController(rootViewController: EditViewController())
+    private var editSideMenu = SideMenuNavigationController(rootViewController: EditMenuViewController())
     
     let viewModel = ProfileViewModel()
     
@@ -104,7 +104,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postTextLabel.text = post.description
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
-              return cell
+            return cell
         }
     }
     
@@ -117,6 +117,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             let view = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
             view.editButton.addTarget(self, action: #selector(openEditPage), for: .touchUpInside)
+            view.infoLabel.isUserInteractionEnabled = true
+            let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openEditPageAction))
+            view.infoLabel.addGestureRecognizer(guestureRecognizer)
             return view
         } else {
             return UIView()
@@ -125,6 +128,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     @objc func openEditPage() {
         present(editSideMenu, animated: true)
+    }
+    
+    @objc func openEditPageAction() {
+        let editPageVC = EditViewController()
+        navigationController?.pushViewController(editPageVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>889612139314-oil90l4pnv3tsk7ajdihe5i0cvbnlhdn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.889612139314-oil90l4pnv3tsk7ajdihe5i0cvbnlhdn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUEZSyflGxohK0sf51OuUQ-MWCwxgXLv0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>889612139314</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>assaibra.Social-Network-Project</string>
+	<key>PROJECT_ID</key>
+	<string>mysocialnetwork-c8720</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mysocialnetwork-c8720.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:889612139314:ios:4e1cbaeb34131261e4752b</string>
+</dict>
+</plist>

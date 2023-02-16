@@ -9,7 +9,8 @@ import UIKit
 
 struct Profile {
     
-    let fullName: String
+    let surname: String
+    let name: String
     let image: UIImage?
     let job: String
     let publicationCount: Int

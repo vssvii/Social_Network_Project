@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             
             window = UIWindow()
+            
+            FirebaseApp.configure()
             
 //            let loginInspector = LoginInspector()
 //            var factory = MyLoginFactory().getLoginInspector()
@@ -44,44 +48,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             savedPostsVC.tabBarItem = savedPostsItem
             let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
             
+            let entranceVC = EntranceViewController()
+            let entranceNVC = UINavigationController(rootViewController: entranceVC)
+            
             let tabBarController = UITabBarController()
             tabBarController.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
             tabBarController.selectedIndex = 0
-            window?.rootViewController = tabBarController
+//            window?.rootViewController = tabBarController
+            let entranceTBC = UITabBarController()
+            entranceTBC.viewControllers = [entranceNVC]
+//            window?.rootViewController =  entranceTBC
+            
+            if Auth.auth().currentUser == nil {
+                window?.rootViewController = entranceTBC
+            } else {
+                window?.rootViewController = tabBarController
+            }
+        
             window?.makeKeyAndVisible()
             
 //            if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
 //                loginController.delegate = loginInspector
 //                }
             
-//            FirebaseApp.configure()
             return true
         }
-        
-        
-        
-//        func applicationDidFinishLaunching(_ application: UIApplication) {
-//
-////            let appConfiguration: AppConfiguration = .planets(urlString: "https://swapi.dev/api/planets/5")
-////        }
-//
-//        func sceneDidDisconnect(_ scene: UIScene) {
-//
-//
-////            let profileViewHeader = ProfileHeaderView()
-////            profileViewHeader.closeButton.addAction(UIAction.init(handler: { action in
-////                let firebaseAuth = Auth.auth()
-////                do {
-////                    try firebaseAuth.signOut()
-////                    let logInNavigationController = UINavigationController(rootViewController: logInViewController)
-////                    let navigationController = (self.window?.rootViewController ?? logInNavigationController) as UIViewController
-////                    navigationController.navigationController?.pushViewController(logInViewController, animated: true)
-////                }
-//                catch let signOutError as NSError {
-//                    print("Error signing out: %@", signOutError)
-//                }
-//            }), for: .touchUpInside)
-//        }
     }
 
     // MARK: UISceneSession Lifecycle
