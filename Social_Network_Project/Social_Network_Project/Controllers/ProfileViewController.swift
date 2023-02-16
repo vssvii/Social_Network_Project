@@ -44,6 +44,8 @@ class ProfileViewController: UIViewController {
     private func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "list"), style: .done, target: self, action: #selector(openList))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        
+        self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
     private func setupSideMenu() {

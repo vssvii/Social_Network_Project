@@ -7,14 +7,15 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
+import Firebase
 
 class RegistrationViewController: UIViewController {
     
-    private var phoneNumber: String?
     
     private lazy var registrationLabel: UILabel = {
         let registrationLabel = UILabel()
-        registrationLabel.text = "ЗАРЕГЕСТРИРОВАТЬСЯ"
+        registrationLabel.text = "ЗАРЕГИСТРИРОВАТЬСЯ"
         registrationLabel.textColor = UIColor(hex: "#263238")
         registrationLabel.font = .boldSystemFont(ofSize: 18)
         registrationLabel.numberOfLines = 0
@@ -62,14 +63,17 @@ class RegistrationViewController: UIViewController {
     }()
     
     @objc func registerConfirmationVC() -> Bool {
+        
         if let text = writeNumberTextField.text, !text.isEmpty {
             let number = "+7\(text)"
             AuthManager.shared.startAuth(phoneNumber: number) { [weak self] success in
                 guard success else { return }
-                DispatchQueue.main.async {
-                    let registerConfirmationVC = RegisterConfirmationViewController()
-                    self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
-                }
+                let registerConfirmationVC = RegisterConfirmationViewController()
+                self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
+//                DispatchQueue.main.async {
+//                    let registerConfirmationVC = RegisterConfirmationViewController()
+//                    self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
+//                }
             }
         }
         return true
@@ -90,6 +94,18 @@ class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        setNavigationBar()
+        
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func setNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goToEntrancePageAction))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#1E201D")
+    }
+    
+    @objc func goToEntrancePageAction() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupView() {

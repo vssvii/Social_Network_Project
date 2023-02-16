@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
+import Firebase
 
 class RegisterConfirmationViewController: UIViewController {
     
@@ -48,13 +50,6 @@ class RegisterConfirmationViewController: UIViewController {
         return codeTextField
     }()
     
-    @objc func writeCodeAction(_ textField: UITextField) -> String {
-        textField.resignFirstResponder()
-        
-        smsCode = textField.text
-        return smsCode ?? ""
-    }
-    
     private lazy var registrationButton: UIButton = {
         let registrationButton = UIButton()
         registrationButton.setTitle("ЗАРЕГИСТРИРОВАТЬСЯ", for: .normal)
@@ -71,8 +66,40 @@ class RegisterConfirmationViewController: UIViewController {
             AuthManager.shared.verifyCode(smsCode: code) { success in
                 guard success else { return }
                 DispatchQueue.main.async {
+                    
+                    let mainViewItem = UITabBarItem()
+                    mainViewItem.title = "Главная"
+                    mainViewItem.image = UIImage(systemName: "house.fill")
+                    let mainVC = MainViewController()
+                    mainVC.tabBarItem = mainViewItem
+                    let mainNVC = UINavigationController(rootViewController: mainVC)
+                    
+                    let profileItem = UITabBarItem()
+                    profileItem.title = "Профиль"
+                    profileItem.image = UIImage(systemName: "person.fill")
                     let profileVC = ProfileViewController()
-                    self.navigationController?.pushViewController(profileVC, animated: true)
+                    profileVC.title = "Профиль"
+                    profileVC.tabBarItem = profileItem
+                    let profileVNC = UINavigationController(rootViewController: profileVC)
+                    
+                    let savedPostsItem = UITabBarItem()
+                    savedPostsItem.title = "Сохраненные"
+                    savedPostsItem.image = UIImage(systemName: "heart.fill")
+                    let savedPostsVC = SavedPostsViewController()
+                    savedPostsVC.title = "Сохраненные"
+                    savedPostsVC.tabBarItem = savedPostsItem
+                    let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
+                    
+                    let entranceItem = UIBarButtonItem()
+                    let entranceVC = EntranceViewController()
+                    let entranceNVC = UINavigationController(rootViewController: entranceVC)
+                    
+                    let tabBarController = UITabBarController()
+                    tabBarController.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
+                    tabBarController.selectedIndex = 0
+                    self.navigationController?.tabBarController?.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
+//                    let profileViewController = ProfileViewController()
+//                    self.navigationController?.pushViewController(profileViewController, animated: true)
                 }
             }
         }
@@ -88,7 +115,21 @@ class RegisterConfirmationViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        setNavigationBar()
+        
+        tabBarController?.tabBar.isHidden = true
     }
+    
+    private func setNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goToRegistrationPageAction))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#1E201D")
+    }
+    
+    @objc func goToRegistrationPageAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
     
     private func setupView() {
         

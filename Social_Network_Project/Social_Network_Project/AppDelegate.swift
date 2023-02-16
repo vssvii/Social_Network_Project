@@ -48,22 +48,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             savedPostsVC.tabBarItem = savedPostsItem
             let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
             
+            let entranceItem = UIBarButtonItem()
             let entranceVC = EntranceViewController()
             let entranceNVC = UINavigationController(rootViewController: entranceVC)
             
             let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
+//            tabBarController.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
             tabBarController.selectedIndex = 0
 //            window?.rootViewController = tabBarController
             let entranceTBC = UITabBarController()
             entranceTBC.viewControllers = [entranceNVC]
-//            window?.rootViewController =  entranceTBC
+            window?.rootViewController =  entranceTBC
             
-            if Auth.auth().currentUser == nil {
-                window?.rootViewController = entranceTBC
-            } else {
-                window?.rootViewController = tabBarController
-            }
+//            window?.rootViewController = tabBarController
+//            if Auth.auth().currentUser == nil {
+//                window?.rootViewController = entranceTBC
+//            } else {
+//                window?.rootViewController = tabBarController
+//            }
         
             window?.makeKeyAndVisible()
             

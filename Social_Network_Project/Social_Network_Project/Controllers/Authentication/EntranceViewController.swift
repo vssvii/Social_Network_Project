@@ -42,6 +42,8 @@ class EntranceViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        
+        tabBarController?.tabBar.isHidden = true
     }
     
     private func setupView() {
