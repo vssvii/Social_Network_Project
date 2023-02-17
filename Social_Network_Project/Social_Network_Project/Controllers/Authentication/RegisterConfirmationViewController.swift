@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 import Firebase
-import Bond
 
 class RegisterConfirmationViewController: UIViewController {
     

@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 import Firebase
-import ReactiveKit
-import Bond
 
 class RegistrationViewController: UIViewController {
     
