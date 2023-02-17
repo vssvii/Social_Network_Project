@@ -38,7 +38,6 @@ class ProfileViewController: UIViewController {
         
         setupView()
         setNavigationBar()
-//        setupSideMenu()
     }
     
     private func setNavigationBar() {

@@ -48,6 +48,5 @@ class AuthManager {
             }
             completion(true)
         }
-        
     }
 }

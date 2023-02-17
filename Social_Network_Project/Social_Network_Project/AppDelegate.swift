@@ -25,48 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let loginInspector = LoginInspector()
 //            var factory = MyLoginFactory().getLoginInspector()
             
-            let mainViewItem = UITabBarItem()
-            mainViewItem.title = "Главная"
-            mainViewItem.image = UIImage(systemName: "house.fill")
-            let mainVC = MainViewController()
-            mainVC.tabBarItem = mainViewItem
-            let mainNVC = UINavigationController(rootViewController: mainVC)
-            
-            let profileItem = UITabBarItem()
-            profileItem.title = "Профиль"
-            profileItem.image = UIImage(systemName: "person.fill")
-            let profileVC = ProfileViewController()
-            profileVC.title = "Профиль"
-            profileVC.tabBarItem = profileItem
-            let profileVNC = UINavigationController(rootViewController: profileVC)
-            
-            let savedPostsItem = UITabBarItem()
-            savedPostsItem.title = "Сохраненные"
-            savedPostsItem.image = UIImage(systemName: "heart.fill")
-            let savedPostsVC = SavedPostsViewController()
-            savedPostsVC.title = "Сохраненные"
-            savedPostsVC.tabBarItem = savedPostsItem
-            let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
-            
             let entranceItem = UIBarButtonItem()
             let entranceVC = EntranceViewController()
             let entranceNVC = UINavigationController(rootViewController: entranceVC)
-            
-            let tabBarController = UITabBarController()
-//            tabBarController.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
-            tabBarController.selectedIndex = 0
-//            window?.rootViewController = tabBarController
             let entranceTBC = UITabBarController()
             entranceTBC.viewControllers = [entranceNVC]
-            window?.rootViewController =  entranceTBC
-            
-//            window?.rootViewController = tabBarController
-//            if Auth.auth().currentUser == nil {
-//                window?.rootViewController = entranceTBC
-//            } else {
-//                window?.rootViewController = tabBarController
-//            }
-        
+            window?.rootViewController = entranceTBC
             window?.makeKeyAndVisible()
             
 //            if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {

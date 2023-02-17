@@ -9,10 +9,12 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 import Firebase
+import Bond
 
 class RegisterConfirmationViewController: UIViewController {
     
-    private var smsCode: String?
+    private var phoneNumber: String = ""
+    
     
     private lazy var confirmationLabel: UILabel = {
         let confirmationLabel = UILabel()
@@ -24,7 +26,7 @@ class RegisterConfirmationViewController: UIViewController {
     
     private lazy var codeDescriptionLabel: UILabel = {
         let codeDescriptionLabel = UILabel()
-        codeDescriptionLabel.text = "Мы отправили SMS с кодом на номер +38 099 999 99 99"
+        codeDescriptionLabel.text = "Мы отправили SMS с кодом на номер \(phoneNumber)"
         codeDescriptionLabel.font = .systemFont(ofSize: 14)
         codeDescriptionLabel.textAlignment = .center
         codeDescriptionLabel.numberOfLines = 0
@@ -46,7 +48,7 @@ class RegisterConfirmationViewController: UIViewController {
         codeTextField.font = .boldSystemFont(ofSize: 15)
         codeTextField.layer.borderWidth = 1
         codeTextField.layer.borderColor = UIColor.black.cgColor
-//        writeNumberTextField.delegate = self
+        codeTextField.layer.cornerRadius = 10
         return codeTextField
     }()
     
@@ -64,9 +66,11 @@ class RegisterConfirmationViewController: UIViewController {
         if let text = codeTextField.text, !text.isEmpty {
             let code = text
             AuthManager.shared.verifyCode(smsCode: code) { success in
-                guard success else { return }
+                guard success else {
+                    self.presentAlert(title: "Неверный код!", message: "")
+                    return
+                }
                 DispatchQueue.main.async {
-                    
                     let mainViewItem = UITabBarItem()
                     mainViewItem.title = "Главная"
                     mainViewItem.image = UIImage(systemName: "house.fill")
@@ -80,7 +84,7 @@ class RegisterConfirmationViewController: UIViewController {
                     let profileVC = ProfileViewController()
                     profileVC.title = "Профиль"
                     profileVC.tabBarItem = profileItem
-                    let profileVNC = UINavigationController(rootViewController: profileVC)
+                    let profileNVC = UINavigationController(rootViewController: profileVC)
                     
                     let savedPostsItem = UITabBarItem()
                     savedPostsItem.title = "Сохраненные"
@@ -95,9 +99,11 @@ class RegisterConfirmationViewController: UIViewController {
                     let entranceNVC = UINavigationController(rootViewController: entranceVC)
                     
                     let tabBarController = UITabBarController()
-                    tabBarController.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
-                    tabBarController.selectedIndex = 0
-                    self.navigationController?.tabBarController?.viewControllers = [mainNVC, profileVNC, savedPostsNVC]
+                    tabBarController.viewControllers = [mainNVC, profileNVC, savedPostsNVC]
+                    tabBarController.selectedIndex = 1
+                    let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+                    appDelegate.window?.rootViewController = tabBarController
+                    appDelegate.window?.makeKeyAndVisible()
 //                    let profileViewController = ProfileViewController()
 //                    self.navigationController?.pushViewController(profileViewController, animated: true)
                 }
@@ -110,14 +116,22 @@ class RegisterConfirmationViewController: UIViewController {
         checkImageView.image = UIImage(named: "logoCheck")
         return checkImageView
     }()
-
+    
+    init(phoneNumber: String) {
+        self.phoneNumber = phoneNumber
+//        self.codeDescriptionLabel.text = "Мы отправили SMS с кодом на номер +\(phoneNumber)"
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setNavigationBar()
-        
-        tabBarController?.tabBar.isHidden = true
     }
     
     private func setNavigationBar() {
@@ -128,7 +142,6 @@ class RegisterConfirmationViewController: UIViewController {
     @objc func goToRegistrationPageAction() {
         navigationController?.popViewController(animated: true)
     }
-    
     
     
     private func setupView() {
@@ -180,10 +193,5 @@ class RegisterConfirmationViewController: UIViewController {
             make.width.equalTo(85)
             make.height.equalTo(100)
         }
-        
-        
-        
-        
     }
-
 }

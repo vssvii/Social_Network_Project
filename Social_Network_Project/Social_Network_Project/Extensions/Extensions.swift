@@ -68,3 +68,19 @@ extension UIImageView {
       resultHandler: resultHandler)
   }
 }
+
+extension UIViewController {
+    
+    typealias Callback = () -> Void
+    
+    func presentAlert(title: String? = nil, message: String? = nil, completion: (Callback)? = nil) {
+        let title = title ?? "try_again"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
+            guard let completion = completion else { return }
+            completion()
+        }))
+        present(alert, animated: true)
+    }
+    
+}

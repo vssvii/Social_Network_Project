@@ -9,9 +9,13 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 import Firebase
+import ReactiveKit
+import Bond
 
 class RegistrationViewController: UIViewController {
     
+    
+    var phoneNumber: ((String?) -> Void)?
     
     private lazy var registrationLabel: UILabel = {
         let registrationLabel = UILabel()
@@ -47,8 +51,9 @@ class RegistrationViewController: UIViewController {
         writeNumberTextField.font = .boldSystemFont(ofSize: 15)
         writeNumberTextField.layer.borderWidth = 1
         writeNumberTextField.layer.borderColor = UIColor.black.cgColor
-        writeNumberTextField.placeholder = "+7(___) ___ __ __"
-//        writeNumberTextField.delegate = self
+//        writeNumberTextField.placeholder = "+7(___) ___ __ __"
+        writeNumberTextField.layer.cornerRadius = 10
+        writeNumberTextField.delegate = self
         return writeNumberTextField
     }()
     
@@ -64,11 +69,10 @@ class RegistrationViewController: UIViewController {
     
     @objc func registerConfirmationVC() -> Bool {
         
-        if let text = writeNumberTextField.text, !text.isEmpty {
-            let number = "+7\(text)"
+        if let number = writeNumberTextField.text, !number.isEmpty {
             AuthManager.shared.startAuth(phoneNumber: number) { [weak self] success in
                 guard success else { return }
-                let registerConfirmationVC = RegisterConfirmationViewController()
+                let registerConfirmationVC = RegisterConfirmationViewController(phoneNumber: number)
                 self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
 //                DispatchQueue.main.async {
 //                    let registerConfirmationVC = RegisterConfirmationViewController()
@@ -95,8 +99,6 @@ class RegistrationViewController: UIViewController {
         
         setupView()
         setNavigationBar()
-        
-        tabBarController?.tabBar.isHidden = true
     }
     
     private func setNavigationBar() {
@@ -106,6 +108,22 @@ class RegistrationViewController: UIViewController {
     
     @objc func goToEntrancePageAction() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
     }
     
     private func setupView() {
@@ -157,12 +175,13 @@ class RegistrationViewController: UIViewController {
 }
 
 
-//extension RegistrationViewController: UITextFieldDelegate {
-//
-//
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let allowedCharacters = CharacterSet.decimalDigits
-//        let characterSet = CharacterSet(charactersIn: string)
-//        return allowedCharacters.isSuperset(of: characterSet)
-//    }
-//}
+extension RegistrationViewController: UITextFieldDelegate {
+
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = format(with: "+X (XXX) XXX-XXXX", phone: newString)
+        return false
+    }
+}

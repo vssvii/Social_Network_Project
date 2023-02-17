@@ -34,16 +34,22 @@ class EntranceViewController: UIViewController {
         let signInLabel = UILabel()
         signInLabel.text = "Уже есть аккаунт"
         signInLabel.font = .systemFont(ofSize: 14)
+        signInLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signInVCAction))
+        signInLabel.addGestureRecognizer(tap)
         return signInLabel
     }()
+    
+    @objc func signInVCAction() {
+        let signInVC = SignInViewController()
+        navigationController?.pushViewController(signInVC, animated: true)
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        
-        tabBarController?.tabBar.isHidden = true
     }
     
     private func setupView() {
