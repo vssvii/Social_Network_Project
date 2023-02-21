@@ -84,3 +84,18 @@ extension UIViewController {
     }
     
 }
+
+
+extension Date {
+    
+    
+    func toString( dateFormat format  : String, kzTimeZone: Bool = false) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "language_date_locale")
+        if kzTimeZone {
+            dateFormatter.timeZone = TimeZone(identifier: "Asia/Almaty")
+        }
+        return dateFormatter.string(from: self)
+    }
+}

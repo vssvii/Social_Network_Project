@@ -8,8 +8,35 @@
 import UIKit
 import SnapKit
 
-class PostsTableViewCell: UITableViewCell {
 
+
+class PostsTableViewCell: UITableViewCell {
+    
+    
+    lazy var firstSeparatorLine: UIView = {
+        let firstSeparatorLine = UIView()
+        firstSeparatorLine.backgroundColor = UIColor(hex: "#7E8183")
+        return firstSeparatorLine
+    }()
+    
+    lazy var dateLabel: UILabel = {
+        let dateLabel = UILabel()
+        dateLabel.textColor = UIColor(hex: "#7E8183")
+        dateLabel.font = .systemFont(ofSize: 14)
+        dateLabel.layer.borderColor = UIColor(hex: "#7E8183").cgColor
+        dateLabel.layer.borderWidth = 1
+        dateLabel.layer.cornerRadius = 10
+        dateLabel.textAlignment = .center
+        dateLabel.layer.masksToBounds = true
+        return dateLabel
+    }()
+    
+    lazy var secondSeparatorLine: UIView = {
+        let secondSeparatorLine = UIView()
+        secondSeparatorLine.backgroundColor = UIColor(hex: "#7E8183")
+        return secondSeparatorLine
+    }()
+    
     
     var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -17,16 +44,25 @@ class PostsTableViewCell: UITableViewCell {
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.cornerRadius = 30
+        avatarImageView.isUserInteractionEnabled = true
         return avatarImageView
     }()
 
-    lazy var authorLabel: UILabel = {
-        let authorLabel = UILabel()
-        authorLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        authorLabel.textColor = .black
-        authorLabel.numberOfLines = 0
+    lazy var surnameLabel: UILabel = {
+        let surnameLabel = UILabel()
+        surnameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        surnameLabel.textColor = .black
+        surnameLabel.numberOfLines = 0
         
-        return authorLabel
+        return surnameLabel
+    }()
+    
+    lazy var nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        nameLabel.font = .boldSystemFont(ofSize: 16)
+        nameLabel.textColor = .black
+        nameLabel.numberOfLines = 0
+        return nameLabel
     }()
     
     lazy var jobLabel: UILabel = {
@@ -39,7 +75,7 @@ class PostsTableViewCell: UITableViewCell {
     
     lazy var parametersButton: UIButton = {
         let parametersButton = UIButton()
-        parametersButton.setImage(UIImage(systemName: "increase.indent"), for: .normal)
+        parametersButton.setImage(UIImage(systemName: "menu"), for: .normal)
         parametersButton.tintColor = UIColor(hex: "#FF9E45")
         return parametersButton
     }()
@@ -80,7 +116,6 @@ class PostsTableViewCell: UITableViewCell {
         return separatorLineView
     }()
 
-    
     lazy var likesImageView: UIImageView = {
         let likesImageView = UIImageView()
         likesImageView.image = UIImage(named: "like")
@@ -127,11 +162,15 @@ class PostsTableViewCell: UITableViewCell {
     
     private func setupView() {
         
-        contentView.addSubview(avatarImageView)
-        contentView.addSubview(authorLabel)
-        contentView.addSubview(jobLabel)
-        contentView.addSubview(parametersButton)
-        contentView.addSubview(postView)
+        addSubview(firstSeparatorLine)
+        addSubview(dateLabel)
+        addSubview(secondSeparatorLine)
+        addSubview(avatarImageView)
+        addSubview(surnameLabel)
+        addSubview(nameLabel)
+        addSubview(jobLabel)
+        addSubview(parametersButton)
+        addSubview(postView)
         postView.addSubview(verticalLineView)
         postView.addSubview(postTextLabel)
         postView.addSubview(postImageVIew)
@@ -142,24 +181,54 @@ class PostsTableViewCell: UITableViewCell {
         postView.addSubview(commentsLabel)
         postView.addSubview(savedImageView)
         
+        
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(25)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(25)
+            make.width.equalTo(100)
+        }
+        
+        firstSeparatorLine.snp.makeConstraints { (make) in
+            make.centerY.equalTo(dateLabel.snp.centerY)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalTo(dateLabel.snp.left).offset(-10)
+            make.height.equalTo(1)
+        }
+        
+        secondSeparatorLine.snp.makeConstraints { (make) in
+            make.centerY.equalTo(dateLabel.snp.centerY)
+            make.left.equalTo(dateLabel.snp.right).offset(10)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(1)
+        }
+
         avatarImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(26)
+            make.top.equalTo(dateLabel.snp.bottom).offset(25)
             make.left.equalToSuperview().offset(26)
             make.width.height.equalTo(70)
         }
         
-        authorLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(36)
+        surnameLabel.snp.makeConstraints { (make) in
+//            make.top.equalToSuperview().offset(36)
+            make.top.equalTo(dateLabel.snp.bottom).offset(36)
             make.left.equalTo(avatarImageView.snp.right).offset(16)
         }
         
+        nameLabel.snp.makeConstraints { (make) in
+//            make.top.equalToSuperview().offset(36)
+            make.top.equalTo(dateLabel.snp.bottom).offset(36)
+            make.left.equalTo(surnameLabel.snp.right).offset(6)
+        }
+        
         jobLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(authorLabel.snp.bottom).offset(6)
+            make.top.equalTo(surnameLabel.snp.bottom).offset(6)
             make.left.equalTo(avatarImageView.snp.right).offset(16)
         }
         
         parametersButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(36)
+//            make.top.equalToSuperview().offset(36)
+            make.top.equalTo(dateLabel.snp.bottom).offset(36)
             make.right.equalToSuperview().offset(-16)
         }
         
@@ -174,7 +243,7 @@ class PostsTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(16)
             make.left.equalToSuperview().offset(16)
             make.width.equalTo(1)
-            make.height.equalTo(400)
+            make.height.equalTo(postTextLabel.snp.height).offset(40)
         }
         
         
@@ -185,17 +254,17 @@ class PostsTableViewCell: UITableViewCell {
         }
         
         postImageVIew.snp.makeConstraints { (make) in
-            make.top.equalTo(postTextLabel.snp.bottom).inset(-30)
+            make.top.equalTo(postTextLabel.snp.bottom).offset(30)
             make.left.equalTo(verticalLineView.snp.right).offset(16)
             make.right.equalTo(-16)
-            make.height.width.equalTo(150)
+            make.height.equalTo(125)
+            make.width.equalTo(300)
         }
         
         separatorLineView.snp.makeConstraints { (make) in
             make.top.equalTo(postImageVIew.snp.bottom).offset(30)
             make.height.equalTo(1)
-            make.left.equalTo(verticalLineView.snp.right).offset(16)
-            make.right.equalTo(-16)
+            make.width.equalTo(postView.snp.width)
         }
         
         likesImageView.snp.makeConstraints { (make) in
@@ -209,7 +278,7 @@ class PostsTableViewCell: UITableViewCell {
             make.left.equalTo(likesImageView.snp.right).offset(6)
         }
     }
-        
-        
-
 }
+
+
+

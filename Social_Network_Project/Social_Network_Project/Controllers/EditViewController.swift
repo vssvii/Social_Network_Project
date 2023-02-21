@@ -11,6 +11,21 @@ import SnapKit
 class EditViewController: UIViewController {
     
     
+    private lazy var nickNameLabel: UILabel = {
+        let nickNameLabel = UILabel()
+        nickNameLabel.text = "Ник"
+        nickNameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        return nickNameLabel
+    }()
+    
+    private lazy var nickNameTextField: UITextField = {
+        let nickNameTextField = UITextField()
+        nickNameTextField.placeholder = "Ник"
+        nickNameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        return nickNameTextField
+    }()
+    
+    
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.text = "Имя"
@@ -39,6 +54,20 @@ class EditViewController: UIViewController {
         return surnameTextField
     }()
     
+    private lazy var jobLabel: UILabel = {
+        let jobLabel = UILabel()
+        jobLabel.text = "Профессия"
+        jobLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        return jobLabel
+    }()
+    
+    private lazy var jobTextField: UITextField = {
+        let jobTextField = UITextField()
+        jobTextField.placeholder = " профессия"
+        jobTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        return jobTextField
+    }()
+    
     private lazy var genderLabel: UILabel = {
         let genderLabel = UILabel()
         genderLabel.text = "Пол"
@@ -48,8 +77,16 @@ class EditViewController: UIViewController {
     private lazy var circleMaleView: UIView = {
         let circleMaleView = UIView()
         circleMaleView.backgroundColor = UIColor(patternImage: UIImage(systemName: "circle")!)
+        circleMaleView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(circleMaleFillAction))
+        circleMaleView.addGestureRecognizer(tapGesture)
         return circleMaleView
     }()
+    
+    @objc func circleMaleFillAction() {
+        circleMaleView.backgroundColor = UIColor(patternImage: UIImage(systemName: "circle.circle")!)
+        circleFemaleView.backgroundColor = UIColor(patternImage: UIImage(systemName: "circle")!)
+    }
     
     private lazy var maleLabel: UILabel = {
         let maleLabel = UILabel()
@@ -60,8 +97,16 @@ class EditViewController: UIViewController {
     private lazy var circleFemaleView: UIView = {
         let circleFemaleView = UIView()
         circleFemaleView.backgroundColor = UIColor(patternImage: UIImage(systemName: "circle")!)
+        circleFemaleView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(circleFemaleFillAction))
+        circleFemaleView.addGestureRecognizer(tapGesture)
         return circleFemaleView
     }()
+    
+    @objc func circleFemaleFillAction() {
+        circleFemaleView.backgroundColor = UIColor(patternImage: UIImage(systemName: "circle.circle")!)
+        circleMaleView.backgroundColor = UIColor(patternImage: UIImage(systemName: "circle")!)
+    }
     
     private lazy var femaleLabel: UILabel = {
         let femaleLabel = UILabel()
@@ -119,7 +164,8 @@ class EditViewController: UIViewController {
     }
     
     @objc func saveData() {
-        
+        let profileVC = ProfileViewController(nickName: nickNameTextField.text ?? "", name: nameTextField.text ?? "", surname: surnameTextField.text ?? "", job: "")
+        navigationController?.pushViewController(profileVC, animated: true)
     }
     
     @objc func goBack() {
@@ -131,10 +177,14 @@ class EditViewController: UIViewController {
         
         title = "Основная информация"
         
+        view.addSubview(nickNameLabel)
+        view.addSubview(nickNameTextField)
         view.addSubview(nameLabel)
         view.addSubview(nameTextField)
         view.addSubview(surnameLabel)
         view.addSubview(surnameTextField)
+        view.addSubview(jobLabel)
+        view.addSubview(jobTextField)
         view.addSubview(genderLabel)
         view.addSubview(circleMaleView)
         view.addSubview(maleLabel)
@@ -145,8 +195,20 @@ class EditViewController: UIViewController {
         view.addSubview(cityLabel)
         view.addSubview(cityTextField)
         
-        nameLabel.snp.makeConstraints { (make) in
+        nickNameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.left.equalToSuperview().offset(16)
+        }
+        
+        nickNameTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(nickNameLabel.snp.bottom).offset(6)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(40)
+        }
+        
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nickNameTextField.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(16)
         }
         
@@ -169,8 +231,20 @@ class EditViewController: UIViewController {
             make.height.equalTo(40)
         }
         
-        genderLabel.snp.makeConstraints { (make) in
+        jobLabel.snp.makeConstraints{ (make) in
             make.top.equalTo(surnameTextField.snp.bottom).offset(16)
+            make.left.equalToSuperview().offset(16)
+        }
+        
+        jobTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(jobLabel.snp.bottom).offset(6)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(40)
+        }
+        
+        genderLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(jobTextField.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(16)
         }
         
@@ -222,16 +296,4 @@ class EditViewController: UIViewController {
         
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

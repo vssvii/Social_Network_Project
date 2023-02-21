@@ -16,7 +16,10 @@
 		B00A1289299E3B1A0004A2B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B00A1288299E3B1A0004A2B9 /* GoogleService-Info.plist */; };
 		B00A128C299E3BB70004A2B9 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A128B299E3BB60004A2B9 /* AuthManager.swift */; };
 		B01937EC2997A609007AEB93 /* ProfileSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01937EB2997A609007AEB93 /* ProfileSideMenuViewController.swift */; };
+		B03074C929A4EC0C00B23333 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03074C829A4EC0C00B23333 /* InformationViewController.swift */; };
 		B04AC2FD299F36C800B48657 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04AC2FC299F36C800B48657 /* SignInViewController.swift */; };
+		B04AC30029A133B800B48657 /* StoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04AC2FF29A133B800B48657 /* StoriesCollectionViewCell.swift */; };
+		B04AC30229A141F900B48657 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04AC30129A141F900B48657 /* Stories.swift */; };
 		B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD16C29913DFC0014BC4F /* FeedViewController.swift */; };
 		B06AD16F29913ED80014BC4F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD16E29913ED80014BC4F /* PersonalViewController.swift */; };
 		B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */; };
@@ -32,6 +35,12 @@
 		B06AD1A4299396430014BC4F /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1A3299396430014BC4F /* AlbumsViewController.swift */; };
 		B06AD1B929955B450014BC4F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1B829955B450014BC4F /* Feed.swift */; };
 		B06AD1BB29955D350014BC4F /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1BA29955D350014BC4F /* FeedViewModel.swift */; };
+		B0BD8D2A29A271E500C901AB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */; };
+		B0BD8D2C29A2728500C901AB /* StoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD8D2B29A2728500C901AB /* StoriesViewModel.swift */; };
+		B0E0506229A33F36008BBC02 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506129A33F36008BBC02 /* FriendViewController.swift */; };
+		B0E0506429A34090008BBC02 /* FriendHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506329A34090008BBC02 /* FriendHeaderView.swift */; };
+		B0E0506629A34B72008BBC02 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506529A34B72008BBC02 /* FriendViewModel.swift */; };
+		B0E0506929A3E233008BBC02 /* SavedPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506829A3E233008BBC02 /* SavedPostsTableViewCell.swift */; };
 		B0E40452299CB4E6005F7314 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E40451299CB4E6005F7314 /* EditViewController.swift */; };
 		B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */; };
 		B0FD0C7E298CDC91000AF6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FD0C7C298CDC91000AF6D4 /* Main.storyboard */; };
@@ -81,7 +90,10 @@
 		B00A1288299E3B1A0004A2B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B00A128B299E3BB60004A2B9 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B01937EB2997A609007AEB93 /* ProfileSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSideMenuViewController.swift; sourceTree = "<group>"; };
+		B03074C829A4EC0C00B23333 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		B04AC2FC299F36C800B48657 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		B04AC2FF29A133B800B48657 /* StoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		B04AC30129A141F900B48657 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
 		B06AD16C29913DFC0014BC4F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B06AD16E29913ED80014BC4F /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +109,12 @@
 		B06AD1A3299396430014BC4F /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B06AD1B829955B450014BC4F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		B06AD1BA29955D350014BC4F /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
+		B0BD8D2B29A2728500C901AB /* StoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewModel.swift; sourceTree = "<group>"; };
+		B0E0506129A33F36008BBC02 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		B0E0506329A34090008BBC02 /* FriendHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHeaderView.swift; sourceTree = "<group>"; };
+		B0E0506529A34B72008BBC02 /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
+		B0E0506829A3E233008BBC02 /* SavedPostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPostsTableViewCell.swift; sourceTree = "<group>"; };
 		B0E40451299CB4E6005F7314 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		B0FD0C73298CDC91000AF6D4 /* Social_Network_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social_Network_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +216,15 @@
 			path = AuthManager;
 			sourceTree = "<group>";
 		};
+		B04AC2FE29A1308100B48657 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				B04AC2FF29A133B800B48657 /* StoriesCollectionViewCell.swift */,
+				B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
 		B06AD16B29913DBD0014BC4F /* MainViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,8 +254,18 @@
 				B06AD19B299267270014BC4F /* PhotosViewModel.swift */,
 				B06AD19D29926B440014BC4F /* ProfileViewModel.swift */,
 				B06AD1BA29955D350014BC4F /* FeedViewModel.swift */,
+				B0BD8D2B29A2728500C901AB /* StoriesViewModel.swift */,
+				B0E0506529A34B72008BBC02 /* FriendViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B0E0506729A34FBD008BBC02 /* FriendViewParts */ = {
+			isa = PBXGroup;
+			children = (
+				B0E0506129A33F36008BBC02 /* FriendViewController.swift */,
+			);
+			path = FriendViewParts;
 			sourceTree = "<group>";
 		};
 		B0FD0C6A298CDC91000AF6D4 = {
@@ -256,6 +293,8 @@
 		B0FD0C75298CDC91000AF6D4 /* Social_Network_Project */ = {
 			isa = PBXGroup;
 			children = (
+				B0E0506729A34FBD008BBC02 /* FriendViewParts */,
+				B04AC2FE29A1308100B48657 /* Stories */,
 				B06AD19A2992670E0014BC4F /* ViewModel */,
 				B0FD0CB9298FA207000AF6D4 /* Extensions */,
 				B0FD0CB6298E2A3F000AF6D4 /* Structures */,
@@ -297,12 +336,14 @@
 				B06AD17029916A2A0014BC4F /* ProfileViewParts */,
 				B06AD16B29913DBD0014BC4F /* MainViewControllers */,
 				B0FD0CA9298D1623000AF6D4 /* ProfileViewController.swift */,
+				B03074C829A4EC0C00B23333 /* InformationViewController.swift */,
 				B0E40451299CB4E6005F7314 /* EditViewController.swift */,
 				B0FD1BCA299A07BD00380BF1 /* EditMenuViewController.swift */,
 				B01937EB2997A609007AEB93 /* ProfileSideMenuViewController.swift */,
 				B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */,
 				B0FD0CAC298D200C000AF6D4 /* MainViewController.swift */,
 				B0FD0CAE298D20B9000AF6D4 /* SavedPostsViewController.swift */,
+				B0E0506829A3E233008BBC02 /* SavedPostsTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				B0FD0CB1298D2C52000AF6D4 /* ProfileHeaderView.swift */,
+				B0E0506329A34090008BBC02 /* FriendHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +373,7 @@
 				B06AD17529916C720014BC4F /* Photo.swift */,
 				B06AD198299263C90014BC4F /* Album.swift */,
 				B06AD1B829955B450014BC4F /* Feed.swift */,
+				B04AC30129A141F900B48657 /* Stories.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -586,17 +629,24 @@
 				B06AD1BB29955D350014BC4F /* FeedViewModel.swift in Sources */,
 				B0FD0CB5298D2C93000AF6D4 /* PostsTableViewCell.swift in Sources */,
 				B06AD1B929955B450014BC4F /* Feed.swift in Sources */,
+				B0E0506929A3E233008BBC02 /* SavedPostsTableViewCell.swift in Sources */,
+				B04AC30029A133B800B48657 /* StoriesCollectionViewCell.swift in Sources */,
 				B06AD17829921CDF0014BC4F /* PhotosViewController.swift in Sources */,
 				B06AD17429916B1D0014BC4F /* PhotosCollectionViewCell.swift in Sources */,
 				B0FD0CBD298FFF15000AF6D4 /* Profile.swift in Sources */,
 				B0FD1BC9299916D900380BF1 /* ProfileSideTableViewCell.swift in Sources */,
 				B06AD1A4299396430014BC4F /* AlbumsViewController.swift in Sources */,
+				B04AC30229A141F900B48657 /* Stories.swift in Sources */,
+				B0E0506629A34B72008BBC02 /* FriendViewModel.swift in Sources */,
 				B00A1285299DFC6A0004A2B9 /* RegistrationViewController.swift in Sources */,
 				B0FD0CBB298FA23E000AF6D4 /* Extensions.swift in Sources */,
 				B06AD199299263C90014BC4F /* Album.swift in Sources */,
+				B0E0506429A34090008BBC02 /* FriendHeaderView.swift in Sources */,
 				B0FD0C81298CDC91000AF6D4 /* Social_Network_Project.xcdatamodeld in Sources */,
 				B0FD0CB2298D2C52000AF6D4 /* ProfileHeaderView.swift in Sources */,
+				B0E0506229A33F36008BBC02 /* FriendViewController.swift in Sources */,
 				B0FD0CB8298E2A57000AF6D4 /* Post.swift in Sources */,
+				B0BD8D2C29A2728500C901AB /* StoriesViewModel.swift in Sources */,
 				B0FD0CAA298D1623000AF6D4 /* ProfileViewController.swift in Sources */,
 				B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */,
 				B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */,
@@ -612,9 +662,11 @@
 				B06AD19E29926B440014BC4F /* ProfileViewModel.swift in Sources */,
 				B0E40452299CB4E6005F7314 /* EditViewController.swift in Sources */,
 				B00A1283299DECAB0004A2B9 /* EntranceViewController.swift in Sources */,
+				B03074C929A4EC0C00B23333 /* InformationViewController.swift in Sources */,
 				B0FD0CAD298D200C000AF6D4 /* MainViewController.swift in Sources */,
 				B06AD197299261910014BC4F /* AlbumsCollectionViewCell.swift in Sources */,
 				B06AD19C299267270014BC4F /* PhotosViewModel.swift in Sources */,
+				B0BD8D2A29A271E500C901AB /* StoriesTableViewCell.swift in Sources */,
 				B06AD16F29913ED80014BC4F /* PersonalViewController.swift in Sources */,
 				B0FD0CAF298D20B9000AF6D4 /* SavedPostsViewController.swift in Sources */,
 			);

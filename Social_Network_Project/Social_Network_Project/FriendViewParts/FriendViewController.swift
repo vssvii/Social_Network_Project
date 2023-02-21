@@ -1,31 +1,29 @@
 //
-//  ProfileViewController.swift
+//  FriendViewController.swift
 //  Social_Network_Project
 //
-//  Created by Developer on 03.02.2023.
+//  Created by Developer on 20.02.2023.
 //
 
 import UIKit
 import SnapKit
 import SideMenu
 
-class ProfileViewController: UIViewController {
+class FriendViewController: UIViewController {
     
-    var nickName: String?
+    var nickName: String
     
-    var name: String?
+    var avatarImage: UIImage
     
-    var surname: String?
+    var name: String
+
+    var surname: String
     
-    var job: String?
+    var job: String
     
-    public var menuDelegate: MenuControllerDelegate?
+    var gender: String
     
-    private var profileSideMenu = SideMenuNavigationController(rootViewController: ProfileSideMenuViewController())
-    
-    private var editSideMenu = SideMenuNavigationController(rootViewController: EditMenuViewController())
-    
-    let viewModel = ProfileViewModel()
+    let viewModel = FriendViewModel()
     
     private enum CellReuseIdentifiers: String {
         case posts
@@ -37,18 +35,18 @@ class ProfileViewController: UIViewController {
         let postsTableView = UITableView(frame: .zero, style: .grouped)
         postsTableView.register(PostsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.posts.rawValue)
         postsTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
-        postsTableView.allowsSelection = true
-        postsTableView.isUserInteractionEnabled = true
         postsTableView.delegate = self
         postsTableView.dataSource = self
         return postsTableView
     }()
     
-    init(nickName: String, name: String, surname: String, job: String) {
+    init(nickName: String, avatarImage: UIImage, name: String, surname: String, job: String, gender: String) {
         self.nickName = nickName
+        self.avatarImage = avatarImage
         self.name = name
         self.surname = surname
         self.job = job
+        self.gender = gender
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,29 +62,29 @@ class ProfileViewController: UIViewController {
     }
     
     private func setNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "list"), style: .done, target: self, action: #selector(openList))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .done, target: self, action: #selector(openMenu))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
         
         self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
-    private func setupSideMenu() {
-        editSideMenu.leftSide = false
-        profileSideMenu.leftSide = false
-        SideMenuManager.default.rightMenuNavigationController = profileSideMenu
-        SideMenuManager.default.addPanGestureToPresent(toView: view)
+//    private func setupSideMenu() {
+//        editSideMenu.leftSide = false
+//        profileSideMenu.leftSide = false
+//        SideMenuManager.default.rightMenuNavigationController = profileSideMenu
+//        SideMenuManager.default.addPanGestureToPresent(toView: view)
+//    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
     
-    @objc func openList() {
-        present(profileSideMenu, animated: true)
+    @objc func openMenu() {
+        
     }
-    
-    func getFormattedDate(date: Date, format: String) -> String {
-            let dateformat = DateFormatter()
-            dateformat.dateFormat = format
-            return dateformat.string(from: date)
-    }
-
     
     private func setupView() {
         
@@ -101,7 +99,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var count = 0
@@ -115,14 +113,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-            return viewModel.posts.count
+            return viewModel.sergeiPosts.count
         }
     }
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = viewModel.posts[indexPath.row]
+        let post = viewModel.sergeiPosts[indexPath.row]
         if indexPath.section == 0 {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.photos.rawValue) as! PhotosTableViewCell
@@ -131,7 +129,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.posts.rawValue) as! PostsTableViewCell
-            cell.avatarImageView.image = UIImage(named: "avatar")
+            cell.avatarImageView.image = avatarImage
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
@@ -139,9 +137,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
-//            let formattedDate = getFormattedDate(date: post.date, format: "MMM d")
-//            cell.dateLabel.text = formattedDate
-            
             return cell
         }
     }
@@ -153,18 +148,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let view = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
-            view.nickName.text = nickName
+            let view = FriendHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
+            view.nickNameLabel.text = nickName
             view.nameLabel.text = name
             view.surnameLabel.text = surname
-            view.avatarImageView.image = UIImage(named: "avatar")
+            view.avatarImageView.image = avatarImage
             view.jobLabel.text = job
+            view.genderLabel.text = gender
             view.publicationResultLabel.text = "200 публикаций"
             view.subscriptionResultLabel.text = "350 подписок"
             view.subscriberResultLabel.text = "350 подписчиков"
-            view.editButton.addTarget(self, action: #selector(openEditPage), for: .touchUpInside)
             view.infoLabel.isUserInteractionEnabled = true
-            let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openEditPageAction))
+            let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openInfoPageAction))
             view.infoLabel.addGestureRecognizer(guestureRecognizer)
             return view
         } else {
@@ -173,31 +168,22 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    @objc func openEditPage() {
-        present(editSideMenu, animated: true)
-    }
+//    @objc func openEditPage() {
+//        present(editSideMenu, animated: true)
+//    }
     
     
-    @objc func openEditPageAction() {
-        let editPageVC = EditViewController()
-        navigationController?.pushViewController(editPageVC, animated: true)
+    @objc func openInfoPageAction() {
+        let infoPageVC = InformationViewController(nickName: nickName, name: name, surname: surname, job: job, gender: gender, birth: "17.12.95", city: "Астана")
+        navigationController?.pushViewController(infoPageVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 650
+            return 620
         }
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 120
-        } else {
-            return 650
-        }
-
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -212,9 +198,3 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         "Мои записи"
     }
 }
-
-protocol MenuControllerDelegate {
-    func didSelectMenuItem(named: String)
-}
-
-

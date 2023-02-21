@@ -1,8 +1,8 @@
 //
-//  ProfileHeaderView.swift
-//  Navigation_2
+//  FriendHeaderView.swift
+//  Social_Network_Project
 //
-//  Created by Ibragim Assaibuldayev on 18.01.2022.
+//  Created by Developer on 20.02.2023.
 //
 
 import UIKit
@@ -12,13 +12,13 @@ import FirebaseAuth
 import SideMenu
 
 
-class ProfileHeaderView: UIView {
+class FriendHeaderView: UIView {
     
     
-    lazy var nickName: UILabel = {
-        let nickName = UILabel()
-        nickName.font = .boldSystemFont(ofSize: 16)
-        return nickName
+    lazy var nickNameLabel: UILabel = {
+        let nickNameLabel = UILabel()
+        nickNameLabel.font = .boldSystemFont(ofSize: 16)
+        return nickNameLabel
     }()
     
     lazy var avatarImageView: UIImageView = {
@@ -58,13 +58,11 @@ class ProfileHeaderView: UIView {
     
     lazy var birthLabel: UILabel = {
         let birthLabel = UILabel()
-        birthLabel.text = "17 декабря 1995"
         return birthLabel
     }()
     
     lazy var cityLabel: UILabel = {
         let cityLabel = UILabel()
-        cityLabel.text = "Астана, Казахстан"
         return cityLabel
     }()
     
@@ -81,14 +79,33 @@ class ProfileHeaderView: UIView {
         return infoLabel
     }()
     
-    lazy var editButton: UIButton = {
-        let editButton = UIButton()
-        editButton.backgroundColor = UIColor(hex: "#FF9E45")
-        editButton.layer.cornerRadius = 10
-        editButton.setTitle("Редактировать", for: .normal)
-        editButton.tintColor = .white
-        return editButton
+//    lazy var editButton: UIButton = {
+//        let editButton = UIButton()
+//        editButton.backgroundColor = UIColor(hex: "#FF9E45")
+//        editButton.layer.cornerRadius = 10
+//        editButton.setTitle("Редактировать", for: .normal)
+//        editButton.tintColor = .white
+//        return editButton
+//    }()
+    
+    lazy var messageButton: UIButton = {
+        let messageButton = UIButton()
+        messageButton.backgroundColor = UIColor(hex: "#263238")
+        messageButton.layer.cornerRadius = 10
+        messageButton.setTitle("Сообщение", for: .normal)
+        messageButton.tintColor = .white
+        return messageButton
     }()
+    
+    lazy var сallButton: UIButton = {
+        let сallButton = UIButton()
+        сallButton.backgroundColor = UIColor(hex: "#263238")
+        сallButton.layer.cornerRadius = 10
+        сallButton.setTitle("Позвонить", for: .normal)
+        сallButton.tintColor = .white
+        return сallButton
+    }()
+
     
     lazy var publicationResultLabel: UILabel = {
         let publicationResultLabel = UILabel()
@@ -170,14 +187,15 @@ class ProfileHeaderView: UIView {
     private func setupView() {
         
         
-        self.addSubview(nickName)
+        self.addSubview(nickNameLabel)
         self.addSubview(avatarImageView)
         self.addSubview(surnameLabel)
         self.addSubview(nameLabel)
         self.addSubview(jobLabel)
         self.addSubview(infoImageView)
         self.addSubview(infoLabel)
-        self.addSubview(editButton)
+        self.addSubview(messageButton)
+        self.addSubview(сallButton)
         self.addSubview(publicationResultLabel)
         self.addSubview(subscriptionResultLabel)
         self.addSubview(subscriberResultLabel)
@@ -191,24 +209,24 @@ class ProfileHeaderView: UIView {
         
         
         
-        nickName.snp.makeConstraints { (make) in
+        nickNameLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
         }
         
         avatarImageView.snp.makeConstraints { make in
-            make.top.equalTo(nickName.snp.bottom).offset(16)
+            make.top.equalTo(nickNameLabel.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(16)
             make.width.height.equalTo(80)
         }
         
         surnameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nickName.snp.bottom).offset(21)
+            make.top.equalTo(nickNameLabel.snp.bottom).offset(21)
             make.left.equalTo(avatarImageView.snp.right).offset(16)
         }
         
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nickName.snp.bottom).offset(21)
+            make.top.equalTo(nickNameLabel.snp.bottom).offset(21)
             make.left.equalTo(surnameLabel.snp.right).offset(6)
         }
         
@@ -227,28 +245,35 @@ class ProfileHeaderView: UIView {
             make.left.equalTo(infoImageView.snp.right).offset(6)
         }
         
-        editButton.snp.makeConstraints { (make) in
+        messageButton.snp.makeConstraints { (make) in
             make.top.equalTo(infoLabel.snp.bottom).offset(32)
             make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.height.equalTo(47)
-            make.width.equalTo(344)
+//            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(45)
+            make.width.equalTo(160)
+        }
+        
+        сallButton.snp.makeConstraints { (make) in
+            make.top.equalTo(infoLabel.snp.bottom).offset(32)
+            make.left.equalTo(messageButton.snp.right).offset(24)
+            make.height.equalTo(45)
+            make.width.equalTo(160)
         }
         
         subscriptionResultLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(editButton.snp.bottom).offset(16)
+            make.top.equalTo(messageButton.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
             make.width.equalTo(100)
         }
         
         publicationResultLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(editButton.snp.bottom).offset(16)
+            make.top.equalTo(messageButton.snp.bottom).offset(16)
             make.right.equalTo(subscriptionResultLabel.snp.left).offset(-25)
             make.width.equalTo(100)
         }
         
         subscriberResultLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(editButton.snp.bottom).offset(16)
+            make.top.equalTo(messageButton.snp.bottom).offset(16)
             make.left.equalTo(subscriptionResultLabel.snp.right).offset(25)
             make.width.equalTo(100)
         }
@@ -294,17 +319,4 @@ class ProfileHeaderView: UIView {
         
         
     }
-    
-//    private func setupProfile() {
-//        
-//        avatarImageView.image = myProfile.image
-//        surnameLabel.text = myProfile.surname
-//        nameLabel.text = myProfile.name
-//        jobLabel.text = myProfile.job
-//        publicationResultLabel.text = "\(myProfile.publicationCount) публикаций"
-//        subscriptionResultLabel.text = "\(myProfile.subscriptionCount) подписок"
-//        subscriberResultLabel.text = "\(myProfile.subscriberCount) подписчиков"
-//    }
 }
-
-

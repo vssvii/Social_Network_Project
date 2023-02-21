@@ -80,7 +80,7 @@ class RegisterConfirmationViewController: UIViewController {
                     let profileItem = UITabBarItem()
                     profileItem.title = "Профиль"
                     profileItem.image = UIImage(systemName: "person.fill")
-                    let profileVC = ProfileViewController()
+                    let profileVC = ProfileViewController(nickName: "vssvii", name: "Ибрагим", surname: "Асайбулдаев", job: "iOS разработчик")
                     profileVC.title = "Профиль"
                     profileVC.tabBarItem = profileItem
                     let profileNVC = UINavigationController(rootViewController: profileVC)
