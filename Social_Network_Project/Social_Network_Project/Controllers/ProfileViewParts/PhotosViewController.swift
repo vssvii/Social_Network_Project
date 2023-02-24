@@ -15,6 +15,10 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
     
     let viewModel = PhotosViewModel()
     
+    var photos: [Photo]
+    
+    var albums: [Album]
+    
     private enum CellReuseIdentifiers: String {
         case allPhotos
         case albums
@@ -42,7 +46,17 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
     }()
     
     let navItem = UINavigationItem()
-
+    
+    init(photos: [Photo], albums: [Album]) {
+        self.photos = photos
+        self.albums = albums
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,17 +131,19 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.albums.rawValue) as! AlbumTableViewCell
+            cell.albums = albums
             cell.showAllButton.addTarget(self, action: #selector(openAlbumsAction), for: .touchUpInside)
           return cell
         } else {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.allPhotos.rawValue) as! AllPhotosTableViewCell
+            cell.photos = photos
               return cell
         }
     }
     
     @objc func openAlbumsAction() {
-        let albumsVC = AlbumsViewController()
+        let albumsVC = AlbumsViewController(albums: albums)
         navigationController?.pushViewController(albumsVC, animated: true)
     }
     

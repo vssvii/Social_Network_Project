@@ -10,7 +10,9 @@ import SnapKit
 
 public class PhotosTableViewCell: UITableViewCell  {
     
-    let viewModel = PhotosViewModel()
+    var photos: [Photo]?
+    
+    var albums: [Album]?
     
     
     private enum CellReuseIdentifiers: String {
@@ -31,7 +33,6 @@ public class PhotosTableViewCell: UITableViewCell  {
         let photosCountLabel = UILabel()
         photosCountLabel.font = UIFont.boldSystemFont(ofSize: 14)
         photosCountLabel.textColor = UIColor(hex: "#7E8183")
-        photosCountLabel.text = "\(viewModel.photos.count)"
         return photosCountLabel
     }()
     
@@ -100,13 +101,16 @@ public class PhotosTableViewCell: UITableViewCell  {
 
 extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.photos.count
+        return photos?.count ?? 0
         }
         
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let photo = viewModel.photos[indexPath.item]
+        let photo = photos?[indexPath.item]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.photos.rawValue, for: indexPath) as! PhotosCollectionViewCell
-        cell.photoImageView.image = photo.image
+        cell.photoImageView.image = photo?.image
+        if let photos = photos {
+            photosCountLabel.text = "\(photos.count)"
+        }
         return cell
     }
         

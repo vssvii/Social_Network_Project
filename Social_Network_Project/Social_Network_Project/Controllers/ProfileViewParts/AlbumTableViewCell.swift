@@ -8,9 +8,9 @@
 import UIKit
 
 class AlbumTableViewCell: UITableViewCell {
-
-    let viewModel = PhotosViewModel()
     
+    
+    var albums: [Album]?
     
     private enum CellReuseIdentifiers: String {
         case albums
@@ -29,7 +29,6 @@ class AlbumTableViewCell: UITableViewCell {
         let albumsCountLabel = UILabel()
         albumsCountLabel.font = UIFont.boldSystemFont(ofSize: 14)
         albumsCountLabel.textColor = UIColor(hex: "#7E8183")
-        albumsCountLabel.text = "\(viewModel.albums.count)"
         return albumsCountLabel
     }()
     
@@ -98,14 +97,17 @@ class AlbumTableViewCell: UITableViewCell {
 extension AlbumTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.albums.count
+        return albums?.count ?? 0
     }
         
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let album = viewModel.albums[indexPath.item]
+        let album = albums?[indexPath.item]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.albums.rawValue, for: indexPath) as! AlbumsCollectionViewCell
-        cell.nameLabel.text = album.name
-        cell.albumImageView.image = album.image
+        cell.nameLabel.text = album?.name
+        cell.albumImageView.image = album?.image
+        if let albums = albums {
+            albumsCountLabel.text = "\(albums.count)"
+        }
         return cell
     }
         

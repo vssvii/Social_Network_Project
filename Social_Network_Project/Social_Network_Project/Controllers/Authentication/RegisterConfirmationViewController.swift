@@ -80,7 +80,7 @@ class RegisterConfirmationViewController: UIViewController {
                     let profileItem = UITabBarItem()
                     profileItem.title = "Профиль"
                     profileItem.image = UIImage(systemName: "person.fill")
-                    let profileVC = ProfileViewController()
+                    let profileVC = ProfileViewController(nickName: "vssvii", name: "Ибрагим", surname: "Асайбулдаев", job: "iOS разработчик", gender: "мужской", birth: "17 декабря 1995", city: "Астана")
                     profileVC.title = "Профиль"
                     profileVC.tabBarItem = profileItem
                     let profileNVC = UINavigationController(rootViewController: profileVC)
@@ -88,18 +88,19 @@ class RegisterConfirmationViewController: UIViewController {
                     let savedPostsItem = UITabBarItem()
                     savedPostsItem.title = "Сохраненные"
                     savedPostsItem.image = UIImage(systemName: "heart.fill")
-                    let savedPostsVC = SavedPostsViewController()
-                    savedPostsVC.title = "Сохраненные"
-                    savedPostsVC.tabBarItem = savedPostsItem
-                    let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
+                    let likedPostsVC = LikedPostsViewController()
+                    likedPostsVC.title = "Сохраненные"
+                    likedPostsVC.tabBarItem = savedPostsItem
+                    let likedPostsNVC = UINavigationController(rootViewController: likedPostsVC)
                     
                     let entranceItem = UIBarButtonItem()
                     let entranceVC = EntranceViewController()
                     let entranceNVC = UINavigationController(rootViewController: entranceVC)
                     
                     let tabBarController = UITabBarController()
-                    tabBarController.viewControllers = [mainNVC, profileNVC, savedPostsNVC]
+                    tabBarController.viewControllers = [mainNVC, profileNVC, likedPostsNVC]
                     tabBarController.selectedIndex = 1
+                    tabBarController.tabBar.tintColor = Tint.orange
                     let appDelegate = UIApplication.shared.delegate! as! AppDelegate
                     appDelegate.window?.rootViewController = tabBarController
                     appDelegate.window?.makeKeyAndVisible()

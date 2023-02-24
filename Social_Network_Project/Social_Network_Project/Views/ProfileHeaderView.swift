@@ -15,17 +15,13 @@ import SideMenu
 class ProfileHeaderView: UIView {
     
     
-    let myProfile = Profile(surname: "Асайбулдаев", name: "Ибрагим",image: UIImage(named: "avatar"), job: "iOS разработчик", publicationCount: 5, subscriptionCount: 150, subscriberCount: 150)
-    
-    
     lazy var nickName: UILabel = {
         let nickName = UILabel()
-        nickName.text = "vssvii"
         nickName.font = .boldSystemFont(ofSize: 16)
         return nickName
     }()
     
-    private var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.clipsToBounds = true
@@ -60,6 +56,18 @@ class ProfileHeaderView: UIView {
         return genderLabel
     }()
     
+    lazy var birthLabel: UILabel = {
+        let birthLabel = UILabel()
+        birthLabel.text = "17 декабря 1995"
+        return birthLabel
+    }()
+    
+    lazy var cityLabel: UILabel = {
+        let cityLabel = UILabel()
+        cityLabel.text = "Астана, Казахстан"
+        return cityLabel
+    }()
+    
     lazy var infoImageView: UIImageView = {
         let informationImageView = UIImageView()
         informationImageView.image = UIImage(named: "exclamPoint")
@@ -72,10 +80,6 @@ class ProfileHeaderView: UIView {
         infoLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return infoLabel
     }()
-    
-    @objc func openEditPageAction() {
-        let editPageVC = EditViewController()
-    }
     
     lazy var editButton: UIButton = {
         let editButton = UIButton()
@@ -156,7 +160,6 @@ class ProfileHeaderView: UIView {
         }
         
         setupView()
-        setupProfile()
     
     }
     
@@ -292,16 +295,16 @@ class ProfileHeaderView: UIView {
         
     }
     
-    private func setupProfile() {
-        
-        avatarImageView.image = myProfile.image
-        surnameLabel.text = myProfile.surname
-        nameLabel.text = myProfile.name
-        jobLabel.text = myProfile.job
-        publicationResultLabel.text = "\(myProfile.publicationCount) публикаций"
-        subscriptionResultLabel.text = "\(myProfile.subscriptionCount) подписок"
-        subscriberResultLabel.text = "\(myProfile.subscriberCount) подписчиков"
-    }
+//    private func setupProfile() {
+//        
+//        avatarImageView.image = myProfile.image
+//        surnameLabel.text = myProfile.surname
+//        nameLabel.text = myProfile.name
+//        jobLabel.text = myProfile.job
+//        publicationResultLabel.text = "\(myProfile.publicationCount) публикаций"
+//        subscriptionResultLabel.text = "\(myProfile.subscriptionCount) подписок"
+//        subscriberResultLabel.text = "\(myProfile.subscriberCount) подписчиков"
+//    }
 }
 
 

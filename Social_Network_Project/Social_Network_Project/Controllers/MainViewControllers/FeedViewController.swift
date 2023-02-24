@@ -10,17 +10,23 @@ import SnapKit
 
 class FeedViewController: UIViewController {
     
+    private var tableViewHeightConstraint: NSLayoutConstraint!
+    private var descriptionHeightConstraint: NSLayoutConstraint!
+    
     private enum CellReuseIdentifiers: String {
         case feeds
+        case stories
     }
     
     
-    let viewModel = FeedViewModel()
+    let viewModel = FriendViewModel()
     
+    let defaultImage = UIImage(named: "")
     
     lazy var feedTableView: UITableView = {
         let feedTableView = UITableView(frame: .zero, style: .grouped)
         feedTableView.register(PostsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.feeds.rawValue)
+        feedTableView.register(StoriesTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.stories.rawValue)
         feedTableView.delegate = self
         feedTableView.dataSource = self
         return feedTableView
@@ -52,28 +58,51 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.feeds.count
+        if section == 0 {
+            return 1
+        } else {
+            return viewModel.friends.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let feed = viewModel.feeds[indexPath.row]
-        let cell = tableView.dequeueReusableCell(
+        let friend = viewModel.friends[indexPath.row]
+        if indexPath.section == 0 {
+          let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellReuseIdentifiers.stories.rawValue) as! StoriesTableViewCell
+          return cell
+        } else {
+          let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.feeds.rawValue) as! PostsTableViewCell
-        cell.avatarImageView.image = feed.avatarImage
-        cell.authorLabel.text = feed.authorFullName
-        cell.jobLabel.text = feed.job
-        cell.postTextLabel.text = feed.text
-        cell.postImageVIew.image = feed.image
-        cell.likesLabel.text = "\(feed.likes)"
-        return cell
+            cell.dateLabel.text = friend.date.toString(dateFormat: "MMM d")
+            cell.avatarImageView.image = friend.avatarImage
+            cell.nameLabel.text = friend.name
+            cell.surnameLabel.text = friend.surname
+            cell.jobLabel.text = friend.job
+            cell.postTextLabel.text = friend.text
+            cell.postImageVIew.image = friend.image
+            cell.likesLabel.text = "\(friend.likes)"
+            return cell
+        }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let friend = viewModel.friends[indexPath.row]
+            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
+            navigationController?.pushViewController(friendVC, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 600
+        if indexPath.section == 0 {
+            return 120
+        } else {
+            return 630
+        }
     }
 }

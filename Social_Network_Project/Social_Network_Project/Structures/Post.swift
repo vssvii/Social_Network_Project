@@ -9,6 +9,7 @@ import UIKit
 
 struct Post {
     
+    let date: Date
     let description: String
     let image: UIImage?
     let likes: Int
