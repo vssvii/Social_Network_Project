@@ -1,8 +1,8 @@
 //
-//  PhotosViewController.swift
-//  Navigation_2
+//  FriendPhotosViewController.swift
+//  Social_Network_Project
 //
-//  Created by Ibragim Assaibuldayev on 07.06.2022.
+//  Created by Developer on 24.02.2023.
 //
 
 import UIKit
@@ -11,9 +11,9 @@ import SnapKit
 
 
 
-class PhotosViewController: UIViewController, UINavigationBarDelegate {
+class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
     
-    let viewModel = PhotosViewModel()
+    let viewModel = FriendViewModel()
     
     var photos: [Photo]
     
@@ -113,7 +113,7 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
     }
 }
 
-extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
+extension FriendPhotosViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -158,7 +158,7 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension PhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension FriendPhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -167,12 +167,16 @@ extension PhotosViewController: UIImagePickerControllerDelegate, UINavigationCon
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
-        var photos = viewModel.photos
         let photo = Photo(image: image)
         
-        photos.append(Photo(image: image))
+        photos.append(photo)
+        
+        albumAndPhotosTableView.reloadData()
+        
         
         dismiss(animated: true)
+        
+        
         
         
     }

@@ -79,15 +79,6 @@ class FriendHeaderView: UIView {
         return infoLabel
     }()
     
-//    lazy var editButton: UIButton = {
-//        let editButton = UIButton()
-//        editButton.backgroundColor = UIColor(hex: "#FF9E45")
-//        editButton.layer.cornerRadius = 10
-//        editButton.setTitle("Редактировать", for: .normal)
-//        editButton.tintColor = .white
-//        return editButton
-//    }()
-    
     lazy var messageButton: UIButton = {
         let messageButton = UIButton()
         messageButton.backgroundColor = UIColor(hex: "#263238")
@@ -99,7 +90,7 @@ class FriendHeaderView: UIView {
     
     lazy var сallButton: UIButton = {
         let сallButton = UIButton()
-        сallButton.backgroundColor = UIColor(hex: "#263238")
+        сallButton.backgroundColor = UIColor(hex: "#AAB0B4")
         сallButton.layer.cornerRadius = 10
         сallButton.setTitle("Позвонить", for: .normal)
         сallButton.tintColor = .white
@@ -118,8 +109,15 @@ class FriendHeaderView: UIView {
         let subscriptionResultLabel = UILabel()
         subscriptionResultLabel.font = UIFont.systemFont(ofSize: 16)
         subscriptionResultLabel.numberOfLines = 2
+        let tap = UITapGestureRecognizer(target: self, action: #selector(changeColorPublication))
+        subscriptionResultLabel.isUserInteractionEnabled = true
+        subscriptionResultLabel.addGestureRecognizer(tap)
         return subscriptionResultLabel
     }()
+    
+    @objc func changeColorPublication() {
+        subscriptionResultLabel.textColor = UIColor(hex: "#FF9E45")
+    }
     
     lazy var subscriberResultLabel: UILabel = {
         let subscriberResultLabel = UILabel()
@@ -132,42 +130,6 @@ class FriendHeaderView: UIView {
         let separatorLineView = UIView()
         separatorLineView.backgroundColor = UIColor(hex: "7E8183")
         return separatorLineView
-    }()
-    
-    lazy var writePostImageView: UIImageView = {
-        let writePostImageView = UIImageView()
-        writePostImageView.image = UIImage(named: "writePost")
-        return writePostImageView
-    }()
-    
-    lazy var writePostLabel: UILabel = {
-        let writePostLabel = UILabel()
-        writePostLabel.text = "Запись"
-        return writePostLabel
-    }()
-    
-    lazy var photosHistoryImageView: UIImageView = {
-        let photosHistoryImageView = UIImageView()
-        photosHistoryImageView.image = UIImage(named: "photosHistory")
-        return photosHistoryImageView
-    }()
-    
-    lazy var photosHistoryLabel: UILabel = {
-        let photosHistoryLabel = UILabel()
-        photosHistoryLabel.text = "История"
-        return photosHistoryLabel
-    }()
-    
-    lazy var photoImageView: UIImageView = {
-        let photoImageView = UIImageView()
-        photoImageView.image = UIImage(named: "photo")
-        return photoImageView
-    }()
-    
-    lazy var photoLabel: UILabel = {
-        let photosLabel = UILabel()
-        photosLabel.text = "Фото"
-        return photosLabel
     }()
     
     
@@ -200,12 +162,6 @@ class FriendHeaderView: UIView {
         self.addSubview(subscriptionResultLabel)
         self.addSubview(subscriberResultLabel)
         self.addSubview(separatorLineView)
-        self.addSubview(writePostImageView)
-        self.addSubview(writePostLabel)
-        self.addSubview(photosHistoryImageView)
-        self.addSubview(photosHistoryLabel)
-        self.addSubview(photoImageView)
-        self.addSubview(photoLabel)
         
         
         
@@ -247,7 +203,7 @@ class FriendHeaderView: UIView {
         
         messageButton.snp.makeConstraints { (make) in
             make.top.equalTo(infoLabel.snp.bottom).offset(32)
-            make.left.equalToSuperview().offset(16)
+            make.left.equalToSuperview().offset(32)
 //            make.right.equalToSuperview().offset(-16)
             make.height.equalTo(45)
             make.width.equalTo(160)
@@ -255,7 +211,7 @@ class FriendHeaderView: UIView {
         
         сallButton.snp.makeConstraints { (make) in
             make.top.equalTo(infoLabel.snp.bottom).offset(32)
-            make.left.equalTo(messageButton.snp.right).offset(24)
+            make.right.equalToSuperview().offset(-32)
             make.height.equalTo(45)
             make.width.equalTo(160)
         }
@@ -284,39 +240,5 @@ class FriendHeaderView: UIView {
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(1)
         }
-        
-        photosHistoryImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(separatorLineView.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
-        }
-        
-        photosHistoryLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(photosHistoryImageView.snp.bottom).offset(6)
-            make.centerX.equalTo(photosHistoryImageView.snp.centerX)
-        }
-        
-        writePostImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(separatorLineView.snp.bottom).offset(16)
-            make.right.equalTo(photosHistoryImageView.snp.left).offset(-80)
-        }
-        
-        writePostLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(writePostImageView.snp.bottom).offset(6)
-            make.centerX.equalTo(writePostImageView.snp.centerX)
-        }
-        
-        photoImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(separatorLineView.snp.bottom).offset(16)
-            make.left.equalTo(photosHistoryImageView.snp.right).offset(80)
-        }
-        
-        photoLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(photoImageView.snp.bottom).offset(6)
-            make.centerX.equalTo(photoImageView.snp.centerX)
-        }
-  
-        
-        
-        
     }
 }

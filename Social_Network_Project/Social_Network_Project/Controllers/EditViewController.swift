@@ -164,7 +164,7 @@ class EditViewController: UIViewController {
     }
     
     @objc func saveData() {
-        let profileVC = ProfileViewController(nickName: nickNameTextField.text ?? "", name: nameTextField.text ?? "", surname: surnameTextField.text ?? "", job: "")
+        let profileVC = ProfileViewController(nickName: nickNameTextField.text ?? "", name: nameTextField.text ?? "", surname: surnameTextField.text ?? "", job: jobTextField.text ?? "", gender: "мужской", birth: birthTextField.text ?? "", city: cityTextField.text ?? "")
         navigationController?.pushViewController(profileVC, animated: true)
     }
     

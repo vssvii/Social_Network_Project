@@ -63,7 +63,7 @@ class SignInViewController: UIViewController {
                 let profileItem = UITabBarItem()
                 profileItem.title = "Профиль"
                 profileItem.image = UIImage(systemName: "person.fill")
-            let profileVC = ProfileViewController(nickName: "vssvii", name: "Ибрагим", surname: "Асайбулдаев", job: "iOS разработчик")
+            let profileVC = ProfileViewController(nickName: "vssvii", name: "Ибрагим", surname: "Асайбулдаев", job: "iOS разработчик", gender: "мужской", birth: "17 декабря 1995", city: "Астана")
                 profileVC.title = "Профиль"
                 profileVC.tabBarItem = profileItem
                 let profileNVC = UINavigationController(rootViewController: profileVC)
@@ -71,7 +71,7 @@ class SignInViewController: UIViewController {
                 let savedPostsItem = UITabBarItem()
                 savedPostsItem.title = "Сохраненные"
                 savedPostsItem.image = UIImage(systemName: "heart.fill")
-                let savedPostsVC = SavedPostsViewController()
+                let savedPostsVC = LikedPostsViewController()
                 savedPostsVC.title = "Сохраненные"
                 savedPostsVC.tabBarItem = savedPostsItem
                 let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
@@ -83,6 +83,7 @@ class SignInViewController: UIViewController {
                 let tabBarController = UITabBarController()
                 tabBarController.viewControllers = [mainNVC, profileNVC, savedPostsNVC]
                 tabBarController.selectedIndex = 1
+                tabBarController.tabBar.tintColor = Tint.orange
                 let appDelegate = UIApplication.shared.delegate! as! AppDelegate
                 appDelegate.window?.rootViewController = tabBarController
                 appDelegate.window?.makeKeyAndVisible()

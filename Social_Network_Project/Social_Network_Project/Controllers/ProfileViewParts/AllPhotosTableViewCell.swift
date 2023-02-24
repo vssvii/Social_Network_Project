@@ -8,9 +8,8 @@
 import UIKit
 
 class AllPhotosTableViewCell: UITableViewCell {
-
-    let viewModel = PhotosViewModel()
     
+    var photos: [Photo]?
     
     private enum CellReuseIdentifiers: String {
         case photos
@@ -29,9 +28,19 @@ class AllPhotosTableViewCell: UITableViewCell {
         let photosCountLabel = UILabel()
         photosCountLabel.font = UIFont.boldSystemFont(ofSize: 14)
         photosCountLabel.textColor = UIColor(hex: "#7E8183")
-        photosCountLabel.text = "\(viewModel.photos.count)"
         return photosCountLabel
     }()
+    
+    lazy var refreshButton: UIButton = {
+        let refreshButton = UIButton()
+        refreshButton.setImage(UIImage(systemName: "repeat.circle"), for: .normal)
+        refreshButton.addTarget(self, action: #selector(refreshTableView), for: .touchUpInside)
+        return refreshButton
+    }()
+    
+    @objc func refreshTableView() {
+        self.photosCollectionView.reloadData()
+    }
     
     lazy var photosCollectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
@@ -61,6 +70,7 @@ class AllPhotosTableViewCell: UITableViewCell {
         
         contentView.addSubview(photosLabel)
         contentView.addSubview(photosCountLabel)
+        contentView.addSubview(refreshButton)
         contentView.addSubview(photosCollectionView)
         
         photosLabel.snp.makeConstraints { (make) in
@@ -71,6 +81,11 @@ class AllPhotosTableViewCell: UITableViewCell {
         photosCountLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.top).offset(14)
             make.left.equalTo(photosLabel.snp.right).offset(6)
+        }
+        
+        refreshButton.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView.snp.top).offset(14)
+            make.right.equalTo(contentView.snp.right).offset(-16)
         }
         
         photosCollectionView.snp.makeConstraints { (make) in
@@ -85,13 +100,16 @@ class AllPhotosTableViewCell: UITableViewCell {
 extension AllPhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.photos.count
+        return photos?.count ?? 0
         }
         
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let photo = viewModel.photos[indexPath.item]
+        let photo = photos?[indexPath.item]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.photos.rawValue, for: indexPath) as! PhotosCollectionViewCell
-        cell.photoImageView.image = photo.image
+        cell.photoImageView.image = photo?.image
+        if let photos = photos {
+            photosCountLabel.text = "\(photos.count)"
+        }
         return cell
     }
         

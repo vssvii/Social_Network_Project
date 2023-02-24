@@ -8,6 +8,17 @@
 import UIKit
 import Photos
 
+typealias Tint = UIColor
+
+extension Tint {
+    static let dark = UIColor(hex: "#2B3940")
+    static let textGray = UIColor(hex: "#7E8183")
+    static let gray = UIColor(hex: "#AAB0B4")
+    static let textOrange = UIColor(hex: "#F69707")
+    static let orange = UIColor(hex: "#FF9E45")
+    static let blue = UIColor(hex: "#0863EB")
+}
+
 extension UIColor {
     
     

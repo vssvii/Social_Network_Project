@@ -11,6 +11,8 @@ import SideMenu
 
 class FriendViewController: UIViewController {
     
+    let coreManager = CoreDataManager.shared
+    
     var nickName: String
     
     var avatarImage: UIImage
@@ -23,6 +25,18 @@ class FriendViewController: UIViewController {
     
     var gender: String
     
+    var publicationResult: Int
+    
+    var subscriptionResult: Int
+    
+    var subscriberResult: Int
+    
+    var posts: [Post]
+    
+    var photos: [Photo]
+    
+    var albums: [Album]
+    
     let viewModel = FriendViewModel()
     
     private enum CellReuseIdentifiers: String {
@@ -34,19 +48,25 @@ class FriendViewController: UIViewController {
     lazy var postsTableView: UITableView = {
         let postsTableView = UITableView(frame: .zero, style: .grouped)
         postsTableView.register(PostsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.posts.rawValue)
-        postsTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
+        postsTableView.register(FriendPhotosTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
         postsTableView.delegate = self
         postsTableView.dataSource = self
         return postsTableView
     }()
     
-    init(nickName: String, avatarImage: UIImage, name: String, surname: String, job: String, gender: String) {
+    init(nickName: String, avatarImage: UIImage, name: String, surname: String, job: String, gender: String, publicationResult: Int, subscriptionResult: Int, subscriberResult: Int,posts: [Post], photos: [Photo], albums: [Album]) {
         self.nickName = nickName
         self.avatarImage = avatarImage
         self.name = name
         self.surname = surname
         self.job = job
         self.gender = gender
+        self.posts = posts
+        self.photos = photos
+        self.albums = albums
+        self.publicationResult = publicationResult
+        self.subscriptionResult = subscriptionResult
+        self.subscriberResult = subscriberResult
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -113,18 +133,19 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-            return viewModel.sergeiPosts.count
+            return posts.count
         }
     }
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = viewModel.sergeiPosts[indexPath.row]
+        let post = posts[indexPath.row]
         if indexPath.section == 0 {
           let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellReuseIdentifiers.photos.rawValue) as! PhotosTableViewCell
+            withIdentifier: CellReuseIdentifiers.photos.rawValue) as! FriendPhotosTableViewCell
             cell.rightPointerButton.addTarget(self, action: #selector(openPhotosAction), for: .touchUpInside)
+            cell.photos = photos
           return cell
         } else {
           let cell = tableView.dequeueReusableCell(
@@ -137,12 +158,30 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+            
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        postsTableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 {
+            let post = posts[indexPath.row]
+            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+                    if coreManager.posts.contains( where: { $0.descript == post.description }) {
+                        presentAlert(title: "", message: "Пост уже был добавлен")
+                    } else {
+                        self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+                    }
+                })
+                tapRecognizer.numberOfTapsRequired = 2
+                view.addGestureRecognizer(tapRecognizer)
+        }
+    }
+    
     @objc func openPhotosAction() {
-        let photosVC = PhotosViewController()
+        let photosVC = FriendPhotosViewController(photos: photos, albums: albums)
         navigationController?.pushViewController(photosVC, animated: true)
     }
     
@@ -155,9 +194,9 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             view.avatarImageView.image = avatarImage
             view.jobLabel.text = job
             view.genderLabel.text = gender
-            view.publicationResultLabel.text = "200 публикаций"
-            view.subscriptionResultLabel.text = "350 подписок"
-            view.subscriberResultLabel.text = "350 подписчиков"
+            view.publicationResultLabel.text = "\(publicationResult) публикаций"
+            view.subscriptionResultLabel.text = "\(subscriptionResult) подписок"
+            view.subscriberResultLabel.text = "\(subscriberResult) подписчиков"
             view.infoLabel.isUserInteractionEnabled = true
             let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openInfoPageAction))
             view.infoLabel.addGestureRecognizer(guestureRecognizer)
@@ -188,7 +227,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 420
+            return 300
         } else {
             return 0
         }

@@ -19,7 +19,7 @@ class FeedViewController: UIViewController {
     }
     
     
-    let viewModel = FeedViewModel()
+    let viewModel = FriendViewModel()
     
     let defaultImage = UIImage(named: "")
     
@@ -65,12 +65,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-            return viewModel.feeds.count
+            return viewModel.friends.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let feed = viewModel.feeds[indexPath.row]
+        let friend = viewModel.friends[indexPath.row]
         if indexPath.section == 0 {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.stories.rawValue) as! StoriesTableViewCell
@@ -78,22 +78,22 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.feeds.rawValue) as! PostsTableViewCell
-            cell.dateLabel.text = feed.date.toString(dateFormat: "MMM d")
-            cell.avatarImageView.image = feed.avatarImage
-            cell.nameLabel.text = feed.name
-            cell.surnameLabel.text = feed.surname
-            cell.jobLabel.text = feed.job
-            cell.postTextLabel.text = feed.text
-            cell.postImageVIew.image = feed.image
-            cell.likesLabel.text = "\(feed.likes)"
+            cell.dateLabel.text = friend.date.toString(dateFormat: "MMM d")
+            cell.avatarImageView.image = friend.avatarImage
+            cell.nameLabel.text = friend.name
+            cell.surnameLabel.text = friend.surname
+            cell.jobLabel.text = friend.job
+            cell.postTextLabel.text = friend.text
+            cell.postImageVIew.image = friend.image
+            cell.likesLabel.text = "\(friend.likes)"
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let feed = viewModel.feeds[indexPath.row]
-            let friendVC = FriendViewController(nickName: feed.nickName, avatarImage: (feed.avatarImage ?? defaultImage)!, name: feed.name, surname: feed.surname, job: feed.job, gender: feed.gender)
+            let friend = viewModel.friends[indexPath.row]
+            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
             navigationController?.pushViewController(friendVC, animated: true)
         }
     }

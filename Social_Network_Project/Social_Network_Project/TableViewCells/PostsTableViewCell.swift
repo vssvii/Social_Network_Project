@@ -12,18 +12,20 @@ import SnapKit
 
 class PostsTableViewCell: UITableViewCell {
     
+    var likedButtonTapped: (() -> Void)?
+    
     
     lazy var firstSeparatorLine: UIView = {
         let firstSeparatorLine = UIView()
-        firstSeparatorLine.backgroundColor = UIColor(hex: "#7E8183")
+        firstSeparatorLine.backgroundColor = Tint.gray
         return firstSeparatorLine
     }()
     
     lazy var dateLabel: UILabel = {
         let dateLabel = UILabel()
-        dateLabel.textColor = UIColor(hex: "#7E8183")
+        dateLabel.textColor = Tint.gray
         dateLabel.font = .systemFont(ofSize: 14)
-        dateLabel.layer.borderColor = UIColor(hex: "#7E8183").cgColor
+        dateLabel.layer.borderColor = Tint.gray.cgColor
         dateLabel.layer.borderWidth = 1
         dateLabel.layer.cornerRadius = 10
         dateLabel.textAlignment = .center
@@ -33,7 +35,7 @@ class PostsTableViewCell: UITableViewCell {
     
     lazy var secondSeparatorLine: UIView = {
         let secondSeparatorLine = UIView()
-        secondSeparatorLine.backgroundColor = UIColor(hex: "#7E8183")
+        secondSeparatorLine.backgroundColor = Tint.gray
         return secondSeparatorLine
     }()
     
@@ -75,7 +77,7 @@ class PostsTableViewCell: UITableViewCell {
     
     lazy var parametersButton: UIButton = {
         let parametersButton = UIButton()
-        parametersButton.setImage(UIImage(systemName: "menu"), for: .normal)
+        parametersButton.setImage(UIImage(named: "menu"), for: .normal)
         parametersButton.tintColor = UIColor(hex: "#FF9E45")
         return parametersButton
     }()
@@ -100,8 +102,36 @@ class PostsTableViewCell: UITableViewCell {
     lazy var postTextLabel: UILabel = {
         let postTextLabel = UILabel()
         postTextLabel.numberOfLines = 0
+        postTextLabel.lineBreakMode = .byTruncatingTail
+        postTextLabel.adjustsFontSizeToFitWidth = false
         return postTextLabel
     }()
+    
+    private lazy var expandButton: UIButton = {
+        let expandButton = UIButton()
+        expandButton.setTitleColor(Tint.blue, for: .normal)
+        expandButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        expandButton.setTitle("Показать полностью", for:  .normal)
+        expandButton.addTarget(self, action: #selector(expandAction), for: .touchUpInside)
+        return expandButton
+    }()
+    
+    private var descriptionHeightConstraint: NSLayoutConstraint!
+    
+    private var expanded: [Bool] = []
+    private var descriptionIsExpanded = false {
+        didSet {
+            if descriptionIsExpanded {
+                expandButton.snp.updateConstraints { (make) in
+                    make.top.equalTo(postTextLabel.snp.bottom).offset(5)
+                }
+            } else {
+                expandButton.snp.updateConstraints { (make) in
+                    make.top.equalTo(postTextLabel.snp.bottom).offset(-5)
+                }
+            }
+        }
+    }
     
     lazy var postImageVIew: UIImageView = {
         let postView = UIImageView()
@@ -121,6 +151,10 @@ class PostsTableViewCell: UITableViewCell {
         likesImageView.image = UIImage(named: "like")
         return likesImageView
     }()
+    
+    @objc private func likedOnTapped() {
+        likedButtonTapped?()
+    }
     
     lazy var likesLabel : UILabel = {
         let likesLabel = UILabel()
@@ -157,7 +191,36 @@ class PostsTableViewCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
         setupView()
+        
+        if let postText = postTextLabel.text {
+            guard let attr = try? NSAttributedString(htmlString: postText, font: UIFont.systemFont(ofSize: 15), useDocumentFontSize: false) else { return }
+            let str: NSMutableAttributedString = NSMutableAttributedString(attributedString: attr)
+            let style = NSMutableParagraphStyle()
+            style.lineBreakMode = .byTruncatingTail
+            style.paragraphSpacing = 10
+            str.addAttribute(.paragraphStyle, value: style, range: _NSRange(location: 0, length: str.length))
+            postTextLabel.attributedText = str
+        }
+        
+        if postTextLabel.isTruncated {
+            expandButton.isHidden = false
+        } else {
+            expandButton.isHidden = true
+        }
     }
+    
+    @objc private func expandAction() {
+        descriptionIsExpanded.toggle()
+        if descriptionIsExpanded {
+            descriptionHeightConstraint.isActive = false
+            expandButton.setTitle("Скрыть", for: .normal)
+        } else {
+            descriptionHeightConstraint.isActive = true
+            expandButton.setTitle("Показать полностью", for: .normal)
+        }
+    }
+    
+    
     
     
     private func setupView() {
@@ -173,6 +236,7 @@ class PostsTableViewCell: UITableViewCell {
         addSubview(postView)
         postView.addSubview(verticalLineView)
         postView.addSubview(postTextLabel)
+        postView.addSubview(expandButton)
         postView.addSubview(postImageVIew)
         postView.addSubview(separatorLineView)
         postView.addSubview(likesImageView)
@@ -234,8 +298,8 @@ class PostsTableViewCell: UITableViewCell {
         
         postView.snp.makeConstraints { (make) in
             make.top.equalTo(avatarImageView.snp.bottom).offset(16)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()
         }
         
@@ -253,26 +317,36 @@ class PostsTableViewCell: UITableViewCell {
             make.right.equalTo(-16)
         }
         
-        postImageVIew.snp.makeConstraints { (make) in
-            make.top.equalTo(postTextLabel.snp.bottom).offset(30)
+        descriptionHeightConstraint = postTextLabel.heightAnchor.constraint(equalToConstant: 80)
+        descriptionHeightConstraint.isActive = true
+        
+        expandButton.snp.makeConstraints { (make) in
+            make.top.equalTo(postTextLabel.snp.bottom).offset(3)
             make.left.equalTo(verticalLineView.snp.right).offset(16)
-            make.right.equalTo(-16)
-            make.height.equalTo(125)
-            make.width.equalTo(300)
+//            make.width.equalTo(140)
+//            make.height.equalTo(15)
         }
         
+        postImageVIew.snp.makeConstraints { (make) in
+            make.top.equalTo(expandButton.snp.bottom).offset(50)
+            make.left.equalTo(verticalLineView.snp.right).offset(16)
+            make.right.equalTo(-16)
+            make.height.equalTo(200)
+            make.width.equalTo(450)
+        }
+
         separatorLineView.snp.makeConstraints { (make) in
             make.top.equalTo(postImageVIew.snp.bottom).offset(30)
             make.height.equalTo(1)
             make.width.equalTo(postView.snp.width)
         }
-        
+
         likesImageView.snp.makeConstraints { (make) in
             make.top.equalTo(separatorLineView.snp.bottom).offset(16)
             make.left.equalTo(16)
             make.height.width.equalTo(20)
         }
-        
+
         likesLabel.snp.makeConstraints { (make) in
             make.top.equalTo(separatorLineView.snp.bottom).offset(16)
             make.left.equalTo(likesImageView.snp.right).offset(6)
@@ -280,5 +354,55 @@ class PostsTableViewCell: UITableViewCell {
     }
 }
 
+extension UILabel {
+    
+    
+    var isTruncated: Bool {
+        guard let labelText = text else { return false }
+        let labelTextSize = (labelText as NSString).boundingRect(with: CGSize(width: frame.size.width, height: .greatestFiniteMagnitude),options: .usesLineFragmentOrigin,attributes: [NSAttributedString.Key.font: font as Any],context: nil).size
+        
+        return labelTextSize.height > bounds.size.height
+    }
+}
+
+extension NSAttributedString {
+
+    convenience init(htmlString html: String, font: UIFont? = nil, useDocumentFontSize: Bool = true) throws {
+            
+        let options: [NSAttributedString.DocumentReadingOptionKey : Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        
+        let data = html.data(using: .utf8, allowLossyConversion: true)
+        guard (data != nil), let fontFamily = font?.familyName, let attr = try? NSMutableAttributedString(data: data!, options: options, documentAttributes: nil) else {
+            try self.init(data: data ?? Data(html.utf8), options: options, documentAttributes: nil)
+            return
+        }
+        
+        let fontSize: CGFloat? = useDocumentFontSize ? nil : font!.pointSize
+        let range = NSRange(location: 0, length: attr.length)
+        attr.enumerateAttribute(.font, in: range, options: .longestEffectiveRangeNotRequired) { attrib, range, _ in
+            if let htmlFont = attrib as? UIFont {
+                let traits = htmlFont.fontDescriptor.symbolicTraits
+                var descrip = htmlFont.fontDescriptor.withFamily(fontFamily)
+                
+                if (traits.rawValue & UIFontDescriptor.SymbolicTraits.traitBold.rawValue) != 0 {
+                    descrip = descrip.withSymbolicTraits(.traitBold)!
+                }
+                
+                if (traits.rawValue & UIFontDescriptor.SymbolicTraits.traitItalic.rawValue) != 0 {
+                    descrip = descrip.withSymbolicTraits(.traitItalic)!
+                }
+                
+                attr.addAttribute(.font, value: UIFont(descriptor: descrip, size: fontSize ?? htmlFont.pointSize), range: range)
+            }
+        }
+        
+        self.init(attributedString: attr)
+        //execute(attr)
+    }
+
+}
 
 

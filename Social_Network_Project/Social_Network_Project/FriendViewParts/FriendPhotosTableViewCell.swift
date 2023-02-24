@@ -1,18 +1,16 @@
 //
-//  PhotosTableViewCell.swift
-//  Navigation_2
+//  FriendPhotosTableViewCell.swift
+//  Social_Network_Project
 //
-//  Created by Ibragim Assaibuldayev on 04.06.2022.
+//  Created by Developer on 23.02.2023.
 //
 
 import UIKit
 import SnapKit
 
-public class PhotosTableViewCell: UITableViewCell  {
+public class FriendPhotosTableViewCell: UITableViewCell  {
     
     var photos: [Photo]?
-    
-    var albums: [Album]?
     
     
     private enum CellReuseIdentifiers: String {
@@ -99,7 +97,7 @@ public class PhotosTableViewCell: UITableViewCell  {
     }
 }
 
-extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FriendPhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos?.count ?? 0
         }
@@ -132,10 +130,3 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
  
 }
-
-//extension UITableViewCell {
-//    open override func addSubview(_ view: UIView) {
-//        super.addSubview(view)
-//        sendSubviewToBack(contentView)
-//    }
-//}

@@ -47,11 +47,11 @@ class EditMenuViewController: UIViewController {
     private var menuSideOptions = ["Основная информация", "Контакты", "Интересы",  "Образование", "Карьера"]
     
 //    enum MenuOptions: String {
-//        case bookmarks = "Закладки"
-//        case liked = "Понравилось"
-//        case files = "Файлы"
-//        case archives = "Архивы"
-//        case settings = "Настройки"
+//        case basicInfo = "Основная информация"
+//        case contacts = "Контакты"
+//        case interests = "Интересы"
+//        case education = "Образование"
+//        case settings = "Карьера"
 //    }
 
     override func viewDidLoad() {
@@ -107,9 +107,12 @@ extension EditMenuViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    @objc func openPhotosAction() {
-        let photosVC = PhotosViewController()
-        navigationController?.pushViewController(photosVC, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let option = menuSideOptions[indexPath.row]
+        if option == "Основная информация" {
+            let editPageVC = EditViewController()
+            navigationController?.pushViewController(editPageVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

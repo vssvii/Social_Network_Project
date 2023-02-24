@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 
-class SavedPostsViewController: UIViewController {
+class LikedPostsViewController: UIViewController {
+
     
-    var likedPosts: [Post] = []
+    let coreManager = CoreDataManager.shared
     
     private enum CellReuseIdentifiers: String {
         case likedPosts
@@ -18,8 +19,8 @@ class SavedPostsViewController: UIViewController {
     
     private lazy var likedPostsLabel: UILabel = {
         let likedPostsLabel = UILabel()
-        likedPostsLabel.textColor = .blue
-        likedPostsLabel.text = "double_click"
+        likedPostsLabel.textColor = Tint.textOrange
+        likedPostsLabel.text = "Двойное нажатие - удаление поста"
         likedPostsLabel.font = UIFont.boldSystemFont(ofSize: 15)
         return likedPostsLabel
     }()
@@ -27,7 +28,7 @@ class SavedPostsViewController: UIViewController {
     
     private lazy var likedPostsTableView: UITableView = {
         let likedPostsTableView = UITableView(frame: .zero, style: .grouped)
-        likedPostsTableView.register(SavedPostsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.likedPosts.rawValue)
+        likedPostsTableView.register(LikedPostsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.likedPosts.rawValue)
         likedPostsTableView.delegate = self
         likedPostsTableView.dataSource = self
         return likedPostsTableView
@@ -45,7 +46,11 @@ class SavedPostsViewController: UIViewController {
     
     private func navigationItems() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "delete_all", style: .plain, target: self, action: #selector(deleteAll))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Удалить все", style: .plain, target: self, action: #selector(deleteAll))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "doc.badge.arrow.up"), style: .done, target: self, action: #selector(refreshTableView))
+        navigationItem.leftBarButtonItem?.tintColor = .orange
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteAll))
         navigationItem.rightBarButtonItem?.tintColor = .red
     }
     
@@ -54,12 +59,15 @@ class SavedPostsViewController: UIViewController {
     }
     
     @objc func deleteAll() {
+        coreManager.deleteAll()
+        coreManager.posts = []
         likedPostsTableView.reloadData()
     }
     
+    
     private func setupView() {
         view.backgroundColor = .white
-        title = "favourite_posts"
+        title = "Любимые посты"
         
         view.addSubview(likedPostsLabel)
         view.addSubview(likedPostsTableView)
@@ -70,45 +78,51 @@ class SavedPostsViewController: UIViewController {
         }
         
         likedPostsTableView.snp.makeConstraints {
-            $0.left.right.bottom.equalToSuperview()
+            $0.left.right.equalToSuperview()
             $0.top.equalTo(likedPostsLabel.snp.bottom).offset(16)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
 
-extension SavedPostsViewController: UITableViewDataSource, UITableViewDelegate {
+extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.likedPosts.count
+        return coreManager.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellReuseIdentifiers.likedPosts.rawValue) as! SavedPostsTableViewCell
-        let post = likedPosts[indexPath.row]
-        cell.descriptionLabel.text = post.description
+            withIdentifier: CellReuseIdentifiers.likedPosts.rawValue) as! LikedPostsTableViewCell
+        let post = coreManager.posts[indexPath.row]
+        if let surname = post.surname, let name = post.name {
+            cell.authorLabel.text = "\(String(describing: surname)) \(String(describing: name))"
+        }
+//        if let surname = post.surname, let name = post.name {
+//            cell.authorLabel.text = "\(surname)"
+        cell.descriptionLabel.text = post.descript
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = likedPosts[indexPath.row]
+        let post = coreManager.posts[indexPath.row]
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
-            let alert = UIAlertController(title: "deleting_post", message: "want_delete_post", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Удаление поста", message: "Хотите удалить пост?", preferredStyle: UIAlertController.Style.alert)
 
-            alert.addAction(UIAlertAction(title: "cancel", style: UIAlertAction.Style.default, handler: { _ in
+            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertAction.Style.default, handler: { _ in
                             //Cancel Action
                         }))
-            alert.addAction(UIAlertAction(title: "delete",
+            alert.addAction(UIAlertAction(title: "Удалить",
                                                       style: UIAlertAction.Style.destructive,
                                                       handler: {(_: UIAlertAction!) in
 //                            self.coreManager.deletePosts(post: post)
                             tableView.reloadData()
                         }))
-                        self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         })
         tapRecognizer.numberOfTapsRequired = 2
         view.addGestureRecognizer(tapRecognizer)
@@ -117,7 +131,7 @@ extension SavedPostsViewController: UITableViewDataSource, UITableViewDelegate {
 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 300
     }
 }
 

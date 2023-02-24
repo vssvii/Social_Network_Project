@@ -22,7 +22,7 @@ class InformationViewController: UIViewController {
     private lazy var nickNameLabel: UILabel = {
         let nickNameLabel = UILabel()
         nickNameLabel.text = "Ник"
-        nickNameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        nickNameLabel.font = UIFont.boldSystemFont(ofSize: 14)
         nickNameLabel.textColor = UIColor(hex: "#7E8183")
         return nickNameLabel
     }()
@@ -31,7 +31,7 @@ class InformationViewController: UIViewController {
         let nickNameAnswerLabel = UILabel()
         nickNameAnswerLabel.text = nickName
         nickNameAnswerLabel.tintColor = .black
-        nickNameAnswerLabel.font = .systemFont(ofSize: 14)
+        nickNameAnswerLabel.font = .boldSystemFont(ofSize: 16)
         return nickNameAnswerLabel
     }()
     
@@ -39,7 +39,7 @@ class InformationViewController: UIViewController {
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.text = "Имя"
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 14)
         nameLabel.textColor = UIColor(hex: "#7E8183")
         return nameLabel
     }()
@@ -48,14 +48,14 @@ class InformationViewController: UIViewController {
         let nameAnswerLabel = UILabel()
         nameAnswerLabel.text = name
         nameAnswerLabel.tintColor = .black
-        nameAnswerLabel.font = .systemFont(ofSize: 14)
+        nameAnswerLabel.font = .boldSystemFont(ofSize: 16)
         return nameAnswerLabel
     }()
     
     private lazy var surnameLabel: UILabel = {
         let surnameLabel = UILabel()
         surnameLabel.text = "Фамилия"
-        surnameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        surnameLabel.font = UIFont.boldSystemFont(ofSize: 14)
         surnameLabel.textColor = UIColor(hex: "#7E8183")
         return surnameLabel
     }()
@@ -64,14 +64,14 @@ class InformationViewController: UIViewController {
         let surnameAnswerLabel = UILabel()
         surnameAnswerLabel.text = surname
         surnameAnswerLabel.tintColor = .black
-        surnameAnswerLabel.font = .systemFont(ofSize: 14)
+        surnameAnswerLabel.font = .boldSystemFont(ofSize: 16)
         return surnameAnswerLabel
     }()
     
     private lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
         jobLabel.text = "Профессия"
-        jobLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        jobLabel.font = UIFont.boldSystemFont(ofSize: 14)
         jobLabel.textColor = UIColor(hex: "#7E8183")
         return jobLabel
     }()
@@ -80,7 +80,7 @@ class InformationViewController: UIViewController {
         let jobAnswerLabel = UILabel()
         jobAnswerLabel.text = job
         jobAnswerLabel.tintColor = .black
-        jobAnswerLabel.font = .systemFont(ofSize: 14)
+        jobAnswerLabel.font = .boldSystemFont(ofSize: 16)
         return jobAnswerLabel
     }()
     
@@ -88,7 +88,7 @@ class InformationViewController: UIViewController {
         let genderLabel = UILabel()
         genderLabel.text = "Пол"
         genderLabel.textColor = UIColor(hex: "#7E8183")
-        genderLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        genderLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return genderLabel
     }()
     
@@ -96,7 +96,7 @@ class InformationViewController: UIViewController {
         let genderAnswerLabel = UILabel()
         genderAnswerLabel.text = gender
         genderAnswerLabel.textColor = .black
-        genderAnswerLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        genderAnswerLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return genderAnswerLabel
     }()
     
@@ -104,7 +104,7 @@ class InformationViewController: UIViewController {
         let birthLabel = UILabel()
         birthLabel.text = "Дата рождения"
         birthLabel.textColor = UIColor(hex: "#7E8183")
-        birthLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        birthLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return birthLabel
     }()
     
@@ -112,7 +112,7 @@ class InformationViewController: UIViewController {
         let birthAnswerLabel = UILabel()
         birthAnswerLabel.textColor = .black
         birthAnswerLabel.text = birth
-        birthAnswerLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        birthAnswerLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return birthAnswerLabel
     }()
     
@@ -120,7 +120,7 @@ class InformationViewController: UIViewController {
         let cityLabel = UILabel()
         cityLabel.text = "Родной город"
         cityLabel.textColor = UIColor(hex: "#7E8183")
-        cityLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        cityLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return cityLabel
     }()
     
@@ -128,7 +128,7 @@ class InformationViewController: UIViewController {
         let cityAnswerLabel = UILabel()
         cityAnswerLabel.textColor = .black
         cityAnswerLabel.text = city
-        cityAnswerLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        cityAnswerLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return cityAnswerLabel
     }()
     

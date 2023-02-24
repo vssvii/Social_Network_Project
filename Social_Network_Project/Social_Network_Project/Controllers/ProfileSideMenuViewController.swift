@@ -112,15 +112,15 @@ extension ProfileSideMenuViewController: UITableViewDataSource, UITableViewDeleg
         return cell
     }
     
-    @objc func openPhotosAction() {
-        let photosVC = PhotosViewController()
-        navigationController?.pushViewController(photosVC, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedItem = menuSideOptions[indexPath.row]
         menuDelegate?.didSelectMenuItem(named: selectedItem)
+        
+        if selectedItem == "Понравилось" {
+            let savedPageVC = LikedPostsViewController()
+            navigationController?.pushViewController(savedPageVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

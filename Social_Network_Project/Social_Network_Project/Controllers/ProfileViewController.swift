@@ -11,13 +11,21 @@ import SideMenu
 
 class ProfileViewController: UIViewController {
     
-    var nickName: String?
+    var nickName: String
     
-    var name: String?
+    var name: String
+
+    var surname: String
     
-    var surname: String?
+    var job: String
     
-    var job: String?
+    var gender: String
+    
+    var birth: String
+    
+    var city: String
+    
+    let coreManager = CoreDataManager.shared
     
     public var menuDelegate: MenuControllerDelegate?
     
@@ -37,18 +45,20 @@ class ProfileViewController: UIViewController {
         let postsTableView = UITableView(frame: .zero, style: .grouped)
         postsTableView.register(PostsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.posts.rawValue)
         postsTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
-        postsTableView.allowsSelection = true
         postsTableView.isUserInteractionEnabled = true
         postsTableView.delegate = self
         postsTableView.dataSource = self
         return postsTableView
     }()
     
-    init(nickName: String, name: String, surname: String, job: String) {
+    init(nickName: String, name: String, surname: String, job: String, gender: String, birth: String, city: String) {
         self.nickName = nickName
         self.name = name
         self.surname = surname
         self.job = job
+        self.gender = gender
+        self.birth = birth
+        self.city = city
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,6 +71,14 @@ class ProfileViewController: UIViewController {
         
         setupView()
         setNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let indexPath = postsTableView.indexPathForSelectedRow else { return
+        }
+        postsTableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func setNavigationBar() {
@@ -95,7 +113,8 @@ class ProfileViewController: UIViewController {
         
         postsTableView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.left.right.equalToSuperview()
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
@@ -124,8 +143,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = viewModel.posts[indexPath.row]
         if indexPath.section == 0 {
-          let cell = tableView.dequeueReusableCell(
+          let cell = postsTableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.photos.rawValue) as! PhotosTableViewCell
+            cell.photos = viewModel.photos
+            cell.albums = viewModel.albums
             cell.rightPointerButton.addTarget(self, action: #selector(openPhotosAction), for: .touchUpInside)
           return cell
         } else {
@@ -139,32 +160,50 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
-//            let formattedDate = getFormattedDate(date: post.date, format: "MMM d")
-//            cell.dateLabel.text = formattedDate
-            
             return cell
         }
     }
     
+    func likedAction () {
+        print("click")
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        postsTableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 {
+            let post = viewModel.posts[indexPath.row]
+            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+                    if coreManager.posts.contains( where: { $0.descript == post.description }) {
+                        presentAlert(title: "", message: "Пост уже был добавлен")
+                    } else {
+                        self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+                    }
+                })
+            tapRecognizer.numberOfTapsRequired = 2
+            view.addGestureRecognizer(tapRecognizer)
+        }
+    }
+    
     @objc func openPhotosAction() {
-        let photosVC = PhotosViewController()
+        let photosVC = PhotosViewController(photos: viewModel.photos, albums: viewModel.albums)
         navigationController?.pushViewController(photosVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let view = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
+            view.avatarImageView.image = UIImage(named: "avatar")
             view.nickName.text = nickName
             view.nameLabel.text = name
             view.surnameLabel.text = surname
-            view.avatarImageView.image = UIImage(named: "avatar")
             view.jobLabel.text = job
             view.publicationResultLabel.text = "200 публикаций"
             view.subscriptionResultLabel.text = "350 подписок"
             view.subscriberResultLabel.text = "350 подписчиков"
             view.editButton.addTarget(self, action: #selector(openEditPage), for: .touchUpInside)
             view.infoLabel.isUserInteractionEnabled = true
-            let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openEditPageAction))
+            let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openInfoPageAction))
             view.infoLabel.addGestureRecognizer(guestureRecognizer)
             return view
         } else {
@@ -178,9 +217,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    @objc func openEditPageAction() {
-        let editPageVC = EditViewController()
-        navigationController?.pushViewController(editPageVC, animated: true)
+    @objc func openInfoPageAction() {
+        let infoPageVC = InformationViewController(nickName: nickName, name: name, surname: surname, job: job, gender: gender, birth: birth, city: city)
+        navigationController?.pushViewController(infoPageVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -216,5 +255,3 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 protocol MenuControllerDelegate {
     func didSelectMenuItem(named: String)
 }
-
-
