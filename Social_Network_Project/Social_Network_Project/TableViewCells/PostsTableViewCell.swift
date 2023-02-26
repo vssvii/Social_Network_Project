@@ -3,7 +3,8 @@
 //  Navigation_2
 //
 //  Created by Ibragim Assaibuldayev on 12.03.2022.
-//
+// File too small (length=0) file '/Users/Developer/Library/Developer/Xcode/DerivedData/Social_Network_Project-dtsvarnunmvuifdsxdfqbvxyldyv/Build/Intermediates.noindex/Social_Network_Project.build/Debug-iphonesimulator/Social_Network_Project.build/Objects-normal/x86_64/AlbumsCollectionViewCell.o'
+
 
 import UIKit
 import SnapKit

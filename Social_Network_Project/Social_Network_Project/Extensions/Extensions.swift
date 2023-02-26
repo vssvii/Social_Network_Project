@@ -17,6 +17,7 @@ extension Tint {
     static let textOrange = UIColor(hex: "#F69707")
     static let orange = UIColor(hex: "#FF9E45")
     static let blue = UIColor(hex: "#0863EB")
+    static let redOrange = UIColor.rgb(from: 0xe95950)
 }
 
 extension UIColor {
@@ -55,10 +56,18 @@ extension UIColor {
 
         self.init(red: r, green: g, blue: b, alpha: a)
     }
+    
+    class func rgb(from hex: Int, alpha: CGFloat = 1.0) -> UIColor {
+        let red = CGFloat((hex & 0xFF0000) >> 16) / 0xFF
+        let green = CGFloat((hex & 0x00FF00) >> 8) / 0xFF
+        let blue = CGFloat(hex & 0x0000FF) / 0xFF
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
 }
 
 
 extension UIImageView {
+    
   func fetchImageAsset(_ asset: PHAsset?, targetSize size: CGSize, contentMode: PHImageContentMode = .aspectFill, options: PHImageRequestOptions? = nil, completionHandler: ((Bool) -> Void)?) {
     // 1
     guard let asset = asset else {
@@ -78,6 +87,120 @@ extension UIImageView {
       options: options,
       resultHandler: resultHandler)
   }
+    
+    struct ActivityIndicator {
+        static var isEnabled = false
+        static var style = _style
+        static var view = _view
+        
+        static var _style: UIActivityIndicatorView.Style {
+            if #available(iOS 13.0, *) {
+                return .large
+            }else {
+                return .whiteLarge
+            }
+        }
+        
+        static var _view: UIActivityIndicatorView {
+            if #available(iOS 13.0, *) {
+                return UIActivityIndicatorView(style: .large)
+            }else {
+                return UIActivityIndicatorView(style: .whiteLarge)
+            }
+        }
+    }
+    
+    //MARK: Public Vars
+    public var isActivityEnabled: Bool {
+        get {
+            guard let value = objc_getAssociatedObject(self, &ActivityIndicator.isEnabled) as? Bool else {
+                return false
+            }
+            return value
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &ActivityIndicator.isEnabled, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    public var activityStyle: UIActivityIndicatorView.Style {
+        get{
+            guard let value = objc_getAssociatedObject(self, &ActivityIndicator.style) as? UIActivityIndicatorView.Style else {
+                if #available(iOS 13.0, *) {
+                    return .large
+                }else {
+                    return .whiteLarge
+                }
+            }
+            return value
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &ActivityIndicator.style, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    public var activityIndicator: UIActivityIndicatorView {
+        get {
+            guard let value = objc_getAssociatedObject(self, &ActivityIndicator.view) as? UIActivityIndicatorView else {
+                if #available(iOS 13.0, *) {
+                    return UIActivityIndicatorView(style: .large)
+                }else {
+                    return UIActivityIndicatorView(style: .whiteLarge)
+                }
+            }
+            return value
+        }
+        set(newValue) {
+            let activityView = newValue
+            activityView.hidesWhenStopped = true
+            objc_setAssociatedObject(self, &ActivityIndicator.view, activityView, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    //MARK: - Private methods
+    func showActivityIndicator() {
+        if isActivityEnabled {
+            var isActivityIndicatorFound = false
+            DispatchQueue.main.async {
+                self.backgroundColor = .black
+                self.activityIndicator = UIActivityIndicatorView(style: self.activityStyle)
+                self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+                if self.subviews.isEmpty {
+                    isActivityIndicatorFound = false
+                    self.addSubview(self.activityIndicator)
+                    
+                } else {
+                    for view in self.subviews {
+                        if !view.isKind(of: UIActivityIndicatorView.self) {
+                            isActivityIndicatorFound = false
+                            self.addSubview(self.activityIndicator)
+                            break
+                        } else {
+                            isActivityIndicatorFound = true
+                        }
+                    }
+                }
+                if !isActivityIndicatorFound {
+                    NSLayoutConstraint.activate([
+                        self.activityIndicator.igCenterXAnchor.constraint(equalTo: self.igCenterXAnchor),
+                        self.activityIndicator.igCenterYAnchor.constraint(equalTo: self.igCenterYAnchor)
+                        ])
+                }
+                self.activityIndicator.startAnimating()
+            }
+        }
+    }
+    
+    func hideActivityIndicator() {
+        if isActivityEnabled {
+            DispatchQueue.main.async {
+                self.backgroundColor = UIColor.white
+                self.subviews.forEach({ (view) in
+                    if let av = view as? UIActivityIndicatorView {
+                        av.stopAnimating()
+                    }
+                })
+            }
+        }
+    }
 }
 
 extension UIViewController {
@@ -108,5 +231,85 @@ extension Date {
             dateFormatter.timeZone = TimeZone(identifier: "Asia/Almaty")
         }
         return dateFormatter.string(from: self)
+    }
+}
+
+
+extension UIView {
+    
+    var igLeftAnchor: NSLayoutXAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.leftAnchor
+        }
+        return self.leftAnchor
+    }
+    var igRightAnchor: NSLayoutXAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.rightAnchor
+        }
+        return self.rightAnchor
+    }
+    var igTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.topAnchor
+        }
+        return self.topAnchor
+    }
+    var igBottomAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.bottomAnchor
+        }
+        return self.bottomAnchor
+    }
+    var igCenterXAnchor: NSLayoutXAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.centerXAnchor
+        }
+        return self.centerXAnchor
+    }
+    var igCenterYAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.centerYAnchor
+        }
+        return self.centerYAnchor
+    }
+    var width: CGFloat {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.layoutFrame.width
+        }
+        return frame.width
+    }
+    var height: CGFloat {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.layoutFrame.height
+        }
+        return frame.height
+    }
+}
+
+extension Int {
+    var toFloat: CGFloat {
+        return CGFloat(self)
+    }
+}
+
+extension Array {
+     func sortedArrayByPosition() -> [Element] {
+        return sorted(by: { (obj1 : Element, obj2 : Element) -> Bool in
+            
+            let view1 = obj1 as! UIView
+            let view2 = obj2 as! UIView
+            
+            let x1 = view1.frame.minX
+            let y1 = view1.frame.minY
+            let x2 = view2.frame.minX
+            let y2 = view2.frame.minY
+            
+            if y1 != y2 {
+                return y1 < y2
+            } else {
+                return x1 < x2
+            }
+        })
     }
 }
