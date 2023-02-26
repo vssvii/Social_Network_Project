@@ -36,7 +36,7 @@
 		B06AD1A4299396430014BC4F /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1A3299396430014BC4F /* AlbumsViewController.swift */; };
 		B06AD1B929955B450014BC4F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1B829955B450014BC4F /* Friend.swift */; };
 		B06AD1BB29955D350014BC4F /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1BA29955D350014BC4F /* FriendViewModel.swift */; };
-		B096C07229A76D9B002E9ADE /* PostData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B096C06F29A76D9B002E9ADE /* PostData.xcdatamodeld */; };
+		B070126C29AB6EF50077755E /* PostData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B070126A29AB6EF50077755E /* PostData.xcdatamodeld */; };
 		B096C07329A76D9B002E9ADE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096C07129A76D9B002E9ADE /* CoreDataManager.swift */; };
 		B096C07529A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096C07429A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift */; };
 		B0BD8D2A29A271E500C901AB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */; };
@@ -113,7 +113,7 @@
 		B06AD1A3299396430014BC4F /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B06AD1B829955B450014BC4F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		B06AD1BA29955D350014BC4F /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
-		B096C07029A76D9B002E9ADE /* PostData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PostData.xcdatamodel; sourceTree = "<group>"; };
+		B070126B29AB6EF50077755E /* PostData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PostData.xcdatamodel; sourceTree = "<group>"; };
 		B096C07129A76D9B002E9ADE /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B096C07429A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 		B096C06E29A76C9C002E9ADE /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				B070126A29AB6EF50077755E /* PostData.xcdatamodeld */,
 				B096C07129A76D9B002E9ADE /* CoreDataManager.swift */,
-				B096C06F29A76D9B002E9ADE /* PostData.xcdatamodeld */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -670,11 +670,11 @@
 				B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */,
 				B01937EC2997A609007AEB93 /* ProfileSideMenuViewController.swift in Sources */,
 				B06AD1A0299369E30014BC4F /* AlbumTableViewCell.swift in Sources */,
+				B070126C29AB6EF50077755E /* PostData.xcdatamodeld in Sources */,
 				B00A128C299E3BB70004A2B9 /* AuthManager.swift in Sources */,
 				B06AD17629916C720014BC4F /* Photo.swift in Sources */,
 				B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */,
 				B06AD1A229936F7D0014BC4F /* AllPhotosTableViewCell.swift in Sources */,
-				B096C07229A76D9B002E9ADE /* PostData.xcdatamodeld in Sources */,
 				B0FD1BCB299A07BD00380BF1 /* EditMenuViewController.swift in Sources */,
 				B04AC2FD299F36C800B48657 /* SignInViewController.swift in Sources */,
 				B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */,
@@ -1044,13 +1044,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B096C06F29A76D9B002E9ADE /* PostData.xcdatamodeld */ = {
+		B070126A29AB6EF50077755E /* PostData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B096C07029A76D9B002E9ADE /* PostData.xcdatamodel */,
+				B070126B29AB6EF50077755E /* PostData.xcdatamodel */,
 			);
-			currentVersion = B096C07029A76D9B002E9ADE /* PostData.xcdatamodel */;
-			path = PostData.xcdatamodeld;
+			currentVersion = B070126B29AB6EF50077755E /* PostData.xcdatamodel */;
+			name = PostData.xcdatamodeld;
+			path = "../../../../../iOS practice/FaceID_TouchID/DataBase/PostData.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
