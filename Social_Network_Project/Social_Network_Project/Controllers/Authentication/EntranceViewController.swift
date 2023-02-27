@@ -18,7 +18,7 @@ class EntranceViewController: UIViewController {
     
     private lazy var registrationButton: UIButton = {
         let registrationButton = UIButton()
-        registrationButton.setTitle("ЗАРЕГЕСТРИРОВАТЬСЯ", for: .normal)
+        registrationButton.setTitle("ЗАРЕГИСТРИРОВАТЬСЯ", for: .normal)
         registrationButton.backgroundColor = UIColor(hex: "#2B3940")
         registrationButton.layer.cornerRadius = 10
         registrationButton.addTarget(self, action: #selector(registerVCAction), for: .touchUpInside)

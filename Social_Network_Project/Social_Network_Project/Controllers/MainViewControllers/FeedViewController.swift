@@ -26,6 +26,7 @@ class FeedViewController: UIViewController {
         case listStory
     }
     
+    let coreManager = CoreDataManager.shared
     
     let friendViewModel = FriendViewModel()
     
@@ -70,30 +71,12 @@ class FeedViewController: UIViewController {
         
         setupView()
         
+        
         automaticallyAdjustsScrollViewInsets = false
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-//    override var navigationItem: UINavigationItem {
-//        let navigationItem = UINavigationItem()
-//        navigationItem.titleView = UIImageView(image: UIImage(named: "icInstaLogo"))
-//        if isClearCacheEnabled {
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear Cache", style: .done, target: self, action: #selector(clearImageCache))
-//            navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 203.0/255, green: 69.0/255, blue: 168.0/255, alpha: 1.0)
-//        }
-//        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 203.0/255, green: 69.0/255, blue: 168.0/255, alpha: 1.0)
-//        return navigationItem
-//    }
-    
-    
-    @objc private func clearImageCache() {
-        IGCache.shared.removeAllObjects()
-        IGStories.removeAllVideoFilesFromCache()
-        presentAlert(title: "Images & Videos are deleted from cache", message: "")
-        
     }
     
     
@@ -130,27 +113,59 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let friend = friendViewModel.friends[indexPath.row]
+        let post = friend.posts[indexPath.section]
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.feeds.rawValue) as! PostsTableViewCell
             cell.dateLabel.text = friend.date.toString(dateFormat: "MMM d")
-            cell.avatarImageView.image = friend.avatarImage
+            cell.userImageView.image = friend.avatarImage
+        
+        // MARK: Recognizer which responsibles for opening Friend's Page
+        let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
+            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
+            self.navigationController?.pushViewController(friendVC, animated: true)
+        })
+        cell.userImageView.isUserInteractionEnabled = true
+        imageTapRecognizer.numberOfTapsRequired = 1
+        cell.userImageView.addGestureRecognizer(imageTapRecognizer)
             cell.nameLabel.text = friend.name
             cell.surnameLabel.text = friend.surname
             cell.jobLabel.text = friend.job
             cell.postTextLabel.text = friend.text
             cell.postImageVIew.image = friend.image
             cell.likesLabel.text = "\(friend.likes)"
+        
+        // MARK: Recognizer which responsibles for adding post to coreData in LikedPostsViewController
+            let likedtapRecognizer = TapGestureRecognizer(block: { [self] in
+                if coreManager.posts.contains( where: { $0.descript == post.description })  {
+                presentAlert(title: "", message: "Пост уже был добавлен")
+            } else {
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
+                cell.likeButton.tintColor = .red
+                self.coreManager.addNewPost(surname: friend.surname, name: friend.name, description: post.description)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+            }
+        })
+        likedtapRecognizer.numberOfTapsRequired = 1
+            cell.likeButton.isUserInteractionEnabled = true
+            cell.likeButton.addGestureRecognizer(likedtapRecognizer)
+        let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
+            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+            self.navigationController?.pushViewController(postVC, animated: true)
+        })
+        commentTapRecognizer.numberOfTapsRequired = 1
+        cell.commentButton.isUserInteractionEnabled = true
+        cell.commentButton.addGestureRecognizer(commentTapRecognizer)
             return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let friend = friendViewModel.friends[indexPath.row]
-            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
-            navigationController?.pushViewController(friendVC, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            let friend = friendViewModel.friends[indexPath.row]
+//            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
+//            navigationController?.pushViewController(friendVC, animated: true)
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 630
+        return 480
     }
 }
 

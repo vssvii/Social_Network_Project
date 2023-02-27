@@ -3,7 +3,6 @@
 //  Navigation_2
 //
 //  Created by Ibragim Assaibuldayev on 12.03.2022.
-// File too small (length=0) file '/Users/Developer/Library/Developer/Xcode/DerivedData/Social_Network_Project-dtsvarnunmvuifdsxdfqbvxyldyv/Build/Intermediates.noindex/Social_Network_Project.build/Debug-iphonesimulator/Social_Network_Project.build/Objects-normal/x86_64/AlbumsCollectionViewCell.o'
 
 
 import UIKit
@@ -12,6 +11,24 @@ import SnapKit
 
 
 class PostsTableViewCell: UITableViewCell {
+    
+    
+    private enum UIConstants {
+        static let userImageSize: CGFloat = 30
+        static let contentInset: CGFloat = 12
+        static let userImageTopInset: CGFloat = 6
+        static let usernameLabelFontSize: CGFloat = 14
+        static let subtitleFontSize: CGFloat = 11
+        static let usernameStackToProfileImageOffset: CGFloat = 12
+        static let postImageToUserImageOffset: CGFloat = 6
+        static let actionsStackHeight: CGFloat = 24
+        static let actionsStackToPostImageOffset: CGFloat = 12
+        static let actionsStackSpacing: CGFloat = 12
+        static let actionsStackToLikesLabelOffset: CGFloat = 12
+        static let likesLabelFontSize: CGFloat = 14
+        static let commentLabelFontSize: CGFloat = 14
+        static let commentToLikesOffset: CGFloat = 12
+    }
     
     var likedButtonTapped: (() -> Void)?
     
@@ -41,14 +58,11 @@ class PostsTableViewCell: UITableViewCell {
     }()
     
     
-    var avatarImageView: UIImageView = {
-        let avatarImageView = UIImageView()
-        avatarImageView.layer.borderColor = UIColor.white.cgColor
-        avatarImageView.clipsToBounds = true
-        avatarImageView.layer.borderWidth = 3
-        avatarImageView.layer.cornerRadius = 30
-        avatarImageView.isUserInteractionEnabled = true
-        return avatarImageView
+    let userImageView: UIImageView = {
+        let view = UIImageView()
+        view.layer.cornerRadius = UIConstants.userImageSize / 2
+        view.clipsToBounds = true
+        return view
     }()
 
     lazy var surnameLabel: UILabel = {
@@ -147,35 +161,25 @@ class PostsTableViewCell: UITableViewCell {
         return separatorLineView
     }()
 
-    lazy var likesImageView: UIImageView = {
-        let likesImageView = UIImageView()
-        likesImageView.image = UIImage(named: "like")
-        return likesImageView
+    let likeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        return button
     }()
     
-    @objc private func likedOnTapped() {
-        likedButtonTapped?()
-    }
-    
-    lazy var likesLabel : UILabel = {
-        let likesLabel = UILabel()
-        likesLabel.font = UIFont.systemFont(ofSize: 16)
-        likesLabel.textColor = .black
-        
-        return likesLabel
+    let commentButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "bubble.right"), for: .normal)
+        return button
     }()
     
-    lazy var commentsImageView: UIImageView = {
-        let commentsImageView = UIImageView()
-        return commentsImageView
-    }()
-    
-    lazy var commentsLabel : UILabel = {
-        let viewsLabel = UILabel()
-        viewsLabel.font = UIFont.systemFont(ofSize: 16)
-        viewsLabel.textColor = .black
-        
-        return viewsLabel
+    private let shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "paperplane"), for: .normal)
+        return button
     }()
 
     
@@ -221,137 +225,142 @@ class PostsTableViewCell: UITableViewCell {
         }
     }
     
+    let likesLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: UIConstants.likesLabelFontSize, weight: .bold)
+        return label
+    }()
+
+    private let commentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: UIConstants.commentLabelFontSize)
+        return label
+    }()
+    
     
     
     
     private func setupView() {
         
-        addSubview(firstSeparatorLine)
-        addSubview(dateLabel)
-        addSubview(secondSeparatorLine)
-        addSubview(avatarImageView)
-        addSubview(surnameLabel)
-        addSubview(nameLabel)
-        addSubview(jobLabel)
-        addSubview(parametersButton)
-        addSubview(postView)
-        postView.addSubview(verticalLineView)
-        postView.addSubview(postTextLabel)
-        postView.addSubview(expandButton)
-        postView.addSubview(postImageVIew)
-        postView.addSubview(separatorLineView)
-        postView.addSubview(likesImageView)
-        postView.addSubview(likesLabel)
-        postView.addSubview(commentsImageView)
-        postView.addSubview(commentsLabel)
-        postView.addSubview(savedImageView)
         
         
-        dateLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(25)
+        selectionStyle = .none
+        
+        contentView.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
-            make.height.equalTo(25)
+            make.height.equalTo(24)
             make.width.equalTo(100)
+
         }
         
-        firstSeparatorLine.snp.makeConstraints { (make) in
+        contentView.addSubview(firstSeparatorLine)
+        firstSeparatorLine.snp.makeConstraints { make in
             make.centerY.equalTo(dateLabel.snp.centerY)
             make.left.equalToSuperview().offset(16)
-            make.right.equalTo(dateLabel.snp.left).offset(-10)
+            make.right.equalTo(dateLabel.snp.left).offset(-6)
             make.height.equalTo(1)
         }
         
-        secondSeparatorLine.snp.makeConstraints { (make) in
+        contentView.addSubview(secondSeparatorLine)
+        secondSeparatorLine.snp.makeConstraints { make in
             make.centerY.equalTo(dateLabel.snp.centerY)
-            make.left.equalTo(dateLabel.snp.right).offset(10)
+            make.left.equalTo(dateLabel.snp.right).offset(6)
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(1)
         }
-
-        avatarImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(dateLabel.snp.bottom).offset(25)
-            make.left.equalToSuperview().offset(26)
-            make.width.height.equalTo(70)
+        
+        
+        contentView.addSubview(userImageView)
+        userImageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(UIConstants.contentInset)
+            make.top.equalTo(dateLabel.snp.bottom).offset(16)
+            make.size.equalTo(UIConstants.userImageSize)
+        }
+        let usernameStack = UIStackView()
+        usernameStack.axis = .vertical
+        usernameStack.addArrangedSubview(surnameLabel)
+        usernameStack.addArrangedSubview(jobLabel)
+        contentView.addSubview(usernameStack)
+        usernameStack.snp.makeConstraints { make in
+            make.centerY.equalTo(userImageView)
+            make.leading.equalTo(userImageView.snp.trailing).offset(UIConstants.usernameStackToProfileImageOffset)
+        }
+        contentView.addSubview(parametersButton)
+        parametersButton.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
         
-        surnameLabel.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(36)
-            make.top.equalTo(dateLabel.snp.bottom).offset(36)
-            make.left.equalTo(avatarImageView.snp.right).offset(16)
-        }
+        contentView.addSubview(postTextLabel)
         
-        nameLabel.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(36)
-            make.top.equalTo(dateLabel.snp.bottom).offset(36)
-            make.left.equalTo(surnameLabel.snp.right).offset(6)
-        }
-        
-        jobLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(surnameLabel.snp.bottom).offset(6)
-            make.left.equalTo(avatarImageView.snp.right).offset(16)
-        }
-        
-        parametersButton.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(36)
-            make.top.equalTo(dateLabel.snp.bottom).offset(36)
-            make.right.equalToSuperview().offset(-16)
-        }
-        
-        postView.snp.makeConstraints { (make) in
-            make.top.equalTo(avatarImageView.snp.bottom).offset(16)
+        postTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(userImageView.snp.bottom).offset(6)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
         }
         
-        verticalLineView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(16)
+        contentView.addSubview(expandButton)
+        
+        expandButton.snp.makeConstraints { make in
+            make.top.equalTo(postTextLabel.snp.bottom).offset(6)
             make.left.equalToSuperview().offset(16)
-            make.width.equalTo(1)
-            make.height.equalTo(postTextLabel.snp.height).offset(40)
+        }
+        
+        contentView.addSubview(postImageVIew)
+        
+        postImageVIew.snp.makeConstraints { make in
+            make.top.equalTo(expandButton.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(150)
+            make.width.equalTo(400)
         }
         
         
-        postTextLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(16)
-            make.left.equalTo(verticalLineView.snp.right).offset(16)
-            make.right.equalTo(-16)
+//        let textDesignStack = UIStackView()
+//        textDesignStack.axis = .vertical
+//        textDesignStack.addArrangedSubview(postTextLabel)
+//        textDesignStack.addArrangedSubview(expandButton)
+//        postTextLabel.snp.makeConstraints { make in
+//            make.height.equalTo(postTextLabel.snp.height)
+//        }
+//        contentView.addSubview(textDesignStack)
+//        textDesignStack.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview()
+//            make.top.equalTo(userImageView.snp.bottom).offset(UIConstants.postImageToUserImageOffset)
+//        }
+        let actionsStack = UIStackView()
+        actionsStack.axis = .horizontal
+        actionsStack.addArrangedSubview(likeButton)
+        actionsStack.addArrangedSubview(likesLabel)
+        actionsStack.addArrangedSubview(commentButton)
+        actionsStack.addArrangedSubview(shareButton)
+        actionsStack.spacing = UIConstants.actionsStackSpacing
+        
+        contentView.addSubview(actionsStack)
+        actionsStack.snp.makeConstraints { make in
+            make.height.equalTo(UIConstants.actionsStackHeight)
+            make.leading.equalToSuperview().inset(UIConstants.contentInset)
+            make.top.equalTo(postImageVIew.snp.bottom).offset(40)
+        }
+        contentView.addSubview(likesLabel)
+        likesLabel.snp.makeConstraints { make in
+            make.leading.equalTo(likeButton.snp.trailing).offset(6)
+            make.centerY.equalTo(likeButton.snp.centerY)
+        }
+        commentButton.snp.makeConstraints { make in
+            make.left.equalTo(likesLabel.snp.right).offset(6)
+        }
+        contentView.addSubview(commentLabel)
+        commentLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(likesLabel.snp.trailing).offset(6)
+            make.top.equalTo(likesLabel.snp.bottom).offset(UIConstants.commentToLikesOffset)
+            make.bottom.equalToSuperview().inset(UIConstants.contentInset)
         }
         
-        descriptionHeightConstraint = postTextLabel.heightAnchor.constraint(equalToConstant: 80)
-        descriptionHeightConstraint.isActive = true
-        
-        expandButton.snp.makeConstraints { (make) in
-            make.top.equalTo(postTextLabel.snp.bottom).offset(3)
-            make.left.equalTo(verticalLineView.snp.right).offset(16)
-//            make.width.equalTo(140)
-//            make.height.equalTo(15)
-        }
-        
-        postImageVIew.snp.makeConstraints { (make) in
-            make.top.equalTo(expandButton.snp.bottom).offset(50)
-            make.left.equalTo(verticalLineView.snp.right).offset(16)
-            make.right.equalTo(-16)
-            make.height.equalTo(200)
-            make.width.equalTo(450)
-        }
 
-        separatorLineView.snp.makeConstraints { (make) in
-            make.top.equalTo(postImageVIew.snp.bottom).offset(30)
-            make.height.equalTo(1)
-            make.width.equalTo(postView.snp.width)
-        }
-
-        likesImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(separatorLineView.snp.bottom).offset(16)
-            make.left.equalTo(16)
-            make.height.width.equalTo(20)
-        }
-
-        likesLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(separatorLineView.snp.bottom).offset(16)
-            make.left.equalTo(likesImageView.snp.right).offset(6)
-        }
     }
 }
 

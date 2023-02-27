@@ -150,9 +150,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.rightPointerButton.addTarget(self, action: #selector(openPhotosAction), for: .touchUpInside)
           return cell
         } else {
-          let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellReuseIdentifiers.posts.rawValue) as! PostsTableViewCell
-            cell.avatarImageView.image = UIImage(named: "avatar")
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellReuseIdentifiers.posts.rawValue) as! PostsTableViewCell
+            cell.userImageView.image = UIImage(named: "avatar")
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
@@ -160,30 +160,30 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+                if coreManager.posts.contains( where: { $0.descript == post.description })  {
+                presentAlert(title: "", message: "Пост уже был добавлен")
+            } else {
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
+                cell.likeButton.tintColor = .red
+                self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+            }
+        })
+            tapRecognizer.numberOfTapsRequired = 1
+            cell.likeButton.isUserInteractionEnabled = true
+            cell.likeButton.addGestureRecognizer(tapRecognizer)
+            let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
+                let postVC = PostViewController(userImage: UIImage(named: "avatar") ?? UIImage(named: "")!, nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+                self.navigationController?.pushViewController(postVC, animated: true)
+            })
+            commentTapRecognizer.numberOfTapsRequired = 1
+            cell.commentButton.isUserInteractionEnabled = true
+            cell.commentButton.addGestureRecognizer(commentTapRecognizer)
             return cell
         }
     }
-    
-    func likedAction () {
-        print("click")
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        postsTableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 {
-            let post = viewModel.posts[indexPath.row]
-            let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                    if coreManager.posts.contains( where: { $0.descript == post.description }) {
-                        presentAlert(title: "", message: "Пост уже был добавлен")
-                    } else {
-                        self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-                    }
-                })
-            tapRecognizer.numberOfTapsRequired = 2
-            view.addGestureRecognizer(tapRecognizer)
-        }
-    }
+        
     
     @objc func openPhotosAction() {
         let photosVC = PhotosViewController(photos: viewModel.photos, albums: viewModel.albums)
@@ -226,18 +226,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 650
+            return 480
         }
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 120
-        } else {
-            return 650
-        }
-
-    }
+//
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.section == 0 {
+//            return 120
+//        } else {
+//            return 650
+//        }
+//
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {

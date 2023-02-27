@@ -150,7 +150,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.posts.rawValue) as! PostsTableViewCell
-            cell.avatarImageView.image = avatarImage
+            cell.userImageView.image = avatarImage
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
@@ -158,27 +158,48 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+                if coreManager.posts.contains( where: { $0.descript == post.description })  {
+                presentAlert(title: "", message: "Пост уже был добавлен")
+            } else {
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
+                cell.likeButton.tintColor = .red
+                self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+            }
+        })
+            tapRecognizer.numberOfTapsRequired = 1
+            cell.likeButton.isUserInteractionEnabled = true
+            cell.likeButton.addGestureRecognizer(tapRecognizer)
+            
+            let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
+                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+                self.navigationController?.pushViewController(postVC, animated: true)
+            })
+            commentTapRecognizer.numberOfTapsRequired = 1
+            cell.commentButton.isUserInteractionEnabled = true
+            cell.commentButton.addGestureRecognizer(commentTapRecognizer)
             
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        postsTableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 {
-            let post = posts[indexPath.row]
-            let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                    if coreManager.posts.contains( where: { $0.descript == post.description }) {
-                        presentAlert(title: "", message: "Пост уже был добавлен")
-                    } else {
-                        self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-                    }
-                })
-                tapRecognizer.numberOfTapsRequired = 2
-                view.addGestureRecognizer(tapRecognizer)
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        postsTableView.deselectRow(at: indexPath, animated: true)
+//        if indexPath.section == 1 {
+//            let post = posts[indexPath.row]
+//            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+//                    if coreManager.posts.contains( where: { $0.descript == post.description }) {
+//                        presentAlert(title: "", message: "Пост уже был добавлен")
+//                    } else {
+//                        self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+//                    }
+//                })
+//                tapRecognizer.numberOfTapsRequired = 2
+//                view.addGestureRecognizer(tapRecognizer)
+//        }
+//    }
     
     @objc func openPhotosAction() {
         let photosVC = FriendPhotosViewController(photos: photos, albums: albums)
