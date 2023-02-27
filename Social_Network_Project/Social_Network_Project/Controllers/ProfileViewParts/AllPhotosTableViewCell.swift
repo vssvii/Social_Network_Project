@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class AllPhotosTableViewCell: UITableViewCell {
     
@@ -115,17 +116,21 @@ extension AllPhotosTableViewCell: UICollectionViewDelegate, UICollectionViewData
         
         
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 90, height: 90)
+        return CGSize(width: 108, height: 80)
     }
     
-        
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-                        return 5
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 108, height: 80)
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
+//
+//    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//                        return 5
+//    }
+//
+//    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 5
+//    }
         
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                         print(indexPath.row)

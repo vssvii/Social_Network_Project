@@ -2,7 +2,7 @@
 //  StoriesTableViewCell.swift
 //  Social_Network_Project
 //
-//  Created by Developer on 19.02.2023.
+// Created by Ibragim Assaibuldayev on 20.02.2023.
 //
 
 import UIKit
@@ -69,16 +69,10 @@ extension StoriesTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     }
         
         
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 80)
-    }
-        
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-                        return 30
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 30
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return indexPath.row == 0 ? CGSize(width: 100, height: 100) : CGSize(width: 80, height: 100)
     }
         
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

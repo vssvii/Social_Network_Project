@@ -1,0 +1,182 @@
+{
+    "other_stories_count": 4,
+    "my_story": [
+        {
+            "id": "a1",
+            "last_updated": 1504799962,
+            "user": {
+                "id": "b1",
+                "name": "Моя история",
+                "picture": "https://sun9-60.userapi.com/s/v1/ig2/USWZn51Il8nGYlRc6XH69R980-BNJ0HKSFlKq15LJciOJRoEinl4RQqxpLWWH3XGh0lwKp1WOow-hwruydaToctk.jpg?size=200x200&quality=96&crop=0,0,742,742&ava=1"
+            },
+            "snaps_count": 6,
+            "snaps": [
+                {
+                    "id": "c1",
+                    "mime_type": "image",
+                    "url": "https://ru.snow-forecast.com/pistemaps/Chimbulak_pistemap.jpg?1601557023",
+                    "last_updated": "1m"
+                },
+                {
+                    "id": "c2",
+                    "mime_type": "image",
+                    "url": "https://vsobolev.com/Image/2021/12/chimbulak-2021-22-sezon.jpg",
+                    "last_updated": "2m"
+                },
+                {
+                    "id": "c3",
+                    "mime_type": "image",
+                    "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/2e51cb8b-fd51-4166-84a2-63559733baac/600x900",
+                    "last_updated": "3m"
+                },
+                {
+                    "id": "c4",
+                    "mime_type": "image",
+                    "url": "https://img.freepik.com/premium-photo/spectacular-scenic-big-almaty-lake-tien-shan-mountains-almaty-region-kazakhstan-vertical_260418-2818.jpg?w=2000",
+                    "last_updated": "4m"
+                },
+                {
+                    "id": "c5",
+                    "mime_type": "image",
+                    "url": "https://sputnik.kz/img/old/629/69/6296944_305:0:1614:1440_1920x0_80_0_0_b497b172456fe80b41b20ce672e2dde3.jpg",
+                    "last_updated": "5m"
+                },
+                {
+                    "id": "c6",
+                    "mime_type": "image",
+                    "url": "https://img-fotki.yandex.ru/get/6305/50083820.1f7/0_b1ae0_18de0528_XL",
+                    "last_updated": "6m"
+                }
+            ]
+        }
+    ],
+    "other_stories": [
+        {
+            "id": "a2",
+            "last_updated": 1504799962,
+            "user": {
+                "id": "b2",
+                "name": "Alibekov",
+                "picture": "https://upload.wikimedia.org/wikipedia/commons/3/36/Beibit_Alibekov_Esentai.jpg"
+            },
+            "snaps_count": 1,
+            "snaps": [
+                {
+                    "id": "c6",
+                    "mime_type": "image",
+                    "url": "https://wallpapercave.com/wp/wp5865809.jpg",
+                    "last_updated": "1m"
+                }
+            ]
+        },
+        {
+            "id": "a3",
+            "last_updated": 1504799962,
+            "user": {
+                "id": "b3",
+                "name": "mar_seissem",
+                "picture": "https://media.licdn.com/dms/image/C4D05AQHKk_Y_80al-g/videocover-high/0/1669882282864?e=2147483647&v=beta&t=OK4Wr0LHfj9gp2Jb0Lhdk-aO9qfnJOCmDZxxMWmIdlU"
+            },
+            "snaps_count": 4,
+            "snaps": [
+                {
+                    "id": "c7",
+                    "mime_type": "image",
+                    "url": "https://img.freepik.com/free-photo/beautiful-vertical-shot-long-mountain-peak-covered-green-grass-perfect-wallpaper_181624-4986.jpg?w=2000",
+                    "last_updated": "1m"
+                },
+                {
+                    "id": "c8",
+                    "mime_type": "image",
+                    "url": "https://i.pinimg.com/736x/bd/97/c3/bd97c3cd1367f8b3024623db26d6d177.jpg",
+                    "last_updated": "2m"
+                },
+                {
+                    "id": "c9",
+                    "mime_type": "image",
+                    "url": "https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dGVzbGF8ZW58MHx8MHx8&w=1000&q=80",
+                    "last_updated": "2m"
+                },
+                {
+                    "id": "c10",
+                    "mime_type": "image",
+                    "url": "https://businessforumgroup.com/wp-content/uploads/2021/11/ABF_web-logo-1024x1024.jpg",
+                    "last_updated": "2m"
+                }
+            ]
+        },
+        {
+            "id": "a4",
+            "last_updated": 1504799992,
+            "user": {
+                "id": "b4",
+                "name": "ivleeva",
+                "picture": "https://n1s2.hsmedia.ru/34/e9/af/34e9af99e2975b067f673930246db83e/600x600_1_6781a9e72c03d7f080346985b54a13ae@1080x1080_0xac120003_20858631231617121183.jpg"
+            },
+            "snaps_count": 5,
+            "snaps": [
+                {
+                    "id": "c11",
+                    "mime_type": "image",
+                    "url": "https://i.pinimg.com/originals/a5/e2/b5/a5e2b5decb68f65965bf3e1b700b5ed2.jpg",
+                    "last_updated": "8m"
+                },
+                {
+                    "id": "c12",
+                    "mime_type": "image",
+                    "url": "https://wallpapershome.com/images/pages/pic_v/5405.jpg",
+                    "last_updated": "9m"
+                },
+                {
+                    "id": "c13",
+                    "mime_type": "image",
+                    "url": "https://icdn.lenta.ru/images/2022/09/19/14/20220919144645489/pwa_vertical_1280_73aa59de45b431b8dfd60835535d924f.jpg",
+                    "last_updated": "10m"
+                },
+                {
+                    "id": "c14",
+                    "mime_type": "image",
+                    "url": "https://icdn.lenta.ru/images/2022/03/16/17/20220316173213529/pwa_vertical_1280_0ab234726eac3b666677e27855810e04.jpg",
+                    "last_updated": "11m"
+                },
+                {
+                    "id": "c15",
+                    "mime_type": "video",
+                    "url": "https://st2.depositphotos.com/24244138/51059/v/600/depositphotos_510596040-stock-video-vertical-video-of-the-sea.mp4",
+                    "last_updated": "12m"
+                }
+            ]
+        },
+        {
+            "id": "a5",
+            "last_updated": 1504799092,
+            "user": {
+                "id": "b5",
+                "name": "DuaLipa",
+                "picture": "https://m.media-amazon.com/images/M/MV5BOWRiMzRlZGUtNjA1Zi00OGJlLTg3Y2QtYjQ3MDNhOTQ1OWVjXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_FMjpg_UX1000_.jpg",
+                "last_updated": "13m"
+            },
+            "snaps_count": 3,
+            "snaps": [
+                {
+                    "id": "c16",
+                    "mime_type": "image",
+                    "url": "https://i.pinimg.com/736x/c5/76/7f/c5767f0f1e863f6f13c5b82c64b1e1b4.jpg",
+                    "last_updated": "14m"
+                },
+                {
+                    "id": "c17",
+                    "mime_type": "image",
+                    "url": "https://images.squarespace-cdn.com/content/v1/5e39b64bb93e4b65cbb562de/1582808892307-LPBJK12HXK48LM845JI8/un-jobs-new-york-city",
+                    "last_updated": "15m"
+                },
+                {
+                    "id": "c18",
+                    "mime_type": "image",
+                    "url": "https://assets.vogue.com/photos/627294cf3f05fd3d129dc615/master/w_1600%2Cc_limit/VO0622_CoverStory_1.jpg",
+                    "last_updated": "16m"
+                }
+            ]
+        }
+    ]
+}
