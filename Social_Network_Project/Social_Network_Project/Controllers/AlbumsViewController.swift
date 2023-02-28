@@ -47,7 +47,7 @@ class AlbumsViewController: UIViewController {
     
     private func setupView() {
         
-        title = "Альбомы"
+        title = "albums".localized
         view.backgroundColor = .white
         
         view.addSubview(albumsCollectionView)

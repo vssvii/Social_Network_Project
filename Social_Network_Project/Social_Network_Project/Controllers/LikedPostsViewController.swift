@@ -20,7 +20,7 @@ class LikedPostsViewController: UIViewController {
     private lazy var likedPostsLabel: UILabel = {
         let likedPostsLabel = UILabel()
         likedPostsLabel.textColor = Tint.textOrange
-        likedPostsLabel.text = "Двойное нажатие - удаление поста"
+        likedPostsLabel.text = "double_click".localized
         likedPostsLabel.font = UIFont.boldSystemFont(ofSize: 15)
         return likedPostsLabel
     }()
@@ -50,7 +50,7 @@ class LikedPostsViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "doc.badge.arrow.up"), style: .done, target: self, action: #selector(refreshTableView))
         navigationItem.leftBarButtonItem?.tintColor = .orange
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteAll))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "delete_all".localized, style: .plain, target: self, action: #selector(deleteAll))
         navigationItem.rightBarButtonItem?.tintColor = .red
     }
     
@@ -67,7 +67,7 @@ class LikedPostsViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        title = "Любимые посты"
+        title = "favourite_posts".localized
         
         view.addSubview(likedPostsLabel)
         view.addSubview(likedPostsTableView)
@@ -111,12 +111,12 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = coreManager.posts[indexPath.row]
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
-            let alert = UIAlertController(title: "Удаление поста", message: "Хотите удалить пост?", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "deleting_a_post".localized, message: "want_delete_post".localized, preferredStyle: UIAlertController.Style.alert)
 
-            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertAction.Style.default, handler: { _ in
+            alert.addAction(UIAlertAction(title: "cancel".localized, style: UIAlertAction.Style.default, handler: { _ in
                             //Cancel Action
                         }))
-            alert.addAction(UIAlertAction(title: "Удалить",
+            alert.addAction(UIAlertAction(title: "delete".localized,
                                                       style: UIAlertAction.Style.destructive,
                                                       handler: {(_: UIAlertAction!) in
 //                            self.coreManager.deletePosts(post: post)

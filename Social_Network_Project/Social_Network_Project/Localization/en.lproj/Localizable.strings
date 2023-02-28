@@ -1,0 +1,82 @@
+/* 
+  Localizable.strings
+  Navigation_2
+
+ Created by Ibragim Assaibuldayev on 13.12.2022.
+  
+*/
+
+
+// MARK: Authentication
+
+"register" = "REGISTER";
+"i_have_account" = "Have already an account";
+"enter_number" = "Enter a number";
+"your_number_will_be_used" = "Your number will be used to log into your account";
+"go_on" = "GO ON";
+"accept_the_user_agreement" = "By clicking the “Next” button You accept the User Agreement and the Privacy Policy";
+"confirmation_of_registration" = "Confirmation of registration";
+"sms_to_the_number" = "We sent an SMS with a code to the number";
+"enter_code_from_sms" = "Enter the code from the SMS";
+"invalid_code" = "Invalid code";
+"welcome_back" = "Welcome back";
+"enter_your_phone_number_to_log_in_to_the_app" = "Enter your phone number to log in to the app";
+"CONFIRM" = "CONFIRM";
+"the_user_with_this_number_is_not_registered" = "The user with this number is not registered";
+
+
+// MARK: TabBarControllers
+
+"main" = "Main";
+"profile" = "Profile";
+"favourite_posts" = "Favourite posts";
+
+// MARK: Others
+
+"the_post_has_been_already_added" = "The post has been already added";
+"delete_all" = "Delete all";
+"cancel" = "Cancel";
+"delete" = "Delete";
+"feed" = "Feed";
+"want_delete_post" = "Do you want to delete a post?";
+"deleting_a_post" = "Deleting a post";
+"double_click" = "Double click - delete post";
+"for_you" = "For you";
+"settings" = "Settings";
+"archives" = "Archives";
+"files" = "Files";
+"liked" = "Liked";
+"bookmarks" = "Bookmarks";
+"careers" = "Careers";
+"education" = "Education";
+"interests" = "Inerests";
+"contacts" = "Contacts";
+"basic_information" = "Basic information";
+"enter_name" = "Enter a name";
+"day.month.year" = "day.month.year";
+"hometown" = "Hometown";
+"date_of_birth" = "Date of Birth";
+"gender" = "Gender";
+"job" = "Job";
+"surname" = "Surname";
+"name" = "Name";
+"nick" = "Nick";
+"post" = "Post";
+"try_implement_functionality" = "Try to implement your own functionality for 'Your Story'";
+"redirecting_to_the_history_adding_screen" = "Redirecting to the history adding screen";
+"subscribers" = "Subscribers";
+"subscriptions" = "Subscriptions";
+"publications" = "Publications";
+"photo" = "Photo";
+"history" = "History";
+"record" = "Record";
+"edit" = "Edit";
+"message" = "Message";
+"detailed_information" = "Detailed information";
+"male" = "Male";
+"female" = "Female";
+"all_photos" = "All photos";
+"albums" = "Albums";
+"hide" = "Hide";
+"show_in_all" = "Show in all";
+"photos" = "Photos";

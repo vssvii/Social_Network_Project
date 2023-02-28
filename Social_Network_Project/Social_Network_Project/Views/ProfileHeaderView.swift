@@ -52,7 +52,7 @@ class ProfileHeaderView: UIView {
     lazy var genderLabel: UILabel = {
         let genderLabel = UILabel()
         genderLabel.font = .systemFont(ofSize: 14)
-        genderLabel.text = "Мужской"
+        genderLabel.text = "male".localized
         return genderLabel
     }()
     
@@ -76,7 +76,7 @@ class ProfileHeaderView: UIView {
     
     lazy var infoLabel: UILabel = {
         let infoLabel = UILabel()
-        infoLabel.text = "Подробная информация"
+        infoLabel.text = "detailed_information".localized
         infoLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return infoLabel
     }()
@@ -85,7 +85,7 @@ class ProfileHeaderView: UIView {
         let editButton = UIButton()
         editButton.backgroundColor = UIColor(hex: "#FF9E45")
         editButton.layer.cornerRadius = 10
-        editButton.setTitle("Редактировать", for: .normal)
+        editButton.setTitle("edit".localized, for: .normal)
         editButton.tintColor = .white
         return editButton
     }()
@@ -125,7 +125,7 @@ class ProfileHeaderView: UIView {
     
     lazy var writePostLabel: UILabel = {
         let writePostLabel = UILabel()
-        writePostLabel.text = "Запись"
+        writePostLabel.text = "record".localized
         return writePostLabel
     }()
     
@@ -137,7 +137,7 @@ class ProfileHeaderView: UIView {
     
     lazy var photosHistoryLabel: UILabel = {
         let photosHistoryLabel = UILabel()
-        photosHistoryLabel.text = "История"
+        photosHistoryLabel.text = "history".localized
         return photosHistoryLabel
     }()
     
@@ -149,7 +149,7 @@ class ProfileHeaderView: UIView {
     
     lazy var photoLabel: UILabel = {
         let photosLabel = UILabel()
-        photosLabel.text = "Фото"
+        photosLabel.text = "photo".localized
         return photosLabel
     }()
     

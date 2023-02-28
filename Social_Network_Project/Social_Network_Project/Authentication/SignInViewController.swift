@@ -13,7 +13,7 @@ class SignInViewController: UIViewController {
     
     private lazy var signInLabel: UILabel = {
         let signInLabel = UILabel()
-        signInLabel.text = "С возвращением"
+        signInLabel.text = "welcome_back".localized
         signInLabel.textColor = UIColor(hex: "#F69707")
         signInLabel.font = .boldSystemFont(ofSize: 18)
         return signInLabel
@@ -21,7 +21,7 @@ class SignInViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Введите номер телефона для входа в приложение"
+        descriptionLabel.text = "enter_your_phone_number_to_log_in_to_the_app".localized
         descriptionLabel.font = .systemFont(ofSize: 14)
         descriptionLabel.textColor = UIColor(hex: "#263238")
         return descriptionLabel
@@ -41,7 +41,7 @@ class SignInViewController: UIViewController {
     
     private lazy var confirmationButton: UIButton = {
         let confirmationButton = UIButton()
-        confirmationButton.setTitle("ПОДТВЕРДИТЬ", for: .normal)
+        confirmationButton.setTitle("CONFIRM".localized, for: .normal)
         confirmationButton.backgroundColor = UIColor(hex: "#263238")
         confirmationButton.layer.cornerRadius = 10
         confirmationButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
@@ -54,25 +54,25 @@ class SignInViewController: UIViewController {
         let formattedNumber = format(with: "+X (XXX) XXX-XXXX", phone: registeredNumber)
         if numberTextField.text == formattedNumber {
                 let mainViewItem = UITabBarItem()
-                mainViewItem.title = "Главная"
+            mainViewItem.title = "main".localized
                 mainViewItem.image = UIImage(systemName: "house.fill")
                 let mainVC = MainViewController()
                 mainVC.tabBarItem = mainViewItem
                 let mainNVC = UINavigationController(rootViewController: mainVC)
                 
                 let profileItem = UITabBarItem()
-                profileItem.title = "Профиль"
+                profileItem.title = "profile".localized
                 profileItem.image = UIImage(systemName: "person.fill")
             let profileVC = ProfileViewController(nickName: "vssvii", name: "Ибрагим", surname: "Асайбулдаев", job: "iOS разработчик", gender: "мужской", birth: "17 декабря 1995", city: "Астана")
-                profileVC.title = "Профиль"
+            profileVC.title = "profile".localized
                 profileVC.tabBarItem = profileItem
                 let profileNVC = UINavigationController(rootViewController: profileVC)
                 
                 let savedPostsItem = UITabBarItem()
-                savedPostsItem.title = "Сохраненные"
+            savedPostsItem.title = "favourite_posts".localized
                 savedPostsItem.image = UIImage(systemName: "heart.fill")
                 let savedPostsVC = LikedPostsViewController()
-                savedPostsVC.title = "Сохраненные"
+                savedPostsVC.title = "favourite_posts".localized
                 savedPostsVC.tabBarItem = savedPostsItem
                 let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
                 
@@ -88,7 +88,7 @@ class SignInViewController: UIViewController {
                 appDelegate.window?.rootViewController = tabBarController
                 appDelegate.window?.makeKeyAndVisible()
         } else {
-            presentAlert(title: "Пользователь с таким номером не зарегистрирован", message: "")
+            presentAlert(title: "the_user_with_this_number_is_not_registered".localized, message: "")
         }
     }
 

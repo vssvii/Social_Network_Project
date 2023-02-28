@@ -17,7 +17,7 @@ class RegisterConfirmationViewController: UIViewController {
     
     private lazy var confirmationLabel: UILabel = {
         let confirmationLabel = UILabel()
-        confirmationLabel.text = "Подтверждение регистрации"
+        confirmationLabel.text = "confirmation_of_registration".localized
         confirmationLabel.textColor = UIColor(hex: "#F69707")
         confirmationLabel.font = .boldSystemFont(ofSize: 18)
         return confirmationLabel
@@ -25,7 +25,8 @@ class RegisterConfirmationViewController: UIViewController {
     
     private lazy var codeDescriptionLabel: UILabel = {
         let codeDescriptionLabel = UILabel()
-        codeDescriptionLabel.text = "Мы отправили SMS с кодом на номер \(phoneNumber)"
+        let smsCodeLocalization = "sms_to_the_number".localized
+        codeDescriptionLabel.text = "\(smsCodeLocalization) \(phoneNumber)"
         codeDescriptionLabel.font = .systemFont(ofSize: 14)
         codeDescriptionLabel.textAlignment = .center
         codeDescriptionLabel.numberOfLines = 0
@@ -34,7 +35,7 @@ class RegisterConfirmationViewController: UIViewController {
     
     private lazy var smsDescriptionLabel: UILabel = {
         let smsDescriptionLabel = UILabel()
-        smsDescriptionLabel.text = "Введите код из SMS"
+        smsDescriptionLabel.text = "enter_code_from_sms".localized
         smsDescriptionLabel.font = .systemFont(ofSize: 12)
         smsDescriptionLabel.textColor = UIColor(hex: "#7E8183")
         return smsDescriptionLabel
@@ -53,7 +54,7 @@ class RegisterConfirmationViewController: UIViewController {
     
     private lazy var registrationButton: UIButton = {
         let registrationButton = UIButton()
-        registrationButton.setTitle("ЗАРЕГИСТРИРОВАТЬСЯ", for: .normal)
+        registrationButton.setTitle("register".localized, for: .normal)
         registrationButton.backgroundColor = UIColor(hex: "#263238")
         registrationButton.layer.cornerRadius = 10
         registrationButton.addTarget(self, action: #selector(finishRegistrationAction), for: .touchUpInside)
@@ -66,30 +67,30 @@ class RegisterConfirmationViewController: UIViewController {
             let code = text
             AuthManager.shared.verifyCode(smsCode: code) { success in
                 guard success else {
-                    self.presentAlert(title: "Неверный код!", message: "")
+                    self.presentAlert(title: "invalid_code".localized, message: "")
                     return
                 }
                 DispatchQueue.main.async {
                     let mainViewItem = UITabBarItem()
-                    mainViewItem.title = "Главная"
+                    mainViewItem.title = "main".localized
                     mainViewItem.image = UIImage(systemName: "house.fill")
                     let mainVC = MainViewController()
                     mainVC.tabBarItem = mainViewItem
                     let mainNVC = UINavigationController(rootViewController: mainVC)
                     
                     let profileItem = UITabBarItem()
-                    profileItem.title = "Профиль"
+                    profileItem.title = "profile".localized
                     profileItem.image = UIImage(systemName: "person.fill")
                     let profileVC = ProfileViewController(nickName: "vssvii", name: "Ибрагим", surname: "Асайбулдаев", job: "iOS разработчик", gender: "мужской", birth: "17 декабря 1995", city: "Астана")
-                    profileVC.title = "Профиль"
+                    profileVC.title = "profile".localized
                     profileVC.tabBarItem = profileItem
                     let profileNVC = UINavigationController(rootViewController: profileVC)
                     
                     let savedPostsItem = UITabBarItem()
-                    savedPostsItem.title = "Сохраненные"
+                    savedPostsItem.title = "favourite_posts".localized
                     savedPostsItem.image = UIImage(systemName: "heart.fill")
                     let likedPostsVC = LikedPostsViewController()
-                    likedPostsVC.title = "Сохраненные"
+                    likedPostsVC.title = "favourite_posts".localized
                     likedPostsVC.tabBarItem = savedPostsItem
                     let likedPostsNVC = UINavigationController(rootViewController: likedPostsVC)
                     

@@ -156,7 +156,7 @@ class PostViewController: UIViewController {
     
     private func setupView() {
         
-        title = "Пост"
+        title = "post".localized
         view.backgroundColor = .white
         
         view.addSubview(userImageView)

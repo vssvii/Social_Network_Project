@@ -17,7 +17,7 @@ class RegistrationViewController: UIViewController {
     
     private lazy var registrationLabel: UILabel = {
         let registrationLabel = UILabel()
-        registrationLabel.text = "ЗАРЕГИСТРИРОВАТЬСЯ"
+        registrationLabel.text = "register".localized
         registrationLabel.textColor = UIColor(hex: "#263238")
         registrationLabel.font = .boldSystemFont(ofSize: 18)
         registrationLabel.numberOfLines = 0
@@ -26,7 +26,7 @@ class RegistrationViewController: UIViewController {
     
     private lazy var writeNumberLabel: UILabel = {
         let writeNumberLabel = UILabel()
-        writeNumberLabel.text = "Введите номер"
+        writeNumberLabel.text = "write_number".localized
         writeNumberLabel.font = .systemFont(ofSize: 16)
         writeNumberLabel.textColor = UIColor(hex: "#D9D9D9")
         writeNumberLabel.numberOfLines = 0
@@ -35,7 +35,7 @@ class RegistrationViewController: UIViewController {
     
     private lazy var numberDescriptionLabel: UILabel = {
         let numberDescriptionLabel = UILabel()
-        numberDescriptionLabel.text = "Ваш номер будет использоваться для входа в аккаунт"
+        numberDescriptionLabel.text = "your_number_will_be_used".localized
         numberDescriptionLabel.textColor = UIColor(hex: "#7E8183")
         numberDescriptionLabel.font = .systemFont(ofSize: 12)
         numberDescriptionLabel.numberOfLines = 0
@@ -58,7 +58,7 @@ class RegistrationViewController: UIViewController {
     
     private lazy var goOnButton: UIButton = {
         let goOnButton = UIButton()
-        goOnButton.setTitle("ДАЛЕЕ", for: .normal)
+        goOnButton.setTitle("go_on".localized, for: .normal)
         goOnButton.backgroundColor = UIColor(hex: "#263238")
         goOnButton.layer.cornerRadius = 10
         goOnButton.addTarget(self, action: #selector(registerConfirmationVC), for: .touchUpInside)
@@ -83,7 +83,7 @@ class RegistrationViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Нажимая кнопку “Далее” Вы принимаете пользовательское Соглашение и политику конфедициальности"
+        descriptionLabel.text = "accept_the_user_agreement".localized
         descriptionLabel.font = .systemFont(ofSize: 12)
         descriptionLabel.textColor = UIColor(hex: "7E8183")
         descriptionLabel.textAlignment = .center

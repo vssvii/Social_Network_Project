@@ -52,7 +52,6 @@ class FriendHeaderView: UIView {
     lazy var genderLabel: UILabel = {
         let genderLabel = UILabel()
         genderLabel.font = .systemFont(ofSize: 14)
-        genderLabel.text = "Мужской"
         return genderLabel
     }()
     
@@ -74,7 +73,7 @@ class FriendHeaderView: UIView {
     
     lazy var infoLabel: UILabel = {
         let infoLabel = UILabel()
-        infoLabel.text = "Подробная информация"
+        infoLabel.text = "detailed_information".localized
         infoLabel.font = UIFont.boldSystemFont(ofSize: 14)
         return infoLabel
     }()
@@ -83,7 +82,7 @@ class FriendHeaderView: UIView {
         let messageButton = UIButton()
         messageButton.backgroundColor = UIColor(hex: "#263238")
         messageButton.layer.cornerRadius = 10
-        messageButton.setTitle("Сообщение", for: .normal)
+        messageButton.setTitle("message".localized, for: .normal)
         messageButton.tintColor = .white
         return messageButton
     }()
@@ -92,7 +91,7 @@ class FriendHeaderView: UIView {
         let сallButton = UIButton()
         сallButton.backgroundColor = UIColor(hex: "#AAB0B4")
         сallButton.layer.cornerRadius = 10
-        сallButton.setTitle("Позвонить", for: .normal)
+        сallButton.setTitle("call".localized, for: .normal)
         сallButton.tintColor = .white
         return сallButton
     }()

@@ -2,8 +2,7 @@
 //  IGStory.swift
 //  Social_Network_Project
 //
-//  Created by Developer on 26.02.2023.
-//Multiple commands produce '/Users/Developer/Library/Developer/Xcode/DerivedData/Social_Network_Project-dtsvarnunmvuifdsxdfqbvxyldyv/Build/Intermediates.noindex/Social_Network_Project.build/Debug-iphoneos/Social_Network_Project.build/Objects-normal/arm64/IGStoryPreviewController.stringsdata'
+//  Created by Ibragim Assaibuldayev on 21.02.2023
 
 
 import Foundation

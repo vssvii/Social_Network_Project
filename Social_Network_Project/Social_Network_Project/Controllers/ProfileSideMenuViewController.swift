@@ -47,7 +47,7 @@ class ProfileSideMenuViewController: UIViewController {
         return tableView
     }()
     
-    private var menuSideOptions = ["Закладки", "Понравилось", "Файлы",  "Архивы", "Настройки"]
+    private var menuSideOptions = ["bookmarks".localized, "liked".localized, "files".localized,  "archives".localized, "settings".localized]
     private var menuSideImages = ["bookmark", "heart", "square.and.arrow.up", "personalhotspot", "slider.horizontal.3"]
     
 //    enum MenuOptions: String {
@@ -117,7 +117,7 @@ extension ProfileSideMenuViewController: UITableViewDataSource, UITableViewDeleg
         let selectedItem = menuSideOptions[indexPath.row]
         menuDelegate?.didSelectMenuItem(named: selectedItem)
         
-        if selectedItem == "Понравилось" {
+        if selectedItem == "liked".localized {
             let savedPageVC = LikedPostsViewController()
             navigationController?.pushViewController(savedPageVC, animated: true)
         }

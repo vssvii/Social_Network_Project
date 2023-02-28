@@ -162,7 +162,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
                 if coreManager.posts.contains( where: { $0.descript == post.description })  {
-                presentAlert(title: "", message: "Пост уже был добавлен")
+                    presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
                 cell.likeButton.tintColor = .red
@@ -198,9 +198,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             view.nameLabel.text = name
             view.surnameLabel.text = surname
             view.jobLabel.text = job
-            view.publicationResultLabel.text = "200 публикаций"
-            view.subscriptionResultLabel.text = "350 подписок"
-            view.subscriberResultLabel.text = "350 подписчиков"
+            let publicationLocalized = "publications".localized
+            view.publicationResultLabel.text = "596 \(publicationLocalized)"
+            let subscriptionLocalized = "subscriptions".localized
+            view.subscriptionResultLabel.text = "867 \(subscriptionLocalized)"
+            let subscribersLocalized = "subscribers".localized
+            view.subscriberResultLabel.text = "687 \(subscribersLocalized)"
             view.editButton.addTarget(self, action: #selector(openEditPage), for: .touchUpInside)
             view.infoLabel.isUserInteractionEnabled = true
             let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openInfoPageAction))
@@ -245,10 +248,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             return 0
         }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Мои записи"
     }
 }
 

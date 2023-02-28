@@ -18,7 +18,7 @@ class AlbumTableViewCell: UITableViewCell {
     
     lazy var albumsLabel: UILabel = {
         let photosLabel = UILabel()
-        photosLabel.text = "Альбомы"
+        photosLabel.text = "albums".localized
         photosLabel.font = UIFont.boldSystemFont(ofSize: 16)
         photosLabel.textColor = .black
         photosLabel.numberOfLines = 1
@@ -34,7 +34,7 @@ class AlbumTableViewCell: UITableViewCell {
     
     lazy var showAllButton: UIButton = {
         let showAllButton = UIButton()
-        showAllButton.setTitle("Показать все", for: .normal)
+        showAllButton.setTitle("show_in_all".localized, for: .normal)
         showAllButton.setTitleColor(UIColor(hex: "#FF9E45"), for: .normal)
         return showAllButton
     }()

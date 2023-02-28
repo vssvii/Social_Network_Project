@@ -67,7 +67,7 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
         
         
         let navItem = UINavigationItem()
-        navItem.title = "Фотографии"
+        navItem.title = "photos".localized
         
         
         navBar.setItems([navItem], animated: true)
@@ -81,7 +81,14 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
     
     private func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(addPhoto))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.rightBarButtonItem?.tintColor = Tint.orange
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func addPhoto() {

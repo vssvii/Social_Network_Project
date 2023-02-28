@@ -18,7 +18,7 @@ class AllPhotosTableViewCell: UITableViewCell {
     
     lazy var photosLabel: UILabel = {
         let photosLabel = UILabel()
-        photosLabel.text = "Все фотографии"
+        photosLabel.text = "all_photos".localized
         photosLabel.font = UIFont.boldSystemFont(ofSize: 16)
         photosLabel.textColor = .black
         photosLabel.numberOfLines = 1

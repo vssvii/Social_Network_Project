@@ -14,7 +14,7 @@ class MainViewController: UIViewController  {
     
     private lazy var mainLabel: UILabel = {
         let mainLabel = UILabel()
-        mainLabel.text = "Главная"
+        mainLabel.text = "main".localized
         mainLabel.font = UIFont.boldSystemFont(ofSize: 18)
         return mainLabel
     }()
@@ -46,8 +46,8 @@ class MainViewController: UIViewController  {
         let feedVC = FeedViewController()
         let personalVC = PersonalViewController()
         
-        feedVC.title = "Новости"
-        personalVC.title = "Для вас"
+        feedVC.title = "feed".localized
+        personalVC.title = "for_you".localized
         
         subControllers = [feedVC, personalVC]
         

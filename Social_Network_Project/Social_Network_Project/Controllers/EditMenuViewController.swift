@@ -17,7 +17,7 @@ class EditMenuViewController: UIViewController {
     
     private lazy var fullNameLabel: UILabel = {
         let fullNameLabel = UILabel()
-        fullNameLabel.text = "Профиль"
+        fullNameLabel.text = "profile".localized
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         return fullNameLabel
     }()
@@ -44,7 +44,7 @@ class EditMenuViewController: UIViewController {
         return tableView
     }()
     
-    private var menuSideOptions = ["Основная информация", "Контакты", "Интересы",  "Образование", "Карьера"]
+    private var menuSideOptions = ["basic_information".localized, "contacts".localized, "interests".localized,  "education".localized, "careers".localized]
     
 //    enum MenuOptions: String {
 //        case basicInfo = "Основная информация"
@@ -109,7 +109,7 @@ extension EditMenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let option = menuSideOptions[indexPath.row]
-        if option == "Основная информация" {
+        if option == "detailed_information".localized {
             let editPageVC = EditViewController()
             navigationController?.pushViewController(editPageVC, animated: true)
         }

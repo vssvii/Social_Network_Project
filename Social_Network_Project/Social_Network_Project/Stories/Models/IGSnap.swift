@@ -1,8 +1,8 @@
 //
 //  IGSnap.swift
+//  Social_Network_Project
 //
-//  Created by Ranjith Kumar on 9/28/17
-//  Copyright (c) DrawRect. All rights reserved.
+//  Created by Ibragim Assaibuldayev on 21.02.2023
 //
 
 import Foundation

@@ -13,14 +13,14 @@ class EditViewController: UIViewController {
     
     private lazy var nickNameLabel: UILabel = {
         let nickNameLabel = UILabel()
-        nickNameLabel.text = "Ник"
+        nickNameLabel.text = "nick".localized
         nickNameLabel.font = UIFont.boldSystemFont(ofSize: 12)
         return nickNameLabel
     }()
     
     private lazy var nickNameTextField: UITextField = {
         let nickNameTextField = UITextField()
-        nickNameTextField.placeholder = "Ник"
+        nickNameTextField.placeholder = "nick".localized
         nickNameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
         return nickNameTextField
     }()
@@ -28,49 +28,49 @@ class EditViewController: UIViewController {
     
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.text = "Имя"
+        nameLabel.text = "name".localized
         nameLabel.font = UIFont.boldSystemFont(ofSize: 12)
         return nameLabel
     }()
     
     private lazy var nameTextField: UITextField = {
         let nameTextField = UITextField()
-        nameTextField.placeholder = " имя"
+        nameTextField.placeholder = "name".localized
         nameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
         return nameTextField
     }()
     
     private lazy var surnameLabel: UILabel = {
         let surnameLabel = UILabel()
-        surnameLabel.text = "Фамилия"
+        surnameLabel.text = "surname".localized
         surnameLabel.font = UIFont.boldSystemFont(ofSize: 12)
         return surnameLabel
     }()
     
     private lazy var surnameTextField: UITextField = {
         let surnameTextField = UITextField()
-        surnameTextField.placeholder = " фамилия"
+        surnameTextField.placeholder = "surname".localized
         surnameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
         return surnameTextField
     }()
     
     private lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
-        jobLabel.text = "Профессия"
+        jobLabel.text = "job".localized
         jobLabel.font = UIFont.boldSystemFont(ofSize: 12)
         return jobLabel
     }()
     
     private lazy var jobTextField: UITextField = {
         let jobTextField = UITextField()
-        jobTextField.placeholder = " профессия"
+        jobTextField.placeholder = "job".localized
         jobTextField.backgroundColor = UIColor(hex: "#F5F3EE")
         return jobTextField
     }()
     
     private lazy var genderLabel: UILabel = {
         let genderLabel = UILabel()
-        genderLabel.text = "Пол"
+        genderLabel.text = "gender".localized
         return genderLabel
     }()
     
@@ -90,7 +90,7 @@ class EditViewController: UIViewController {
     
     private lazy var maleLabel: UILabel = {
         let maleLabel = UILabel()
-        maleLabel.text = "Мужской"
+        maleLabel.text = "male".localized
         return maleLabel
     }()
     
@@ -110,34 +110,34 @@ class EditViewController: UIViewController {
     
     private lazy var femaleLabel: UILabel = {
         let femaleLabel = UILabel()
-        femaleLabel.text = "Женский"
+        femaleLabel.text = "female".localized
         return femaleLabel
     }()
     
     private lazy var birthLabel: UILabel = {
         let birthLabel = UILabel()
-        birthLabel.text = "Дата рождения"
+        birthLabel.text = "date_of_birth".localized
         birthLabel.font = UIFont.boldSystemFont(ofSize: 12)
         return birthLabel
     }()
     
     private lazy var birthTextField: UITextField = {
         let birthTextField = UITextField()
-        birthTextField.placeholder = " день.месяц.год"
+        birthTextField.placeholder = "day.month.year".localized
         birthTextField.backgroundColor = UIColor(hex: "#F5F3EE")
         return birthTextField
     }()
     
     private lazy var cityLabel: UILabel = {
         let cityLabel = UILabel()
-        cityLabel.text = "Родной город"
+        cityLabel.text = "hometown".localized
         cityLabel.font = UIFont.boldSystemFont(ofSize: 12)
         return cityLabel
     }()
     
     private lazy var cityTextField: UITextField = {
         let cityTextField = UITextField()
-        cityTextField.placeholder = " Напишите название"
+        cityTextField.placeholder = "enter_name".localized
         cityTextField.backgroundColor = UIColor(hex: "#F5F3EE")
         return cityTextField
     }()
@@ -175,7 +175,7 @@ class EditViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         
-        title = "Основная информация"
+        title = "detailed_information".localized
         
         view.addSubview(nickNameLabel)
         view.addSubview(nickNameTextField)

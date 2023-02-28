@@ -199,11 +199,11 @@ UICollectionViewDelegateFlowLayout {
                         let storyPreviewScene = IGStoryPreviewController(stories: stories_copy, handPickedStoryIndex: indexPath.row, handPickedSnapIndex: 0)
                         self.present(storyPreviewScene, animated: true, completion: nil)
                     } else {
-                        self.presentAlert(title: "Перенаправление к экрану добавления истории", message: "")
+                        self.presentAlert(title: "redirecting_to_the_history_adding_screen".localized, message: "")
                     }
                 }
             } else {
-                presentAlert(title: "Попробуйте реализовать свой собственный функционал для 'Вашей истории' ", message: "")
+                presentAlert(title: "try_implement_functionality".localized, message: "")
             }
         }else {
             isDeleteSnapEnabled = false

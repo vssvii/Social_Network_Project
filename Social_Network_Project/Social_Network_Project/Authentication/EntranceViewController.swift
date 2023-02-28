@@ -18,7 +18,7 @@ class EntranceViewController: UIViewController {
     
     private lazy var registrationButton: UIButton = {
         let registrationButton = UIButton()
-        registrationButton.setTitle("ЗАРЕГИСТРИРОВАТЬСЯ", for: .normal)
+        registrationButton.setTitle("register".localized, for: .normal)
         registrationButton.backgroundColor = UIColor(hex: "#2B3940")
         registrationButton.layer.cornerRadius = 10
         registrationButton.addTarget(self, action: #selector(registerVCAction), for: .touchUpInside)
@@ -32,7 +32,7 @@ class EntranceViewController: UIViewController {
     
     private lazy var signInLabel: UILabel = {
         let signInLabel = UILabel()
-        signInLabel.text = "Уже есть аккаунт"
+        signInLabel.text = "i_have_account".localized
         signInLabel.font = .systemFont(ofSize: 14)
         signInLabel.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(signInVCAction))

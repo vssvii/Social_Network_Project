@@ -2,7 +2,7 @@
 //  IGErrors.swift
 //  InstagramStories
 //
-//  Created by Ibragim Assaibuldayev on 20.02.2023.
+//  Created by Ibragim Assaibuldayev on 21.02.2023
 //
 
 import Foundation

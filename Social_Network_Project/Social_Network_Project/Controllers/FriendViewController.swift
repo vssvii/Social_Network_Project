@@ -160,7 +160,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
                 if coreManager.posts.contains( where: { $0.descript == post.description })  {
-                presentAlert(title: "", message: "Пост уже был добавлен")
+                    presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
                 cell.likeButton.tintColor = .red
@@ -184,23 +184,6 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        postsTableView.deselectRow(at: indexPath, animated: true)
-//        if indexPath.section == 1 {
-//            let post = posts[indexPath.row]
-//            let tapRecognizer = TapGestureRecognizer(block: { [self] in
-//                    if coreManager.posts.contains( where: { $0.descript == post.description }) {
-//                        presentAlert(title: "", message: "Пост уже был добавлен")
-//                    } else {
-//                        self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-//                    }
-//                })
-//                tapRecognizer.numberOfTapsRequired = 2
-//                view.addGestureRecognizer(tapRecognizer)
-//        }
-//    }
-    
     @objc func openPhotosAction() {
         let photosVC = FriendPhotosViewController(photos: photos, albums: albums)
         navigationController?.pushViewController(photosVC, animated: true)
@@ -215,9 +198,12 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             view.avatarImageView.image = avatarImage
             view.jobLabel.text = job
             view.genderLabel.text = gender
-            view.publicationResultLabel.text = "\(publicationResult) публикаций"
-            view.subscriptionResultLabel.text = "\(subscriptionResult) подписок"
-            view.subscriberResultLabel.text = "\(subscriberResult) подписчиков"
+            let publicationLocalized = "publications".localized
+            view.publicationResultLabel.text = "\(publicationResult) \(publicationLocalized)"
+            let subscriptionLocalized = "subscriptions".localized
+            view.subscriptionResultLabel.text = "\(subscriptionResult) \(subscriptionLocalized)"
+            let subscribersLocalized = "subscribers".localized
+            view.subscriberResultLabel.text = "\(subscriberResult) \(subscribersLocalized)"
             view.infoLabel.isUserInteractionEnabled = true
             let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openInfoPageAction))
             view.infoLabel.addGestureRecognizer(guestureRecognizer)
@@ -252,9 +238,5 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             return 0
         }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Мои записи"
     }
 }

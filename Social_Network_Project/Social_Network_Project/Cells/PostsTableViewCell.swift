@@ -126,7 +126,7 @@ class PostsTableViewCell: UITableViewCell {
         let expandButton = UIButton()
         expandButton.setTitleColor(Tint.blue, for: .normal)
         expandButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        expandButton.setTitle("Показать полностью", for:  .normal)
+        expandButton.setTitle("show_in_all".localized, for:  .normal)
         expandButton.addTarget(self, action: #selector(expandAction), for: .touchUpInside)
         return expandButton
     }()
@@ -218,10 +218,10 @@ class PostsTableViewCell: UITableViewCell {
         descriptionIsExpanded.toggle()
         if descriptionIsExpanded {
             descriptionHeightConstraint.isActive = false
-            expandButton.setTitle("Скрыть", for: .normal)
+            expandButton.setTitle("hide".localized, for: .normal)
         } else {
             descriptionHeightConstraint.isActive = true
-            expandButton.setTitle("Показать полностью", for: .normal)
+            expandButton.setTitle("show_in_all".localized, for: .normal)
         }
     }
     

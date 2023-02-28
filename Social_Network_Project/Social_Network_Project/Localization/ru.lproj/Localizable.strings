@@ -1,0 +1,82 @@
+/* 
+  Localizable.strings
+  Navigation_2
+
+ Created by Ibragim Assaibuldayev on 13.12.2022.
+  
+*/
+
+
+// MARK: Authentication
+
+"register" = "ЗАРЕГИСТРИРОВАТЬСЯ";
+"i_have_account" = "Уже есть аккаунт";
+"write_number" = "Введите номер";
+"your_number_will_be_used" = "Ваш номер будет использоваться для входа в аккаунт";
+"go_on" = "ДАЛЕЕ";
+"accept_the_user_agreement" = "Нажимая кнопку “Далее” Вы принимаете пользовательское Соглашение и политику конфедициальности";
+"confirmation_of_registration" = "Подтверждение регистрации";
+"sms_to_the_number" = "Мы отправили SMS с кодом на номер";
+"enter_code_from_sms" = "Введите код из SMS";
+"invalid_code" = "Некорректный код";
+"welcome_back" = "С возвращением";
+"enter_your_phone_number_to_log_in_to_the_app" = "Введите номер телефона для входа в приложение";
+"CONFIRM" = "ПОДТВЕРДИТЬ";
+"the_user_with_this_number_is_not_registered" = "Пользователь с таким номером не зарегистрирован";
+
+
+// MARK: TabBarControllers
+
+"main" = "Главная";
+"profile" = "Профиль";
+"favourite_posts" = "Любимые посты";
+
+// MARK: Others
+
+"the_post_has_been_already_added" = "Пост уже был добавлен";
+"delete_all" = "Удалить все";
+"cancel" = "Отмена";
+"delete" = "Удалить";
+"feed" = "Новости";
+"want_delete_post" = "Вы хотите удалить пост?";
+"deleting_a_post" = "Удаление поста";
+"double_click" = "Двойное нажатие - удаление поста";
+"for_you" = "Для вас";
+"settings" = "Настройки";
+"archives" = "Архивы";
+"files" = "Файлы";
+"liked" = "Понравилось";
+"bookmarks" = "Закладки";
+"careers" = "Карьера";
+"education" = "Образование";
+"interests" = "Интересы";
+"contacts" = "Контакты";
+"basic_information" = "Основная информация";
+"enter_name" = "Напишите название";
+"day.month.year" = "день.месяц.год";
+"hometown" = "Родной город";
+"date_of_birth" = "Дата рождения";
+"gender" = "Пол";
+"job" = "Профессия";
+"surname" = "Фамилия";
+"name" = "Имя";
+"nick" = "Ник";
+"post" = "Пост";
+"try_implement_functionality" = "Попробуйте реализовать свой собственный функционал для 'Вашей истории'";
+"redirecting_to_the_history_adding_screen" = "Перенаправление к экрану добавления истории";
+"subscribers" = "Подписчиков";
+"subscriptions" = "Подписки";
+"publications" = "Публикаций";
+"photo" = "Фото";
+"history" = "История";
+"record" = "Запись";
+"edit" = "Редактировать";
+"message" = "Сообщение";
+"detailed_information" = "Подробная информация";
+"male" = "Мужской";
+"female" = "Женский";
+"all_photos" = "Все фотографии";
+"albums" = "Альбомы";
+"hide" = "Скрыть";
+"show_in_all" = "Показать полностью";
+"photos" = "Фотографии";

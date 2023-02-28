@@ -1,6 +1,6 @@
 //
 //  IGURLSession.swift
-//  InstagramStories
+//  Social_Network_Project
 //
 //  Created by Ibragim Assaibuldayev on 20.02.2023.
 //

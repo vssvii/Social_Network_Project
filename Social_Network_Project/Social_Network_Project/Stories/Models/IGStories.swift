@@ -2,7 +2,7 @@
 //  IGStories.swift
 //  InstagramStories
 //
-//  Created by Ranjith Kumar on 9/8/17.
+//  Created by Ibragim Assaibuldayev on 21.02.2023
 //  Copyright © 2017 DrawRect. All rights reserved.
 //
 

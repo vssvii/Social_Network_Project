@@ -1,7 +1,7 @@
 //
 //  IGUser.swift
 //
-//  Created by Ranjith Kumar on 9/8/17
+//  Created by Ibragim Assaibuldayev on 21.02.2023
 //  Copyright (c) DrawRect. All rights reserved.
 //
 

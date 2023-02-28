@@ -1,17 +1,12 @@
 //
 //  IGStoryPreviewController.swift
-//  InstagramStories
+//  Social_Network_Project
 //
 //  Created by Created by Ibragim Assaibuldayev on 20.02.2023.
 //
 
 import UIKit
 
-/**Road-Map: Story(CollectionView)->Cell(ScrollView(nImageViews:Snaps))
- If Story.Starts -> Snap.Index(Captured|StartsWith.0)
- While Snap.done->Next.snap(continues)->done
- then Story Completed
- */
 final class IGStoryPreviewController: UIViewController, UIGestureRecognizerDelegate {
     
     

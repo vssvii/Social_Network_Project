@@ -1,9 +1,8 @@
 //
 //  IGStoryPreviewModel.swift
-//  InstagramStories
+//  Social_Network_Project
 //
-//  Created by Boominadha Prakash on 18/03/18.
-//  Copyright © 2018 DrawRect. All rights reserved.
+//  Created by Ibragim Assaibuldayev on 21.02.2023
 //
 
 import Foundation

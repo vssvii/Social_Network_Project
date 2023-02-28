@@ -67,7 +67,7 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         
         
         let navItem = UINavigationItem()
-        navItem.title = "Фотографии"
+        navItem.title = "photos".localized
         
         
         navBar.setItems([navItem], animated: true)
