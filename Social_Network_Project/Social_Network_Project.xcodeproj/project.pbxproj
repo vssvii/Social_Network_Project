@@ -73,7 +73,6 @@
 		B096C07329A76D9B002E9ADE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096C07129A76D9B002E9ADE /* CoreDataManager.swift */; };
 		B096C07529A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096C07429A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift */; };
 		B0BD8D2A29A271E500C901AB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */; };
-		B0BD8D2C29A2728500C901AB /* StoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD8D2B29A2728500C901AB /* StoriesViewModel.swift */; };
 		B0E0506229A33F36008BBC02 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506129A33F36008BBC02 /* FriendViewController.swift */; };
 		B0E0506429A34090008BBC02 /* FriendHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506329A34090008BBC02 /* FriendHeaderView.swift */; };
 		B0E0506929A3E233008BBC02 /* LikedPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0506829A3E233008BBC02 /* LikedPostsTableViewCell.swift */; };
@@ -182,7 +181,6 @@
 		B096C07129A76D9B002E9ADE /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B096C07429A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		B0BD8D2929A271E500C901AB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
-		B0BD8D2B29A2728500C901AB /* StoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewModel.swift; sourceTree = "<group>"; };
 		B0E0506129A33F36008BBC02 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		B0E0506329A34090008BBC02 /* FriendHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHeaderView.swift; sourceTree = "<group>"; };
 		B0E0506829A3E233008BBC02 /* LikedPostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostsTableViewCell.swift; sourceTree = "<group>"; };
@@ -288,47 +286,44 @@
 			path = AuthManager;
 			sourceTree = "<group>";
 		};
+		B02F1A5429ADBC57004F3690 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B070129129AB7CB90077755E /* stories.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		B02F1A5529ADBEE2004F3690 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				B07012A329AB84340077755E /* IGRetryButton.swift */,
+			);
+			path = Patterns;
+			sourceTree = "<group>";
+		};
+		B02F1A5629ADBF40004F3690 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				B07012B329AB91920077755E /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		B04AC2FE29A1308100B48657 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				B02F1A5629ADBF40004F3690 /* Reachability */,
+				B02F1A5529ADBEE2004F3690 /* Patterns */,
 				B07012BE29ABB62D0077755E /* Animators */,
 				B07012BD29ABB5E50077755E /* Models */,
-				B07012BA29ABB5CA0077755E /* Manager */,
+				B07012BA29ABB5CA0077755E /* Managers */,
 				B07012B929ABB5AA0077755E /* Cells */,
 				B07012B729ABB5950077755E /* Controllers */,
 				B07012B629ABB5710077755E /* Views */,
-				B07012B529ABB5460077755E /* ViewModel */,
-				B07012AB29AB855C0077755E /* AnimatedCollectionViewLayout.swift */,
-				B070129329AB7CCF0077755E /* IGAppUtility.swift */,
-				B070128B29AB78F60077755E /* IGImageRequestable.swift */,
-				B07012B329AB91920077755E /* Reachability.swift */,
-				B070127F29AB75A80077755E /* MockLoaderError.swift */,
+				B07012B529ABB5460077755E /* ViewModels */,
 			);
 			path = Stories;
-			sourceTree = "<group>";
-		};
-		B06AD16B29913DBD0014BC4F /* MainViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				B06AD16C29913DFC0014BC4F /* FeedViewController.swift */,
-				B06AD16E29913ED80014BC4F /* PersonalViewController.swift */,
-			);
-			path = MainViewControllers;
-			sourceTree = "<group>";
-		};
-		B06AD17029916A2A0014BC4F /* ProfileViewParts */ = {
-			isa = PBXGroup;
-			children = (
-				B06AD17729921CDF0014BC4F /* PhotosViewController.swift */,
-				B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */,
-				B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */,
-				B06AD196299261910014BC4F /* AlbumsCollectionViewCell.swift */,
-				B06AD19F299369E30014BC4F /* AlbumTableViewCell.swift */,
-				B06AD1A129936F7D0014BC4F /* AllPhotosTableViewCell.swift */,
-				B06AD1A3299396430014BC4F /* AlbumsViewController.swift */,
-				B0F26B2329AC9F560052B62E /* PostViewController.swift */,
-			);
-			path = ProfileViewParts;
 			sourceTree = "<group>";
 		};
 		B06AD19A2992670E0014BC4F /* ViewModel */ = {
@@ -337,23 +332,23 @@
 				B06AD19B299267270014BC4F /* PhotosViewModel.swift */,
 				B06AD19D29926B440014BC4F /* ProfileViewModel.swift */,
 				B06AD1BA29955D350014BC4F /* FriendViewModel.swift */,
-				B0BD8D2B29A2728500C901AB /* StoriesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B07012B529ABB5460077755E /* ViewModel */ = {
+		B07012B529ABB5460077755E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				B070127D29AB74920077755E /* StoriesHomeViewModel.swift */,
 				B070128429AB770E0077755E /* IGStoryPreviewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B07012B629ABB5710077755E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B07012AB29AB855C0077755E /* AnimatedCollectionViewLayout.swift */,
 				B070126D29AB72780077755E /* StoriesHomeView.swift */,
 				B070129729AB80A40077755E /* IGStoryPreviewView.swift */,
 				B070128929AB78EF0077755E /* IGRoundedView.swift */,
@@ -384,20 +379,27 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		B07012BA29ABB5CA0077755E /* Manager */ = {
+		B07012BA29ABB5CA0077755E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B070129329AB7CCF0077755E /* IGAppUtility.swift */,
+				B070128B29AB78F60077755E /* IGImageRequestable.swift */,
+				B070127F29AB75A80077755E /* MockLoaderError.swift */,
 				B070128729AB77E50077755E /* IGVideoCacheManager.swift */,
 				B070129529AB80830077755E /* IGURLSession.swift */,
 			);
-			path = Manager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		B07012BD29ABB5E50077755E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B070127329AB732C0077755E /* IGSnap.swift */,
+				B070127529AB732C0077755E /* IGStories.swift */,
+				B070127429AB732C0077755E /* IGUser.swift */,
+				B04AC30129A141F900B48657 /* Stories.swift */,
+				B070127129AB73140077755E /* IGStory.swift */,
 				B07012B129AB87280077755E /* IGError.swift */,
-				B07012A329AB84340077755E /* IGRetryButton.swift */,
 				B070128F29AB7C300077755E /* IGResult.swift */,
 				B070128129AB76870077755E /* IGCache.swift */,
 			);
@@ -416,21 +418,11 @@
 		B096C06E29A76C9C002E9ADE /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				B070129129AB7CB90077755E /* stories.json */,
+				B02F1A5429ADBC57004F3690 /* JSON */,
 				B070126A29AB6EF50077755E /* PostData.xcdatamodeld */,
 				B096C07129A76D9B002E9ADE /* CoreDataManager.swift */,
 			);
 			path = DataBase;
-			sourceTree = "<group>";
-		};
-		B0E0506729A34FBD008BBC02 /* FriendViewParts */ = {
-			isa = PBXGroup;
-			children = (
-				B0E0506129A33F36008BBC02 /* FriendViewController.swift */,
-				B096C07429A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift */,
-				B02C7ACA29A8CC0800819780 /* FriendPhotosViewController.swift */,
-			);
-			path = FriendViewParts;
 			sourceTree = "<group>";
 		};
 		B0FD0C6A298CDC91000AF6D4 = {
@@ -458,13 +450,13 @@
 		B0FD0C75298CDC91000AF6D4 /* Social_Network_Project */ = {
 			isa = PBXGroup;
 			children = (
+				B00A1281299DEB500004A2B9 /* Authentication */,
 				B096C06E29A76C9C002E9ADE /* DataBase */,
-				B0E0506729A34FBD008BBC02 /* FriendViewParts */,
 				B04AC2FE29A1308100B48657 /* Stories */,
 				B06AD19A2992670E0014BC4F /* ViewModel */,
 				B0FD0CB9298FA207000AF6D4 /* Extensions */,
 				B0FD0CB6298E2A3F000AF6D4 /* Structures */,
-				B0FD0CB3298D2C76000AF6D4 /* TableViewCells */,
+				B0FD0CB3298D2C76000AF6D4 /* Cells */,
 				B0FD0CB0298D23F5000AF6D4 /* Views */,
 				B0FD0CAB298D1FE9000AF6D4 /* Controllers */,
 				B0FD0C76298CDC91000AF6D4 /* AppDelegate.swift */,
@@ -498,18 +490,20 @@
 		B0FD0CAB298D1FE9000AF6D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B00A1281299DEB500004A2B9 /* Authentication */,
-				B06AD17029916A2A0014BC4F /* ProfileViewParts */,
-				B06AD16B29913DBD0014BC4F /* MainViewControllers */,
+				B0E0506129A33F36008BBC02 /* FriendViewController.swift */,
+				B02C7ACA29A8CC0800819780 /* FriendPhotosViewController.swift */,
+				B06AD16C29913DFC0014BC4F /* FeedViewController.swift */,
+				B06AD16E29913ED80014BC4F /* PersonalViewController.swift */,
+				B06AD17729921CDF0014BC4F /* PhotosViewController.swift */,
+				B06AD1A3299396430014BC4F /* AlbumsViewController.swift */,
+				B0F26B2329AC9F560052B62E /* PostViewController.swift */,
 				B0FD0CA9298D1623000AF6D4 /* ProfileViewController.swift */,
 				B03074C829A4EC0C00B23333 /* InformationViewController.swift */,
 				B0E40451299CB4E6005F7314 /* EditViewController.swift */,
 				B0FD1BCA299A07BD00380BF1 /* EditMenuViewController.swift */,
 				B01937EB2997A609007AEB93 /* ProfileSideMenuViewController.swift */,
-				B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */,
 				B0FD0CAC298D200C000AF6D4 /* MainViewController.swift */,
 				B0FD0CAE298D20B9000AF6D4 /* LikedPostsViewController.swift */,
-				B0E0506829A3E233008BBC02 /* LikedPostsTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -517,18 +511,26 @@
 		B0FD0CB0298D23F5000AF6D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B0FD0CB1298D2C52000AF6D4 /* ProfileHeaderView.swift */,
 				B0E0506329A34090008BBC02 /* FriendHeaderView.swift */,
+				B0FD0CB1298D2C52000AF6D4 /* ProfileHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		B0FD0CB3298D2C76000AF6D4 /* TableViewCells */ = {
+		B0FD0CB3298D2C76000AF6D4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B096C07429A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift */,
 				B0FD0CB4298D2C93000AF6D4 /* PostsTableViewCell.swift */,
+				B06AD17229916B1D0014BC4F /* PhotosCollectionViewCell.swift */,
+				B06AD17129916B1C0014BC4F /* PhotosTableViewCell.swift */,
+				B06AD196299261910014BC4F /* AlbumsCollectionViewCell.swift */,
+				B06AD19F299369E30014BC4F /* AlbumTableViewCell.swift */,
+				B06AD1A129936F7D0014BC4F /* AllPhotosTableViewCell.swift */,
+				B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */,
+				B0E0506829A3E233008BBC02 /* LikedPostsTableViewCell.swift */,
 			);
-			path = TableViewCells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B0FD0CB6298E2A3F000AF6D4 /* Structures */ = {
@@ -537,13 +539,8 @@
 				B0FD0CB7298E2A57000AF6D4 /* Post.swift */,
 				B0FD0CBC298FFF15000AF6D4 /* Profile.swift */,
 				B06AD17529916C720014BC4F /* Photo.swift */,
-				B070127329AB732C0077755E /* IGSnap.swift */,
-				B070127529AB732C0077755E /* IGStories.swift */,
-				B070127429AB732C0077755E /* IGUser.swift */,
 				B06AD198299263C90014BC4F /* Album.swift */,
 				B06AD1B829955B450014BC4F /* Friend.swift */,
-				B04AC30129A141F900B48657 /* Stories.swift */,
-				B070127129AB73140077755E /* IGStory.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -831,7 +828,6 @@
 				B0E0506229A33F36008BBC02 /* FriendViewController.swift in Sources */,
 				B02C7ACB29A8CC0800819780 /* FriendPhotosViewController.swift in Sources */,
 				B0FD0CB8298E2A57000AF6D4 /* Post.swift in Sources */,
-				B0BD8D2C29A2728500C901AB /* StoriesViewModel.swift in Sources */,
 				B070127E29AB74920077755E /* StoriesHomeViewModel.swift in Sources */,
 				B096C07529A7ADCB002E9ADE /* FriendPhotosTableViewCell.swift in Sources */,
 				B070128C29AB78F60077755E /* IGImageRequestable.swift in Sources */,
