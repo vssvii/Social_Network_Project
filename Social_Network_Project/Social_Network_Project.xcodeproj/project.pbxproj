@@ -326,14 +326,14 @@
 			path = Stories;
 			sourceTree = "<group>";
 		};
-		B06AD19A2992670E0014BC4F /* ViewModel */ = {
+		B06AD19A2992670E0014BC4F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				B06AD19B299267270014BC4F /* PhotosViewModel.swift */,
 				B06AD19D29926B440014BC4F /* ProfileViewModel.swift */,
 				B06AD1BA29955D350014BC4F /* FriendViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B07012B529ABB5460077755E /* ViewModels */ = {
@@ -453,9 +453,9 @@
 				B00A1281299DEB500004A2B9 /* Authentication */,
 				B096C06E29A76C9C002E9ADE /* DataBase */,
 				B04AC2FE29A1308100B48657 /* Stories */,
-				B06AD19A2992670E0014BC4F /* ViewModel */,
+				B06AD19A2992670E0014BC4F /* ViewModels */,
 				B0FD0CB9298FA207000AF6D4 /* Extensions */,
-				B0FD0CB6298E2A3F000AF6D4 /* Structures */,
+				B0FD0CB6298E2A3F000AF6D4 /* Models */,
 				B0FD0CB3298D2C76000AF6D4 /* Cells */,
 				B0FD0CB0298D23F5000AF6D4 /* Views */,
 				B0FD0CAB298D1FE9000AF6D4 /* Controllers */,
@@ -533,7 +533,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		B0FD0CB6298E2A3F000AF6D4 /* Structures */ = {
+		B0FD0CB6298E2A3F000AF6D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B0FD0CB7298E2A57000AF6D4 /* Post.swift */,
@@ -542,7 +542,7 @@
 				B06AD198299263C90014BC4F /* Album.swift */,
 				B06AD1B829955B450014BC4F /* Friend.swift */,
 			);
-			path = Structures;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B0FD0CB9298FA207000AF6D4 /* Extensions */ = {
