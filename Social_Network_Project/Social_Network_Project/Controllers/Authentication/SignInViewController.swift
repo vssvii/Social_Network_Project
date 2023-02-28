@@ -88,7 +88,7 @@ class SignInViewController: UIViewController {
                 appDelegate.window?.rootViewController = tabBarController
                 appDelegate.window?.makeKeyAndVisible()
         } else {
-            presentAlert(title: "Пользователь с таким номером не зарегестрирован", message: "")
+            presentAlert(title: "Пользователь с таким номером не зарегистрирован", message: "")
         }
     }
 
