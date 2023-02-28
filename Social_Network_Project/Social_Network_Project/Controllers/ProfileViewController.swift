@@ -173,13 +173,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             tapRecognizer.numberOfTapsRequired = 1
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(tapRecognizer)
-            let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
+            let postTapRecognizer = TapGestureRecognizer(block: { [self] in
                 let postVC = PostViewController(userImage: UIImage(named: "avatar") ?? UIImage(named: "")!, nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
-            commentTapRecognizer.numberOfTapsRequired = 1
-            cell.commentButton.isUserInteractionEnabled = true
-            cell.commentButton.addGestureRecognizer(commentTapRecognizer)
+            postTapRecognizer.numberOfTapsRequired = 1
+            cell.postImageVIew.isUserInteractionEnabled = true
+            cell.postImageVIew.addGestureRecognizer(postTapRecognizer)
             return cell
         }
     }
