@@ -33,6 +33,7 @@
 
 // MARK: Others
 
+"language_date_locale" = "en_US";
 "the_post_has_been_already_added" = "The post has been already added";
 "delete_all" = "Delete all";
 "cancel" = "Cancel";
@@ -46,11 +47,23 @@
 "archives" = "Archives";
 "files" = "Files";
 "liked" = "Liked";
+"call" = "Call";
 "bookmarks" = "Bookmarks";
 "careers" = "Careers";
 "education" = "Education";
 "interests" = "Inerests";
 "contacts" = "Contacts";
+"change" = "Change";
+"level_of_education" = "Level of education";
+"place_of_study" = "Place of study";
+"enter_place_of_study" = "Enter place of study";
+"enter_level_education" = "Enter level of education";
+"enter_all_fields" = "Enter all fields";
+"position" = "Position";
+"enter_position" = "Enter position";
+"place_of_work" = "Place of work";
+"enter_place_of_work" = "Enter place of work";
+"tell_us_about_your_interests" = "Tell us about your interests...";
 "basic_information" = "Basic information";
 "enter_name" = "Enter a name";
 "day.month.year" = "day.month.year";

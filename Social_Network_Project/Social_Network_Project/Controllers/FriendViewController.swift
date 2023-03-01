@@ -177,8 +177,8 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
             commentTapRecognizer.numberOfTapsRequired = 1
-            cell.commentButton.isUserInteractionEnabled = true
-            cell.commentButton.addGestureRecognizer(commentTapRecognizer)
+            cell.postImageVIew.isUserInteractionEnabled = true
+            cell.postImageVIew.addGestureRecognizer(commentTapRecognizer)
             
             return cell
         }

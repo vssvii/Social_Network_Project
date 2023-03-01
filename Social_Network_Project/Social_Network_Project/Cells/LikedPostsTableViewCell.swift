@@ -38,6 +38,13 @@ class LikedPostsTableViewCell: UITableViewCell {
         return descriptionLabel
     }()
     
+    lazy var deleteButton: UIButton = {
+        let deleteButton = UIButton()
+        deleteButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
+        deleteButton.tintColor = .red
+        return deleteButton
+    }()
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,6 +55,7 @@ class LikedPostsTableViewCell: UITableViewCell {
         contentView.addSubview(authorLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(likedImageView)
+        contentView.addSubview(deleteButton)
         
         likedImageView.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(16)
@@ -66,6 +74,11 @@ class LikedPostsTableViewCell: UITableViewCell {
             make.top.equalTo(authorLabel.snp.bottom).offset(16)
             make.left.equalTo(likedImageView.snp.right).offset(16)
             make.right.equalToSuperview().offset(-16)
+        }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-16)
         }
     }
     

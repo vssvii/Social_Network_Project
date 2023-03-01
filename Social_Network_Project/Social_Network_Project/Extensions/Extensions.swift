@@ -226,7 +226,7 @@ extension Date {
     func toString( dateFormat format  : String, kzTimeZone: Bool = false) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        dateFormatter.locale = Locale(identifier: "language_date_locale")
+        dateFormatter.locale = Locale(identifier: "language_date_locale".localized)
         if kzTimeZone {
             dateFormatter.timeZone = TimeZone(identifier: "Asia/Almaty")
         }

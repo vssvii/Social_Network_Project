@@ -33,6 +33,7 @@
 
 // MARK: Others
 
+"language_date_locale" = "ru_RU";
 "the_post_has_been_already_added" = "Пост уже был добавлен";
 "delete_all" = "Удалить все";
 "cancel" = "Отмена";
@@ -42,7 +43,19 @@
 "deleting_a_post" = "Удаление поста";
 "double_click" = "Двойное нажатие - удаление поста";
 "for_you" = "Для вас";
+"call" = "Позвонить";
+"tell_us_about_your_interests" = "Расскажите о своих интересах...";
+"enter_level_education" = "Введите уровень образования";
+"level_of_education" = "Уровень образования";
+"place_of_study" = "Место обучения";
+"enter_place_of_study" = "Введите место обучения";
+"enter_all_fields" = "Введите все поля";
 "settings" = "Настройки";
+"position" = "Должность";
+"enter_position" = "Введите должность";
+"place_of_work" = "Место работы";
+"enter_place_of_work" = "Введите место работы";
+"change" = "Изменить";
 "archives" = "Архивы";
 "files" = "Файлы";
 "liked" = "Понравилось";

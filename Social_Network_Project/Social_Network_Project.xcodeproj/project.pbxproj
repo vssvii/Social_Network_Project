@@ -10,6 +10,13 @@
 		2684DDDBF998DCA2DC077D2F /* Pods_Social_Network_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C2A399A95DD157BA9A25FD /* Pods_Social_Network_ProjectTests.framework */; };
 		63A43E4AB0013B0A583422EA /* Pods_Social_Network_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A147DB57DD0A62338B4605 /* Pods_Social_Network_Project.framework */; };
 		7993E7559F870F31D3E7A2AA /* Pods_Social_Network_Project_Social_Network_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D330FB7FD10A1D7DB0FE8D0B /* Pods_Social_Network_Project_Social_Network_ProjectUITests.framework */; };
+		B005ECC029AE62FF00D70E5E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECBF29AE62FF00D70E5E /* Feed.swift */; };
+		B005ECC229AE63F600D70E5E /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECC129AE63F600D70E5E /* PersonalViewModel.swift */; };
+		B005ECC429AE890800D70E5E /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECC329AE890800D70E5E /* ContactsViewController.swift */; };
+		B005ECC629AEFFCD00D70E5E /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECC529AEFFCD00D70E5E /* ContactsTableViewCell.swift */; };
+		B005ECC829AF072700D70E5E /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECC729AF072700D70E5E /* InterestsViewController.swift */; };
+		B005ECCA29AF1A8A00D70E5E /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */; };
+		B005ECCC29AF275200D70E5E /* CareerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECCB29AF275200D70E5E /* CareerViewController.swift */; };
 		B00A1283299DECAB0004A2B9 /* EntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1282299DECAB0004A2B9 /* EntranceViewController.swift */; };
 		B00A1285299DFC6A0004A2B9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1284299DFC6A0004A2B9 /* RegistrationViewController.swift */; };
 		B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1286299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift */; };
@@ -119,6 +126,13 @@
 		54C2A399A95DD157BA9A25FD /* Pods_Social_Network_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Network_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB0125E4994B2129E0AEB08 /* Pods-Social_Network_Project-Social_Network_ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social_Network_Project-Social_Network_ProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-Social_Network_Project-Social_Network_ProjectUITests/Pods-Social_Network_Project-Social_Network_ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		98EA92BD3DED56CEB9003415 /* Pods-Social_Network_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social_Network_Project.release.xcconfig"; path = "Target Support Files/Pods-Social_Network_Project/Pods-Social_Network_Project.release.xcconfig"; sourceTree = "<group>"; };
+		B005ECBF29AE62FF00D70E5E /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		B005ECC129AE63F600D70E5E /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
+		B005ECC329AE890800D70E5E /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		B005ECC529AEFFCD00D70E5E /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		B005ECC729AF072700D70E5E /* InterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
+		B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
+		B005ECCB29AF275200D70E5E /* CareerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViewController.swift; sourceTree = "<group>"; };
 		B00A1282299DECAB0004A2B9 /* EntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceViewController.swift; sourceTree = "<group>"; };
 		B00A1284299DFC6A0004A2B9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B00A1286299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +371,7 @@
 				B06AD19B299267270014BC4F /* PhotosViewModel.swift */,
 				B06AD19D29926B440014BC4F /* ProfileViewModel.swift */,
 				B06AD1BA29955D350014BC4F /* FriendViewModel.swift */,
+				B005ECC129AE63F600D70E5E /* PersonalViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -528,6 +543,10 @@
 				B01937EB2997A609007AEB93 /* ProfileSideMenuViewController.swift */,
 				B0FD0CAC298D200C000AF6D4 /* MainViewController.swift */,
 				B0FD0CAE298D20B9000AF6D4 /* LikedPostsViewController.swift */,
+				B005ECC329AE890800D70E5E /* ContactsViewController.swift */,
+				B005ECC729AF072700D70E5E /* InterestsViewController.swift */,
+				B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */,
+				B005ECCB29AF275200D70E5E /* CareerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -553,6 +572,7 @@
 				B06AD1A129936F7D0014BC4F /* AllPhotosTableViewCell.swift */,
 				B0FD1BC8299916D900380BF1 /* ProfileSideTableViewCell.swift */,
 				B0E0506829A3E233008BBC02 /* LikedPostsTableViewCell.swift */,
+				B005ECC529AEFFCD00D70E5E /* ContactsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -565,6 +585,7 @@
 				B06AD17529916C720014BC4F /* Photo.swift */,
 				B06AD198299263C90014BC4F /* Album.swift */,
 				B06AD1B829955B450014BC4F /* Friend.swift */,
+				B005ECBF29AE62FF00D70E5E /* Feed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -827,6 +848,7 @@
 				B070129D29AB835D0077755E /* Social_Network_Project.xcdatamodeld in Sources */,
 				B06AD1BB29955D350014BC4F /* FriendViewModel.swift in Sources */,
 				B0FD0CB5298D2C93000AF6D4 /* PostsTableViewCell.swift in Sources */,
+				B005ECC829AF072700D70E5E /* InterestsViewController.swift in Sources */,
 				B06AD1B929955B450014BC4F /* Friend.swift in Sources */,
 				B0E0506929A3E233008BBC02 /* LikedPostsTableViewCell.swift in Sources */,
 				B07012B229AB87280077755E /* IGError.swift in Sources */,
@@ -859,10 +881,12 @@
 				B070128C29AB78F60077755E /* IGImageRequestable.swift in Sources */,
 				B0FD0CAA298D1623000AF6D4 /* ProfileViewController.swift in Sources */,
 				B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */,
+				B005ECC229AE63F600D70E5E /* PersonalViewModel.swift in Sources */,
 				B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */,
 				B01937EC2997A609007AEB93 /* ProfileSideMenuViewController.swift in Sources */,
 				B06AD1A0299369E30014BC4F /* AlbumTableViewCell.swift in Sources */,
 				B07012A429AB84340077755E /* IGRetryButton.swift in Sources */,
+				B005ECC429AE890800D70E5E /* ContactsViewController.swift in Sources */,
 				B0F26B2429AC9F570052B62E /* PostViewController.swift in Sources */,
 				B070128829AB77E50077755E /* IGVideoCacheManager.swift in Sources */,
 				B00A128C299E3BB70004A2B9 /* AuthManager.swift in Sources */,
@@ -879,9 +903,12 @@
 				B070128029AB75A80077755E /* MockLoaderError.swift in Sources */,
 				B070129029AB7C310077755E /* IGResult.swift in Sources */,
 				B070127229AB73140077755E /* IGStory.swift in Sources */,
+				B005ECCA29AF1A8A00D70E5E /* EducationViewController.swift in Sources */,
 				B07012A829AB84890077755E /* IGSnapProgressView.swift in Sources */,
+				B005ECCC29AF275200D70E5E /* CareerViewController.swift in Sources */,
 				B06AD17329916B1D0014BC4F /* PhotosTableViewCell.swift in Sources */,
 				B070127729AB732C0077755E /* IGUser.swift in Sources */,
+				B005ECC029AE62FF00D70E5E /* Feed.swift in Sources */,
 				B096C07329A76D9B002E9ADE /* CoreDataManager.swift in Sources */,
 				B07012A029AB83D30077755E /* IGStoryPreviewCell.swift in Sources */,
 				B06AD19E29926B440014BC4F /* ProfileViewModel.swift in Sources */,
@@ -892,6 +919,7 @@
 				B03074C929A4EC0C00B23333 /* InformationViewController.swift in Sources */,
 				B0FD0CAD298D200C000AF6D4 /* MainViewController.swift in Sources */,
 				B06AD197299261910014BC4F /* AlbumsCollectionViewCell.swift in Sources */,
+				B005ECC629AEFFCD00D70E5E /* ContactsTableViewCell.swift in Sources */,
 				B070129629AB80830077755E /* IGURLSession.swift in Sources */,
 				B07012A629AB84690077755E /* IGPlayerView.swift in Sources */,
 				B070127629AB732C0077755E /* IGSnap.swift in Sources */,

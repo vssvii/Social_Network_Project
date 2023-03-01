@@ -10,6 +10,8 @@ import SnapKit
 
 class PostViewController: UIViewController {
     
+    let coreManager = CoreDataManager.shared
+    
     var userImage: UIImage
     
     var nickName: String
@@ -62,12 +64,29 @@ class PostViewController: UIViewController {
         return postTextLabel
     }()
     
-    let likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
         button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.addTarget(self, action: #selector(likedAction), for: .touchUpInside)
         return button
     }()
+    
+    @objc func likedAction() {
+        let tapRecognizer = TapGestureRecognizer(block: { [self] in
+            if coreManager.posts.contains( where: { $0.descript == text })  {
+                presentAlert(title: "", message: "the_post_has_been_already_added".localized)
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
+            likeButton.tintColor = .red
+            self.coreManager.addNewPost(surname: nickName, name: "", description: text)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        }
+    })
+        tapRecognizer.numberOfTapsRequired = 1
+        likeButton.isUserInteractionEnabled = true
+        likeButton.addGestureRecognizer(tapRecognizer)
+    }
     
     let commentButton: UIButton = {
         let button = UIButton(type: .system)

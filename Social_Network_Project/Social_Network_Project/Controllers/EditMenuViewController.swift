@@ -109,9 +109,21 @@ extension EditMenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let option = menuSideOptions[indexPath.row]
-        if option == "detailed_information".localized {
+        if option == "basic_information".localized {
             let editPageVC = EditViewController()
             navigationController?.pushViewController(editPageVC, animated: true)
+        } else if option == "contacts".localized {
+            let contactsVC = ContactsViewController()
+            navigationController?.pushViewController(contactsVC, animated: true)
+        } else if option == "interests".localized {
+            let interestsVC = InterestsViewController()
+            navigationController?.pushViewController(interestsVC, animated: true)
+        } else if option == "education".localized {
+            let educationVC = EducationViewController()
+            navigationController?.pushViewController(educationVC, animated: true)
+        }  else if option == "careers".localized {
+            let careersVC = CareerViewController()
+            navigationController?.pushViewController(careersVC, animated: true)
         }
     }
     
