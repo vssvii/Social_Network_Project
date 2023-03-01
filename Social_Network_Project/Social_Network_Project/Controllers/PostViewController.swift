@@ -7,8 +7,21 @@
 
 import UIKit
 import SnapKit
+import ExpyTableView
 
 class PostViewController: UIViewController {
+    
+    private enum CellReuseIdentifiers: String {
+        case comments
+        case buy
+        case specification
+    }
+    
+    
+    let comments = [["Интересные факты", "Это да"],
+                      ["Классный пост!", "Спасибо"],
+                      ["Напиши в личку", "Хорошо"]]
+    
     
     let coreManager = CoreDataManager.shared
     
@@ -24,7 +37,7 @@ class PostViewController: UIViewController {
     
     var likesCount: Int
     
-    var commentsCount: Int
+    var date: Date
     
     
     let userImageView: UIImageView = {
@@ -126,6 +139,21 @@ class PostViewController: UIViewController {
         separatorLineView.backgroundColor = Tint.gray
         return separatorLineView
     }()
+    
+    private lazy var commentsTableView: ExpyTableView = {
+        let commentsTableView = ExpyTableView()
+        commentsTableView.dataSource = self
+        commentsTableView.delegate = self
+        commentsTableView.rowHeight = UITableView.automaticDimension
+        commentsTableView.estimatedRowHeight = 44
+        commentsTableView.expandingAnimation = .fade
+        commentsTableView.collapsingAnimation = .fade
+        commentsTableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.comments.rawValue)
+        commentsTableView.register(BuyTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.buy.rawValue)
+        commentsTableView.register(SpecificationTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.specification.rawValue)
+        commentsTableView.tableFooterView = UIView()
+        return commentsTableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,17 +163,28 @@ class PostViewController: UIViewController {
         configure()
         
         setNavigationBar()
-
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
-    init(userImage: UIImage, nickName: String, job: String, image: UIImage, text: String, likesCount: Int, commentsCount: Int) {
+    @objc private func orientationDidChange() {
+        switch UIDevice.current.orientation {
+        case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
+            commentsTableView.reloadSections(IndexSet(Array(commentsTableView.expandedSections.keys)), with: .none)
+        default:break
+        }
+    }
+
+    
+    init(userImage: UIImage, nickName: String, job: String, image: UIImage, text: String, likesCount: Int, date: Date) {
         self.userImage = userImage
         self.nickName = nickName
         self.job = job
         self.image = image
         self.text = text
         self.likesCount = likesCount
-        self.commentsCount = commentsCount
+        self.date = date
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -170,7 +209,7 @@ class PostViewController: UIViewController {
         postImageView.image = image
         postTextLabel.text = text
         likesLabel.text = "\(likesCount)"
-        commentLabel.text = "\(commentsCount)"
+        commentLabel.text = "\(comments.count)"
     }
     
     private func setupView() {
@@ -256,20 +295,123 @@ class PostViewController: UIViewController {
             make.left.equalToSuperview().offset(16)
         }
         
-//        view.addSubview(likesLabel)
-//        likesLabel.snp.makeConstraints { make in
-//            make.leading.equalTo(likeButton.snp.trailing).offset(6)
-//            make.centerY.equalTo(likeButton.snp.centerY)
-//        }
-//        commentButton.snp.makeConstraints { make in
-//            make.left.equalTo(likesLabel.snp.right).offset(6)
-//        }
-//        view.addSubview(commentLabel)
-//        commentLabel.snp.makeConstraints { make in
-//            make.leading.trailing.equalTo(likesLabel.snp.trailing).offset(6)
-//            make.top.equalTo(likesLabel.snp.bottom).offset(12)
-//            make.bottom.equalToSuperview().inset(12)
-//        }
+        view.addSubview(commentsTableView)
+        
+        commentsTableView.snp.makeConstraints { make in
+            make.top.equalTo(separatorLineView.snp.bottom).offset(6)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
 
+}
+
+
+extension PostViewController: ExpyTableViewDataSource {
+    
+    
+    func tableView(_ tableView: ExpyTableView, canExpandSection section: Int) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: ExpyTableView, expandableCellForSection section: Int) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: CellReuseIdentifiers.comments.rawValue) as! CommentsTableViewCell
+        cell.commentLabel.text = comments[section].first!
+        cell.userImageView.image = userImage
+        cell.nickLabel.text = nickName
+        cell.dateLabel.text = date.toString(dateFormat: "MMM d")
+        let tapRecognizer = TapGestureRecognizer(block: { [self] in
+            cell.heartImageView.image = UIImage(systemName: "heart.fill")
+    })
+        tapRecognizer.numberOfTapsRequired = 1
+        cell.heartImageView.isUserInteractionEnabled = true
+        cell.addGestureRecognizer(tapRecognizer)
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.showSeparator()
+        return cell
+    }
+}
+
+
+extension PostViewController: ExpyTableViewDelegate {
+    
+    func tableView(_ tableView: ExpyTableView, expyState state: ExpyState, changeForSection section: Int) {
+        
+        switch state {
+        case .willExpand:
+            print("WILL EXPAND")
+            
+        case .willCollapse:
+            print("WILL COLLAPSE")
+            
+        case .didExpand:
+            print("DID EXPAND")
+            
+        case .didCollapse:
+            print("DID COLLAPSE")
+        }
+    }
+}
+
+
+extension PostViewController {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (section % 3 == 0) ? "\(comments.count) комментария" : nil
+    }
+}
+
+extension PostViewController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        print("DID SELECT row: \(indexPath.row), section: \(indexPath.section)")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+}
+
+//MARK: UITableView Data Source Methods
+extension PostViewController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Row count for section \(section) is \(comments[section].count)")
+        return comments[section].count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            let cell = tableView.dequeueReusableCell(
+              withIdentifier: CellReuseIdentifiers.buy.rawValue) as! BuyTableViewCell
+            cell.layoutMargins = UIEdgeInsets.zero
+            cell.showSeparator()
+            return cell
+            
+        }else {
+            let cell = tableView.dequeueReusableCell(
+              withIdentifier: CellReuseIdentifiers.specification.rawValue) as! SpecificationTableViewCell
+            cell.commentAnswerLabel.text = (comments[indexPath.section])[indexPath.row]
+            cell.userImageView.image = userImage
+            cell.dateLabel.text = date.toString(dateFormat: "MMM d")
+            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+                cell.heartImageView.image = UIImage(systemName: "heart.fill")
+        })
+            tapRecognizer.numberOfTapsRequired = 1
+            cell.heartImageView.isUserInteractionEnabled = true
+            cell.addGestureRecognizer(tapRecognizer)
+            cell.layoutMargins = UIEdgeInsets.zero
+            cell.hideSeparator()
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
 }

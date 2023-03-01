@@ -71,6 +71,7 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.postImageVIew.image = post.image
         cell.postTextLabel.text = post.description
         cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+        
             return cell
     }
 

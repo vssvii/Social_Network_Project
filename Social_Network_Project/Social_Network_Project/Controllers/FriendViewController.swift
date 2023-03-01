@@ -173,7 +173,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.addGestureRecognizer(tapRecognizer)
             
             let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
-                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date)
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
             commentTapRecognizer.numberOfTapsRequired = 1

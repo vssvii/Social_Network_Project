@@ -149,12 +149,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(likedtapRecognizer)
         let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
-            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date)
             self.navigationController?.pushViewController(postVC, animated: true)
         })
         commentTapRecognizer.numberOfTapsRequired = 1
-        cell.commentButton.isUserInteractionEnabled = true
-        cell.commentButton.addGestureRecognizer(commentTapRecognizer)
+        cell.postImageVIew.isUserInteractionEnabled = true
+        cell.postImageVIew.addGestureRecognizer(commentTapRecognizer)
             return cell
     }
     

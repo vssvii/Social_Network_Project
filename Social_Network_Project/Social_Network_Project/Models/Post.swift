@@ -13,4 +13,5 @@ struct Post {
     let description: String
     let image: UIImage?
     let likes: Int
+    let comments: [[String]]
 }

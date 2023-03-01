@@ -12,6 +12,8 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'LZViewPager'
 pod 'SideMenu'
+pod 'ExpyTableView'
+
 
   target 'Social_Network_ProjectTests' do
     inherit! :search_paths
