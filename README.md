@@ -75,15 +75,22 @@ Social Network Project
 3) На странице новостей можно посмотреть истории своих друзей и посты. На странице "для вас" выходят посты, которые интересны пользователю.
 
 
-<img width="435" alt="Снимок экрана 2023-02-28 в 12 28 47" src="https://user-images.githubusercontent.com/28200789/221772225-bd9a51ab-c20a-438a-8cee-ccf9a74ead53.png">
+<img width="438" alt="Снимок экрана 2023-03-02 в 23 34 41" src="https://user-images.githubusercontent.com/28200789/222507351-20bbe303-37f5-4a3a-87b6-af39f4138fe5.png">
+
 
 
 <img width="439" alt="Снимок экрана 2023-02-28 в 12 29 23" src="https://user-images.githubusercontent.com/28200789/221772300-42ac111a-7e5c-43e7-97d8-bb3ae80f4492.png">
 
 
+<img width="438" alt="Снимок экрана 2023-03-02 в 23 35 24" src="https://user-images.githubusercontent.com/28200789/222507374-52d08bb7-73fb-4427-b870-f9e116bfc643.png">
+
+
+
+
 4) При нажатии на картинку друга, приложение переходит на страницу, где пользователь найдет посты, фотограции и информацию о друге.
 
-<img width="440" alt="Снимок экрана 2023-02-28 в 12 51 33" src="https://user-images.githubusercontent.com/28200789/221776584-3589d671-eaaf-4ea8-b8a1-2b9ddfa75d88.png">
+
+<img width="435" alt="Снимок экрана 2023-03-02 в 23 33 39" src="https://user-images.githubusercontent.com/28200789/222506961-a4c79296-175a-40ff-93de-552106e3fc44.png">
 
 
 
@@ -98,8 +105,9 @@ Social Network Project
 
 На странице собрана информация о постах, которые лайкнул пользователь при нажатии картинки "сердечка" под постом.
 
-<img width="446" alt="Снимок экрана 2023-02-28 в 12 53 43" src="https://user-images.githubusercontent.com/28200789/221776906-e97083b1-7b89-49ef-8784-22978ce534fb.png">
 
+
+<img width="436" alt="Снимок экрана 2023-03-02 в 23 31 36" src="https://user-images.githubusercontent.com/28200789/222506705-83cc2984-8031-4804-80df-76b7f35768de.png">
 
 
 
