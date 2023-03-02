@@ -32,17 +32,6 @@ class AllPhotosTableViewCell: UITableViewCell {
         return photosCountLabel
     }()
     
-    lazy var refreshButton: UIButton = {
-        let refreshButton = UIButton()
-        refreshButton.setImage(UIImage(systemName: "repeat.circle"), for: .normal)
-        refreshButton.addTarget(self, action: #selector(refreshTableView), for: .touchUpInside)
-        return refreshButton
-    }()
-    
-    @objc func refreshTableView() {
-        self.photosCollectionView.reloadData()
-    }
-    
     lazy var photosCollectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         viewLayout.minimumLineSpacing = 5
@@ -71,7 +60,6 @@ class AllPhotosTableViewCell: UITableViewCell {
         
         contentView.addSubview(photosLabel)
         contentView.addSubview(photosCountLabel)
-        contentView.addSubview(refreshButton)
         contentView.addSubview(photosCollectionView)
         
         photosLabel.snp.makeConstraints { (make) in
@@ -84,13 +72,8 @@ class AllPhotosTableViewCell: UITableViewCell {
             make.left.equalTo(photosLabel.snp.right).offset(6)
         }
         
-        refreshButton.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(14)
-            make.right.equalTo(contentView.snp.right).offset(-16)
-        }
-        
         photosCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(photosLabel.snp.bottom).offset(16)
+            make.top.equalTo(photosLabel.snp.bottom).offset(6)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.bottom.equalTo(contentView.snp.bottom)
@@ -116,11 +99,11 @@ extension AllPhotosTableViewCell: UICollectionViewDelegate, UICollectionViewData
         
         
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 108, height: 80)
+        return CGSize(width: 103, height: 75)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 108, height: 80)
+        return CGSize(width: 103, height: 75)
     }
     
 //

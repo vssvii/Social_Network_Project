@@ -74,6 +74,7 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         
         
     }
+
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -82,6 +83,13 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
     private func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(addPhoto))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func addPhoto() {
@@ -92,6 +100,7 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         imagePC.allowsEditing = true
         present(imagePC, animated: true)
     }
+
     
     private func setupView() {
         
@@ -129,11 +138,14 @@ extension FriendPhotosViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-          let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellReuseIdentifiers.albums.rawValue) as! AlbumTableViewCell
-            cell.albums = albums
-            cell.showAllButton.addTarget(self, action: #selector(openAlbumsAction), for: .touchUpInside)
-          return cell
+            if albums == nil {
+                tableView.isHidden = true
+            }
+            let cell = tableView.dequeueReusableCell(
+              withIdentifier: CellReuseIdentifiers.albums.rawValue) as! AlbumTableViewCell
+              cell.albums = albums
+              cell.showAllButton.addTarget(self, action: #selector(openAlbumsAction), for: .touchUpInside)
+            return cell
         } else {
           let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.allPhotos.rawValue) as! AllPhotosTableViewCell

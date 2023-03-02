@@ -1,35 +1,35 @@
 //
-//  AlbumsViewController.swift
+//  AlbumPhotosViewController.swift
 //  Social_Network_Project
 //
-//  Created by Developer on 08.02.2023.
+//  Created by Developer on 02.03.2023.
 //
 
 import UIKit
 import SnapKit
 
-class AlbumsViewController: UIViewController {
-    
-    var albums: [Album]
+class AlbumPhotosViewController: UIViewController {
+
+    var photos: [Photo]
     
     private enum CellReuseIdentifiers: String {
-        case albums
+        case photos
     }
     
     
-    lazy var albumsCollectionView: UICollectionView = {
+    lazy var photosCollectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         viewLayout.scrollDirection = .vertical
-        let albumsCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: viewLayout)
-        albumsCollectionView.register(AlbumsCollectionViewCell.self, forCellWithReuseIdentifier: CellReuseIdentifiers.albums.rawValue)
-        albumsCollectionView.showsHorizontalScrollIndicator = false
-        albumsCollectionView.delegate = self
-        albumsCollectionView.dataSource = self
-        return albumsCollectionView
+        let photosCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: viewLayout)
+        photosCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: CellReuseIdentifiers.photos.rawValue)
+        photosCollectionView.showsHorizontalScrollIndicator = false
+        photosCollectionView.delegate = self
+        photosCollectionView.dataSource = self
+        return photosCollectionView
     }()
     
-    init(albums: [Album]) {
-        self.albums = albums
+    init(photos: [Photo]) {
+        self.photos = photos
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,12 +61,12 @@ class AlbumsViewController: UIViewController {
     
     private func setupView() {
         
-        title = "albums".localized
+        title = "photos".localized
         view.backgroundColor = .white
         
-        view.addSubview(albumsCollectionView)
+        view.addSubview(photosCollectionView)
         
-        albumsCollectionView.snp.makeConstraints { (make) in
+        photosCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
@@ -77,24 +77,17 @@ class AlbumsViewController: UIViewController {
 }
 
 
-extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension AlbumPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albums.count
+        return photos.count
     }
         
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let album = albums[indexPath.item]
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.albums.rawValue, for: indexPath) as! AlbumsCollectionViewCell
-        cell.nameLabel.text = album.name
-        cell.albumImageView.image = album.image
-        let photosTapRecognizer = TapGestureRecognizer(block: { [self] in
-            let photosVC = AlbumPhotosViewController(photos: album.photos)
-            self.navigationController?.pushViewController(photosVC, animated: true)
-        })
-        photosTapRecognizer.numberOfTapsRequired = 1
-        cell.albumImageView.isUserInteractionEnabled = true
-        cell.albumImageView.addGestureRecognizer(photosTapRecognizer)
+        let photo = photos[indexPath.item]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.photos.rawValue, for: indexPath) as! PhotosCollectionViewCell
+        cell.photoImageView.image = photo.image
+        
         return cell
     }
         

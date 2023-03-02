@@ -237,7 +237,7 @@ class PostsTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let commentLabel: UILabel = {
+    let commentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: UIConstants.commentLabelFontSize)
         return label
@@ -303,15 +303,7 @@ class PostsTableViewCell: UITableViewCell {
             make.top.equalTo(surnameLabel.snp.bottom).offset(6)
             make.left.equalTo(userImageView.snp.right).offset(16)
         }
-//        let usernameStack = UIStackView()
-//        usernameStack.axis = .vertical
-//        usernameStack.addArrangedSubview(surnameLabel)
-//        usernameStack.addArrangedSubview(jobLabel)
-//        contentView.addSubview(usernameStack)
-//        usernameStack.snp.makeConstraints { make in
-//            make.centerY.equalTo(userImageView)
-//            make.leading.equalTo(userImageView.snp.trailing).offset(UIConstants.usernameStackToProfileImageOffset)
-//        }
+        
         contentView.addSubview(parametersButton)
         
         parametersButton.snp.makeConstraints { make in
@@ -340,6 +332,8 @@ class PostsTableViewCell: UITableViewCell {
             make.top.equalTo(expandButton.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(200)
+            make.width.equalTo(340)
         }
         
         contentView.addSubview(likeButton)
@@ -369,37 +363,6 @@ class PostsTableViewCell: UITableViewCell {
             make.centerY.equalTo(likeButton.snp.centerY)
             make.left.equalTo(commentLabel.snp.right).offset(6)
         }
-        
-//        let actionsStack = UIStackView()
-//        actionsStack.axis = .horizontal
-//        actionsStack.addArrangedSubview(likeButton)
-//        actionsStack.addArrangedSubview(likesLabel)
-//        actionsStack.addArrangedSubview(commentButton)
-//        actionsStack.addArrangedSubview(shareButton)
-//        actionsStack.spacing = UIConstants.actionsStackSpacing
-//        
-//        contentView.addSubview(actionsStack)
-//        actionsStack.snp.makeConstraints { make in
-//            make.height.equalTo(UIConstants.actionsStackHeight)
-//            make.leading.equalToSuperview().inset(UIConstants.contentInset)
-//            make.top.equalTo(postImageVIew.snp.bottom).offset(40)
-//        }
-//        contentView.addSubview(likesLabel)
-//        likesLabel.snp.makeConstraints { make in
-//            make.leading.equalTo(likeButton.snp.trailing).offset(6)
-//            make.centerY.equalTo(likeButton.snp.centerY)
-//        }
-//        commentButton.snp.makeConstraints { make in
-//            make.left.equalTo(likesLabel.snp.right).offset(6)
-//        }
-//        contentView.addSubview(commentLabel)
-//        commentLabel.snp.makeConstraints { make in
-//            make.leading.trailing.equalTo(likesLabel.snp.trailing).offset(6)
-//            make.top.equalTo(likesLabel.snp.bottom).offset(UIConstants.commentToLikesOffset)
-//            make.bottom.equalToSuperview().inset(UIConstants.contentInset)
-//        }
-        
-
     }
 }
 

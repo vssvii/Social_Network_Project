@@ -159,7 +159,7 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 150
         } else {
-            return 600
+            return 500
         }
     }
 }

@@ -176,6 +176,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
+            cell.commentLabel.text = "\(3)"
             cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: post.description)
             let countLines = countLabelLines(label: cell.postTextLabel)
             print(countLines)
@@ -198,7 +199,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.addGestureRecognizer(tapRecognizer)
             
             let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
-                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 3)
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
             commentTapRecognizer.numberOfTapsRequired = 1
@@ -253,7 +254,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 550
+            return 650
         }
     }
     

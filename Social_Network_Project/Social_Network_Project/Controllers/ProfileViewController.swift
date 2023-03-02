@@ -184,6 +184,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             let countLines = countLabelLines(label: cell.postTextLabel)
             print(countLines)
             cell.postImageVIew.image = post.image
+            cell.commentLabel.text = "\(3)"
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
@@ -200,7 +201,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(tapRecognizer)
             let postTapRecognizer = TapGestureRecognizer(block: { [self] in
-                let postVC = PostViewController(userImage: UIImage(named: "avatar") ?? UIImage(named: "")!, nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+                let postVC = PostViewController(userImage: UIImage(named: "avatar") ?? UIImage(named: "")!, nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 3)
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
             postTapRecognizer.numberOfTapsRequired = 1
@@ -255,7 +256,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 600
+            return 650
         }
     }
 //

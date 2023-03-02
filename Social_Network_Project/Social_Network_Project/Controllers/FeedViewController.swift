@@ -77,30 +77,7 @@ class FeedViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func countLabelLines(label: UILabel)->Int{
-
-        if let text = label.text{
-            // cast text to NSString so we can use sizeWithAttributes
-            var myText = text as NSString
-            //A Paragraph that we use to set the lineBreakMode.
-            var paragraph = NSMutableParagraphStyle()
-            //Set the lineBreakMode to wordWrapping
-            paragraph.lineBreakMode = NSLineBreakMode.byWordWrapping
-
-            //Calculate the size of your UILabel by using the systemfont and the paragraph we created before. Edit the font and replace it with yours if you use another
-            var labelSize = myText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17), NSAttributedString.Key.paragraphStyle : paragraph.copy()])
-
-            //Now we return the amount of lines using the ceil method
-            var lines = ceil(CGFloat(labelSize.height) / label.font.lineHeight)
-            return Int(lines)
-        }
-
-        return 0
-
-    }
-    
+    }    
     
     private func setupView() {
         
@@ -171,12 +148,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(likedtapRecognizer)
         let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
-            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 3)
             self.navigationController?.pushViewController(postVC, animated: true)
         })
         commentTapRecognizer.numberOfTapsRequired = 1
-        cell.commentButton.isUserInteractionEnabled = true
-        cell.commentButton.addGestureRecognizer(commentTapRecognizer)
+        cell.postImageVIew.isUserInteractionEnabled = true
+        cell.postImageVIew.addGestureRecognizer(commentTapRecognizer)
             return cell
     }
     
