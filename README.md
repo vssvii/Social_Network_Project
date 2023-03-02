@@ -2,9 +2,6 @@
 Social Network Project
 
 
-<<<<<<< HEAD
-=======
-
 ![3891940_Mesa de trabajo 1 1@1x](https://user-images.githubusercontent.com/28200789/221748586-8fbcdd87-19a4-42b5-b733-049089b704ef.png)
 
 
@@ -38,10 +35,8 @@ Social Network Project
 
 После успешной регистрации, номер телефона пользователя сохраняется в Firebase и приложение переходит на профиль страницу.
 
-<img width="429" alt="Снимок экрана 2023-02-28 в 11 56 01" src="https://user-images.githubusercontent.com/28200789/221767002-9bc1201b-ec52-41f1-a503-ae53b2d65532.png">
+<img width="432" alt="Снимок экрана 2023-03-02 в 23 41 10" src="https://user-images.githubusercontent.com/28200789/222508749-759a6a28-0cc3-445a-8974-ea78a81e4e54.png">
 
-
-<img width="440" alt="Снимок экрана 2023-02-28 в 11 56 17" src="https://user-images.githubusercontent.com/28200789/221767018-e78f2069-9ff5-4543-8ea7-7bc27affc6b0.png">
 
 
 б) При выборе "Уже есть аккаунт" появиться страница входа в профиль пользователя
@@ -55,14 +50,13 @@ Social Network Project
 
 2) На странице профиля пользователь может посмотреть свои посты, фотографии и данные.
 
+<img width="432" alt="Снимок экрана 2023-03-02 в 23 41 10" src="https://user-images.githubusercontent.com/28200789/222509497-98cde6dc-61f9-4346-964f-91b23c2af90e.png">
 
-<img width="428" alt="Снимок экрана 2023-02-28 в 12 23 14" src="https://user-images.githubusercontent.com/28200789/221771388-2dd3cb8c-8b36-40e9-ac5d-360d849da731.png">
+<img width="439" alt="Снимок экрана 2023-03-02 в 23 41 24" src="https://user-images.githubusercontent.com/28200789/222509578-1eb09775-f18c-4457-b739-e756389bf11c.png">
+
+<img width="430" alt="Снимок экрана 2023-03-02 в 23 43 47" src="https://user-images.githubusercontent.com/28200789/222509601-281edefd-45e1-4fce-8c81-538684d478ce.png">
 
 
-<img width="430" alt="Снимок экрана 2023-02-28 в 12 23 33" src="https://user-images.githubusercontent.com/28200789/221771416-2737100b-6ab0-4bd0-85f8-523f4b795769.png">
-
-
-<img width="433" alt="Снимок экрана 2023-02-28 в 12 23 56" src="https://user-images.githubusercontent.com/28200789/221771441-64c7180b-a967-480c-9ec8-379cd6467331.png">
 
 При необходимости, пользователь может изменить свои данные. 
 
@@ -75,22 +69,29 @@ Social Network Project
 3) На странице новостей можно посмотреть истории своих друзей и посты. На странице "для вас" выходят посты, которые интересны пользователю.
 
 
-<img width="435" alt="Снимок экрана 2023-02-28 в 12 28 47" src="https://user-images.githubusercontent.com/28200789/221772225-bd9a51ab-c20a-438a-8cee-ccf9a74ead53.png">
+<img width="438" alt="Снимок экрана 2023-03-02 в 23 34 41" src="https://user-images.githubusercontent.com/28200789/222507351-20bbe303-37f5-4a3a-87b6-af39f4138fe5.png">
+
 
 
 <img width="439" alt="Снимок экрана 2023-02-28 в 12 29 23" src="https://user-images.githubusercontent.com/28200789/221772300-42ac111a-7e5c-43e7-97d8-bb3ae80f4492.png">
 
 
-4) При нажатии на картинку друга, приложение переходит на страницу, где пользователь найдет посты, фотограции и информацию о друге.
+<img width="438" alt="Снимок экрана 2023-03-02 в 23 35 24" src="https://user-images.githubusercontent.com/28200789/222507374-52d08bb7-73fb-4427-b870-f9e116bfc643.png">
 
-<img width="440" alt="Снимок экрана 2023-02-28 в 12 51 33" src="https://user-images.githubusercontent.com/28200789/221776584-3589d671-eaaf-4ea8-b8a1-2b9ddfa75d88.png">
+
+
+
+4) При нажатии на аватар друга, приложение переходит на страницу, где пользователь найдет посты, фотограции и информацию о друге.
+
+
+<img width="435" alt="Снимок экрана 2023-03-02 в 23 33 39" src="https://user-images.githubusercontent.com/28200789/222506961-a4c79296-175a-40ff-93de-552106e3fc44.png">
 
 
 
 При нажатии на картинку поста, переходит на информацию о посте.
 
 
-<img width="424" alt="Снимок экрана 2023-02-28 в 12 52 07" src="https://user-images.githubusercontent.com/28200789/221776612-7ee39329-5e75-4255-8d5c-052cc88156e7.png">
+<img width="431" alt="Снимок экрана 2023-03-02 в 22 28 50" src="https://user-images.githubusercontent.com/28200789/222505952-242c4f2e-7dc2-46ca-9aca-25a7f49f199a.png">
 
 
 
@@ -98,13 +99,12 @@ Social Network Project
 
 На странице собрана информация о постах, которые лайкнул пользователь при нажатии картинки "сердечка" под постом.
 
-<img width="446" alt="Снимок экрана 2023-02-28 в 12 53 43" src="https://user-images.githubusercontent.com/28200789/221776906-e97083b1-7b89-49ef-8784-22978ce534fb.png">
 
 
+<img width="436" alt="Снимок экрана 2023-03-02 в 23 31 36" src="https://user-images.githubusercontent.com/28200789/222506705-83cc2984-8031-4804-80df-76b7f35768de.png">
 
 
-
-
-
-
->>>>>>> c2b79ef1ba192fabb08422d8fb2b805da58fb217
+Дополнительно в приложении присутствует перевод на 3 языках:
+1) Казахский
+2) Русский
+3) Английский
