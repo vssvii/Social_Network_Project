@@ -69,8 +69,10 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.userImageView.image = feed.feedImage
         cell.surnameLabel.text = feed.feedName
         cell.postImageVIew.image = post.image
-        cell.postTextLabel.text = post.description
+        cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: post.description)
         cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+        cell.likesLabel.text = "\(post.likes)"
+        cell.commentLabel.text = "\(3)"
         let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
             let postVC = PostViewController(userImage: feed.feedImage ?? UIImage(named: "")!, nickName: feed.feedName, job: "", image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
             self.navigationController?.pushViewController(postVC, animated: true)
@@ -78,11 +80,18 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         imageTapRecognizer.numberOfTapsRequired = 1
         cell.postImageVIew.isUserInteractionEnabled = true
         cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
+        
+        let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+            cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
+        })
+        bookMarkTapRecognizer.numberOfTapsRequired = 1
+        cell.bookMarkButton.isUserInteractionEnabled = true
+        cell.bookMarkButton.addGestureRecognizer(bookMarkTapRecognizer)
             return cell
     }
 
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 550
+        return 600
     }
 }

@@ -394,6 +394,7 @@ extension PostViewController {
                 withIdentifier: CellReuseIdentifiers.specification.rawValue) as! SpecificationTableViewCell
             cell.commentAnswerLabel.text = (comments[indexPath.section])[indexPath.row]
             cell.userImageView.image = userImage
+            cell.nickLabel.text = nickName
             cell.dateLabel.text = date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
                 cell.heartImageView.image = UIImage(systemName: "heart.fill")

@@ -102,12 +102,6 @@ class PostsTableViewCell: UITableViewCell {
         return settingsImageView
     }()
     
-    lazy var postView: UIView = {
-        let postView = UIView()
-        postView.backgroundColor = UIColor(hex: "#F5F3EE")
-        return postView
-    }()
-    
     lazy var verticalLineView: UIView = {
         let verticalLineView = UIView()
         verticalLineView.backgroundColor = UIColor(hex: "#7E8183")
@@ -149,10 +143,16 @@ class PostsTableViewCell: UITableViewCell {
     }
     
     lazy var postImageVIew: UIImageView = {
-        let postView = UIImageView()
-        postView.contentMode = .scaleAspectFill
-        postView.backgroundColor = .black
-        return postView
+        let postImageVIew = UIImageView()
+        postImageVIew.contentMode = .scaleAspectFill
+        postImageVIew.backgroundColor = .black
+        var itemSize:CGSize = CGSizeMake(600, 400)
+        UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale)
+        var imageRect : CGRect = CGRectMake(0, 0, itemSize.width, itemSize.height)
+        postImageVIew.image?.draw(in: imageRect)
+        postImageVIew.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return postImageVIew
     }()
     
     var separatorLineView: UIView = {
@@ -172,13 +172,6 @@ class PostsTableViewCell: UITableViewCell {
         let button = UIButton(type: .system)
         button.tintColor = .black
         button.setImage(UIImage(systemName: "bubble.right"), for: .normal)
-        return button
-    }()
-    
-    private let shareButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .black
-        button.setImage(UIImage(systemName: "paperplane"), for: .normal)
         return button
     }()
 
@@ -231,10 +224,17 @@ class PostsTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let commentLabel: UILabel = {
+    let commentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: UIConstants.commentLabelFontSize)
         return label
+    }()
+    
+    let bookMarkButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        return button
     }()
     
     
@@ -278,16 +278,31 @@ class PostsTableViewCell: UITableViewCell {
             make.top.equalTo(dateLabel.snp.bottom).offset(16)
             make.size.equalTo(UIConstants.userImageSize)
         }
-        let usernameStack = UIStackView()
-        usernameStack.axis = .vertical
-        usernameStack.addArrangedSubview(surnameLabel)
-        usernameStack.addArrangedSubview(jobLabel)
-        contentView.addSubview(usernameStack)
-        usernameStack.snp.makeConstraints { make in
-            make.centerY.equalTo(userImageView)
-            make.leading.equalTo(userImageView.snp.trailing).offset(UIConstants.usernameStackToProfileImageOffset)
-        }
+        
+        contentView.addSubview(surnameLabel)
+
+                surnameLabel.snp.makeConstraints { make in
+                    make.top.equalTo(dateLabel.snp.bottom).offset(16)
+                    make.left.equalTo(userImageView.snp.right).offset(16)
+                }
+
+                contentView.addSubview(nameLabel)
+
+                nameLabel.snp.makeConstraints { make in
+                    make.centerY.equalTo(surnameLabel.snp.centerY)
+                    make.left.equalTo(surnameLabel.snp.right).offset(6)
+                }
+
+                contentView.addSubview(jobLabel)
+
+                jobLabel.snp.makeConstraints { make in
+                    make.top.equalTo(surnameLabel.snp.bottom).offset(6)
+                    make.left.equalTo(userImageView.snp.right).offset(16)
+                }
+        
+        
         contentView.addSubview(parametersButton)
+        
         parametersButton.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(16)
             make.trailing.equalToSuperview().offset(-16)
@@ -318,46 +333,40 @@ class PostsTableViewCell: UITableViewCell {
             make.width.equalTo(400)
         }
         
+        contentView.addSubview(likeButton)
         
-//        let textDesignStack = UIStackView()
-//        textDesignStack.axis = .vertical
-//        textDesignStack.addArrangedSubview(postTextLabel)
-//        textDesignStack.addArrangedSubview(expandButton)
-//        postTextLabel.snp.makeConstraints { make in
-//            make.height.equalTo(postTextLabel.snp.height)
-//        }
-//        contentView.addSubview(textDesignStack)
-//        textDesignStack.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview()
-//            make.top.equalTo(userImageView.snp.bottom).offset(UIConstants.postImageToUserImageOffset)
-//        }
-        let actionsStack = UIStackView()
-        actionsStack.axis = .horizontal
-        actionsStack.addArrangedSubview(likeButton)
-        actionsStack.addArrangedSubview(likesLabel)
-        actionsStack.addArrangedSubview(commentButton)
-        actionsStack.addArrangedSubview(shareButton)
-        actionsStack.spacing = UIConstants.actionsStackSpacing
-        
-        contentView.addSubview(actionsStack)
-        actionsStack.snp.makeConstraints { make in
-            make.height.equalTo(UIConstants.actionsStackHeight)
-            make.leading.equalToSuperview().inset(UIConstants.contentInset)
-            make.top.equalTo(postImageVIew.snp.bottom).offset(40)
+        likeButton.snp.makeConstraints { make in
+//            make.top.equalTo(postImageVIew.safeAreaLayoutGuide.snp.bottom).offset(16)
+            make.bottom.equalToSuperview().offset(16)
+            make.left.equalToSuperview().offset(16)
         }
+
         contentView.addSubview(likesLabel)
+
         likesLabel.snp.makeConstraints { make in
-            make.leading.equalTo(likeButton.snp.trailing).offset(6)
             make.centerY.equalTo(likeButton.snp.centerY)
+            make.left.equalTo(likeButton.snp.right).offset(6)
         }
+
+        contentView.addSubview(commentButton)
+
         commentButton.snp.makeConstraints { make in
-            make.left.equalTo(likesLabel.snp.right).offset(6)
+            make.centerY.equalTo(likeButton.snp.centerY)
+            make.left.equalTo(likesLabel.snp.right).offset(16)
         }
+
         contentView.addSubview(commentLabel)
+
         commentLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(likesLabel.snp.trailing).offset(6)
-            make.top.equalTo(likesLabel.snp.bottom).offset(UIConstants.commentToLikesOffset)
-            make.bottom.equalToSuperview().inset(UIConstants.contentInset)
+            make.centerY.equalTo(likeButton.snp.centerY)
+            make.left.equalTo(commentLabel.snp.right).offset(6)
+        }
+        
+        contentView.addSubview(bookMarkButton)
+        
+        bookMarkButton.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide.snp.bottom).offset(16)
+            make.right.equalToSuperview().offset(-16)
         }
         
 

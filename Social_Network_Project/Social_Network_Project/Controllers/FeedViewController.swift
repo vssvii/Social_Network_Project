@@ -130,7 +130,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.nameLabel.text = friend.name
             cell.surnameLabel.text = friend.surname
             cell.jobLabel.text = friend.job
-            cell.postTextLabel.text = friend.text
+            cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: friend.text)
             cell.postImageVIew.image = friend.image
             cell.likesLabel.text = "\(friend.likes)"
         
@@ -148,13 +148,20 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         likedtapRecognizer.numberOfTapsRequired = 1
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(likedtapRecognizer)
-        let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
+        let postTapRecognizer = TapGestureRecognizer(block: { [self] in
             let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
             self.navigationController?.pushViewController(postVC, animated: true)
         })
-        commentTapRecognizer.numberOfTapsRequired = 1
+        postTapRecognizer.numberOfTapsRequired = 1
         cell.postImageVIew.isUserInteractionEnabled = true
-        cell.postImageVIew.addGestureRecognizer(commentTapRecognizer)
+        cell.postImageVIew.addGestureRecognizer(postTapRecognizer)
+        
+        let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+            cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
+        })
+        bookMarkTapRecognizer.numberOfTapsRequired = 1
+        cell.bookMarkButton.isUserInteractionEnabled = true
+        cell.bookMarkButton.addGestureRecognizer(bookMarkTapRecognizer)
             return cell
     }
     
@@ -165,7 +172,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
 //    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 480
+        return 550
     }
 }
 

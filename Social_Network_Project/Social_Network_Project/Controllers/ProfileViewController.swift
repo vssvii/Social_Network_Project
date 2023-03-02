@@ -156,7 +156,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
-            cell.postTextLabel.text = post.description
+            cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: post.description)
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
@@ -180,6 +180,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             postTapRecognizer.numberOfTapsRequired = 1
             cell.postImageVIew.isUserInteractionEnabled = true
             cell.postImageVIew.addGestureRecognizer(postTapRecognizer)
+            
+            let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+                cell.bookMarkButton.tintColor = .red
+            })
+            bookMarkTapRecognizer.numberOfTapsRequired = 1
+            cell.bookMarkButton.isUserInteractionEnabled = true
+            cell.bookMarkButton.addGestureRecognizer(bookMarkTapRecognizer)
             return cell
         }
     }
@@ -229,7 +236,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 480
+            return 520
         }
     }
 //

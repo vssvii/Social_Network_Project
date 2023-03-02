@@ -157,7 +157,8 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
-            cell.postTextLabel.text = post.description
+            cell.commentLabel.text = "\(3)"
+            cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: post.description)
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
@@ -183,6 +184,12 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.isUserInteractionEnabled = true
             cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
             
+            let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+                cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
+            })
+            bookMarkTapRecognizer.numberOfTapsRequired = 1
+            cell.bookMarkButton.isUserInteractionEnabled = true
+            cell.bookMarkButton.addGestureRecognizer(bookMarkTapRecognizer)
             return cell
         }
     }
@@ -231,7 +238,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 620
+            return 540
         }
     }
     

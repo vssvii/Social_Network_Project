@@ -44,6 +44,7 @@
 		B06AD1A4299396430014BC4F /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1A3299396430014BC4F /* AlbumsViewController.swift */; };
 		B06AD1B929955B450014BC4F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1B829955B450014BC4F /* Friend.swift */; };
 		B06AD1BB29955D350014BC4F /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AD1BA29955D350014BC4F /* FriendViewModel.swift */; };
+		B06FE10329B0BDAD0027E178 /* AlbumPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06FE10229B0BDAD0027E178 /* AlbumPhotosViewController.swift */; };
 		B070126E29AB72780077755E /* StoriesHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070126D29AB72780077755E /* StoriesHomeView.swift */; };
 		B070127029AB72D70077755E /* IGStoryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070126F29AB72D70077755E /* IGStoryListCell.swift */; };
 		B070127229AB73140077755E /* IGStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070127129AB73140077755E /* IGStory.swift */; };
@@ -171,6 +172,7 @@
 		B06AD1A3299396430014BC4F /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B06AD1B829955B450014BC4F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		B06AD1BA29955D350014BC4F /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
+		B06FE10229B0BDAD0027E178 /* AlbumPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPhotosViewController.swift; sourceTree = "<group>"; };
 		B070126D29AB72780077755E /* StoriesHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesHomeView.swift; sourceTree = "<group>"; };
 		B070126F29AB72D70077755E /* IGStoryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGStoryListCell.swift; sourceTree = "<group>"; };
 		B070127129AB73140077755E /* IGStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGStory.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				B005ECC729AF072700D70E5E /* InterestsViewController.swift */,
 				B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */,
 				B005ECCB29AF275200D70E5E /* CareerViewController.swift */,
+				B06FE10229B0BDAD0027E178 /* AlbumPhotosViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				B070128C29AB78F60077755E /* IGImageRequestable.swift in Sources */,
 				B0FD0CAA298D1623000AF6D4 /* ProfileViewController.swift in Sources */,
 				B06AD16D29913DFC0014BC4F /* FeedViewController.swift in Sources */,
+				B06FE10329B0BDAD0027E178 /* AlbumPhotosViewController.swift in Sources */,
 				B005ECC229AE63F600D70E5E /* PersonalViewModel.swift in Sources */,
 				B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */,
 				B01937EC2997A609007AEB93 /* ProfileSideMenuViewController.swift in Sources */,

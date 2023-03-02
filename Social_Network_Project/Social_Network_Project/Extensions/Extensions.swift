@@ -20,6 +20,18 @@ extension Tint {
     static let redOrange = UIColor.rgb(from: 0xe95950)
 }
 
+func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
+    let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+    let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
+
+    let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
+    let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
+
+    titleString.append(subtitleString)
+
+    return titleString
+}
+
 extension UIColor {
     
     
