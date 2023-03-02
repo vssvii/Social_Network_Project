@@ -7,7 +7,12 @@
 
 import UIKit
 
+
+
 class ProfileSideTableViewCell: UITableViewCell {
+    
+    
+    // MARK: Outlets
 
     var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
@@ -36,6 +41,9 @@ class ProfileSideTableViewCell: UITableViewCell {
         setupView()
     }
     
+    
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

@@ -8,6 +8,8 @@
 import UIKit
 import Photos
 
+// MARK: Extensions
+
 typealias Tint = UIColor
 
 extension Tint {
@@ -234,6 +236,8 @@ extension UIViewController {
 
 extension Date {
     
+    // MARK: change Date to String as localized language
+    
     
     func toString( dateFormat format  : String, kzTimeZone: Bool = false) -> String {
         let dateFormatter = DateFormatter()
@@ -249,6 +253,8 @@ extension Date {
 
 extension UIView {
     
+    // MARK: Settings for constraints
+
     var igLeftAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.leftAnchor

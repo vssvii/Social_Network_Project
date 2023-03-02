@@ -2,7 +2,7 @@
 //  IGStoryPreviewModel.swift
 //  Social_Network_Project
 //
-//  Created by Ibragim Assaibuldayev on 21.02.2023
+//  Created by Developer on 21.02.2023
 //
 
 import Foundation

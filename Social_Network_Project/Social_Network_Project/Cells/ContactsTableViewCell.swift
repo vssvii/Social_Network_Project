@@ -9,6 +9,8 @@ import UIKit
 
 class ContactsTableViewCell: UITableViewCell {
     
+    // MARK: Outlets
+    
     lazy var contactLabel: UILabel = {
         let contactLabel = UILabel()
         contactLabel.font = .boldSystemFont(ofSize: 14)
@@ -27,6 +29,8 @@ class ContactsTableViewCell: UITableViewCell {
         setupView()
 
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

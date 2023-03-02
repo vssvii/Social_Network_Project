@@ -39,10 +39,6 @@ enum Language: String {
             UserDefaults.standard.set([newValue.rawValue], forKey: appleLanguagesKey)
             UserDefaults.standard.synchronize()
             
-//            // restart app here
-//            Apollo.shared.clearCache()
-//            let appDelegate = AppDelegate.shared
-//            appDelegate.setupUI()
             
         }
     }

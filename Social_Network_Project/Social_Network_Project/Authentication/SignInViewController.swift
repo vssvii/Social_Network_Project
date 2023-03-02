@@ -11,6 +11,9 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
+    
+    // MARK: Outlets
+    
     private lazy var signInLabel: UILabel = {
         let signInLabel = UILabel()
         signInLabel.text = "welcome_back".localized
@@ -91,6 +94,8 @@ class SignInViewController: UIViewController {
             presentAlert(title: "the_user_with_this_number_is_not_registered".localized, message: "")
         }
     }
+    
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +128,9 @@ class SignInViewController: UIViewController {
         }
         return result
     }
+    
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         
@@ -162,6 +170,8 @@ class SignInViewController: UIViewController {
 
 
 extension SignInViewController: UITextFieldDelegate {
+    
+    // MARK: format +X (XXX) XXX-XXXX of number
 
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

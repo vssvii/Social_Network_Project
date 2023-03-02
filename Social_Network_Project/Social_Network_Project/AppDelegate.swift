@@ -24,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             FirebaseApp.configure()
             
-//            let loginInspector = LoginInspector()
-//            var factory = MyLoginFactory().getLoginInspector()
             
             let entranceItem = UIBarButtonItem()
             let entranceVC = EntranceViewController()
@@ -35,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = entranceTBC
             window?.makeKeyAndVisible()
             
-//            if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
-//                loginController.delegate = loginInspector
-//                }
             
             return true
         }
@@ -85,7 +80,5 @@ var persistentContainer: NSPersistentContainer = {
         })
         return container
     }()
-
-    // MARK: - Core Data Saving support
 
 

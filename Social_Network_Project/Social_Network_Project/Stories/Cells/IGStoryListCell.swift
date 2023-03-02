@@ -2,7 +2,7 @@
 //  IGStoryListCell.swift
 //  Social_Network_Project
 //
-// Created by Ibragim Assaibuldayev on 20.02.2023.
+// Created by Developer on 20.02.2023.
 //
 
 import UIKit

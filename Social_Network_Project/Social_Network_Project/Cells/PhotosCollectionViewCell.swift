@@ -10,6 +10,8 @@ import SnapKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Outlets
+    
     
     lazy var photoImageView : UIImageView = {
         let photoImageView = UIImageView()
@@ -29,6 +31,8 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

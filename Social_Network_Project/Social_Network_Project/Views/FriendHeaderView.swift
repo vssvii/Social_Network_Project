@@ -14,6 +14,8 @@ import SideMenu
 
 class FriendHeaderView: UIView {
     
+    // MARK: Outlets
+    
     
     lazy var nickNameLabel: UILabel = {
         let nickNameLabel = UILabel()
@@ -144,6 +146,8 @@ class FriendHeaderView: UIView {
     func editDataProfile() {
         
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

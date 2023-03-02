@@ -57,6 +57,8 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,6 +102,8 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         present(imagePC, animated: true)
     }
     
+    // MARK: Constraints
+    
     private func setupView() {
         
         view.addSubview(navBar)
@@ -119,6 +123,8 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         }
     }
 }
+
+// MARK: Extension - Table View
 
 extension FriendPhotosViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -166,6 +172,8 @@ extension FriendPhotosViewController: UITableViewDataSource, UITableViewDelegate
         }
     }
 }
+
+// MARK: ImagePicker extension
 
 
 extension FriendPhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

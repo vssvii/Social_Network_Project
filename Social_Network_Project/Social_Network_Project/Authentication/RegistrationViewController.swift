@@ -13,6 +13,9 @@ import Firebase
 class RegistrationViewController: UIViewController {
     
     
+    // MARK: Outlets
+    
+    
     var phoneNumber: ((String?) -> Void)?
     
     private lazy var registrationLabel: UILabel = {
@@ -70,12 +73,10 @@ class RegistrationViewController: UIViewController {
         if let number = writeNumberTextField.text, !number.isEmpty {
             AuthManager.shared.startAuth(phoneNumber: number) { [weak self] success in
                 guard success else { return }
-                let registerConfirmationVC = RegisterConfirmationViewController(phoneNumber: number)
-                self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
-//                DispatchQueue.main.async {
-//                    let registerConfirmationVC = RegisterConfirmationViewController()
-//                    self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
-//                }
+                DispatchQueue.main.async {
+                    let registerConfirmationVC = RegisterConfirmationViewController(phoneNumber: number)
+                    self?.navigationController?.pushViewController(registerConfirmationVC, animated: true)
+                }
             }
         }
         return true
@@ -91,6 +92,8 @@ class RegistrationViewController: UIViewController {
         return descriptionLabel
     }()
     
+    // MARK: Lifecycle
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +101,7 @@ class RegistrationViewController: UIViewController {
         setupView()
         setNavigationBar()
     }
+    
     
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goToEntrancePageAction))
@@ -123,6 +127,8 @@ class RegistrationViewController: UIViewController {
         }
         return result
     }
+    
+    // MARK: SetupConstraints
     
     private func setupView() {
         
@@ -174,6 +180,9 @@ class RegistrationViewController: UIViewController {
 
 
 extension RegistrationViewController: UITextFieldDelegate {
+    
+    
+    // MARK: Format setup +X (XXX) XXX-XXXX of number
 
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

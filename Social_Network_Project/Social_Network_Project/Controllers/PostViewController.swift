@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 import ExpyTableView
 
+
+// MARK: Information about post with comments
+
 class PostViewController: UIViewController {
     
     private enum CellReuseIdentifiers: String {
@@ -77,17 +80,17 @@ class PostViewController: UIViewController {
         let button = UIButton(type: .system)
         button.tintColor = .black
         button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.addTarget(self, action: #selector(likedAction), for: .touchUpInside)
         return button
     }()
     
-    @objc func likedAction() {
+    func likedAction() {
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
             if coreManager.posts.contains( where: { $0.descript == text })  {
                 presentAlert(title: "", message: "the_post_has_been_already_added".localized)
         } else {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
             likeButton.tintColor = .red
+            likesLabel.text = "\(likesCount + 1)"
             self.coreManager.addNewPost(surname: nickName, name: "", description: text)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
@@ -159,6 +162,8 @@ class PostViewController: UIViewController {
         configure()
         
         setNavigationBar()
+        
+        likedAction()
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -365,7 +370,7 @@ extension PostViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
     }
 }
 

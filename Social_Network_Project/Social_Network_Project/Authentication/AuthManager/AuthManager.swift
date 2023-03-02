@@ -16,6 +16,8 @@ class AuthManager {
     
     private var verificationId: String?
     
+    // MARK: Registration
+    
     func startAuth (phoneNumber: String, completion: @escaping (Bool) -> Void) {
         
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] verificationId, error in
@@ -27,6 +29,8 @@ class AuthManager {
             completion(true)
         }
     }
+    
+    // MARK: get SMS Code
     
     func verifyCode (smsCode: String, completion: @escaping (Bool) -> Void) {
         

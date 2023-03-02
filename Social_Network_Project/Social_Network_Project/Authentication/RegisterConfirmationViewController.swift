@@ -12,6 +12,9 @@ import Firebase
 
 class RegisterConfirmationViewController: UIViewController {
     
+    
+    // MARK: Outlets
+    
     private var phoneNumber: String = ""
     
     
@@ -105,8 +108,6 @@ class RegisterConfirmationViewController: UIViewController {
                     let appDelegate = UIApplication.shared.delegate! as! AppDelegate
                     appDelegate.window?.rootViewController = tabBarController
                     appDelegate.window?.makeKeyAndVisible()
-//                    let profileViewController = ProfileViewController()
-//                    self.navigationController?.pushViewController(profileViewController, animated: true)
                 }
             }
         }
@@ -120,13 +121,14 @@ class RegisterConfirmationViewController: UIViewController {
     
     init(phoneNumber: String) {
         self.phoneNumber = phoneNumber
-//        self.codeDescriptionLabel.text = "Мы отправили SMS с кодом на номер +\(phoneNumber)"
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,6 +146,7 @@ class RegisterConfirmationViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: Setup Constraints
     
     private func setupView() {
         

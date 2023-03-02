@@ -152,7 +152,6 @@ class EditViewController: UIViewController {
         
         setupNavigationBar()
 
-        // Do any additional setup after loading the view.
     }
     
     private func setupNavigationBar() {

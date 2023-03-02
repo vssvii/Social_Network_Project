@@ -107,28 +107,6 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let post = coreManager.posts[indexPath.row]
-//        let tapRecognizer = TapGestureRecognizer(block: { [self] in
-//            let alert = UIAlertController(title: "deleting_a_post".localized, message: "want_delete_post".localized, preferredStyle: UIAlertController.Style.alert)
-//
-//            alert.addAction(UIAlertAction(title: "cancel".localized, style: UIAlertAction.Style.default, handler: { _ in
-//                            //Cancel Action
-//                        }))
-//            alert.addAction(UIAlertAction(title: "delete".localized,
-//                                                      style: UIAlertAction.Style.destructive,
-//                                                      handler: {(_: UIAlertAction!) in
-////                            self.coreManager.deletePosts(post: post)
-//                            tableView.reloadData()
-//                        }))
-//            self.present(alert, animated: true, completion: nil)
-//        })
-//        tapRecognizer.numberOfTapsRequired = 2
-//        view.addGestureRecognizer(tapRecognizer)
-//    }
-
-
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }

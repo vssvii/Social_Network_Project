@@ -1,7 +1,7 @@
 //
 //  IGUser.swift
 //
-//  Created by Ibragim Assaibuldayev on 21.02.2023
+//  Created by Developer on 21.02.2023
 //  Copyright (c) DrawRect. All rights reserved.
 //
 

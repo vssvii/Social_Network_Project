@@ -9,6 +9,9 @@ import UIKit
 
 class AlbumsCollectionViewCell: UICollectionViewCell {
     
+    
+    // MARK: Outlets
+    
     lazy var albumImageView : UIImageView = {
         let photoImageView = UIImageView()
         photoImageView.contentMode = .scaleAspectFill
@@ -32,6 +35,8 @@ class AlbumsCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

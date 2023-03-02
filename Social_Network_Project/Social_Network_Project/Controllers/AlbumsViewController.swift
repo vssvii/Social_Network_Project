@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+// MARK: View of albums
 class AlbumsViewController: UIViewController {
     
     var albums: [Album]

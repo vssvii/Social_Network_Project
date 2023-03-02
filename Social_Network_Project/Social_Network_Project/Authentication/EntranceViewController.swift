@@ -10,6 +10,10 @@ import SnapKit
 
 class EntranceViewController: UIViewController {
     
+    
+    // MARK: Outlets
+    
+    
     private lazy var entranceImageView: UIImageView = {
         let entranceImageView = UIImageView()
         entranceImageView.image = UIImage(named: "logo")
@@ -45,12 +49,16 @@ class EntranceViewController: UIViewController {
         navigationController?.pushViewController(signInVC, animated: true)
     }
     
+    // MARK: Lifecycle
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
     }
+    
+    // MARK: Constraints
     
     private func setupView() {
         

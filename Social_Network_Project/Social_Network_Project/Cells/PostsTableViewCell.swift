@@ -12,6 +12,8 @@ import SnapKit
 
 class PostsTableViewCell: UITableViewCell {
     
+    // MARK: Extensions
+    
     
     private enum UIConstants {
         static let userImageSize: CGFloat = 30
@@ -239,6 +241,8 @@ class PostsTableViewCell: UITableViewCell {
     
     
     
+    // MARK: Setup Constraints
+    
     
     private func setupView() {
         
@@ -336,8 +340,7 @@ class PostsTableViewCell: UITableViewCell {
         contentView.addSubview(likeButton)
         
         likeButton.snp.makeConstraints { make in
-//            make.top.equalTo(postImageVIew.safeAreaLayoutGuide.snp.bottom).offset(16)
-            make.bottom.equalToSuperview().offset(16)
+            make.bottom.equalToSuperview().offset(-10)
             make.left.equalToSuperview().offset(16)
         }
 
@@ -365,7 +368,7 @@ class PostsTableViewCell: UITableViewCell {
         contentView.addSubview(bookMarkButton)
         
         bookMarkButton.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide.snp.bottom).offset(16)
+            make.bottom.equalToSuperview().offset(-10)
             make.right.equalToSuperview().offset(-16)
         }
         

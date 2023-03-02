@@ -50,13 +50,6 @@ class ProfileSideMenuViewController: UIViewController {
     private var menuSideOptions = ["bookmarks".localized, "liked".localized, "files".localized,  "archives".localized, "settings".localized]
     private var menuSideImages = ["bookmark", "heart", "square.and.arrow.up", "personalhotspot", "slider.horizontal.3"]
     
-//    enum MenuOptions: String {
-//        case bookmarks = "Закладки"
-//        case liked = "Понравилось"
-//        case files = "Файлы"
-//        case archives = "Архивы"
-//        case settings = "Настройки"
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

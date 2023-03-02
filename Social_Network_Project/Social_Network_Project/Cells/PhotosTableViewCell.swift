@@ -10,6 +10,9 @@ import SnapKit
 
 public class PhotosTableViewCell: UITableViewCell  {
     
+    
+    // MARK: Outlets
+    
     var photos: [Photo]?
     
     var albums: [Album]?
@@ -64,6 +67,8 @@ public class PhotosTableViewCell: UITableViewCell  {
         
         setupView()
     }
+    
+    // MARK: SetupConstraints
     
     private func setupView() {
         
@@ -132,10 +137,3 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
  
 }
-
-//extension UITableViewCell {
-//    open override func addSubview(_ view: UIView) {
-//        super.addSubview(view)
-//        sendSubviewToBack(contentView)
-//    }
-//}

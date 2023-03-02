@@ -13,6 +13,8 @@ import SnapKit
 
 class PhotosViewController: UIViewController, UINavigationBarDelegate {
     
+    // MARK: Variables
+    
     let viewModel = PhotosViewModel()
     
     var photos: [Photo]
@@ -57,6 +59,8 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,6 +104,8 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
         present(imagePC, animated: true)
     }
     
+    // MARK: Constraints
+    
     private func setupView() {
         
         view.addSubview(navBar)
@@ -119,6 +125,8 @@ class PhotosViewController: UIViewController, UINavigationBarDelegate {
         }
     }
 }
+
+// MARK: Extension - Table View
 
 extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -164,6 +172,7 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: Extension - ImagePicker
 
 extension PhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

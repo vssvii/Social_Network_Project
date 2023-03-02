@@ -10,6 +10,9 @@ import UIKit
 class AlbumTableViewCell: UITableViewCell {
     
     
+    // MARK: Outlets
+    
+    
     var albums: [Album]?
     
     private enum CellReuseIdentifiers: String {
@@ -61,6 +64,8 @@ class AlbumTableViewCell: UITableViewCell {
         
         setupView()
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

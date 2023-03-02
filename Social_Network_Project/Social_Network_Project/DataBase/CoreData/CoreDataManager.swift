@@ -10,6 +10,9 @@ import CoreData
 
 class CoreDataManager {
     
+    // MARK: Data of Liked posts
+    
+    
     static let shared = CoreDataManager()
     
     init() {

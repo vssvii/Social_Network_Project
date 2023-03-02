@@ -14,6 +14,8 @@ import SideMenu
 
 class ProfileHeaderView: UIView {
     
+    // MARK: Outlets
+    
     
     lazy var nickName: UILabel = {
         let nickName = UILabel()
@@ -167,6 +169,8 @@ class ProfileHeaderView: UIView {
         
     }
     
+    // MARK: Setup Constraints
+    
     private func setupView() {
         
         
@@ -294,17 +298,6 @@ class ProfileHeaderView: UIView {
         
         
     }
-    
-//    private func setupProfile() {
-//        
-//        avatarImageView.image = myProfile.image
-//        surnameLabel.text = myProfile.surname
-//        nameLabel.text = myProfile.name
-//        jobLabel.text = myProfile.job
-//        publicationResultLabel.text = "\(myProfile.publicationCount) публикаций"
-//        subscriptionResultLabel.text = "\(myProfile.subscriptionCount) подписок"
-//        subscriberResultLabel.text = "\(myProfile.subscriberCount) подписчиков"
-//    }
 }
 
 

@@ -10,6 +10,8 @@ import SnapKit
 
 public class FriendPhotosTableViewCell: UITableViewCell  {
     
+    // MARK: Outlets
+    
     var photos: [Photo]?
     
     
@@ -62,6 +64,8 @@ public class FriendPhotosTableViewCell: UITableViewCell  {
         
         setupView()
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

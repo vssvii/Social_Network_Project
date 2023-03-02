@@ -13,6 +13,8 @@ import ExpyTableView
 
 class CommentsTableViewCell: UITableViewCell, ExpyTableViewHeaderCell {
     
+    // MARK: Outlets
+    
     lazy var userImageView: UIImageView = {
         let userImageView = UIImageView()
         userImageView.layer.cornerRadius = 15
@@ -66,6 +68,8 @@ class CommentsTableViewCell: UITableViewCell, ExpyTableViewHeaderCell {
         setupView()
 
     }
+    
+    // MARK: Setup Constraints
     
     func setupView() {
 
@@ -150,6 +154,9 @@ class CommentsTableViewCell: UITableViewCell, ExpyTableViewHeaderCell {
 
 class SpecificationTableViewCell: UITableViewCell {
     
+    
+    // MARK: Outlets
+    
     lazy var userImageView: UIImageView = {
         let userImageView = UIImageView()
         userImageView.layer.cornerRadius = 15
@@ -204,6 +211,8 @@ class SpecificationTableViewCell: UITableViewCell {
         setupView()
 
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         

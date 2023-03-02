@@ -2,7 +2,7 @@
 //  IGStoryPreviewController.swift
 //  Social_Network_Project
 //
-//  Created by Created by Ibragim Assaibuldayev on 20.02.2023.
+//  Created by Created by Developer on 20.02.2023.
 //
 
 import UIKit

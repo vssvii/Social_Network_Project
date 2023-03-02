@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 
+// MARK: Additions/ ImageView
+
 enum ImageStyle: Int {
     case squared,rounded
 }

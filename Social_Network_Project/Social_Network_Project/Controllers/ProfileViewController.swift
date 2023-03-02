@@ -164,8 +164,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 if coreManager.posts.contains( where: { $0.descript == post.description })  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
-                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
                 cell.likeButton.tintColor = .red
+                cell.likesLabel.text = "\(post.likes + 1)"
                 self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             }
@@ -236,18 +236,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 520
+            return 580
         }
     }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 0 {
-//            return 120
-//        } else {
-//            return 650
-//        }
-//
-//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {

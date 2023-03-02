@@ -46,13 +46,6 @@ class EditMenuViewController: UIViewController {
     
     private var menuSideOptions = ["basic_information".localized, "contacts".localized, "interests".localized,  "education".localized, "careers".localized]
     
-//    enum MenuOptions: String {
-//        case basicInfo = "Основная информация"
-//        case contacts = "Контакты"
-//        case interests = "Интересы"
-//        case education = "Образование"
-//        case settings = "Карьера"
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

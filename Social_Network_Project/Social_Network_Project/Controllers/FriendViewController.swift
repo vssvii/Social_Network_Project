@@ -9,9 +9,11 @@ import UIKit
 import SnapKit
 import SideMenu
 
+
+// MARK: Page Information of Friend
 class FriendViewController: UIViewController {
     
-    let coreManager = CoreDataManager.shared
+    // MARK: Outlets
     
     var nickName: String
     
@@ -77,6 +79,8 @@ class FriendViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,12 +98,6 @@ class FriendViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
-//    private func setupSideMenu() {
-//        editSideMenu.leftSide = false
-//        profileSideMenu.leftSide = false
-//        SideMenuManager.default.rightMenuNavigationController = profileSideMenu
-//        SideMenuManager.default.addPanGestureToPresent(toView: view)
-//    }
     
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
@@ -108,6 +106,8 @@ class FriendViewController: UIViewController {
     @objc func openMenu() {
         
     }
+    
+    // MARK: Setup Constraints
     
     private func setupView() {
         
@@ -121,6 +121,8 @@ class FriendViewController: UIViewController {
         }
     }
 }
+
+// MARK: Extension Table view
 
 extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -162,13 +164,15 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+            
+            // MARK: Like Action / Adding a post to favourite posts
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                if coreManager.posts.contains( where: { $0.descript == post.description })  {
+                if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
-                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
                 cell.likeButton.tintColor = .red
-                self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+                cell.likesLabel.text = "\(post.likes + 1)"
+                CoreDataManager.shared.addNewPost(surname: surname, name: name, description: post.description)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             }
         })
@@ -176,6 +180,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(tapRecognizer)
             
+            // MARK: Open information about post with comments
             let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
                 let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: comments)
                 self.navigationController?.pushViewController(postVC, animated: true)
@@ -184,8 +189,10 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.isUserInteractionEnabled = true
             cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
             
+            // MARK: BookMark Action
             let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
                 cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
+                cell.bookMarkButton.tintColor = .red
             })
             bookMarkTapRecognizer.numberOfTapsRequired = 1
             cell.bookMarkButton.isUserInteractionEnabled = true
@@ -201,6 +208,8 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
+            
+            // MARK: Data in FriendHeaderView
             let view = FriendHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 150))
             view.nickNameLabel.text = nickName
             view.nameLabel.text = name
@@ -222,11 +231,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             return UIView()
         }
     }
-    
-    
-//    @objc func openEditPage() {
-//        present(editSideMenu, animated: true)
-//    }
+
     
     
     @objc func openInfoPageAction() {
@@ -238,7 +243,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 540
+            return 580
         }
     }
     

@@ -9,6 +9,8 @@ import UIKit
 
 class PhotosViewModel: NSObject {
     
+    // MARK: Data of photos and albums
+    
     var albums: [Album] = [Album(photos: [Photo(image: UIImage(named: "11")),
                                          Photo(image: UIImage(named: "12")),
                                           Photo(image: UIImage(named: "13")),

@@ -9,6 +9,7 @@ import UIKit
 
 class PersonalViewController: UIViewController {
     
+    // MARK: Variables
     
     let viewModel = PersonalViewModel()
     
@@ -26,6 +27,8 @@ class PersonalViewController: UIViewController {
         feedsTableView.dataSource = self
         return feedsTableView
     }()
+    
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,8 @@ class PersonalViewController: UIViewController {
         setupView()
 
     }
+    
+    // MARK: Constraints
     
     private func setupView() {
         
@@ -48,6 +53,7 @@ class PersonalViewController: UIViewController {
     }
 }
 
+// MARK: Extension - Table View
 
 extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -73,6 +79,22 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
         cell.likesLabel.text = "\(post.likes)"
         cell.commentLabel.text = "\(3)"
+        // MARK: Like Action
+        let tapRecognizer = TapGestureRecognizer(block: { [self] in
+            if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
+                presentAlert(title: "", message: "the_post_has_been_already_added".localized)
+        } else {
+            cell.likeButton.tintColor = .red
+            cell.likesLabel.text = "\(post.likes + 1)"
+            CoreDataManager.shared.addNewPost(surname: feed.feedName, name: "", description: post.description)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        }
+    })
+        tapRecognizer.numberOfTapsRequired = 1
+        cell.likeButton.isUserInteractionEnabled = true
+        cell.likeButton.addGestureRecognizer(tapRecognizer)
+        
+        // MARK: Open information about post with comments
         let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
             let postVC = PostViewController(userImage: feed.feedImage ?? UIImage(named: "")!, nickName: feed.feedName, job: "", image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
             self.navigationController?.pushViewController(postVC, animated: true)
@@ -80,9 +102,10 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         imageTapRecognizer.numberOfTapsRequired = 1
         cell.postImageVIew.isUserInteractionEnabled = true
         cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
-        
+        //MARK: BookMark Action
         let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
             cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
+            cell.bookMarkButton.tintColor = .red
         })
         bookMarkTapRecognizer.numberOfTapsRequired = 1
         cell.bookMarkButton.isUserInteractionEnabled = true

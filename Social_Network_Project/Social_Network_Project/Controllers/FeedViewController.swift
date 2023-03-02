@@ -26,11 +26,11 @@ class FeedViewController: UIViewController {
         case listStory
     }
     
-    let coreManager = CoreDataManager.shared
-    
     let friendViewModel = FriendViewModel()
     
     let defaultImage = UIImage(named: "")
+    
+    // MARK: Outlets
     
     lazy var layout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -59,12 +59,7 @@ class FeedViewController: UIViewController {
         return feedTableView
     }()
     
-//    override func loadView() {
-//        super.loadView()
-//        view = StoriesHomeView(frame: UIScreen.main.bounds)
-//        _view.collectionView.delegate = self
-//        _view.collectionView.dataSource = self
-//    }
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +74,8 @@ class FeedViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+   // MARK: Setup Constraints
     
     private func setupView() {
         
@@ -100,6 +97,8 @@ class FeedViewController: UIViewController {
         }
     }
 }
+
+// MARK: Extension - TableView
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -127,27 +126,30 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.userImageView.isUserInteractionEnabled = true
         imageTapRecognizer.numberOfTapsRequired = 1
         cell.userImageView.addGestureRecognizer(imageTapRecognizer)
-            cell.nameLabel.text = friend.name
-            cell.surnameLabel.text = friend.surname
-            cell.jobLabel.text = friend.job
-            cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: friend.text)
-            cell.postImageVIew.image = friend.image
-            cell.likesLabel.text = "\(friend.likes)"
+        cell.nameLabel.text = friend.name
+        cell.surnameLabel.text = friend.surname
+        cell.jobLabel.text = friend.job
+        cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: friend.text)
+        cell.postImageVIew.image = friend.image
+        cell.likesLabel.text = "\(friend.likes)"
         
         // MARK: Recognizer which responsibles for adding post to coreData in LikedPostsViewController
-            let likedtapRecognizer = TapGestureRecognizer(block: { [self] in
-                if coreManager.posts.contains( where: { $0.descript == post.description })  {
-                presentAlert(title: "", message: "Пост уже был добавлен")
-            } else {
-                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
-                cell.likeButton.tintColor = .red
-                self.coreManager.addNewPost(surname: friend.surname, name: friend.name, description: post.description)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-            }
-        })
+        let likedtapRecognizer = TapGestureRecognizer(block: { [self] in
+            if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
+                presentAlert(title: "", message: "the_post_has_been_already_added".localized)
+        } else {
+            cell.likeButton.tintColor = .red
+            cell.likesLabel.text = "\(post.likes + 1)"
+            CoreDataManager.shared.addNewPost(surname: friend.surname, name: friend.name, description: post.description)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        }
+    })
+        
         likedtapRecognizer.numberOfTapsRequired = 1
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(likedtapRecognizer)
+        
+        // MARK: Open Information about post with comments
         let postTapRecognizer = TapGestureRecognizer(block: { [self] in
             let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
             self.navigationController?.pushViewController(postVC, animated: true)
@@ -156,8 +158,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.postImageVIew.isUserInteractionEnabled = true
         cell.postImageVIew.addGestureRecognizer(postTapRecognizer)
         
+        // MARK: Action of bookMark
         let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
             cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
+            cell.bookMarkButton.tintColor = .red
         })
         bookMarkTapRecognizer.numberOfTapsRequired = 1
         cell.bookMarkButton.isUserInteractionEnabled = true
@@ -165,17 +169,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            let friend = friendViewModel.friends[indexPath.row]
-//            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
-//            navigationController?.pushViewController(friendVC, animated: true)
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 550
+        return 580
     }
 }
 
+// MARK: Extension -  Collection View
 
 extension FeedViewController: UICollectionViewDelegate,UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
@@ -202,7 +201,6 @@ UICollectionViewDelegateFlowLayout {
             if(isDeleteSnapEnabled) {
                 DispatchQueue.main.async {
                     if let stories = self.storiesViewModel.getStories(), let stories_copy = try? stories.copy().myStory, stories_copy.count > 0 && stories_copy[0].snaps.count > 0 {
-//                        IGStoryPreviewController.init(stories: stories_copy, handPickedStoryIndex: indexPath.row, handPickedSnapIndex: 0)
                         let storyPreviewScene = IGStoryPreviewController(stories: stories_copy, handPickedStoryIndex: indexPath.row, handPickedSnapIndex: 0)
                         self.present(storyPreviewScene, animated: true, completion: nil)
                     } else {
