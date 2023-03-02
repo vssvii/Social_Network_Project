@@ -103,7 +103,7 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.postImageVIew.isUserInteractionEnabled = true
         cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
         //MARK: BookMark Action
-        let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+        let bookMarkTapRecognizer = TapGestureRecognizer(block: {
             cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
             cell.bookMarkButton.tintColor = .red
         })

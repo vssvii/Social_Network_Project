@@ -157,7 +157,7 @@ class ProfileHeaderView: UIView {
     
     
     override func draw(_ rect: CGRect) {
-        guard let ctx = UIGraphicsGetCurrentContext() else {
+        guard UIGraphicsGetCurrentContext() != nil else {
             return
         }
         

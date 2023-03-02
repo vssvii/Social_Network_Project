@@ -142,9 +142,6 @@ extension FriendPhotosViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-        if albums == nil {
-            tableView.isHidden = true
-                    }
             let cell = tableView.dequeueReusableCell(
                       withIdentifier: CellReuseIdentifiers.albums.rawValue) as! AlbumTableViewCell
             cell.albums = albums

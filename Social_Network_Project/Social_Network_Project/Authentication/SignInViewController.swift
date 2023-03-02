@@ -79,9 +79,9 @@ class SignInViewController: UIViewController {
                 savedPostsVC.tabBarItem = savedPostsItem
                 let savedPostsNVC = UINavigationController(rootViewController: savedPostsVC)
                 
-                let entranceItem = UIBarButtonItem()
+            _ = UIBarButtonItem()
                 let entranceVC = EntranceViewController()
-                let entranceNVC = UINavigationController(rootViewController: entranceVC)
+            _ = UINavigationController(rootViewController: entranceVC)
                 
                 let tabBarController = UITabBarController()
                 tabBarController.viewControllers = [mainNVC, profileNVC, savedPostsNVC]

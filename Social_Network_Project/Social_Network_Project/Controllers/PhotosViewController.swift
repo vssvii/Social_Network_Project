@@ -184,7 +184,7 @@ extension PhotosViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
         
         var photos = viewModel.photos
-        let photo = Photo(image: image)
+        _ = Photo(image: image)
         
         photos.append(Photo(image: image))
         

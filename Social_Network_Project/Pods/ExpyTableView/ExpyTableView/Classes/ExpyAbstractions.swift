@@ -21,7 +21,7 @@ public enum ExpyActionType {
 	case expand, collapse
 }
 
-@objc public protocol ExpyTableViewHeaderCell: class {
+@objc public protocol ExpyTableViewHeaderCell: AnyObject {
 	func changeState(_ state: ExpyState, cellReuseStatus cellReuse: Bool)
 }
 

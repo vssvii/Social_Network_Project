@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FirebaseApp.configure()
             
             
-            let entranceItem = UIBarButtonItem()
+            _ = UIBarButtonItem()
             let entranceVC = EntranceViewController()
             let entranceNVC = UINavigationController(rootViewController: entranceVC)
             let entranceTBC = UITabBarController()

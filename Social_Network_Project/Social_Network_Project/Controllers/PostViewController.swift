@@ -322,7 +322,7 @@ extension PostViewController: ExpyTableViewDataSource {
         cell.userImageView.image = userImage
         cell.nickLabel.text = nickName
         cell.dateLabel.text = date.toString(dateFormat: "MMM d")
-        let tapRecognizer = TapGestureRecognizer(block: { [self] in
+        let tapRecognizer = TapGestureRecognizer(block: {
             cell.heartImageView.image = UIImage(systemName: "heart.fill")
     })
         tapRecognizer.numberOfTapsRequired = 1
@@ -400,7 +400,7 @@ extension PostViewController {
             cell.userImageView.image = userImage
             cell.nickLabel.text = nickName
             cell.dateLabel.text = date.toString(dateFormat: "MMM d")
-            let tapRecognizer = TapGestureRecognizer(block: { [self] in
+            let tapRecognizer = TapGestureRecognizer(block: {
                 cell.heartImageView.image = UIImage(systemName: "heart.fill")
             })
             tapRecognizer.numberOfTapsRequired = 1

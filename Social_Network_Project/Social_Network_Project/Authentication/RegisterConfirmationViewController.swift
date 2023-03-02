@@ -97,9 +97,9 @@ class RegisterConfirmationViewController: UIViewController {
                     likedPostsVC.tabBarItem = savedPostsItem
                     let likedPostsNVC = UINavigationController(rootViewController: likedPostsVC)
                     
-                    let entranceItem = UIBarButtonItem()
+                    _ = UIBarButtonItem()
                     let entranceVC = EntranceViewController()
-                    let entranceNVC = UINavigationController(rootViewController: entranceVC)
+                    _ = UINavigationController(rootViewController: entranceVC)
                     
                     let tabBarController = UITabBarController()
                     tabBarController.viewControllers = [mainNVC, profileNVC, likedPostsNVC]

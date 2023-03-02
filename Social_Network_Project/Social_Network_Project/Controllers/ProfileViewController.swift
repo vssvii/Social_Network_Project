@@ -180,7 +180,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.postImageVIew.isUserInteractionEnabled = true
             cell.postImageVIew.addGestureRecognizer(postTapRecognizer)
             
-            let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+            let bookMarkTapRecognizer = TapGestureRecognizer(block: {
                 cell.bookMarkButton.tintColor = .red
             })
             bookMarkTapRecognizer.numberOfTapsRequired = 1

@@ -159,7 +159,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.postImageVIew.addGestureRecognizer(postTapRecognizer)
         
         // MARK: Action of bookMark
-        let bookMarkTapRecognizer = TapGestureRecognizer(block: { [self] in
+        let bookMarkTapRecognizer = TapGestureRecognizer(block: {
             cell.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
             cell.bookMarkButton.tintColor = .red
         })
