@@ -16,14 +16,6 @@ class LikedPostsViewController: UIViewController {
     private enum CellReuseIdentifiers: String {
         case likedPosts
     }
-    
-    private lazy var likedPostsLabel: UILabel = {
-        let likedPostsLabel = UILabel()
-        likedPostsLabel.textColor = Tint.textOrange
-        likedPostsLabel.text = "double_click".localized
-        likedPostsLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        return likedPostsLabel
-    }()
 
     
     private lazy var likedPostsTableView: UITableView = {
@@ -46,9 +38,6 @@ class LikedPostsViewController: UIViewController {
     
     private func navigationItems() {
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Удалить все", style: .plain, target: self, action: #selector(deleteAll))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "doc.badge.arrow.up"), style: .done, target: self, action: #selector(refreshTableView))
-        navigationItem.leftBarButtonItem?.tintColor = .orange
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "delete_all".localized, style: .plain, target: self, action: #selector(deleteAll))
         navigationItem.rightBarButtonItem?.tintColor = .red
@@ -69,17 +58,12 @@ class LikedPostsViewController: UIViewController {
         view.backgroundColor = .white
         title = "favourite_posts".localized
         
-        view.addSubview(likedPostsLabel)
         view.addSubview(likedPostsTableView)
         
-        likedPostsLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(120)
-            $0.centerX.equalToSuperview()
-        }
         
         likedPostsTableView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(likedPostsLabel.snp.bottom).offset(16)
+            $0.top.equalToSuperview().offset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
@@ -102,31 +86,46 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
         if let surname = post.surname, let name = post.name {
             cell.authorLabel.text = "\(String(describing: surname)) \(String(describing: name))"
         }
-//        if let surname = post.surname, let name = post.name {
-//            cell.authorLabel.text = "\(surname)"
         cell.descriptionLabel.text = post.descript
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = coreManager.posts[indexPath.row]
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
             let alert = UIAlertController(title: "deleting_a_post".localized, message: "want_delete_post".localized, preferredStyle: UIAlertController.Style.alert)
 
             alert.addAction(UIAlertAction(title: "cancel".localized, style: UIAlertAction.Style.default, handler: { _ in
-                            //Cancel Action
+//                            Cancel Action
                         }))
             alert.addAction(UIAlertAction(title: "delete".localized,
                                                       style: UIAlertAction.Style.destructive,
                                                       handler: {(_: UIAlertAction!) in
-//                            self.coreManager.deletePosts(post: post)
+                                self.coreManager.deletePosts(post: post)
                             tableView.reloadData()
                         }))
             self.present(alert, animated: true, completion: nil)
         })
-        tapRecognizer.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tapRecognizer)
+        tapRecognizer.numberOfTapsRequired = 1
+        cell.deleteButton.isUserInteractionEnabled = true
+        cell.deleteButton.addGestureRecognizer(tapRecognizer)
+        return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let post = coreManager.posts[indexPath.row]
+//        let tapRecognizer = TapGestureRecognizer(block: { [self] in
+//            let alert = UIAlertController(title: "deleting_a_post".localized, message: "want_delete_post".localized, preferredStyle: UIAlertController.Style.alert)
+//
+//            alert.addAction(UIAlertAction(title: "cancel".localized, style: UIAlertAction.Style.default, handler: { _ in
+//                            //Cancel Action
+//                        }))
+//            alert.addAction(UIAlertAction(title: "delete".localized,
+//                                                      style: UIAlertAction.Style.destructive,
+//                                                      handler: {(_: UIAlertAction!) in
+////                            self.coreManager.deletePosts(post: post)
+//                            tableView.reloadData()
+//                        }))
+//            self.present(alert, animated: true, completion: nil)
+//        })
+//        tapRecognizer.numberOfTapsRequired = 2
+//        view.addGestureRecognizer(tapRecognizer)
+//    }
 
 
     

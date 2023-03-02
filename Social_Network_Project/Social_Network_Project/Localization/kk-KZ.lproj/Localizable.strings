@@ -33,6 +33,8 @@
 
 // MARK: Others
 
+
+"language_date_locale" = "kk";
 "the_post_has_been_already_added" = "Пост қазірдің өзінде қосылды";
 "delete_all" = "Барлығын жою";
 "cancel" = "Бас тарту";
@@ -45,8 +47,20 @@
 "settings" = "Параметрлер";
 "archives" = "Мұрағат";
 "files" = "Файлдар";
+"call" = "қоңырау шалу";
+"tell_us_about_your_interests" = "Бізге қызығушылықтарыңыз туралы айтыңыз...";
+"enter_level_education" = "Білім деңгейін енгізіңіз";
+"level_of_education" = "Білім деңгейі";
+"place_of_study" = "Оқу орны";
+"enter_place_of_study" = "Оқу орнын енгізіңіз";
+"enter_all_fields" = "Барлық өрістерді енгізіңіз";
 "liked" = "Ұнады";
+"enter_position" = "Лауазымды енгізіңіз";
+"enter_place_of_work" = "Жұмыс орнын енгізіңіз";
+"place_of_work" = "Жұмыс орны";
+"position" = "Лауазымы";
 "bookmarks" = "Бетбелгілер";
+"change" = "Өзгерту";
 "careers" = "Мансап";
 "education" = "Білім";
 "interests" = "Мүдделер";

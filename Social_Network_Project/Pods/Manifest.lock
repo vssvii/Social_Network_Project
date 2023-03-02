@@ -1,4 +1,5 @@
 PODS:
+  - ExpyTableView (1.2.1)
   - Firebase/Auth (10.3.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.3.0)
@@ -93,6 +94,7 @@ PODS:
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
+  - ExpyTableView
   - Firebase/Auth
   - Firebase/Core
   - LZViewPager
@@ -101,6 +103,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ExpyTableView
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -117,6 +120,7 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
+  ExpyTableView: 19cf224c2ff04b1ec215ec52bc4ba6f81fa809ed
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
   FirebaseAnalytics: 036232b6a1e2918e5f67572417be1173576245f3
   FirebaseAuth: 0e415d29d846c1dce2fb641e46f35e9888d9bec6
@@ -132,6 +136,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: c928c6552e014d90e5bcaff6ca6426911934e429
+PODFILE CHECKSUM: 44b75f861bc6521ace5063fd52a2d77294c63de7
 
 COCOAPODS: 1.11.3

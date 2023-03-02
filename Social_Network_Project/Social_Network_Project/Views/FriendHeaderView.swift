@@ -230,7 +230,7 @@ class FriendHeaderView: UIView {
         subscriberResultLabel.snp.makeConstraints { (make) in
             make.top.equalTo(messageButton.snp.bottom).offset(16)
             make.left.equalTo(subscriptionResultLabel.snp.right).offset(25)
-            make.width.equalTo(100)
+            make.width.equalTo(150)
         }
         
         separatorLineView.snp.makeConstraints { (make) in

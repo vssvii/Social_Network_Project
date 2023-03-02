@@ -174,7 +174,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(tapRecognizer)
             let postTapRecognizer = TapGestureRecognizer(block: { [self] in
-                let postVC = PostViewController(userImage: UIImage(named: "avatar") ?? UIImage(named: "")!, nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, commentsCount: 50)
+                let postVC = PostViewController(userImage: UIImage(named: "avatar") ?? UIImage(named: "")!, nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
             postTapRecognizer.numberOfTapsRequired = 1
