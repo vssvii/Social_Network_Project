@@ -37,6 +37,8 @@ class FriendViewController: UIViewController {
     
     var albums: [Album]
     
+    var comments: [[String]]
+    
     let viewModel = FriendViewModel()
     
     private enum CellReuseIdentifiers: String {
@@ -54,7 +56,7 @@ class FriendViewController: UIViewController {
         return postsTableView
     }()
     
-    init(nickName: String, avatarImage: UIImage, name: String, surname: String, job: String, gender: String, publicationResult: Int, subscriptionResult: Int, subscriberResult: Int,posts: [Post], photos: [Photo], albums: [Album]) {
+    init(nickName: String, avatarImage: UIImage, name: String, surname: String, job: String, gender: String, publicationResult: Int, subscriptionResult: Int, subscriberResult: Int,posts: [Post], photos: [Photo], albums: [Album], comments: [[String]]) {
         self.nickName = nickName
         self.avatarImage = avatarImage
         self.name = name
@@ -64,6 +66,7 @@ class FriendViewController: UIViewController {
         self.posts = posts
         self.photos = photos
         self.albums = albums
+        self.comments = comments
         self.publicationResult = publicationResult
         self.subscriptionResult = subscriptionResult
         self.subscriberResult = subscriberResult
@@ -172,13 +175,13 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(tapRecognizer)
             
-            let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
-                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date)
+            let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
+                let postVC = PostViewController(userImage: avatarImage , nickName: nickName, job: job, image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: comments)
                 self.navigationController?.pushViewController(postVC, animated: true)
             })
-            commentTapRecognizer.numberOfTapsRequired = 1
+            imageTapRecognizer.numberOfTapsRequired = 1
             cell.postImageVIew.isUserInteractionEnabled = true
-            cell.postImageVIew.addGestureRecognizer(commentTapRecognizer)
+            cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
             
             return cell
         }

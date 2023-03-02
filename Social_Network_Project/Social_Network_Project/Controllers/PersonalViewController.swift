@@ -71,7 +71,13 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.postImageVIew.image = post.image
         cell.postTextLabel.text = post.description
         cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
-        
+        let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
+            let postVC = PostViewController(userImage: feed.feedImage ?? UIImage(named: "")!, nickName: feed.feedName, job: "", image: post.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
+            self.navigationController?.pushViewController(postVC, animated: true)
+        })
+        imageTapRecognizer.numberOfTapsRequired = 1
+        cell.postImageVIew.isUserInteractionEnabled = true
+        cell.postImageVIew.addGestureRecognizer(imageTapRecognizer)
             return cell
     }
 

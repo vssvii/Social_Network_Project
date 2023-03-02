@@ -121,7 +121,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         // MARK: Recognizer which responsibles for opening Friend's Page
         let imageTapRecognizer = TapGestureRecognizer(block: { [self] in
-            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums)
+            let friendVC = FriendViewController(nickName: friend.nickName, avatarImage: (friend.avatarImage ?? defaultImage)!, name: friend.name, surname: friend.surname, job: friend.job, gender: friend.gender, publicationResult: friend.publicationResult, subscriptionResult: friend.subscriptionResult, subscriberResult: friend.subscriberResult, posts: friend.posts, photos: friend.photos, albums: friend.albums, comments: post.comments)
             self.navigationController?.pushViewController(friendVC, animated: true)
         })
         cell.userImageView.isUserInteractionEnabled = true
@@ -149,7 +149,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likeButton.isUserInteractionEnabled = true
             cell.likeButton.addGestureRecognizer(likedtapRecognizer)
         let commentTapRecognizer = TapGestureRecognizer(block: { [self] in
-            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date)
+            let postVC = PostViewController(userImage: friend.avatarImage ?? UIImage(named: "")!, nickName: friend.nickName, job: friend.job, image: friend.image ?? UIImage(named: "")!, text: post.description, likesCount: post.likes, date: post.date, comments: post.comments)
             self.navigationController?.pushViewController(postVC, animated: true)
         })
         commentTapRecognizer.numberOfTapsRequired = 1

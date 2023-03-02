@@ -17,12 +17,6 @@ class PostViewController: UIViewController {
         case specification
     }
     
-    
-    let comments = [["Интересные факты", "Это да"],
-                      ["Классный пост!", "Спасибо"],
-                      ["Напиши в личку", "Хорошо"]]
-    
-    
     let coreManager = CoreDataManager.shared
     
     var userImage: UIImage
@@ -38,6 +32,8 @@ class PostViewController: UIViewController {
     var likesCount: Int
     
     var date: Date
+    
+    var comments: [[String]]
     
     
     let userImageView: UIImageView = {
@@ -149,7 +145,7 @@ class PostViewController: UIViewController {
         commentsTableView.expandingAnimation = .fade
         commentsTableView.collapsingAnimation = .fade
         commentsTableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.comments.rawValue)
-        commentsTableView.register(BuyTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.buy.rawValue)
+        commentsTableView.register(SeparatorTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.buy.rawValue)
         commentsTableView.register(SpecificationTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.specification.rawValue)
         commentsTableView.tableFooterView = UIView()
         return commentsTableView
@@ -177,7 +173,7 @@ class PostViewController: UIViewController {
     }
 
     
-    init(userImage: UIImage, nickName: String, job: String, image: UIImage, text: String, likesCount: Int, date: Date) {
+    init(userImage: UIImage, nickName: String, job: String, image: UIImage, text: String, likesCount: Int, date: Date, comments: [[String]]) {
         self.userImage = userImage
         self.nickName = nickName
         self.job = job
@@ -185,6 +181,7 @@ class PostViewController: UIViewController {
         self.text = text
         self.likesCount = likesCount
         self.date = date
+        self.comments = comments
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -326,7 +323,7 @@ extension PostViewController: ExpyTableViewDataSource {
     })
         tapRecognizer.numberOfTapsRequired = 1
         cell.heartImageView.isUserInteractionEnabled = true
-        cell.addGestureRecognizer(tapRecognizer)
+        cell.heartImageView.addGestureRecognizer(tapRecognizer)
         cell.layoutMargins = UIEdgeInsets.zero
         cell.showSeparator()
         return cell
@@ -387,23 +384,23 @@ extension PostViewController {
         
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
             let cell = tableView.dequeueReusableCell(
-              withIdentifier: CellReuseIdentifiers.buy.rawValue) as! BuyTableViewCell
+              withIdentifier: CellReuseIdentifiers.buy.rawValue) as! SeparatorTableViewCell
             cell.layoutMargins = UIEdgeInsets.zero
             cell.showSeparator()
             return cell
-            
+
         }else {
             let cell = tableView.dequeueReusableCell(
-              withIdentifier: CellReuseIdentifiers.specification.rawValue) as! SpecificationTableViewCell
+                withIdentifier: CellReuseIdentifiers.specification.rawValue) as! SpecificationTableViewCell
             cell.commentAnswerLabel.text = (comments[indexPath.section])[indexPath.row]
             cell.userImageView.image = userImage
             cell.dateLabel.text = date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
                 cell.heartImageView.image = UIImage(systemName: "heart.fill")
-        })
+            })
             tapRecognizer.numberOfTapsRequired = 1
             cell.heartImageView.isUserInteractionEnabled = true
-            cell.addGestureRecognizer(tapRecognizer)
+            cell.heartImageView.addGestureRecognizer(tapRecognizer)
             cell.layoutMargins = UIEdgeInsets.zero
             cell.hideSeparator()
             return cell

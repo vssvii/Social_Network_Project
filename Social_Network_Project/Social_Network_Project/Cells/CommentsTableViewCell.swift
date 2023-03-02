@@ -250,7 +250,7 @@ class SpecificationTableViewCell: UITableViewCell {
     }
 }
 
-class BuyTableViewCell: UITableViewCell {}
+class SeparatorTableViewCell: UITableViewCell {}
 
 extension UITableViewCell {
 
