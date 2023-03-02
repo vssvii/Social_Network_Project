@@ -27,7 +27,7 @@ class InterestsViewController: UIViewController {
     private lazy var interestsTextField: UITextField = {
         let interestsTextField = UITextField()
         interestsTextField.placeholder = "tell_us_about_your_interests".localized
-        interestsTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        interestsTextField.backgroundColor = Tint.lightGrayishOrange
         interestsTextField.layer.cornerRadius = 10
         return interestsTextField
     }()
@@ -90,7 +90,7 @@ class InterestsViewController: UIViewController {
     private func setNavigationBar() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
     }
     
     @objc func goBack() {

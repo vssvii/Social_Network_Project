@@ -34,7 +34,7 @@ class ProfileSideMenuViewController: UIViewController {
     
     private lazy var separatorLineView: UIView = {
         let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor(hex: "#7E8183")
+        separatorLineView.backgroundColor = Tint.textGray
         return separatorLineView
     }()
     
@@ -43,7 +43,7 @@ class ProfileSideMenuViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileSideTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifiers.options.rawValue)
-        tableView.backgroundColor = UIColor(hex: "F5F3EE")
+        tableView.backgroundColor = Tint.lightGrayishOrange
         return tableView
     }()
     
@@ -60,7 +60,7 @@ class ProfileSideMenuViewController: UIViewController {
     
     private func setupView() {
         
-        view.backgroundColor = UIColor(hex: "F5F3EE")
+        view.backgroundColor = Tint.lightGrayishOrange
         
         view.addSubview(fullNameLabel)
         view.addSubview(separatorLineView)
@@ -99,7 +99,7 @@ extension ProfileSideMenuViewController: UITableViewDataSource, UITableViewDeleg
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.options.rawValue) as! ProfileSideTableViewCell
         let option = menuSideOptions[indexPath.row]
-        cell.backgroundColor = UIColor(hex: "F5F3EE")
+        cell.backgroundColor = Tint.lightGrayishOrange
         cell.iconImageView.image = UIImage(systemName: menuSideImages[indexPath.row])
         cell.menuLabel.text = option
         return cell

@@ -26,7 +26,7 @@ class CareerViewController: UIViewController {
     private lazy var positionTextField: UITextField = {
         let positionTextField = UITextField()
         positionTextField.placeholder = "enter_position".localized
-        positionTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        positionTextField.backgroundColor = Tint.lightGrayishOrange
         positionTextField.layer.cornerRadius = 10
         return positionTextField
     }()
@@ -48,7 +48,7 @@ class CareerViewController: UIViewController {
     private lazy var workPlaceTextField: UITextField = {
         let workPlaceTextField = UITextField()
         workPlaceTextField.placeholder = "enter_place_of_work".localized
-        workPlaceTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        workPlaceTextField.backgroundColor = Tint.lightGrayishOrange
         workPlaceTextField.layer.cornerRadius = 10
         return workPlaceTextField
     }()
@@ -84,7 +84,7 @@ class CareerViewController: UIViewController {
     private func setNavigationBar() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
     }
     
     @objc func goBack() {

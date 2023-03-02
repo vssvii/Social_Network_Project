@@ -17,7 +17,7 @@ class SignInViewController: UIViewController {
     private lazy var signInLabel: UILabel = {
         let signInLabel = UILabel()
         signInLabel.text = "welcome_back".localized
-        signInLabel.textColor = UIColor(hex: "#F69707")
+        signInLabel.textColor = Tint.textOrange
         signInLabel.font = .boldSystemFont(ofSize: 18)
         return signInLabel
     }()
@@ -26,7 +26,7 @@ class SignInViewController: UIViewController {
         let descriptionLabel = UILabel()
         descriptionLabel.text = "enter_your_phone_number_to_log_in_to_the_app".localized
         descriptionLabel.font = .systemFont(ofSize: 14)
-        descriptionLabel.textColor = UIColor(hex: "#263238")
+        descriptionLabel.textColor = Tint.oxfordBlue
         return descriptionLabel
     }()
     
@@ -45,7 +45,7 @@ class SignInViewController: UIViewController {
     private lazy var confirmationButton: UIButton = {
         let confirmationButton = UIButton()
         confirmationButton.setTitle("CONFIRM".localized, for: .normal)
-        confirmationButton.backgroundColor = UIColor(hex: "#263238")
+        confirmationButton.backgroundColor = Tint.oxfordBlue
         confirmationButton.layer.cornerRadius = 10
         confirmationButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
         confirmationButton.isUserInteractionEnabled = true
@@ -106,7 +106,7 @@ class SignInViewController: UIViewController {
     
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goToRegistrationPageAction))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#1E201D")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.greenBlack
     }
     
     @objc func goToRegistrationPageAction() {

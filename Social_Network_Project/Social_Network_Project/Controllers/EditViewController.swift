@@ -21,7 +21,7 @@ class EditViewController: UIViewController {
     private lazy var nickNameTextField: UITextField = {
         let nickNameTextField = UITextField()
         nickNameTextField.placeholder = "nick".localized
-        nickNameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        nickNameTextField.backgroundColor = Tint.lightGrayishOrange
         return nickNameTextField
     }()
     
@@ -36,7 +36,7 @@ class EditViewController: UIViewController {
     private lazy var nameTextField: UITextField = {
         let nameTextField = UITextField()
         nameTextField.placeholder = "name".localized
-        nameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        nameTextField.backgroundColor = Tint.lightGrayishOrange
         return nameTextField
     }()
     
@@ -50,7 +50,7 @@ class EditViewController: UIViewController {
     private lazy var surnameTextField: UITextField = {
         let surnameTextField = UITextField()
         surnameTextField.placeholder = "surname".localized
-        surnameTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        surnameTextField.backgroundColor = Tint.lightGrayishOrange
         return surnameTextField
     }()
     
@@ -64,7 +64,7 @@ class EditViewController: UIViewController {
     private lazy var jobTextField: UITextField = {
         let jobTextField = UITextField()
         jobTextField.placeholder = "job".localized
-        jobTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        jobTextField.backgroundColor = Tint.lightGrayishOrange
         return jobTextField
     }()
     
@@ -124,7 +124,7 @@ class EditViewController: UIViewController {
     private lazy var birthTextField: UITextField = {
         let birthTextField = UITextField()
         birthTextField.placeholder = "day.month.year".localized
-        birthTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        birthTextField.backgroundColor = Tint.lightGrayishOrange
         return birthTextField
     }()
     
@@ -138,7 +138,7 @@ class EditViewController: UIViewController {
     private lazy var cityTextField: UITextField = {
         let cityTextField = UITextField()
         cityTextField.placeholder = "enter_name".localized
-        cityTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        cityTextField.backgroundColor = Tint.lightGrayishOrange
         return cityTextField
     }()
     
@@ -156,10 +156,10 @@ class EditViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "checkmark"), style: .done, target: self, action: #selector(saveData))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.rightBarButtonItem?.tintColor = Tint.orange
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
     }
     
     @objc func saveData() {

@@ -35,7 +35,7 @@ public class PhotosTableViewCell: UITableViewCell  {
     lazy var photosCountLabel: UILabel = {
         let photosCountLabel = UILabel()
         photosCountLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        photosCountLabel.textColor = UIColor(hex: "#7E8183")
+        photosCountLabel.textColor = Tint.textGray
         return photosCountLabel
     }()
     

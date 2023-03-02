@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController {
     private lazy var registrationLabel: UILabel = {
         let registrationLabel = UILabel()
         registrationLabel.text = "register".localized
-        registrationLabel.textColor = UIColor(hex: "#263238")
+        registrationLabel.textColor = Tint.oxfordBlue
         registrationLabel.font = .boldSystemFont(ofSize: 18)
         registrationLabel.numberOfLines = 0
         return registrationLabel
@@ -39,7 +39,7 @@ class RegistrationViewController: UIViewController {
     private lazy var numberDescriptionLabel: UILabel = {
         let numberDescriptionLabel = UILabel()
         numberDescriptionLabel.text = "your_number_will_be_used".localized
-        numberDescriptionLabel.textColor = UIColor(hex: "#7E8183")
+        numberDescriptionLabel.textColor = Tint.textGray
         numberDescriptionLabel.font = .systemFont(ofSize: 12)
         numberDescriptionLabel.numberOfLines = 0
         return numberDescriptionLabel
@@ -62,7 +62,7 @@ class RegistrationViewController: UIViewController {
     private lazy var goOnButton: UIButton = {
         let goOnButton = UIButton()
         goOnButton.setTitle("go_on".localized, for: .normal)
-        goOnButton.backgroundColor = UIColor(hex: "#263238")
+        goOnButton.backgroundColor = Tint.oxfordBlue
         goOnButton.layer.cornerRadius = 10
         goOnButton.addTarget(self, action: #selector(registerConfirmationVC), for: .touchUpInside)
         return goOnButton
@@ -86,7 +86,7 @@ class RegistrationViewController: UIViewController {
         let descriptionLabel = UILabel()
         descriptionLabel.text = "accept_the_user_agreement".localized
         descriptionLabel.font = .systemFont(ofSize: 12)
-        descriptionLabel.textColor = UIColor(hex: "7E8183")
+        descriptionLabel.textColor = Tint.textGray
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 0
         return descriptionLabel
@@ -105,7 +105,7 @@ class RegistrationViewController: UIViewController {
     
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goToEntrancePageAction))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#1E201D")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.greenBlack
     }
     
     @objc func goToEntrancePageAction() {

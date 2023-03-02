@@ -21,7 +21,7 @@ class RegisterConfirmationViewController: UIViewController {
     private lazy var confirmationLabel: UILabel = {
         let confirmationLabel = UILabel()
         confirmationLabel.text = "confirmation_of_registration".localized
-        confirmationLabel.textColor = UIColor(hex: "#F69707")
+        confirmationLabel.textColor = Tint.textOrange
         confirmationLabel.font = .boldSystemFont(ofSize: 18)
         return confirmationLabel
     }()
@@ -40,7 +40,7 @@ class RegisterConfirmationViewController: UIViewController {
         let smsDescriptionLabel = UILabel()
         smsDescriptionLabel.text = "enter_code_from_sms".localized
         smsDescriptionLabel.font = .systemFont(ofSize: 12)
-        smsDescriptionLabel.textColor = UIColor(hex: "#7E8183")
+        smsDescriptionLabel.textColor = Tint.textGray
         return smsDescriptionLabel
     }()
     
@@ -58,7 +58,7 @@ class RegisterConfirmationViewController: UIViewController {
     private lazy var registrationButton: UIButton = {
         let registrationButton = UIButton()
         registrationButton.setTitle("register".localized, for: .normal)
-        registrationButton.backgroundColor = UIColor(hex: "#263238")
+        registrationButton.backgroundColor = Tint.oxfordBlue
         registrationButton.layer.cornerRadius = 10
         registrationButton.addTarget(self, action: #selector(finishRegistrationAction), for: .touchUpInside)
         return registrationButton
@@ -139,7 +139,7 @@ class RegisterConfirmationViewController: UIViewController {
     
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goToRegistrationPageAction))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#1E201D")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.greenBlack
     }
     
     @objc func goToRegistrationPageAction() {

@@ -47,7 +47,7 @@ class ProfileHeaderView: UIView {
     lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
         jobLabel.font = UIFont.systemFont(ofSize: 14)
-        jobLabel.textColor = UIColor(hex: "#7E8183")
+        jobLabel.textColor = Tint.textGray
         return jobLabel
     }()
     
@@ -115,7 +115,7 @@ class ProfileHeaderView: UIView {
     
     lazy var separatorLineView: UIView = {
         let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor(hex: "7E8183")
+        separatorLineView.backgroundColor = Tint.textGray
         return separatorLineView
     }()
     

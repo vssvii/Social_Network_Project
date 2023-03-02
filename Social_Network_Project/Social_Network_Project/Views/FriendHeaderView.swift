@@ -47,7 +47,7 @@ class FriendHeaderView: UIView {
     lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
         jobLabel.font = UIFont.systemFont(ofSize: 14)
-        jobLabel.textColor = UIColor(hex: "#7E8183")
+        jobLabel.textColor = Tint.textGray
         return jobLabel
     }()
     
@@ -82,7 +82,7 @@ class FriendHeaderView: UIView {
     
     lazy var messageButton: UIButton = {
         let messageButton = UIButton()
-        messageButton.backgroundColor = UIColor(hex: "#263238")
+        messageButton.backgroundColor = Tint.oxfordBlue
         messageButton.layer.cornerRadius = 10
         messageButton.setTitle("message".localized, for: .normal)
         messageButton.tintColor = .white
@@ -91,7 +91,7 @@ class FriendHeaderView: UIView {
     
     lazy var сallButton: UIButton = {
         let сallButton = UIButton()
-        сallButton.backgroundColor = UIColor(hex: "#AAB0B4")
+        сallButton.backgroundColor = Tint.gray
         сallButton.layer.cornerRadius = 10
         сallButton.setTitle("call".localized, for: .normal)
         сallButton.tintColor = .white
@@ -117,7 +117,7 @@ class FriendHeaderView: UIView {
     }()
     
     @objc func changeColorPublication() {
-        subscriptionResultLabel.textColor = UIColor(hex: "#FF9E45")
+        subscriptionResultLabel.textColor = Tint.orange
     }
     
     lazy var subscriberResultLabel: UILabel = {
@@ -129,7 +129,7 @@ class FriendHeaderView: UIView {
     
     lazy var separatorLineView: UIView = {
         let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor(hex: "7E8183")
+        separatorLineView.backgroundColor = Tint.textGray
         return separatorLineView
     }()
     

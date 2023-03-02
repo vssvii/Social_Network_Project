@@ -90,10 +90,10 @@ class FriendViewController: UIViewController {
     
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .done, target: self, action: #selector(openMenu))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.rightBarButtonItem?.tintColor = Tint.orange
         
         self.navigationItem.setHidesBackButton(true, animated:true)
     }

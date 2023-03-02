@@ -20,6 +20,9 @@ extension Tint {
     static let orange = UIColor(hex: "#FF9E45")
     static let blue = UIColor(hex: "#0863EB")
     static let redOrange = UIColor.rgb(from: 0xe95950)
+    static let oxfordBlue = UIColor(hex: "#263238")
+    static let greenBlack = UIColor(hex: "#1E201D")
+    static let lightGrayishOrange = UIColor(hex: "#F5F3EE")
 }
 
 func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {

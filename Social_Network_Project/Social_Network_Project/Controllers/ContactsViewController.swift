@@ -39,7 +39,7 @@ class ContactsViewController: UIViewController {
     
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
 
     }
     

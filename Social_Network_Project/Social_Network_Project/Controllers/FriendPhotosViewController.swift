@@ -83,10 +83,10 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
     
     private func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(addPhoto))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.rightBarButtonItem?.tintColor = Tint.orange
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
     }
 
     @objc func goBack() {

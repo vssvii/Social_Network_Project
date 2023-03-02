@@ -87,7 +87,7 @@ class PostsTableViewCell: UITableViewCell {
     lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
         jobLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        jobLabel.textColor = UIColor(hex: "#7E8183")
+        jobLabel.textColor = Tint.textGray
         
         return jobLabel
     }()
@@ -95,7 +95,7 @@ class PostsTableViewCell: UITableViewCell {
     lazy var parametersButton: UIButton = {
         let parametersButton = UIButton()
         parametersButton.setImage(UIImage(named: "menu"), for: .normal)
-        parametersButton.tintColor = UIColor(hex: "#FF9E45")
+        parametersButton.tintColor = Tint.orange
         return parametersButton
     }()
     
@@ -106,7 +106,7 @@ class PostsTableViewCell: UITableViewCell {
     
     lazy var verticalLineView: UIView = {
         let verticalLineView = UIView()
-        verticalLineView.backgroundColor = UIColor(hex: "#7E8183")
+        verticalLineView.backgroundColor = Tint.textGray
         return verticalLineView
     }()
     
@@ -159,7 +159,7 @@ class PostsTableViewCell: UITableViewCell {
     
     var separatorLineView: UIView = {
         let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor(hex: "#7E8183")
+        separatorLineView.backgroundColor = Tint.textGray
         return separatorLineView
     }()
 

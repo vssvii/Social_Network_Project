@@ -20,7 +20,6 @@ class PostViewController: UIViewController {
         case specification
     }
     
-    let coreManager = CoreDataManager.shared
     
     var userImage: UIImage
     
@@ -58,7 +57,7 @@ class PostViewController: UIViewController {
     lazy var jobLabel: UILabel = {
         let jobLabel = UILabel()
         jobLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        jobLabel.textColor = UIColor(hex: "#7E8183")
+        jobLabel.textColor = Tint.textGray
         
         return jobLabel
     }()
@@ -85,13 +84,13 @@ class PostViewController: UIViewController {
     
     func likedAction() {
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
-            if coreManager.posts.contains( where: { $0.descript == text })  {
+            if CoreDataManager.shared.posts.contains( where: { $0.descript == text })  {
                 presentAlert(title: "", message: "the_post_has_been_already_added".localized)
         } else {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
             likeButton.tintColor = .red
             likesLabel.text = "\(likesCount + 1)"
-            self.coreManager.addNewPost(surname: nickName, name: "", description: text)
+            CoreDataManager.shared.addNewPost(surname: nickName, name: "", description: text)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
     })

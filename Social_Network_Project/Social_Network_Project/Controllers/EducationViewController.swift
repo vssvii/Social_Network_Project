@@ -27,7 +27,7 @@ class EducationViewController: UIViewController {
     private lazy var educationLevelTextField: UITextField = {
         let interestsTextField = UITextField()
         interestsTextField.placeholder = "enter_level_education".localized
-        interestsTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        interestsTextField.backgroundColor = Tint.lightGrayishOrange
         interestsTextField.layer.cornerRadius = 10
         return interestsTextField
     }()
@@ -49,7 +49,7 @@ class EducationViewController: UIViewController {
     private lazy var educationPlaceTextField: UITextField = {
         let interestsTextField = UITextField()
         interestsTextField.placeholder = "enter_place_of_study".localized
-        interestsTextField.backgroundColor = UIColor(hex: "#F5F3EE")
+        interestsTextField.backgroundColor = Tint.lightGrayishOrange
         interestsTextField.layer.cornerRadius = 10
         return interestsTextField
     }()
@@ -85,7 +85,7 @@ class EducationViewController: UIViewController {
     private func setNavigationBar() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(goBack))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.leftBarButtonItem?.tintColor = Tint.orange
     }
     
     @objc func goBack() {

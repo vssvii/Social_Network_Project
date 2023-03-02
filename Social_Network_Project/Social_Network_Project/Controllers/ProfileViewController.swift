@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController {
     
     var city: String
     
-    let coreManager = CoreDataManager.shared
     
     public var menuDelegate: MenuControllerDelegate?
     
@@ -83,7 +82,7 @@ class ProfileViewController: UIViewController {
     
     private func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "list"), style: .done, target: self, action: #selector(openList))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#FF9E45")
+        navigationItem.rightBarButtonItem?.tintColor = Tint.orange
         
         self.navigationItem.setHidesBackButton(true, animated:true)
     }
@@ -161,12 +160,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                if coreManager.posts.contains( where: { $0.descript == post.description })  {
+                if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.tintColor = .red
                 cell.likesLabel.text = "\(post.likes + 1)"
-                self.coreManager.addNewPost(surname: surname, name: name, description: post.description)
+                CoreDataManager.shared.addNewPost(surname: surname, name: name, description: post.description)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             }
         })

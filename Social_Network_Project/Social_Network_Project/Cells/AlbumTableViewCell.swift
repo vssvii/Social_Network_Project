@@ -31,14 +31,14 @@ class AlbumTableViewCell: UITableViewCell {
     lazy var albumsCountLabel: UILabel = {
         let albumsCountLabel = UILabel()
         albumsCountLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        albumsCountLabel.textColor = UIColor(hex: "#7E8183")
+        albumsCountLabel.textColor = Tint.textGray
         return albumsCountLabel
     }()
     
     lazy var showAllButton: UIButton = {
         let showAllButton = UIButton()
         showAllButton.setTitle("show_in_all".localized, for: .normal)
-        showAllButton.setTitleColor(UIColor(hex: "#FF9E45"), for: .normal)
+        showAllButton.setTitleColor(.orange, for: .normal)
         return showAllButton
     }()
     
