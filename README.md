@@ -38,9 +38,6 @@ Social Network Project
 <img width="432" alt="Снимок экрана 2023-03-02 в 23 41 10" src="https://user-images.githubusercontent.com/28200789/222508749-759a6a28-0cc3-445a-8974-ea78a81e4e54.png">
 
 
-<img width="439" alt="Снимок экрана 2023-03-02 в 23 41 24" src="https://user-images.githubusercontent.com/28200789/222508788-ab452c4f-a240-4137-93d6-ad37d8490e43.png">
-
-
 
 б) При выборе "Уже есть аккаунт" появиться страница входа в профиль пользователя
 
