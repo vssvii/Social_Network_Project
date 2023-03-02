@@ -69,13 +69,13 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.userImageView.image = feed.feedImage
         cell.surnameLabel.text = feed.feedName
         cell.postImageVIew.image = post.image
-        cell.postTextLabel.text = post.description
+        cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: post.description)
         cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             return cell
     }
 
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 550
+        return 700
     }
 }

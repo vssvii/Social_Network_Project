@@ -79,6 +79,28 @@ class FeedViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func countLabelLines(label: UILabel)->Int{
+
+        if let text = label.text{
+            // cast text to NSString so we can use sizeWithAttributes
+            var myText = text as NSString
+            //A Paragraph that we use to set the lineBreakMode.
+            var paragraph = NSMutableParagraphStyle()
+            //Set the lineBreakMode to wordWrapping
+            paragraph.lineBreakMode = NSLineBreakMode.byWordWrapping
+
+            //Calculate the size of your UILabel by using the systemfont and the paragraph we created before. Edit the font and replace it with yours if you use another
+            var labelSize = myText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17), NSAttributedString.Key.paragraphStyle : paragraph.copy()])
+
+            //Now we return the amount of lines using the ceil method
+            var lines = ceil(CGFloat(labelSize.height) / label.font.lineHeight)
+            return Int(lines)
+        }
+
+        return 0
+
+    }
+    
     
     private func setupView() {
         
@@ -130,7 +152,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.nameLabel.text = friend.name
             cell.surnameLabel.text = friend.surname
             cell.jobLabel.text = friend.job
-            cell.postTextLabel.text = friend.text
+        cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: friend.text)
             cell.postImageVIew.image = friend.image
             cell.likesLabel.text = "\(friend.likes)"
         
@@ -165,7 +187,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
 //    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 480
+        return 550
     }
 }
 

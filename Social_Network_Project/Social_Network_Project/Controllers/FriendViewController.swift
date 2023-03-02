@@ -106,6 +106,28 @@ class FriendViewController: UIViewController {
         
     }
     
+    func countLabelLines(label: UILabel)->Int{
+
+        if let text = label.text{
+            // cast text to NSString so we can use sizeWithAttributes
+            var myText = text as NSString
+            //A Paragraph that we use to set the lineBreakMode.
+            var paragraph = NSMutableParagraphStyle()
+            //Set the lineBreakMode to wordWrapping
+            paragraph.lineBreakMode = NSLineBreakMode.byWordWrapping
+
+            //Calculate the size of your UILabel by using the systemfont and the paragraph we created before. Edit the font and replace it with yours if you use another
+            var labelSize = myText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17), NSAttributedString.Key.paragraphStyle : paragraph.copy()])
+
+            //Now we return the amount of lines using the ceil method
+            var lines = ceil(CGFloat(labelSize.height) / label.font.lineHeight)
+            return Int(lines)
+        }
+
+        return 0
+
+    }
+    
     private func setupView() {
         
         view.backgroundColor = .white
@@ -154,10 +176,13 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             cell.surnameLabel.text = surname
             cell.nameLabel.text = name
             cell.jobLabel.text = job
-            cell.postTextLabel.text = post.description
+            cell.postTextLabel.attributedText = makeAttributedString(title: "", subtitle: post.description)
+            let countLines = countLabelLines(label: cell.postTextLabel)
+            print(countLines)
             cell.postImageVIew.image = post.image
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
+            
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
                 if coreManager.posts.contains( where: { $0.descript == post.description })  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
@@ -228,7 +253,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 120
         } else {
-            return 620
+            return 550
         }
     }
     

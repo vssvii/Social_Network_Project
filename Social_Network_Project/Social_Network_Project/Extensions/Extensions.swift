@@ -20,6 +20,19 @@ extension Tint {
     static let redOrange = UIColor.rgb(from: 0xe95950)
 }
 
+
+func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
+    let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+    let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
+
+    let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
+    let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
+
+    titleString.append(subtitleString)
+
+    return titleString
+}
+
 extension UIColor {
     
     
@@ -290,6 +303,28 @@ extension UIView {
 extension Int {
     var toFloat: CGFloat {
         return CGFloat(self)
+    }
+    
+    func countLabelLines(label: UILabel)->Int{
+
+        if let text = label.text{
+            // cast text to NSString so we can use sizeWithAttributes
+            var myText = text as NSString
+            //A Paragraph that we use to set the lineBreakMode.
+            var paragraph = NSMutableParagraphStyle()
+            //Set the lineBreakMode to wordWrapping
+            paragraph.lineBreakMode = NSLineBreakMode.byWordWrapping
+
+            //Calculate the size of your UILabel by using the systemfont and the paragraph we created before. Edit the font and replace it with yours if you use another
+            var labelSize = myText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17), NSAttributedString.Key.paragraphStyle : paragraph.copy()])
+
+            //Now we return the amount of lines using the ceil method
+            var lines = ceil(CGFloat(labelSize.height) / label.font.lineHeight)
+            return Int(lines)
+        }
+
+        return 0
+
     }
 }
 
