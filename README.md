@@ -2,9 +2,6 @@
 Social Network Project
 
 
-<<<<<<< HEAD
-=======
-
 ![3891940_Mesa de trabajo 1 1@1x](https://user-images.githubusercontent.com/28200789/221748586-8fbcdd87-19a4-42b5-b733-049089b704ef.png)
 
 
@@ -38,10 +35,11 @@ Social Network Project
 
 После успешной регистрации, номер телефона пользователя сохраняется в Firebase и приложение переходит на профиль страницу.
 
-<img width="429" alt="Снимок экрана 2023-02-28 в 11 56 01" src="https://user-images.githubusercontent.com/28200789/221767002-9bc1201b-ec52-41f1-a503-ae53b2d65532.png">
+<img width="432" alt="Снимок экрана 2023-03-02 в 23 41 10" src="https://user-images.githubusercontent.com/28200789/222508749-759a6a28-0cc3-445a-8974-ea78a81e4e54.png">
 
 
-<img width="440" alt="Снимок экрана 2023-02-28 в 11 56 17" src="https://user-images.githubusercontent.com/28200789/221767018-e78f2069-9ff5-4543-8ea7-7bc27affc6b0.png">
+<img width="439" alt="Снимок экрана 2023-03-02 в 23 41 24" src="https://user-images.githubusercontent.com/28200789/222508788-ab452c4f-a240-4137-93d6-ad37d8490e43.png">
+
 
 
 б) При выборе "Уже есть аккаунт" появиться страница входа в профиль пользователя
@@ -110,9 +108,7 @@ Social Network Project
 <img width="436" alt="Снимок экрана 2023-03-02 в 23 31 36" src="https://user-images.githubusercontent.com/28200789/222506705-83cc2984-8031-4804-80df-76b7f35768de.png">
 
 
-
-
-
-
-
->>>>>>> c2b79ef1ba192fabb08422d8fb2b805da58fb217
+Дополнительно в приложении присутствует перевод на 3 языках:
+1) Казахский
+2) Русский
+3) Английский
