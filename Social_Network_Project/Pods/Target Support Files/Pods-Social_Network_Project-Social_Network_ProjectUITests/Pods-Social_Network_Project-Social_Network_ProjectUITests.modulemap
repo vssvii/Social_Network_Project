@@ -1,6 +1,0 @@
-framework module Pods_Social_Network_Project_Social_Network_ProjectUITests {
-  umbrella header "Pods-Social_Network_Project-Social_Network_ProjectUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
