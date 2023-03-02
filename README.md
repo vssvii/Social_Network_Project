@@ -90,7 +90,7 @@ Social Network Project
 При нажатии на картинку поста, переходит на информацию о посте.
 
 
-<img width="424" alt="Снимок экрана 2023-02-28 в 12 52 07" src="https://user-images.githubusercontent.com/28200789/221776612-7ee39329-5e75-4255-8d5c-052cc88156e7.png">
+<img width="431" alt="Снимок экрана 2023-03-02 в 22 28 50" src="https://user-images.githubusercontent.com/28200789/222505952-242c4f2e-7dc2-46ca-9aca-25a7f49f199a.png">
 
 
 
