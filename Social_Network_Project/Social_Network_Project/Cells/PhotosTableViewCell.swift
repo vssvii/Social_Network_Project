@@ -107,7 +107,7 @@ public class PhotosTableViewCell: UITableViewCell  {
 extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos?.count ?? 0
-        }
+    }
         
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let photo = photos?[indexPath.item]
@@ -135,5 +135,4 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                         print(indexPath.row)
     }
- 
 }

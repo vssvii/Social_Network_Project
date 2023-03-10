@@ -107,7 +107,6 @@ class CommentsTableViewCell: UITableViewCell, ExpyTableViewHeaderCell {
             make.top.equalToSuperview()
             make.right.equalToSuperview().offset(-16)
             make.height.width.equalTo(16)
-
         }
 
         responseLabel.snp.makeConstraints { make in

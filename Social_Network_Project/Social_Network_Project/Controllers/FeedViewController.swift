@@ -11,7 +11,7 @@ import SnapKit
 fileprivate let isClearCacheEnabled = true
 internal var isDeleteSnapEnabled = true
 
-class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController {
     
     
     private var _view: StoriesHomeView{return view as! StoriesHomeView}
@@ -65,7 +65,6 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        
         
         automaticallyAdjustsScrollViewInsets = false
     }
@@ -187,7 +186,7 @@ UICollectionViewDelegateFlowLayout {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.addStory.rawValue, for: indexPath) as? IGAddStoryCell else { fatalError() }
             cell.userDetails = ("Моя история","avatar")
             return cell
-        }else {
+        } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReuseIdentifiers.listStory.rawValue,for: indexPath) as? IGStoryListCell else { fatalError() }
             let story = storiesViewModel.cellForItemAt(indexPath: indexPath)
             cell.story = story
@@ -210,7 +209,7 @@ UICollectionViewDelegateFlowLayout {
             } else {
                 presentAlert(title: "try_implement_functionality".localized, message: "")
             }
-        }else {
+        } else {
             isDeleteSnapEnabled = false
             DispatchQueue.main.async {
                 if let stories = self.storiesViewModel.getStories(), let stories_copy = try? stories.copy().otherStories {

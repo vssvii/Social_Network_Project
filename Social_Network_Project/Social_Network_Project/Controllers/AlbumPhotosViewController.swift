@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class AlbumPhotosViewController: UIViewController {
+final class AlbumPhotosViewController: UIViewController {
 
     var photos: [Photo]
 

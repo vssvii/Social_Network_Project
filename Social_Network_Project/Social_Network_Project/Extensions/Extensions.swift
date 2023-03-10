@@ -26,7 +26,9 @@ extension Tint {
 }
 
 func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
+    
     let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+    
     let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
 
     let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
@@ -38,7 +40,6 @@ func makeAttributedString(title: String, subtitle: String) -> NSAttributedString
 }
 
 extension UIColor {
-    
     
     public convenience init(hex: String) {
         var r: CGFloat = 0
@@ -139,6 +140,7 @@ extension UIImageView {
             objc_setAssociatedObject(self, &ActivityIndicator.isEnabled, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
     public var activityStyle: UIActivityIndicatorView.Style {
         get{
             guard let value = objc_getAssociatedObject(self, &ActivityIndicator.style) as? UIActivityIndicatorView.Style else {
@@ -154,6 +156,7 @@ extension UIImageView {
             objc_setAssociatedObject(self, &ActivityIndicator.style, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
     public var activityIndicator: UIActivityIndicatorView {
         get {
             guard let value = objc_getAssociatedObject(self, &ActivityIndicator.view) as? UIActivityIndicatorView else {
@@ -172,6 +175,7 @@ extension UIImageView {
         }
     }
     
+    
     //MARK: - Private methods
     func showActivityIndicator() {
         if isActivityEnabled {
@@ -183,7 +187,6 @@ extension UIImageView {
                 if self.subviews.isEmpty {
                     isActivityIndicatorFound = false
                     self.addSubview(self.activityIndicator)
-                    
                 } else {
                     for view in self.subviews {
                         if !view.isKind(of: UIActivityIndicatorView.self) {
@@ -195,12 +198,14 @@ extension UIImageView {
                         }
                     }
                 }
+                
                 if !isActivityIndicatorFound {
                     NSLayoutConstraint.activate([
                         self.activityIndicator.igCenterXAnchor.constraint(equalTo: self.igCenterXAnchor),
                         self.activityIndicator.igCenterYAnchor.constraint(equalTo: self.igCenterYAnchor)
                         ])
                 }
+                
                 self.activityIndicator.startAnimating()
             }
         }

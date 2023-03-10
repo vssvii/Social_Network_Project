@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController {
+final class ContactsViewController: UIViewController {
     
     
     let contacts: [String] = ["Чарльз", "Расул", "Алишер", "Александр", "Светлана", "Динара", "Гульнур", "Адилет", "Томирис", "Ришад"]

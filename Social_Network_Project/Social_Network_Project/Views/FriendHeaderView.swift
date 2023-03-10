@@ -98,7 +98,6 @@ class FriendHeaderView: UIView {
         return сallButton
     }()
 
-    
     lazy var publicationResultLabel: UILabel = {
         let publicationResultLabel = UILabel()
         publicationResultLabel.font = UIFont.systemFont(ofSize: 16)
@@ -141,10 +140,6 @@ class FriendHeaderView: UIView {
         
         setupView()
     
-    }
-    
-    func editDataProfile() {
-        
     }
     
     // MARK: Setup Constraints

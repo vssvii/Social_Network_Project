@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SideMenu
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     var nickName: String
     
@@ -160,7 +160,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
+                if ((CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })))  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.tintColor = .red

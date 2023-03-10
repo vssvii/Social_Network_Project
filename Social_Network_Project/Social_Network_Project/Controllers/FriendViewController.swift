@@ -11,7 +11,7 @@ import SideMenu
 
 
 // MARK: Page Information of Friend
-class FriendViewController: UIViewController {
+final class FriendViewController: UIViewController {
     
     // MARK: Outlets
     
@@ -99,12 +99,12 @@ class FriendViewController: UIViewController {
     }
     
     
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     @objc func openMenu() {
         
+    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: Setup Constraints
@@ -143,7 +143,6 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
         if indexPath.section == 0 {
@@ -167,7 +166,7 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             
             // MARK: Like Action / Adding a post to favourite posts
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
+                if ((CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })))  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.tintColor = .red
@@ -232,8 +231,6 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    
-    
     @objc func openInfoPageAction() {
         let infoPageVC = InformationViewController(nickName: nickName, name: name, surname: surname, job: job, gender: gender, birth: "17.12.95", city: "Астана")
         navigationController?.pushViewController(infoPageVC, animated: true)

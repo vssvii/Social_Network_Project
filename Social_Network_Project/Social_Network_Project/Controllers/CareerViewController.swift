@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CareerViewController: UIViewController {
+final class CareerViewController: UIViewController {
     
     private lazy var positionLabel: UILabel = {
         let positionLabel = UILabel()

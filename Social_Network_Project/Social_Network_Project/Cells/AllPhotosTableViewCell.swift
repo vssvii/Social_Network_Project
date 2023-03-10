@@ -93,7 +93,7 @@ extension AllPhotosTableViewCell: UICollectionViewDelegate, UICollectionViewData
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos?.count ?? 0
-        }
+    }
         
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let photo = photos?[indexPath.item]

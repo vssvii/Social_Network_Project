@@ -11,7 +11,7 @@ import SnapKit
 
 
 
-class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
+final class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
     
     let viewModel = FriendViewModel()
     
@@ -34,7 +34,6 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         navBar.backgroundColor = .white
         return navBar
     }()
-    
     
     lazy var albumAndPhotosTableView: UITableView = {
         let albumAndPhotosTableView = UITableView(frame: .zero, style: .grouped)
@@ -67,10 +66,8 @@ class FriendPhotosViewController: UIViewController, UINavigationBarDelegate {
         setupView()
         setNavigationBar()
         
-        
         let navItem = UINavigationItem()
         navItem.title = "photos".localized
-        
         
         navBar.setItems([navItem], animated: true)
         
@@ -159,7 +156,6 @@ extension FriendPhotosViewController: UITableViewDataSource, UITableViewDelegate
         let albumsVC = AlbumsViewController(albums: albums)
         navigationController?.pushViewController(albumsVC, animated: true)
     }
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {

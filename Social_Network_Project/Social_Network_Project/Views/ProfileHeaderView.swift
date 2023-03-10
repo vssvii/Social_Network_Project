@@ -160,13 +160,7 @@ class ProfileHeaderView: UIView {
         guard UIGraphicsGetCurrentContext() != nil else {
             return
         }
-        
         setupView()
-    
-    }
-    
-    func editDataProfile() {
-        
     }
     
     // MARK: Setup Constraints
@@ -293,10 +287,6 @@ class ProfileHeaderView: UIView {
             make.top.equalTo(photoImageView.snp.bottom).offset(6)
             make.centerX.equalTo(photoImageView.snp.centerX)
         }
-  
-        
-        
-        
     }
 }
 

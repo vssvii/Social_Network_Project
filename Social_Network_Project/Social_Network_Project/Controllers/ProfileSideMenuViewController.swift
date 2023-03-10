@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SideMenu
 
-class ProfileSideMenuViewController: UIViewController {
+final class ProfileSideMenuViewController: UIViewController {
     
     
     public var menuDelegate: MenuControllerDelegate?

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class EditViewController: UIViewController {
+final class EditViewController: UIViewController {
     
     
     private lazy var nickNameLabel: UILabel = {

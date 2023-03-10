@@ -11,7 +11,7 @@ import SnapKit
 
 
 
-class PhotosViewController: UIViewController, UINavigationBarDelegate {
+final class PhotosViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: Variables
     

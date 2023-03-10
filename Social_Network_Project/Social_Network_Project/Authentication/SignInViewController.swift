@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
     
     
     // MARK: Outlets

@@ -7,10 +7,8 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
-import Firebase
 
-class RegistrationViewController: UIViewController {
+final class RegistrationViewController: UIViewController {
     
     
     // MARK: Outlets
@@ -57,7 +55,6 @@ class RegistrationViewController: UIViewController {
         writeNumberTextField.delegate = self
         return writeNumberTextField
     }()
-    
     
     private lazy var goOnButton: UIButton = {
         let goOnButton = UIButton()

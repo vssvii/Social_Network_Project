@@ -19,11 +19,9 @@ class LikedPostsTableViewCell: UITableViewCell {
     
     public lazy var authorLabel: UILabel = {
         let authorLabel = UILabel()
-        
         authorLabel.font = UIFont.boldSystemFont(ofSize: 20)
         authorLabel.textColor = .black
         authorLabel.numberOfLines = 2
-        
         return authorLabel
     }()
     
@@ -32,9 +30,7 @@ class LikedPostsTableViewCell: UITableViewCell {
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = .lightGray
         descriptionLabel.numberOfLines = 0
-        
         descriptionLabel.textColor = .black
-        
         return descriptionLabel
     }()
     

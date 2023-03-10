@@ -12,37 +12,41 @@ class CoreDataManager {
     
     // MARK: Data of Liked posts
     
-    
     static let shared = CoreDataManager()
     
-    init() {
-        reloadPosts()
-    }
-    
+//    init() {
+//        reloadPosts()
+//    }
     
     lazy var persistentContainer: NSPersistentContainer = {
         
         
     let container = NSPersistentContainer(name: "PostData")
-        print(container.persistentStoreDescriptions.first?.url as Any)
+        
+    print(container.persistentStoreDescriptions.first?.url as Any)
+        
     container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-    if let error = error as NSError? {
-    fatalError("Unresolved error \(error), \(error.userInfo)")
-    }
+        if let error = error as NSError? {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
     })
+        
     return container
     }()
+    
+    
     // MARK: - Core Data Saving support
     func saveContext () {
     let context = persistentContainer.viewContext
+        
     if context.hasChanges {
-    do {
-    try context.save()
-    } catch {
-    let nserror = error as NSError
-    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-    }
-    }
+        do {
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+      }
     }
     
     var posts: [PostData] = []
@@ -56,7 +60,7 @@ class CoreDataManager {
     }
     
     func addNewPost(surname: String, name: String, description: String) {
-            let post = PostData(context: persistentContainer.viewContext)
+        let post = PostData(context: persistentContainer.viewContext)
         post.name = name
         post.surname = surname
         post.descript = description
@@ -78,7 +82,9 @@ class CoreDataManager {
 
              do {
                  try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
+                 
                  try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+                 
              } catch {
                  print("Attempted to clear persistent store: " + error.localizedDescription)
              }

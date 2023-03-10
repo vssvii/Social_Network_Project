@@ -10,7 +10,7 @@ import SnapKit
 import LZViewPager
 
 
-class MainViewController: UIViewController  {
+final class MainViewController: UIViewController  {
     
     private lazy var mainLabel: UILabel = {
         let mainLabel = UILabel()

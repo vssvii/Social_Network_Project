@@ -72,7 +72,6 @@ class PostsTableViewCell: UITableViewCell {
         surnameLabel.font = UIFont.boldSystemFont(ofSize: 16)
         surnameLabel.textColor = .black
         surnameLabel.numberOfLines = 0
-        
         return surnameLabel
     }()
     
@@ -245,8 +244,6 @@ class PostsTableViewCell: UITableViewCell {
     
     
     private func setupView() {
-        
-        
         
         selectionStyle = .none
         

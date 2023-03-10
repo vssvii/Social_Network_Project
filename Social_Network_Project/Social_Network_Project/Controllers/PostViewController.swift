@@ -12,7 +12,8 @@ import ExpyTableView
 
 // MARK: Information about post with comments
 
-class PostViewController: UIViewController {
+final class PostViewController: UIViewController {
+    
     
     private enum CellReuseIdentifiers: String {
         case comments
@@ -84,7 +85,7 @@ class PostViewController: UIViewController {
     
     func likedAction() {
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
-            if CoreDataManager.shared.posts.contains( where: { $0.descript == text })  {
+            if ((CoreDataManager.shared.posts.contains( where: { $0.descript == text })))  {
                 presentAlert(title: "", message: "the_post_has_been_already_added".localized)
         } else {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)

@@ -7,18 +7,15 @@
 
 import UIKit
 
-class PersonalViewController: UIViewController {
+final class PersonalViewController: UIViewController {
     
     // MARK: Variables
     
     let viewModel = PersonalViewModel()
     
-    
-    
     private enum CellReuseIdentifiers: String {
         case feedPosts
     }
-    
     
     lazy var feedsTableView: UITableView = {
         let feedsTableView = UITableView(frame: .zero, style: .grouped)

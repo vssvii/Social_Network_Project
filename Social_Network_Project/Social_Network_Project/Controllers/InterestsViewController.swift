@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InterestsViewController: UIViewController {
+final class InterestsViewController: UIViewController {
     
     
     private lazy var interestsLabel: UILabel = {

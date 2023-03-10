@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class InformationViewController: UIViewController {
+final class InformationViewController: UIViewController {
     
     var nickName: String?
     var name: String?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EducationViewController: UIViewController {
+final class EducationViewController: UIViewController {
     
     
     private lazy var educationLevelLabel: UILabel = {

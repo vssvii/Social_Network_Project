@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class EntranceViewController: UIViewController {
+final class EntranceViewController: UIViewController {
     
     
     // MARK: Outlets
@@ -49,14 +49,15 @@ class EntranceViewController: UIViewController {
         navigationController?.pushViewController(signInVC, animated: true)
     }
     
-    // MARK: Lifecycle
     
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
     }
+    
     
     // MARK: Constraints
     

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LikedPostsViewController: UIViewController {
+final class LikedPostsViewController: UIViewController {
 
     
     let coreManager = CoreDataManager.shared
@@ -48,8 +48,8 @@ class LikedPostsViewController: UIViewController {
     }
     
     @objc func deleteAll() {
-        coreManager.deleteAll()
-        coreManager.posts = []
+        CoreDataManager.shared.deleteAll()
+        CoreDataManager.shared.posts = []
         likedPostsTableView.reloadData()
     }
     
@@ -76,13 +76,13 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coreManager.posts.count
+        return CoreDataManager.shared.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.likedPosts.rawValue) as! LikedPostsTableViewCell
-        let post = coreManager.posts[indexPath.row]
+        let post = CoreDataManager.shared.posts[indexPath.row]
         if let surname = post.surname, let name = post.name {
             cell.authorLabel.text = "\(String(describing: surname)) \(String(describing: name))"
         }
@@ -96,7 +96,7 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "delete".localized,
                                                       style: UIAlertAction.Style.destructive,
                                                       handler: {(_: UIAlertAction!) in
-                                self.coreManager.deletePosts(post: post)
+                CoreDataManager.shared.deletePosts(post: post)
                             tableView.reloadData()
                         }))
             self.present(alert, animated: true, completion: nil)

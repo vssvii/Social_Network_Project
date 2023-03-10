@@ -7,10 +7,8 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
-import Firebase
 
-class RegisterConfirmationViewController: UIViewController {
+final class RegisterConfirmationViewController: UIViewController {
     
     
     // MARK: Outlets

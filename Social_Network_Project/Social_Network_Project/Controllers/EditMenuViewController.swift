@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class EditMenuViewController: UIViewController {
+final class EditMenuViewController: UIViewController {
     
     
     private enum CellReuseIdentifiers: String {
