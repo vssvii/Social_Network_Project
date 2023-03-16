@@ -39,7 +39,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Сообщения"
+        title = "messages".localized
         
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
