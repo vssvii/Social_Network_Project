@@ -17,6 +17,7 @@
 		B005ECCC29AF275200D70E5E /* CareerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECCB29AF275200D70E5E /* CareerViewController.swift */; };
 		B005ECD129AF63E100D70E5E /* PostData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B02F1A6229AE0224004F3690 /* PostData.xcdatamodeld */; };
 		B005ECD529AF8BE500D70E5E /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECD429AF8BE500D70E5E /* CommentsTableViewCell.swift */; };
+		B008284A29C2DB9700FA6E34 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008284929C2DB9700FA6E34 /* ChatViewController.swift */; };
 		B00A1283299DECAB0004A2B9 /* EntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1282299DECAB0004A2B9 /* EntranceViewController.swift */; };
 		B00A1285299DFC6A0004A2B9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1284299DFC6A0004A2B9 /* RegistrationViewController.swift */; };
 		B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1286299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift */; };
@@ -139,6 +140,7 @@
 		B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
 		B005ECCB29AF275200D70E5E /* CareerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViewController.swift; sourceTree = "<group>"; };
 		B005ECD429AF8BE500D70E5E /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		B008284929C2DB9700FA6E34 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B00A1282299DECAB0004A2B9 /* EntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceViewController.swift; sourceTree = "<group>"; };
 		B00A1284299DFC6A0004A2B9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B00A1286299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */,
 				B005ECCB29AF275200D70E5E /* CareerViewController.swift */,
 				B06FE10229B0BDAD0027E178 /* AlbumPhotosViewController.swift */,
+				B008284929C2DB9700FA6E34 /* ChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				B06AD19C299267270014BC4F /* PhotosViewModel.swift in Sources */,
 				B070128229AB76870077755E /* IGCache.swift in Sources */,
 				B06AD16F29913ED80014BC4F /* PersonalViewController.swift in Sources */,
+				B008284A29C2DB9700FA6E34 /* ChatViewController.swift in Sources */,
 				B0FD0CAF298D20B9000AF6D4 /* LikedPostsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
