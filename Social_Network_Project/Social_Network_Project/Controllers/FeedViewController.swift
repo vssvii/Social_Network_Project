@@ -28,6 +28,8 @@ final class FeedViewController: UIViewController {
     
     let friendViewModel = FriendViewModel()
     
+    let likedPostsViewModel = LikedPostsViewModel()
+    
     let defaultImage = UIImage(named: "")
     
     // MARK: Outlets
@@ -134,12 +136,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         // MARK: Recognizer which responsibles for adding post to coreData in LikedPostsViewController
         let likedtapRecognizer = TapGestureRecognizer(block: { [self] in
-            if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
+            if likedPostsViewModel.posts.contains( where: { $0.descript == post.description })  {
                 presentAlert(title: "", message: "the_post_has_been_already_added".localized)
         } else {
             cell.likeButton.tintColor = .red
             cell.likesLabel.text = "\(post.likes + 1)"
-            CoreDataManager.shared.addNewPost(surname: friend.surname, name: friend.name, description: post.description)
+            likedPostsViewModel.addNewPost(surname: friend.surname, name: friend.name, description: post.description)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
     })

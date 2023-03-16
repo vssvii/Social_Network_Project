@@ -34,6 +34,8 @@ final class ProfileViewController: UIViewController {
     
     let viewModel = ProfileViewModel()
     
+    let likedPostsViewModel = LikedPostsViewModel()
+    
     private enum CellReuseIdentifiers: String {
         case posts
         case photos
@@ -160,12 +162,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likesLabel.text = "\(post.likes)"
             cell.dateLabel.text = post.date.toString(dateFormat: "MMM d")
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                if ((CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })))  {
+                if ((likedPostsViewModel.posts.contains( where: { $0.descript == post.description })))  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.tintColor = .red
                 cell.likesLabel.text = "\(post.likes + 1)"
-                CoreDataManager.shared.addNewPost(surname: surname, name: name, description: post.description)
+                likedPostsViewModel.addNewPost(surname: surname, name: name, description: post.description)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             }
         })

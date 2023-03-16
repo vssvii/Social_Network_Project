@@ -13,6 +13,8 @@ final class PersonalViewController: UIViewController {
     
     let viewModel = PersonalViewModel()
     
+    let likedPostsViewModel = LikedPostsViewModel()
+    
     private enum CellReuseIdentifiers: String {
         case feedPosts
     }
@@ -78,12 +80,12 @@ extension PersonalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.commentLabel.text = "\(3)"
         // MARK: Like Action
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
-            if CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })  {
+            if likedPostsViewModel.posts.contains( where: { $0.descript == post.description })  {
                 presentAlert(title: "", message: "the_post_has_been_already_added".localized)
         } else {
             cell.likeButton.tintColor = .red
             cell.likesLabel.text = "\(post.likes + 1)"
-            CoreDataManager.shared.addNewPost(surname: feed.feedName, name: "", description: post.description)
+            likedPostsViewModel.addNewPost(surname: feed.feedName, name: "", description: post.description)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
     })

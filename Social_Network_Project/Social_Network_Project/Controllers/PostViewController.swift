@@ -14,6 +14,8 @@ import ExpyTableView
 
 final class PostViewController: UIViewController {
     
+    let likedPostsViewModel = LikedPostsViewModel()
+    
     
     private enum CellReuseIdentifiers: String {
         case comments
@@ -85,13 +87,13 @@ final class PostViewController: UIViewController {
     
     func likedAction() {
         let tapRecognizer = TapGestureRecognizer(block: { [self] in
-            if ((CoreDataManager.shared.posts.contains( where: { $0.descript == text })))  {
+            if ((likedPostsViewModel.posts.contains( where: { $0.descript == text })))  {
                 presentAlert(title: "", message: "the_post_has_been_already_added".localized)
         } else {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
             likeButton.tintColor = .red
             likesLabel.text = "\(likesCount + 1)"
-            CoreDataManager.shared.addNewPost(surname: nickName, name: "", description: text)
+            likedPostsViewModel.addNewPost(surname: nickName, name: "", description: text)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
     })

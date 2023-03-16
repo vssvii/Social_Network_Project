@@ -17,6 +17,8 @@
 		B005ECCC29AF275200D70E5E /* CareerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECCB29AF275200D70E5E /* CareerViewController.swift */; };
 		B005ECD129AF63E100D70E5E /* PostData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B02F1A6229AE0224004F3690 /* PostData.xcdatamodeld */; };
 		B005ECD529AF8BE500D70E5E /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005ECD429AF8BE500D70E5E /* CommentsTableViewCell.swift */; };
+		B008284C29C316EE00FA6E34 /* BookMarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008284B29C316EE00FA6E34 /* BookMarksViewController.swift */; };
+		B008284E29C318DE00FA6E34 /* BookMarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008284D29C318DE00FA6E34 /* BookMarksTableViewCell.swift */; };
 		B00A1283299DECAB0004A2B9 /* EntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1282299DECAB0004A2B9 /* EntranceViewController.swift */; };
 		B00A1285299DFC6A0004A2B9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1284299DFC6A0004A2B9 /* RegistrationViewController.swift */; };
 		B00A1287299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A1286299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift */; };
@@ -139,6 +141,8 @@
 		B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
 		B005ECCB29AF275200D70E5E /* CareerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViewController.swift; sourceTree = "<group>"; };
 		B005ECD429AF8BE500D70E5E /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		B008284B29C316EE00FA6E34 /* BookMarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarksViewController.swift; sourceTree = "<group>"; };
+		B008284D29C318DE00FA6E34 /* BookMarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarksTableViewCell.swift; sourceTree = "<group>"; };
 		B00A1282299DECAB0004A2B9 /* EntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceViewController.swift; sourceTree = "<group>"; };
 		B00A1284299DFC6A0004A2B9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B00A1286299E2F1C0004A2B9 /* RegisterConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 				B005ECC929AF1A8A00D70E5E /* EducationViewController.swift */,
 				B005ECCB29AF275200D70E5E /* CareerViewController.swift */,
 				B06FE10229B0BDAD0027E178 /* AlbumPhotosViewController.swift */,
+				B008284B29C316EE00FA6E34 /* BookMarksViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -570,6 +575,7 @@
 				B0E0506829A3E233008BBC02 /* LikedPostsTableViewCell.swift */,
 				B005ECC529AEFFCD00D70E5E /* ContactsTableViewCell.swift */,
 				B005ECD429AF8BE500D70E5E /* CommentsTableViewCell.swift */,
+				B008284D29C318DE00FA6E34 /* BookMarksTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -878,6 +884,7 @@
 				B070129429AB7CCF0077755E /* IGAppUtility.swift in Sources */,
 				B0E0506429A34090008BBC02 /* FriendHeaderView.swift in Sources */,
 				B070127829AB732C0077755E /* IGStories.swift in Sources */,
+				B008284E29C318DE00FA6E34 /* BookMarksTableViewCell.swift in Sources */,
 				B005ECD129AF63E100D70E5E /* PostData.xcdatamodeld in Sources */,
 				B0FD0CB2298D2C52000AF6D4 /* ProfileHeaderView.swift in Sources */,
 				B07012AA29AB851A0077755E /* LayoutAttributesAnimator.swift in Sources */,
@@ -904,6 +911,7 @@
 				B06AD17629916C720014BC4F /* Photo.swift in Sources */,
 				B07012B029AB85E10077755E /* UIView+Anchor.swift in Sources */,
 				B07012AC29AB855C0077755E /* AnimatedCollectionViewLayout.swift in Sources */,
+				B008284C29C316EE00FA6E34 /* BookMarksViewController.swift in Sources */,
 				B0FD0C77298CDC91000AF6D4 /* AppDelegate.swift in Sources */,
 				B06AD1A229936F7D0014BC4F /* AllPhotosTableViewCell.swift in Sources */,
 				B0FD1BCB299A07BD00380BF1 /* EditMenuViewController.swift in Sources */,

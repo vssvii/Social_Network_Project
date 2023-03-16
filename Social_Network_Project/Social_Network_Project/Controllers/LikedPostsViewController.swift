@@ -11,7 +11,7 @@ import SnapKit
 final class LikedPostsViewController: UIViewController {
 
     
-    let coreManager = CoreDataManager.shared
+    let likedPostsViewModel = LikedPostsViewModel()
     
     private enum CellReuseIdentifiers: String {
         case likedPosts
@@ -36,6 +36,7 @@ final class LikedPostsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshTableView), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
     }
     
+    
     private func navigationItems() {
         
         
@@ -44,12 +45,13 @@ final class LikedPostsViewController: UIViewController {
     }
     
     @objc func refreshTableView() {
+        likedPostsViewModel.reloadPosts()
         self.likedPostsTableView.reloadData()
     }
     
     @objc func deleteAll() {
-        CoreDataManager.shared.deleteAll()
-        CoreDataManager.shared.posts = []
+        likedPostsViewModel.deleteAll()
+        likedPostsViewModel.posts = []
         likedPostsTableView.reloadData()
     }
     
@@ -76,13 +78,14 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager.shared.posts.count
+        return likedPostsViewModel.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseIdentifiers.likedPosts.rawValue) as! LikedPostsTableViewCell
-        let post = CoreDataManager.shared.posts[indexPath.row]
+        let post = likedPostsViewModel.posts[indexPath.row]
+        print(post)
         if let surname = post.surname, let name = post.name {
             cell.authorLabel.text = "\(String(describing: surname)) \(String(describing: name))"
         }
@@ -96,7 +99,7 @@ extension LikedPostsViewController: UITableViewDataSource, UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "delete".localized,
                                                       style: UIAlertAction.Style.destructive,
                                                       handler: {(_: UIAlertAction!) in
-                CoreDataManager.shared.deletePosts(post: post)
+                self.likedPostsViewModel.deletePosts(post: post)
                             tableView.reloadData()
                         }))
             self.present(alert, animated: true, completion: nil)

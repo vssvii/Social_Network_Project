@@ -43,6 +43,8 @@ final class FriendViewController: UIViewController {
     
     let viewModel = FriendViewModel()
     
+    let likedPostsViewModel = LikedPostsViewModel()
+    
     private enum CellReuseIdentifiers: String {
         case posts
         case photos
@@ -166,12 +168,12 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             
             // MARK: Like Action / Adding a post to favourite posts
             let tapRecognizer = TapGestureRecognizer(block: { [self] in
-                if ((CoreDataManager.shared.posts.contains( where: { $0.descript == post.description })))  {
+                if ((likedPostsViewModel.posts.contains( where: { $0.descript == post.description })))  {
                     presentAlert(title: "", message: "the_post_has_been_already_added".localized)
             } else {
                 cell.likeButton.tintColor = .red
                 cell.likesLabel.text = "\(post.likes + 1)"
-                CoreDataManager.shared.addNewPost(surname: surname, name: name, description: post.description)
+                likedPostsViewModel.addNewPost(surname: surname, name: name, description: post.description)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             }
         })

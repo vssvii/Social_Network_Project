@@ -14,10 +14,6 @@ class CoreDataManager {
     
     static let shared = CoreDataManager()
     
-//    init() {
-//        reloadPosts()
-//    }
-    
     lazy var persistentContainer: NSPersistentContainer = {
         
         
@@ -47,46 +43,5 @@ class CoreDataManager {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
       }
-    }
-    
-    var posts: [PostData] = []
-    
-    func reloadPosts() {
-        let request = PostData.fetchRequest()
-        
-        let posts = (try? persistentContainer.viewContext.fetch(request)) ?? []
-        self.posts = posts
-        
-    }
-    
-    func addNewPost(surname: String, name: String, description: String) {
-        let post = PostData(context: persistentContainer.viewContext)
-        post.name = name
-        post.surname = surname
-        post.descript = description
-        saveContext()
-        reloadPosts()
-        }
-    
-    func deletePosts(post: PostData) {
-        persistentContainer.viewContext.delete(post)
-        saveContext()
-        reloadPosts()
-    }
-    
-    func deleteAll() {
-        
-        guard let url = persistentContainer.persistentStoreDescriptions.first?.url else { return }
-        
-        let persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
-
-             do {
-                 try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
-                 
-                 try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-                 
-             } catch {
-                 print("Attempted to clear persistent store: " + error.localizedDescription)
-             }
     }
 }
