@@ -225,15 +225,22 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             view.infoLabel.isUserInteractionEnabled = true
             let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openInfoPageAction))
             view.infoLabel.addGestureRecognizer(guestureRecognizer)
+            view.messageButton.addTarget(self, action: #selector(openChatAction), for: .touchUpInside)
             return view
         } else {
             return UIView()
         }
     }
+    
 
     @objc func openInfoPageAction() {
         let infoPageVC = InformationViewController(nickName: nickName, name: name, surname: surname, job: job, gender: gender, birth: "17.12.95", city: "Астана")
         navigationController?.pushViewController(infoPageVC, animated: true)
+    }
+    
+    @objc func openChatAction() {
+        let chatVC = ChatViewController()
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
