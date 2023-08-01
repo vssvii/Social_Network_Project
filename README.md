@@ -28,7 +28,7 @@ The project consists of:
 5) Страница любимых постов
 
 
-1) Registration and authentication of the user via a mobile phone number
+Registration and authentication of the user via a mobile phone number
 
 Login Options:
 
@@ -37,7 +37,7 @@ Number: +7 5555555555
 Password: 123123
 
 
-1) Регистрация и аутентификация пользователя через номер мобильного телефона
+Регистрация и аутентификация пользователя через номер мобильного телефона
 
 Параметры для входа:
 
